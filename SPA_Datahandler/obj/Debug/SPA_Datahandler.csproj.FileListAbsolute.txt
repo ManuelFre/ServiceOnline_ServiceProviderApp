@@ -53,3 +53,17 @@ C:\Users\FREISCHM\source\repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\
 C:\Users\FREISCHM\source\repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
 C:\Users\FREISCHM\source\repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
 C:\Users\FREISCHM\source\repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp.mdf
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp_log.ldf
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll.config
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.pdb
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.dll
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.xml
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
+C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
