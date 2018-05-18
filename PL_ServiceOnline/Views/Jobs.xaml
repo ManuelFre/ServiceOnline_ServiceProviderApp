@@ -9,6 +9,7 @@
              d:DesignHeight="500" d:DesignWidth="1000">
     <UserControl.Resources>
         <converters:StringToColourString x:Key="StringToColourString"/>
+        <converters:AllIncStringToStringColor x:Key="AllIncStringToStringColor"/>
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="JobsVm"/>
@@ -22,17 +23,26 @@
         <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Height" Value="50"></Setter>
+                    <!--HIER DIE HOEHE UMSTELLEN--> 
+                    <Setter Property="Height" Value="70"></Setter>
+                    <Setter Property="BorderThickness" Value="2"></Setter>
+                    <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
+                    <Setter Property="FontSize" Value="14"></Setter>
+                    
+                    <!--<Setter Property="Background" Value="{Binding IsAllInclusive, Converter={StaticResource AllIncStringToStringColor}}"></Setter>-->
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-
-                    <GridViewColumn  DisplayMemberBinding="{Binding OrderItemId}" Header="Order Id">
-
-                    </GridViewColumn>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FontSize" Value="14"></Setter>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}" Header="Order Id"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Customername}" Header="Name" />
                     <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}" Header="Beschreibung" />
+                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
                     <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy - hh.mm, Mode=OneWay}" Header="Termin" />
                     <!--<GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />-->
                     <GridViewColumn DisplayMemberBinding="{Binding BookedItems}" Header="Einheiten" />
@@ -40,11 +50,14 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Zip}" Header="PLZ" />
                     <GridViewColumn DisplayMemberBinding="{Binding City}" Header="Ort" />
                     <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Telefon" />
-                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
+                    
                     <GridViewColumn  Header="Abgeschlossen" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Ellipse Width="30" Height="30" Fill="{Binding IsFinished, Converter={StaticResource StringToColourString}}"  ></Ellipse>
+                                <StackPanel MinWidth="80" HorizontalAlignment="Center">
+                                    <Ellipse  Width="30" Height="30" Fill="{Binding IsFinished, Converter={StaticResource StringToColourString}}"  ></Ellipse>
+                                </StackPanel>
+                                
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:PL_ServiceOnline.Views"
         xmlns:local="clr-namespace:PL_ServiceOnline"
         mc:Ignorable="d"
-        Title="ServiceProvider-App" Height="530" Width="1200" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}" >
+        Title="ServiceProvider-App" Height="600" Width="1400" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}" >
 
     <Grid>
         <Grid.ColumnDefinitions>
