@@ -33,7 +33,7 @@ namespace SPA_Datahandler.Datamodel
         [DataMember]
         public string IsFinished { get; set; }
         [DataMember]
-        public string IsAccepted { get; set; }
+        public string IsConfirmed { get; set; }
 
 
         private Dataprovider dp;

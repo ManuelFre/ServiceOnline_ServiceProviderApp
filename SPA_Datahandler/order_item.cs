@@ -14,6 +14,12 @@ namespace SPA_Datahandler
     
     public partial class order_item
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public order_item()
+        {
+            this.order_item_report = new HashSet<order_item_report>();
+        }
+    
         public int Id { get; set; }
         public long order_id { get; set; }
         public int service_id { get; set; }
@@ -30,8 +36,13 @@ namespace SPA_Datahandler
         public string is_finished { get; set; }
         public System.DateTime createdAt { get; set; }
         public Nullable<System.DateTime> deletedAt { get; set; }
+        public string is_confirmed { get; set; }
+        public Nullable<double> addittional_cost { get; set; }
+        public string service_provider_comment { get; set; }
     
         public virtual order_header order_header { get; set; }
         public virtual service service { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order_item_report> order_item_report { get; set; }
     }
 }

@@ -83,6 +83,10 @@
     <Property Name="deletedAt" Type="DateTime" Precision="0" />
     <NavigationProperty Name="order_header" Relationship="Self.order_item_header_fk" FromRole="order_item" ToRole="order_header" />
     <NavigationProperty Name="service" Relationship="Self.order_item_service_fk" FromRole="order_item" ToRole="service" />
+    <Property Name="is_confirmed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="addittional_cost" Type="Double" />
+    <Property Name="service_provider_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item" ToRole="order_item_report" />
   </EntityType>
   <EntityType Name="order_state">
     <Key>
@@ -526,5 +530,59 @@
       <End Role="zone" EntitySet="zone" />
       <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
     </AssociationSet>
+    <EntitySet Name="order_item_report" EntityType="DbServiceProviderAppModel.order_item_report" />
+    <EntitySet Name="order_item_report_appendix" EntityType="DbServiceProviderAppModel.order_item_report_appendix" />
+    <AssociationSet Name="FK_order_item_report_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_ToTable">
+      <End Role="order_item" EntitySet="order_item" />
+      <End Role="order_item_report" EntitySet="order_item_report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable">
+      <End Role="order_item_report" EntitySet="order_item_report" />
+      <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="order_item_report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="order_item_id" Type="Int32" Nullable="false" />
+    <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="report_date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
+    <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
+  </EntityType>
+  <EntityType Name="order_item_report_appendix">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="order_item_report_id" Type="Int32" Nullable="false" />
+    <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
+  </EntityType>
+  <Association Name="FK_order_item_report_ToTable">
+    <End Type="DbServiceProviderAppModel.order_item" Role="order_item" Multiplicity="1" />
+    <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="order_item_report">
+        <PropertyRef Name="order_item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_item_report_appendix_ToTable">
+    <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="1" />
+    <End Type="DbServiceProviderAppModel.order_item_report_appendix" Role="order_item_report_appendix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order_item_report">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="order_item_report_appendix">
+        <PropertyRef Name="order_item_report_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

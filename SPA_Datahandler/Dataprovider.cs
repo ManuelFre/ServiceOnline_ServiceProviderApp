@@ -46,7 +46,8 @@ namespace SPA_Datahandler
                     Phone = x.od.phone_2,
                     PreferedDate = x.oi.preferred_date_time,
                     Servicedescription = x.sv.name,
-                    Zip = x.od.zip
+                    Zip = x.od.zip,
+                    IsConfirmed = x.oi.is_confirmed
                 });
 
             return query.ToList();
@@ -75,7 +76,8 @@ namespace SPA_Datahandler
                     Phone = x.od.phone_2,
                     PreferedDate = x.oi.preferred_date_time,
                     Servicedescription = x.sv.name,
-                    Zip = x.od.zip
+                    Zip = x.od.zip,
+                    IsConfirmed = x.oi.is_confirmed
                 });
 
             return query.ToList();
@@ -104,7 +106,8 @@ namespace SPA_Datahandler
                     Phone = x.od.phone_2,
                     PreferedDate = x.oi.preferred_date_time,
                     Servicedescription = x.sv.name,
-                    Zip = x.od.zip
+                    Zip = x.od.zip,
+                    IsConfirmed = x.oi.is_confirmed
                 });
 
             return query.ToList();
@@ -138,11 +141,44 @@ namespace SPA_Datahandler
                     OrderedDateTime = x.oi.createdAt,
                     CustomerNotice = x.oh.customer_note,
                     IsFinished = x.oi.is_finished,
-                    OrderId = x.oi.order_id
+                    OrderId = x.oi.order_id,
+                    IsConfirmed = x.oi.is_confirmed,
+                    AddittionalCost = x.oi.addittional_cost,
+                    ServiceProviderComment = x.oi.service_provider_comment
                 });
 
-            return query.Single();
+            DetailedClass RetVal = query.Single();
+
+            // Holen der Order_Item_Reports zum Order_Item
+            var queryReport = from oim in dbContext.order_item_report
+                        where oim.order_item_id == OrderItemId
+                        select new OrderItemReport
+                        {
+                            Id = oim.Id,
+                            Comment = oim.comment,
+                            ReportDate = oim.report_date
+                        };
+            List<OrderItemReport> OIM = queryReport.ToList();
+
+            // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
+            for (int i = 0;i < OIM.Count; i++)
+            {
+                var queryAppendix = from oima in dbContext.order_item_report_appendix
+                                    where oima.order_item_report_id == OIM[i].Id
+                                    select new OrderItemReportAppendix
+                                    {
+                                        Id = oima.Id,
+                                        Picture = oima.appendix
+                                    };
+
+                List<OrderItemReportAppendix> OIMA = queryAppendix.ToList();
+                OIM[i].Appendix = OIMA;
+            }
+            RetVal.OrderItemReports = OIM;
+
+            return RetVal;
         }
+
 
         public order_detail QueryOrderDetail(long OrderItemId)
         {
@@ -166,6 +202,11 @@ namespace SPA_Datahandler
         {
             dbContext.SaveChanges();
 
+        }
+
+        public void AddOrderItemReport()
+        {
+            //TODO: OrderItemReport hinzufügen!
         }
 
         protected DbServiceProviderAppEntities dbContext;

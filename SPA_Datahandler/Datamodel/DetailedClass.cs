@@ -46,6 +46,14 @@ namespace SPA_Datahandler.Datamodel
         public string CustomerNotice { get; set; }
         [DataMember]
         public string IsFinished { get; set; }
+        [DataMember]
+        public string IsConfirmed { get; set; }
+        [DataMember]
+        public double? AddittionalCost { get; set; }
+        [DataMember]
+        public string ServiceProviderComment { get; set; }
+        [DataMember]
+        public List<OrderItemReport> OrderItemReports { get; set; }
 
 
         private Dataprovider dp;

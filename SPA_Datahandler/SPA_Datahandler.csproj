@@ -74,6 +74,8 @@
     <Compile Include="country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datamodel\OrderItemReport.cs" />
+    <Compile Include="Datamodel\OrderItemReportAppendix.cs" />
     <Compile Include="Dataprovider.cs" />
     <Compile Include="Datamodel\DetailedClass.cs" />
     <Compile Include="Model1.Context.cs">
@@ -99,6 +101,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="order_item.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order_item_report.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order_item_report_appendix.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="order_state.cs">

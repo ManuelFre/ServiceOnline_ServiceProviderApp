@@ -39,5 +39,7 @@ namespace SPA_Datahandler
         public virtual DbSet<sow_user_delivery_address> sow_user_delivery_address { get; set; }
         public virtual DbSet<zdv_user> zdv_user { get; set; }
         public virtual DbSet<zone> zone { get; set; }
+        public virtual DbSet<order_item_report> order_item_report { get; set; }
+        public virtual DbSet<order_item_report_appendix> order_item_report_appendix { get; set; }
     }
 }

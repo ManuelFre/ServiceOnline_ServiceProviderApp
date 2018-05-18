@@ -73,8 +73,28 @@
           <Property Name="is_all_inclusive" Type="text" Nullable="false" />
           <Property Name="preferred_date_time" Type="date" Nullable="false" />
           <Property Name="is_finished" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_confirmed" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="addittional_cost" Type="float" />
+          <Property Name="service_provider_comment" Type="text" />
           <Property Name="createdAt" Type="date" Nullable="false" />
           <Property Name="deletedAt" Type="date" />
+        </EntityType>
+        <EntityType Name="order_item_report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="order_item_id" Type="int" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="report_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_item_report_appendix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="order_item_report_id" Type="int" Nullable="false" />
+          <Property Name="appendix" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="order_state">
           <Key>
@@ -261,6 +281,30 @@
         <!--Errors Found During Generation:
 warning 6035: The relationship 'customer_comment_service_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="customer_comment_service_fk" />-->
+        <Association Name="FK_order_item_report_appendix_ToTable">
+          <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="1" />
+          <End Role="order_item_report_appendix" Type="Self.order_item_report_appendix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_item_report">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order_item_report_appendix">
+              <PropertyRef Name="order_item_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_item_report_ToTable">
+          <End Role="order_item" Type="Self.order_item" Multiplicity="1" />
+          <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order_item_report">
+              <PropertyRef Name="order_item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="order_detail_country_fk">
           <End Role="country" Type="Self.country" Multiplicity="1" />
           <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
@@ -422,6 +466,8 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_header" EntityType="Self.order_header" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_item" EntityType="Self.order_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_item_report" EntityType="Self.order_item_report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_item_report_appendix" EntityType="Self.order_item_report_appendix" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_state" EntityType="Self.order_state" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="service_category" EntityType="Self.service_category" Schema="dbo" store:Type="Tables" />
@@ -447,6 +493,14 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <AssociationSet Name="customer_comment_customer_fk" Association="Self.customer_comment_customer_fk">
             <End Role="sow_user" EntitySet="sow_user" />
             <End Role="service_customer_comment" EntitySet="service_customer_comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="Self.FK_order_item_report_appendix_ToTable">
+            <End Role="order_item_report" EntitySet="order_item_report" />
+            <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_item_report_ToTable" Association="Self.FK_order_item_report_ToTable">
+            <End Role="order_item" EntitySet="order_item" />
+            <End Role="order_item_report" EntitySet="order_item_report" />
           </AssociationSet>
           <AssociationSet Name="order_detail_country_fk" Association="Self.order_detail_country_fk">
             <End Role="country" EntitySet="country" />
@@ -588,6 +642,10 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <Property Name="deletedAt" Type="DateTime" Precision="0" />
           <NavigationProperty Name="order_header" Relationship="Self.order_item_header_fk" FromRole="order_item" ToRole="order_header" />
           <NavigationProperty Name="service" Relationship="Self.order_item_service_fk" FromRole="order_item" ToRole="service" />
+          <Property Name="is_confirmed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="addittional_cost" Type="Double" />
+          <Property Name="service_provider_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item" ToRole="order_item_report" />
         </EntityType>
         <EntityType Name="order_state">
           <Key>
@@ -1031,7 +1089,61 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
             <End Role="zone" EntitySet="zone" />
             <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
           </AssociationSet>
+          <EntitySet Name="order_item_report" EntityType="DbServiceProviderAppModel.order_item_report" />
+          <EntitySet Name="order_item_report_appendix" EntityType="DbServiceProviderAppModel.order_item_report_appendix" />
+          <AssociationSet Name="FK_order_item_report_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_ToTable">
+            <End Role="order_item" EntitySet="order_item" />
+            <End Role="order_item_report" EntitySet="order_item_report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable">
+            <End Role="order_item_report" EntitySet="order_item_report" />
+            <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="order_item_report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="order_item_id" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="report_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
+          <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
+        </EntityType>
+        <EntityType Name="order_item_report_appendix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="order_item_report_id" Type="Int32" Nullable="false" />
+          <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
+        </EntityType>
+        <Association Name="FK_order_item_report_ToTable">
+          <End Type="DbServiceProviderAppModel.order_item" Role="order_item" Multiplicity="1" />
+          <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order_item_report">
+              <PropertyRef Name="order_item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_item_report_appendix_ToTable">
+          <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="1" />
+          <End Type="DbServiceProviderAppModel.order_item_report_appendix" Role="order_item_report_appendix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_item_report">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order_item_report_appendix">
+              <PropertyRef Name="order_item_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1094,6 +1206,9 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <EntitySetMapping Name="order_item">
             <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item">
               <MappingFragment StoreEntitySet="order_item">
+                <ScalarProperty Name="service_provider_comment" ColumnName="service_provider_comment" />
+                <ScalarProperty Name="addittional_cost" ColumnName="addittional_cost" />
+                <ScalarProperty Name="is_confirmed" ColumnName="is_confirmed" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="service_id" ColumnName="service_id" />
@@ -1254,6 +1369,25 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="createdAt" ColumnName="createdAt" />
                 <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_item_report">
+            <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report">
+              <MappingFragment StoreEntitySet="order_item_report">
+                <ScalarProperty Name="report_date" ColumnName="report_date" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_item_report_appendix">
+            <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report_appendix">
+              <MappingFragment StoreEntitySet="order_item_report_appendix">
+                <ScalarProperty Name="appendix" ColumnName="appendix" />
+                <ScalarProperty Name="order_item_report_id" ColumnName="order_item_report_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

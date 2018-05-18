@@ -61,7 +61,16 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                                            
+                    <GridViewColumn  Header="Angenommen" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel MinWidth="80" HorizontalAlignment="Center">
+                                    <Ellipse  Width="30" Height="30" Fill="{Binding IsConfirmed, Converter={StaticResource StringToColourString}}"  ></Ellipse>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
             

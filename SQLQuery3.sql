@@ -1,0 +1,1 @@
+﻿UPDATE order_item SET is_confirmed = 'Y';

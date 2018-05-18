@@ -57,6 +57,9 @@
     <EntitySetMapping Name="order_item">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item">
         <MappingFragment StoreEntitySet="order_item">
+          <ScalarProperty Name="service_provider_comment" ColumnName="service_provider_comment" />
+          <ScalarProperty Name="addittional_cost" ColumnName="addittional_cost" />
+          <ScalarProperty Name="is_confirmed" ColumnName="is_confirmed" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="order_id" ColumnName="order_id" />
           <ScalarProperty Name="service_id" ColumnName="service_id" />
@@ -217,6 +220,25 @@
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="createdAt" ColumnName="createdAt" />
           <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_item_report">
+      <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report">
+        <MappingFragment StoreEntitySet="order_item_report">
+          <ScalarProperty Name="report_date" ColumnName="report_date" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_item_report_appendix">
+      <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report_appendix">
+        <MappingFragment StoreEntitySet="order_item_report_appendix">
+          <ScalarProperty Name="appendix" ColumnName="appendix" />
+          <ScalarProperty Name="order_item_report_id" ColumnName="order_item_report_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
