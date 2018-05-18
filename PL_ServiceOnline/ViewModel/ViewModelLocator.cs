@@ -42,8 +42,8 @@ namespace PL_ServiceOnline.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
             SimpleIoc.Default.Register<LoginVm>(true);
-            SimpleIoc.Default.Register<UpcomingJobsVm>(true);
-            SimpleIoc.Default.Register<PastJobsVm>(true);
+            //SimpleIoc.Default.Register<UpcomingJobsVm>(true); not used anymore!
+            SimpleIoc.Default.Register<JobsVm>(true);
             SimpleIoc.Default.Register<DetailVm>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
@@ -62,18 +62,18 @@ namespace PL_ServiceOnline.ViewModel
                 return ServiceLocator.Current.GetInstance<LoginVm>();
             }
         }
-        public UpcomingJobsVm UpcomingJobsVm
+        //public UpcomingJobsVm UpcomingJobsVm
+        //{
+        //    get
+        //    {
+        //        return ServiceLocator.Current.GetInstance<UpcomingJobsVm>();
+        //    }
+        //}
+        public JobsVm JobsVm
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<UpcomingJobsVm>();
-            }
-        }
-        public PastJobsVm PastJobsVm
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<PastJobsVm>();
+                return ServiceLocator.Current.GetInstance<JobsVm>();
             }
         }
         public DetailVm DetailVm

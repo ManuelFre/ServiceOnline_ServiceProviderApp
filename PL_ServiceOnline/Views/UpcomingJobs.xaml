@@ -15,7 +15,29 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <DataGrid  Margin="5" ItemsSource="{Binding UpcomingOrders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
+        <ListView ItemsSource="{Binding UpcomingOrders}" SelectedItem="{Binding SelectedJob}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}" Header="Id" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Customername}" Header="Name" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}" Header="Beschreibung" />
+                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, Mode=OneWay}" Header="Datum" />
+                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />
+                    <GridViewColumn DisplayMemberBinding="{Binding BookedItems}" Header="Einheiten" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Adresse" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Zip}" Header="PLZ" />
+                    <GridViewColumn DisplayMemberBinding="{Binding City}" Header="Ort" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Telefon" />
+                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
+                    <GridViewColumn DisplayMemberBinding="{Binding IsFinished}" Header="Fertig?" />
+                </GridView>
+            </ListView.View>
+
+
+        </ListView>
+        
+        
+        <!--<DataGrid  Margin="5" ItemsSource="{Binding UpcomingOrders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding OrderItemId}" Header="Id" />
                 <DataGridTextColumn Binding="{Binding Customername}" Header="Name" />
@@ -30,7 +52,7 @@
                 <DataGridTextColumn Binding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
                 <DataGridTextColumn Binding="{Binding IsFinished}" Header="Fertig?" />
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Get Data from Backend" Command="{Binding BtnSyncWithBackend}"/>
         </StackPanel>

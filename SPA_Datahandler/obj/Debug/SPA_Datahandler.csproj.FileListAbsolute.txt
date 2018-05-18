@@ -67,3 +67,33 @@ C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderA
 C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
 C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
 C:\Users\NexX\Desktop\Fallstudie 4\CurrentVersion\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp.mdf
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp_log.ldf
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll.config
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\SPA_Datahandler.pdb
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\EntityFramework.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\EntityFramework.xml
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp.mdf
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Database\DbServiceProviderApp_log.ldf
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll.config
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\SPA_Datahandler.pdb
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.xml
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb

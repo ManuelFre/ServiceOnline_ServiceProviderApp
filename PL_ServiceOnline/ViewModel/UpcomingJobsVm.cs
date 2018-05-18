@@ -48,7 +48,7 @@ namespace PL_ServiceOnline.ViewModel
             OS = new OrderSummary();
 
             UpcomingOrders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
-
+            RaisePropertyChanged("UpcomingOrders");
 
 
             //Countries = new ObservableCollection<country>();

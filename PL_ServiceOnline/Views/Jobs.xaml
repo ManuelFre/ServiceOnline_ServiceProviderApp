@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="PL_ServiceOnline.Views.Jobs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL_ServiceOnline.Views"
+             xmlns:converters="clr-namespace:PL_ServiceOnline.Converter"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <converters:StringToColourString x:Key="StringToColourString"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="JobsVm"/>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Height" Value="50"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn  DisplayMemberBinding="{Binding OrderItemId}" Header="Order Id">
+
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Customername}" Header="Name" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}" Header="Beschreibung" />
+                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy - hh.mm, Mode=OneWay}" Header="Termin" />
+                    <!--<GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />-->
+                    <GridViewColumn DisplayMemberBinding="{Binding BookedItems}" Header="Einheiten" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Adresse" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Zip}" Header="PLZ" />
+                    <GridViewColumn DisplayMemberBinding="{Binding City}" Header="Ort" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Telefon" />
+                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
+                    <GridViewColumn  Header="Abgeschlossen" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse Width="30" Height="30" Fill="{Binding IsFinished, Converter={StaticResource StringToColourString}}"  ></Ellipse>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                                            
+                </GridView>
+            </ListView.View>
+            
+        </ListView>
+        <!--<DataGrid  Margin="5" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding OrderItemId}" Header="Id" />
+                <DataGridTextColumn Binding="{Binding Customername}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Servicedescription}" Header="Beschreibung" />
+                <DataGridTextColumn Binding="{Binding PreferedDate.Date, Mode=OneWay}" Header="Datum" />
+                <DataGridTextColumn Binding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />
+                <DataGridTextColumn Binding="{Binding BookedItems}" Header="Einheiten" />
+                <DataGridTextColumn Binding="{Binding Address}" Header="Adresse" />
+                <DataGridTextColumn Binding="{Binding Zip}" Header="PLZ" />
+                <DataGridTextColumn Binding="{Binding City}" Header="Ort" />
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Telefon" />
+                <DataGridTextColumn Binding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
+                <DataGridTextColumn Binding="{Binding IsFinished}" Header="Fertig?" />
+            </DataGrid.Columns>
+        </DataGrid>-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Get Data from Backend" Command="{Binding BtnSyncWithBackend}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

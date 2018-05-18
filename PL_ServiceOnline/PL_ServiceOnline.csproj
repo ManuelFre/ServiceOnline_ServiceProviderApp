@@ -93,13 +93,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\StringToColourString.cs" />
     <Compile Include="Synchronisation\Dataset.cs" />
     <Compile Include="Synchronisation\Synchronisation.cs" />
     <Compile Include="ViewModel\DetailVm.cs" />
     <Compile Include="ViewModel\LoginVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\PastJobsVm.cs" />
-    <Compile Include="ViewModel\UpcomingJobsVm.cs" />
+    <Compile Include="ViewModel\JobsVm.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
@@ -107,8 +107,8 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PastJobs.xaml.cs">
-      <DependentUpon>PastJobs.xaml</DependentUpon>
+    <Compile Include="Views\Jobs.xaml.cs">
+      <DependentUpon>Jobs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UpcomingJobs.xaml.cs">
       <DependentUpon>UpcomingJobs.xaml</DependentUpon>
@@ -133,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PastJobs.xaml">
+    <Page Include="Views\Jobs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +177,7 @@
       <Name>SPA_Datahandler</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

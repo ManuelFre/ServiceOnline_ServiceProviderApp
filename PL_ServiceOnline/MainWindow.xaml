@@ -48,11 +48,11 @@
                     <DataTemplate DataType="{x:Type vm:LoginVm}">
                         <views:Login/>
                     </DataTemplate>
-                    <DataTemplate DataType="{x:Type vm:UpcomingJobsVm}">
+                    <!--<DataTemplate DataType="{x:Type vm:UpcomingJobsVm}">
                         <views:UpcomingJobs/>
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type vm:PastJobsVm}">
-                        <views:PastJobs/>
+                    </DataTemplate>-->
+                    <DataTemplate DataType="{x:Type vm:JobsVm}">
+                        <views:Jobs/>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:DetailVm}">
                         <views:Detail/>

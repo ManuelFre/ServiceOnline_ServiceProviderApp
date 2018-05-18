@@ -65,12 +65,17 @@ namespace PL_ServiceOnline.ViewModel
 
                 Btn_UpcomingJobs = new RelayCommand(() =>
                 {
-                    CurrentDetailView = SimpleIoc.Default.GetInstance<UpcomingJobsVm>();
+                    
+                    CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
+                    msg.Send<GenericMessage<string>>(new GenericMessage<string>("future"));
                 });
 
                 Btn_PastJobs = new RelayCommand(() =>
                 {
-                    CurrentDetailView = SimpleIoc.Default.GetInstance<PastJobsVm>();
+                    
+                    CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
+                    msg.Send<GenericMessage<string>>(new GenericMessage<string>("past"));
+
                 });
 
                 Btn_Logout = new RelayCommand(() =>

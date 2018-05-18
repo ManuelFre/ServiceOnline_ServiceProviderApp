@@ -32,6 +32,8 @@ namespace SPA_Datahandler.Datamodel
         public string IsAllInclusive { get; set; }
         [DataMember]
         public string IsFinished { get; set; }
+        [DataMember]
+        public string IsAccepted { get; set; }
 
 
         private Dataprovider dp;
@@ -46,7 +48,7 @@ namespace SPA_Datahandler.Datamodel
         }
         public List<OrderSummary> GetPastOrderSummaries()
         {
-            return dp.QueryPastOrders();
+            return dp.QueryOrders();
         }
         public List<OrderSummary> GetUpcomingOrderSummaries()
         {

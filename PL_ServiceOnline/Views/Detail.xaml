@@ -25,7 +25,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <DataGrid  Margin="5" ItemsSource="{Binding PastOrders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
+        <DataGrid  Margin="5" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding OrderItemId}" Header="Id" />
                 <DataGridTextColumn Binding="{Binding Customername}" Header="Name" />

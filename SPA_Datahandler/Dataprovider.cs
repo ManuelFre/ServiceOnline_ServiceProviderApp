@@ -52,7 +52,7 @@ namespace SPA_Datahandler
             return query.ToList();
         }
 
-        public List<OrderSummary> QueryPastOrders()
+        public List<OrderSummary> QueryOrders()
         {
             var query = (from od in dbContext.order_detail
                     join oi in dbContext.order_item on od.order_id equals oi.order_id
