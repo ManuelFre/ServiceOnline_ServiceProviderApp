@@ -68,16 +68,21 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ChangeOrder(GenericMessage<string> obj)
         {
-            if(obj.Content == "past")
+            string last = "";
+
+
+            if(last != "past" && obj.Content == "past")
             {
                 Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
                 RaisePropertyChanged("Orders");
             }
-            else
+            else if(last != "future" && obj.Content == "future")
             {
                 Orders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
                 RaisePropertyChanged("Orders");
             }
+
+            last = obj.Content;
             
         }
 

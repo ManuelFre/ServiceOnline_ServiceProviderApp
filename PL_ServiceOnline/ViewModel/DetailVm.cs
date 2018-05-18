@@ -84,18 +84,22 @@ namespace PL_ServiceOnline.ViewModel
         {
             SelectedJob = obj.Content;
             //Todo, abfrage macht error
-            SelectedDetailed = OS.GetDetailView(SelectedJob);
-            OrderItemId = SelectedJob.OrderItemId;
-            Customername = SelectedDetailed.Lastname;
-            Servicedescription = SelectedDetailed.Servicedescription;
-            PreferedDate = SelectedDetailed.PreferedDate;
-            BookedItems = SelectedDetailed.BookedItems;
-            Address = SelectedDetailed.Address;
-            Zip = SelectedDetailed.Zip;
-            City = SelectedDetailed.City;
-            Phone = SelectedDetailed.Phone;
-            IsAllInclusive = SelectedDetailed.IsAllInclusive;
-            IsFinished = SelectedDetailed.IsFinished;
+            if(SelectedJob != null)
+            {
+                SelectedDetailed = OS.GetDetailView(SelectedJob);
+                OrderItemId = SelectedJob.OrderItemId;
+                Customername = SelectedDetailed.Lastname;
+                Servicedescription = SelectedDetailed.Servicedescription;
+                PreferedDate = SelectedDetailed.PreferedDate;
+                BookedItems = SelectedDetailed.BookedItems;
+                Address = SelectedDetailed.Address;
+                Zip = SelectedDetailed.Zip;
+                City = SelectedDetailed.City;
+                Phone = SelectedDetailed.Phone;
+                IsAllInclusive = SelectedDetailed.IsAllInclusive;
+                IsFinished = SelectedDetailed.IsFinished;
+            }
+
         }
 
         public void startSync()
