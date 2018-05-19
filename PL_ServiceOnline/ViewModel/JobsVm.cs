@@ -15,6 +15,9 @@ namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
+
+        private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
+
         private IMessenger msg = Messenger.Default;
 
         private OrderSummary selectedJob;
@@ -68,7 +71,7 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ChangeOrder(GenericMessage<string> obj)
         {
-            string last = "";
+            
 
 
             if(last != "past" && obj.Content == "past")
