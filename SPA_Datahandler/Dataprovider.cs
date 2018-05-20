@@ -1,12 +1,7 @@
-﻿using System;
+﻿using SPA_Datahandler.Datamodel;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using SPA_Datahandler.Datamodel;
 
 namespace SPA_Datahandler
 {
@@ -56,10 +51,10 @@ namespace SPA_Datahandler
         public List<OrderSummary> QueryOrders()
         {
             var query = (from od in dbContext.order_detail
-                    join oi in dbContext.order_item on od.order_id equals oi.order_id
-                    join sv in dbContext.service on oi.service_id equals sv.Id
-                    where oi.preferred_date_time < System.DateTime.Now
-                    orderby oi.preferred_date_time descending
+                         join oi in dbContext.order_item on od.order_id equals oi.order_id
+                         join sv in dbContext.service on oi.service_id equals sv.Id
+                         where oi.preferred_date_time < System.DateTime.Now
+                         orderby oi.preferred_date_time descending
                          select new { od, oi, sv })
                 .AsEnumerable()
                 .Select(x => new OrderSummary()
@@ -86,11 +81,11 @@ namespace SPA_Datahandler
         public List<OrderSummary> QueryUpcomingOrders()
         {
             var query = (from od in dbContext.order_detail
-                    join oi in dbContext.order_item on od.order_id equals oi.order_id
-                    join sv in dbContext.service on oi.service_id equals sv.Id
-                    where oi.preferred_date_time > System.DateTime.Now
-                    orderby oi.preferred_date_time
-                    select new { od, oi, sv })
+                         join oi in dbContext.order_item on od.order_id equals oi.order_id
+                         join sv in dbContext.service on oi.service_id equals sv.Id
+                         where oi.preferred_date_time > System.DateTime.Now
+                         orderby oi.preferred_date_time
+                         select new { od, oi, sv })
                 .AsEnumerable()
                 .Select(x => new OrderSummary()
                 {
@@ -151,22 +146,22 @@ namespace SPA_Datahandler
 
             // Holen der Order_Item_Reports zum Order_Item
             var queryReport = from oim in dbContext.order_item_report
-                        where oim.order_item_id == OrderItemId
-                        select new OrderItemReport
-                        {
-                            Id = oim.Id,
-                            Comment = oim.comment,
-                            ReportDate = oim.report_date
-                        };
+                              where oim.order_item_id == OrderItemId
+                              select new OrderItemReport
+                              {
+                                  Id = oim.Id,
+                                  Comment = oim.comment,
+                                  ReportDate = oim.report_date
+                              };
             List<OrderItemReport> OIM = queryReport.ToList();
 
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
-            for (int i = 0;i < OIM.Count; i++)
+            for (int i = 0; i < OIM.Count; i++)
             {
                 int OrderITemReportId = OIM[i].Id;
-                
+
                 var queryAppendix = from oima in dbContext.order_item_report_appendix
-                                    where oima.order_item_report_id == OrderITemReportId               
+                                    where oima.order_item_report_id == OrderITemReportId
                                     select new OrderItemReportAppendix
                                     {
                                         Id = oima.Id,
@@ -191,25 +186,29 @@ namespace SPA_Datahandler
                                             select oi).FirstOrDefault(); //changed from first() to firstordefault()
 
             //order_item OriginalOrderItem = new order_item();
+            if (OriginalOrderItem != null)
+            {
+                //Änderungsfähige Daten übernehmen
+                OriginalOrderItem.addittional_cost = DetailToUpdate.AddittionalCost;
+                OriginalOrderItem.final_price = DetailToUpdate.Finalprice;
+                OriginalOrderItem.is_all_inclusive = DetailToUpdate.IsAllInclusive;
+                OriginalOrderItem.is_confirmed = DetailToUpdate.IsConfirmed;
+                OriginalOrderItem.is_finished = DetailToUpdate.IsFinished;
+                OriginalOrderItem.preferred_date_time = DetailToUpdate.PreferedDate;
+                OriginalOrderItem.service_provider_comment = DetailToUpdate.ServiceProviderComment;
+                OriginalOrderItem.final_price_without_tax = OriginalOrderItem.final_price / 1.2;   //Falls der Final_Price geändert wurde
+                OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
+                OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
+                OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
 
-            //Änderungsfähige Daten übernehmen
-            OriginalOrderItem.addittional_cost = DetailToUpdate.AddittionalCost;
-            OriginalOrderItem.final_price = DetailToUpdate.Finalprice;
-            OriginalOrderItem.is_all_inclusive = DetailToUpdate.IsAllInclusive;
-            OriginalOrderItem.is_confirmed = DetailToUpdate.IsConfirmed;
-            OriginalOrderItem.is_finished = DetailToUpdate.IsFinished;
-            OriginalOrderItem.preferred_date_time = DetailToUpdate.PreferedDate;
-            OriginalOrderItem.service_provider_comment = DetailToUpdate.ServiceProviderComment;
-            OriginalOrderItem.final_price_without_tax = OriginalOrderItem.final_price / 1.2;   //Falls der Final_Price geändert wurde
-            OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
-            OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
-            OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
+                //schreiben der Änderung in die spa_changes Tabelle
+                dbContext.Set<spa_changes>().Add(new spa_changes { order_id = OriginalOrderItem.Id, change_date = DateTime.Now });
 
-            //schreiben der Änderung in die spa_changes Tabelle
-            dbContext.Set<spa_changes>().Add(new spa_changes { order_id = OriginalOrderItem.Id, change_date = DateTime.Now });
+                //Änderungen speichern
+                dbContext.SaveChanges();
+            }
 
-            //Änderungen speichern
-            dbContext.SaveChanges();
+
 
         }
 
@@ -217,7 +216,7 @@ namespace SPA_Datahandler
         {
             //Holen der maximalen Order_item_report_id:
             int NextId = (from oim in dbContext.order_item_report
-                         select oim.Id).Max() +1;
+                          select oim.Id).Max() + 1;
 
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report();
@@ -227,7 +226,7 @@ namespace SPA_Datahandler
             DbNewReport.Id = NextId;
 
             dbContext.Set<order_item_report>().Add(DbNewReport);
-            
+
 
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
@@ -241,13 +240,13 @@ namespace SPA_Datahandler
 
             //schreiben der Änderung in die spa_changes Tabelle
             dbContext.Set<spa_changes>().Add(new spa_changes { order_id = NewReport.OrderItemId, change_date = DateTime.Now });
-            UpdateDataBase();           
+            UpdateDataBase();
         }
 
         public DateTime QueryLastSync()
         {
             return (from ls in dbContext.spa_synctimes
-                         select ls.synctime).Max<DateTime>();          
+                    select ls.synctime).Max<DateTime>();
         }
         public bool LogInAndCheckUserData(string username, string password)
         {
@@ -264,7 +263,7 @@ namespace SPA_Datahandler
                 dbContext.SaveChanges();
                 return true;
             }
-            return false;        
+            return false;
         }
 
         public string GetLoggedInUsername()
@@ -279,7 +278,7 @@ namespace SPA_Datahandler
                                 orderby li.last_login descending
                                 select li.user_id
                             ).First()
-                        select spl.username);
+                         select spl.username);
             return query.First().ToString();
         }
 
@@ -306,7 +305,7 @@ namespace SPA_Datahandler
             dbContext.SaveChanges();
         }
 
-        
+
 
         protected DbServiceProviderAppEntities dbContext;
         //public List<country> InsertAndShowCountry(string Name, String iso_2, String iso_3)
