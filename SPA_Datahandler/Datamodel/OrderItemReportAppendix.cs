@@ -12,6 +12,9 @@ namespace SPA_Datahandler.Datamodel
     {
         [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
+        public int OrderItemReportId { get; set; }
         [DataMember]
         public byte[] Picture { get; set; }
 

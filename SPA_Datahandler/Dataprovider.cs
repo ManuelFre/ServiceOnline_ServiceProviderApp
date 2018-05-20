@@ -163,11 +163,14 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
             for (int i = 0;i < OIM.Count; i++)
             {
+                int OrderITemReportId = OIM[i].Id;
+                
                 var queryAppendix = from oima in dbContext.order_item_report_appendix
-                                    where oima.order_item_report_id == OIM[i].Id
+                                    where oima.order_item_report_id == OrderITemReportId               
                                     select new OrderItemReportAppendix
                                     {
                                         Id = oima.Id,
+                                        OrderItemReportId = oima.order_item_report_id,
                                         Picture = oima.appendix
                                     };
 
@@ -177,6 +180,35 @@ namespace SPA_Datahandler
             RetVal.OrderItemReports = OIM;
 
             return RetVal;
+        }
+
+        public void AddOrderItemReport(OrderItemReport NewReport)
+        {
+            //Holen der maximalen Order_item_report_id:
+            int NextId = (from oim in dbContext.order_item_report
+                         select oim.Id).Max() +1;
+
+            //Umwandeln des OrderItemReport in das DB-Objekt
+            order_item_report DbNewReport = new order_item_report();
+            DbNewReport.report_date = NewReport.ReportDate;
+            DbNewReport.comment = NewReport.Comment;
+            DbNewReport.Id = NextId;
+
+            dbContext.Set<order_item_report>().Add(DbNewReport);
+
+
+            //Umwandeln der OrderItemReportAppendix in die DB-Objekte
+            foreach (OrderItemReportAppendix oima in NewReport.Appendix)
+            {
+                order_item_report_appendix DbOima = new order_item_report_appendix();
+                DbOima.order_item_report_id = DbNewReport.Id;
+                DbOima.appendix = oima.Picture;
+
+                dbContext.Set<order_item_report_appendix>().Add(DbOima);
+            }
+
+            UpdateDataBase();
+            
         }
 
 
@@ -201,13 +233,9 @@ namespace SPA_Datahandler
         public void UpdateDataBase()
         {
             dbContext.SaveChanges();
-
         }
 
-        public void AddOrderItemReport()
-        {
-            //TODO: OrderItemReport hinzufügen!
-        }
+        
 
         protected DbServiceProviderAppEntities dbContext;
         //public List<country> InsertAndShowCountry(string Name, String iso_2, String iso_3)
