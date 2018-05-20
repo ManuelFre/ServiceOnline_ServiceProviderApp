@@ -138,14 +138,21 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ApplyChanges()
         {
-            //TODO: update db
+            //TODO: update db and test if it works
             OS.AddittionalCost = AddittionalCost;
 
-            Dp.UpdateOrderItemData(OS);
+            if (Dp.UpdateOrderItemData(OS))
+                MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
+            //TODO: proper view for OrderItemReport
+            //TODO: nur änderbare Daten änderbar machen und auf der view besser von standard daten separieren...
+
+
             SelectedJob = obj.Content;
             //Todo: folgendes soll Änderbar (DB-Query gibts dafür bereits!) sein:
 
