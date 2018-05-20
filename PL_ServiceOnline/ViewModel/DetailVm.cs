@@ -135,6 +135,7 @@ namespace PL_ServiceOnline.ViewModel
         {
             SelectedJob = obj.Content;
             //Todo: folgendes soll Änderbar (DB-Query gibts dafür bereits!) sein:
+
             //AddittionalCost;
             //Finalprice;
             //IsAllInclusive;

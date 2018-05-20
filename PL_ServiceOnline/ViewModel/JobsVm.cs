@@ -45,7 +45,7 @@ namespace PL_ServiceOnline.ViewModel
         {
 
 
-            BtnSyncWithBackend = new RelayCommand(() => startSync());
+            BtnSyncWithBackend = new RelayCommand(() => StartSync());
             MyClassInitialize();
 
             OS = new OrderSummary();
@@ -89,7 +89,7 @@ namespace PL_ServiceOnline.ViewModel
             
         }
 
-        public void startSync()
+        public void StartSync()
         {
             SyncFromBackend SFB = new SyncFromBackend();
             MessageBox.Show(SFB.StartSync().ToString());
