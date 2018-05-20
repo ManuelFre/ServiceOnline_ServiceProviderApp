@@ -1,5 +1,4 @@
 using System;
-using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
@@ -57,7 +56,6 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            MessageBox.Show("TestCommit successful!");
             if (!IsInDesignMode)
             {
                 CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
