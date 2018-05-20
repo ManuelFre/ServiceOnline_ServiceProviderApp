@@ -36,7 +36,7 @@ namespace PL_ServiceOnline.ViewModel
         public ObservableCollection<OrderSummary> UpcomingOrders { get; set; }
 
 
-
+        /*
         public long OrderItemId { get; set; }
         
         public string Customername { get; set; }
@@ -58,10 +58,59 @@ namespace PL_ServiceOnline.ViewModel
         public string IsAllInclusive { get; set; }
         
         public string IsFinished { get; set; }
+        */
+
+
+        public int CustomerId { get; set; }
+        
+        public string Firstname { get; set; }
+        
+        public string Lastname { get; set; }
+        
+        public string Address { get; set; }
+        
+        public string Zip { get; set; }
+        
+        public string City { get; set; }
+        
+        public string Phone { get; set; }
+        
+        public string Email { get; set; }
+        
+        public int OrderItemId { get; set; }
+        
+        public long OrderId { get; set; }
+        
+        public DateTime PreferedDate { get; set; }
+        
+        public string Servicedescription { get; set; }
+        
+        public int BookedItems { get; set; }
+        
+        public string IsAllInclusive { get; set; }
+        
+        public double Finalprice { get; set; }
+        
+        public DateTime OrderedDateTime { get; set; }
+        
+        public string CustomerNotice { get; set; }
+        
+        public string IsFinished { get; set; }
+        
+        public string IsConfirmed { get; set; }
+        
+        public double? AddittionalCost { get; set; }
+        
+        public string ServiceProviderComment { get; set; }
+        
+        public List<OrderItemReport> OrderItemReports { get; set; }
 
 
 
         private DetailedClass OS { get; set; }
+
+
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -92,20 +141,23 @@ namespace PL_ServiceOnline.ViewModel
             //PreferedDate;
             //ServiceProviderComment;
 
+
+
+
             if (SelectedJob != null)
             {
-                SelectedDetailed = OS.GetDetailView(SelectedJob);
-                OrderItemId = SelectedJob.OrderItemId;
-                Customername = SelectedDetailed.Lastname;
-                Servicedescription = SelectedDetailed.Servicedescription;
-                PreferedDate = SelectedDetailed.PreferedDate;
-                BookedItems = SelectedDetailed.BookedItems;
-                Address = SelectedDetailed.Address;
-                Zip = SelectedDetailed.Zip;
-                City = SelectedDetailed.City;
-                Phone = SelectedDetailed.Phone;
-                IsAllInclusive = SelectedDetailed.IsAllInclusive;
-                IsFinished = SelectedDetailed.IsFinished;
+                //SelectedDetailed = OS.GetDetailView(SelectedJob);
+                //OrderItemId = SelectedJob.OrderItemId;
+                //Customername = SelectedDetailed.Lastname;
+                //Servicedescription = SelectedDetailed.Servicedescription;
+                //PreferedDate = SelectedDetailed.PreferedDate;
+                //BookedItems = SelectedDetailed.BookedItems;
+                //Address = SelectedDetailed.Address;
+                //Zip = SelectedDetailed.Zip;
+                //City = SelectedDetailed.City;
+                //Phone = SelectedDetailed.Phone;
+                //IsAllInclusive = SelectedDetailed.IsAllInclusive;
+                //IsFinished = SelectedDetailed.IsFinished;
             }
 
         }

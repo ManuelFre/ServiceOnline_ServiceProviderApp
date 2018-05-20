@@ -4,51 +4,114 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL_ServiceOnline.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="1000">
+             mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="1000">
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
+        
+    
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+
+            </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="171*"></ColumnDefinition>
+            <ColumnDefinition Width="809*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <DataGrid  Margin="5" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding OrderItemId}" Header="Id" />
-                <DataGridTextColumn Binding="{Binding Customername}" Header="Name" />
-                <DataGridTextColumn Binding="{Binding Servicedescription}" Header="Beschreibung" />
-                <DataGridTextColumn Binding="{Binding PreferedDate.Date, Mode=OneWay}" Header="Datum" />
-                <DataGridTextColumn Binding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />
-                <DataGridTextColumn Binding="{Binding BookedItems}" Header="Einheiten" />
-                <DataGridTextColumn Binding="{Binding Address}" Header="Adresse" />
-                <DataGridTextColumn Binding="{Binding Zip}" Header="PLZ" />
-                <DataGridTextColumn Binding="{Binding City}" Header="Ort" />
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Telefon" />
-                <DataGridTextColumn Binding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
-                <DataGridTextColumn Binding="{Binding IsFinished}" Header="Fertig?" />
-            </DataGrid.Columns>
-        </DataGrid>
+
+            <Label Content="CustomerId" Grid.Row="0" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Firstname" Grid.Row="1" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Lastname" Grid.Row="2" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Address" Grid.Row="3" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Zip" Grid.Row="4" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="City" Grid.Row="5" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Phone" Grid.Row="6" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Email" Grid.Row="7" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="OrderItemId" Grid.Row="8" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="OrderId" Grid.Row="9" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="PreferedDate" Grid.Row="10" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Servicedescription" Grid.Row="11" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="BookedItems" Grid.Row="12" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="IsAllInclusive" Grid.Row="13" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="Finalprice" Grid.Row="14" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="OrderedDateTime" Grid.Row="15" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="CustomerNotice" Grid.Row="16" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="IsFinished" Grid.Row="17" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="IsConfirmed" Grid.Row="18" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="AddittionalCost" Grid.Row="19" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="ServiceProviderComment" Grid.Row="20" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <Label Content="OrderItemReports" Grid.Row="21" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
 
 
-        <TextBox Text="{Binding OrderItemId}" Grid.Column="1" Grid.Row="0"></TextBox>
-        <TextBox Text="{Binding Customername}" Grid.Column="1" Grid.Row="1"></TextBox>
-        <TextBox Text="{Binding Servicedescription}" Grid.Column="1" Grid.Row="2"></TextBox>
-        <TextBox Text="{Binding Address}" Grid.Column="1" Grid.Row="3"></TextBox>
-        <TextBox Text="{Binding City}" Grid.Column="1" Grid.Row="4"></TextBox>
-        <TextBox Text="{Binding IsFinished}" Grid.Column="1" Grid.Row="5"></TextBox>
+
+            <TextBox Grid.Column="1" Text="{Binding CustomerId}"                Width="400" Grid.Row="0"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Firstname}"                 Width="400" Grid.Row="1"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Lastname}"                  Width="400" Grid.Row="2"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Address}"                   Width="400" Grid.Row="3"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Zip}"                       Width="400" Grid.Row="4"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding City}"                      Width="400" Grid.Row="5"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Phone}"                     Width="400" Grid.Row="6"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Email}"                     Width="400" Grid.Row="7"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding OrderItemId}"               Width="400" Grid.Row="8"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding OrderId}"                   Width="400" Grid.Row="9"  HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding PreferedDate}"              Width="400" Grid.Row="10" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Servicedescription}"        Width="400" Grid.Row="11" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding BookedItems}"               Width="400" Grid.Row="12" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding IsAllInclusive}"            Width="400" Grid.Row="13" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding Finalprice}"                Width="400" Grid.Row="14" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding OrderedDateTime}"           Width="400" Grid.Row="15" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding CustomerNotice}"            Width="400" Grid.Row="16" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding IsFinished}"                Width="400" Grid.Row="17" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding IsConfirmed}"               Width="400" Grid.Row="18" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding AddittionalCost}"           Width="400" Grid.Row="19" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding ServiceProviderComment}"    Width="400" Grid.Row="20" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Text="{Binding OrderItemReports}"          Width="400" Grid.Row="21" HorizontalAlignment="Left"  FontSize="20" VerticalAlignment="Center"/>
+
+
+
+
+
+            <!--<Label Content="Order Id:"  Grid.Row="1" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding OrderItemId}" Grid.Column="1" Grid.Row="1"></TextBox>
+        <Label Content="Customer Name:"  Grid.Row="2" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding Customername}" Grid.Column="1" Grid.Row="2"></TextBox>
+        <Label Content="Beschreibung:"  Grid.Row="3" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding Servicedescription}" Grid.Column="1" Grid.Row="3"></TextBox>
+        <Label Content="Adresse:"  Grid.Row="4" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding Address}" Grid.Column="1" Grid.Row="4"></TextBox>
+        <Label Content="Stadt:"  Grid.Row="5" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding City}" Grid.Row="5" Grid.Column="1"/>
+        <Label Content="Fertig?"  Grid.Row="6" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+        <TextBox Text="{Binding IsFinished}" Grid.Column="1" Grid.Row="6"></TextBox>-->
+
 
     </Grid>
+    </ScrollViewer>
 </UserControl>
