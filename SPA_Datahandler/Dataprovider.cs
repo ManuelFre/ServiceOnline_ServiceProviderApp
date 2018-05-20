@@ -253,7 +253,16 @@ namespace SPA_Datahandler
                         where ud.username == username && ud.password == password
                         select ud;
 
-            return query.ToList().Count() == 1;         //gibt True zurück, wenn es genau einen DB-Eintrag mit dem Usernamen und Passwort gibt. 
+            List<service_provider_login> Userdata = query.ToList();
+
+            //gibt True zurück, wenn es genau einen DB-Eintrag mit dem Usernamen und Passwort gibt.
+            if (Userdata.Count() == 1)
+            {
+                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = Userdata[0].Id, last_login = DateTime.Now });
+                dbContext.SaveChanges();
+                return true;
+            }
+            return false;        
         }
 
         public string GetLoggedInUsername()
