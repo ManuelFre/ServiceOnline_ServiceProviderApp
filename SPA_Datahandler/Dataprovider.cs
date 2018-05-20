@@ -137,7 +137,7 @@ namespace SPA_Datahandler
                     Servicedescription = x.sv.name,
                     BookedItems = x.oi.quantity,
                     IsAllInclusive = x.oi.is_all_inclusive,
-                    Finalprice = x.oi.final_price_with_tax,
+                    Finalprice = x.oi.final_price,
                     OrderedDateTime = x.oi.createdAt,
                     CustomerNotice = x.oh.customer_note,
                     IsFinished = x.oi.is_finished,
@@ -182,6 +182,35 @@ namespace SPA_Datahandler
             return RetVal;
         }
 
+        //Updated Änderungen am Detailitem
+        public void UpdateOrderItemData(DetailedClass DetailToUpdate)
+        {
+            //Auswerten des Order_item aus der DB
+            order_item OriginalOrderItem = (from oi in dbContext.order_item
+                                            where oi.Id == DetailToUpdate.OrderItemId
+                                            select oi).First<order_item>();
+
+            //Änderungsfähige Daten übernehmen
+            OriginalOrderItem.addittional_cost = DetailToUpdate.AddittionalCost;
+            OriginalOrderItem.final_price = DetailToUpdate.Finalprice;
+            OriginalOrderItem.is_all_inclusive = DetailToUpdate.IsAllInclusive;
+            OriginalOrderItem.is_confirmed = DetailToUpdate.IsConfirmed;
+            OriginalOrderItem.is_finished = DetailToUpdate.IsFinished;
+            OriginalOrderItem.preferred_date_time = DetailToUpdate.PreferedDate;
+            OriginalOrderItem.service_provider_comment = DetailToUpdate.ServiceProviderComment;
+            OriginalOrderItem.final_price_without_tax = OriginalOrderItem.final_price /1.2;   //Falls der Final_Price geändert wurde
+            OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
+            OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
+            OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
+
+            //schreiben der Änderung in die spa_changes Tabelle
+            dbContext.Set<spa_changes>().Add(new spa_changes { order_id = OriginalOrderItem.Id, change_date = DateTime.Now });
+
+            //Änderungen speichern
+            dbContext.SaveChanges();
+
+        }
+
         public void AddOrderItemReport(OrderItemReport NewReport)
         {
             //Holen der maximalen Order_item_report_id:
@@ -191,11 +220,12 @@ namespace SPA_Datahandler
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report();
             DbNewReport.report_date = NewReport.ReportDate;
+            DbNewReport.order_item_id = NewReport.OrderItemId;
             DbNewReport.comment = NewReport.Comment;
             DbNewReport.Id = NextId;
 
             dbContext.Set<order_item_report>().Add(DbNewReport);
-
+            
 
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
@@ -207,10 +237,40 @@ namespace SPA_Datahandler
                 dbContext.Set<order_item_report_appendix>().Add(DbOima);
             }
 
-            UpdateDataBase();
-            
+            //schreiben der Änderung in die spa_changes Tabelle
+            dbContext.Set<spa_changes>().Add(new spa_changes { order_id = NewReport.OrderItemId, change_date = DateTime.Now });
+            UpdateDataBase();           
         }
 
+        public DateTime QueryLastSync()
+        {
+            return (from ls in dbContext.spa_synctimes
+                         select ls.synctime).Max<DateTime>();          
+        }
+        public bool LogInAndCheckUserData(string username, string password)
+        {
+            var query = from ud in dbContext.service_provider_login
+                        where ud.username == username && ud.password == password
+                        select ud;
+
+            return query.ToList().Count() == 1;         //gibt True zurück, wenn es genau einen DB-Eintrag mit dem Usernamen und Passwort gibt. 
+        }
+
+        public string GetLoggedInUsername()
+        {
+            // Mittleres Query wertet die Service_Provider_Id des zuletzt eingeloggten User aus,
+            // äußeres Query holt mittels der ID den Username aus der service_provider_login Tabelle.
+            var query = (from spl in dbContext.service_provider_login
+                         where spl.service_provider_id ==
+                            (
+                                from li in dbContext.spa_log_in
+                                where li.last_login > DateTime.Now.AddHours(-48)
+                                orderby li.last_login descending
+                                select li.user_id
+                            ).First()
+                        select spl.username);
+            return query.First().ToString();
+        }
 
         public order_detail QueryOrderDetail(long OrderItemId)
         {

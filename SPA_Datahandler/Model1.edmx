@@ -83,7 +83,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="order_item_id" Type="int" Nullable="false" />
           <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="report_date" Type="datetime" Nullable="false" />
@@ -92,7 +92,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="order_item_report_id" Type="int" Nullable="false" />
           <Property Name="appendix" Type="image" Nullable="false" />
         </EntityType>
@@ -206,6 +206,29 @@
           <Property Name="tax_number" Type="text" />
           <Property Name="createdAt" Type="date" Nullable="false" />
           <Property Name="deletedAt" Type="date" />
+        </EntityType>
+        <EntityType Name="spa_changes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="change_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spa_log_in">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="last_login" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spa_synctimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="synctime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="zdv_user">
           <Key>
@@ -476,6 +499,9 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <EntitySet Name="service_provider_login" EntityType="Self.service_provider_login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sow_user" EntityType="Self.sow_user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sow_user_delivery_address" EntityType="Self.sow_user_delivery_address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spa_changes" EntityType="Self.spa_changes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spa_log_in" EntityType="Self.spa_log_in" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spa_synctimes" EntityType="Self.spa_synctimes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zdv_user" EntityType="Self.zdv_user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zone" EntityType="Self.zone" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="address_country_fk" Association="Self.address_country_fk">
@@ -1099,6 +1125,9 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
             <End Role="order_item_report" EntitySet="order_item_report" />
             <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
           </AssociationSet>
+          <EntitySet Name="spa_changes" EntityType="DbServiceProviderAppModel.spa_changes" />
+          <EntitySet Name="spa_log_in" EntityType="DbServiceProviderAppModel.spa_log_in" />
+          <EntitySet Name="spa_synctimes" EntityType="DbServiceProviderAppModel.spa_synctimes" />
         </EntityContainer>
         <EntityType Name="order_item_report">
           <Key>
@@ -1144,6 +1173,29 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="spa_changes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="spa_log_in">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="last_login" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spa_synctimes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="synctime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1387,6 +1439,32 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
               <MappingFragment StoreEntitySet="order_item_report_appendix">
                 <ScalarProperty Name="appendix" ColumnName="appendix" />
                 <ScalarProperty Name="order_item_report_id" ColumnName="order_item_report_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spa_changes">
+            <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_changes">
+              <MappingFragment StoreEntitySet="spa_changes">
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spa_log_in">
+            <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_log_in">
+              <MappingFragment StoreEntitySet="spa_log_in">
+                <ScalarProperty Name="last_login" ColumnName="last_login" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spa_synctimes">
+            <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_synctimes">
+              <MappingFragment StoreEntitySet="spa_synctimes">
+                <ScalarProperty Name="synctime" ColumnName="synctime" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

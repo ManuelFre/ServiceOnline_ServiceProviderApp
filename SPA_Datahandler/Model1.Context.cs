@@ -41,5 +41,8 @@ namespace SPA_Datahandler
         public virtual DbSet<zone> zone { get; set; }
         public virtual DbSet<order_item_report> order_item_report { get; set; }
         public virtual DbSet<order_item_report_appendix> order_item_report_appendix { get; set; }
+        public virtual DbSet<spa_changes> spa_changes { get; set; }
+        public virtual DbSet<spa_log_in> spa_log_in { get; set; }
+        public virtual DbSet<spa_synctimes> spa_synctimes { get; set; }
     }
 }

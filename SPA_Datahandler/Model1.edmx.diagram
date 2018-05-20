@@ -40,6 +40,9 @@
         <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item_report_appendix" Width="1.5" PointX="17.25" PointY="20.5" />
         <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_ToTable" />
         <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_changes" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_log_in" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_synctimes" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

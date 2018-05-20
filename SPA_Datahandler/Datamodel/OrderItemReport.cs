@@ -17,6 +17,8 @@ namespace SPA_Datahandler.Datamodel
         [DataMember]
         public DateTime ReportDate { get; set; }
         [DataMember]
+        public int OrderItemId { get; set; }
+        [DataMember]
         public List<OrderItemReportAppendix> Appendix { get; set; }
 
         public OrderItemReport()

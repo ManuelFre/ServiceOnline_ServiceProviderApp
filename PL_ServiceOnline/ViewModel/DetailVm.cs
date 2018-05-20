@@ -83,8 +83,16 @@ namespace PL_ServiceOnline.ViewModel
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
             SelectedJob = obj.Content;
-            //Todo, abfrage macht error
-            if(SelectedJob != null)
+            //Todo: folgendes soll Änderbar (DB-Query gibts dafür bereits!) sein:
+            //AddittionalCost;
+            //Finalprice;
+            //IsAllInclusive;
+            //sConfirmed;
+            //IsFinished;
+            //PreferedDate;
+            //ServiceProviderComment;
+
+            if (SelectedJob != null)
             {
                 SelectedDetailed = OS.GetDetailView(SelectedJob);
                 OrderItemId = SelectedJob.OrderItemId;

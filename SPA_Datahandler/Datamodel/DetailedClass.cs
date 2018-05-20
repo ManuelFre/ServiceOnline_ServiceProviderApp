@@ -67,16 +67,14 @@ namespace SPA_Datahandler.Datamodel
         {
             return dp.QueryDetailView(selectedOrder.OrderItemId);
         }
-        public void UpdateOrderDetailItem(OrderSummary selectedOrder)
+        public void UpdateOrderDetailItem()
         {
-            order_item originalOrderItem = dp.QueryOrderItem(selectedOrder.OrderItemId);
+            dp.UpdateOrderItemData(this);
+        }
 
-            originalOrderItem.final_price_with_tax = Finalprice;
-            originalOrderItem.is_all_inclusive = IsAllInclusive;
-            originalOrderItem.is_finished = IsFinished;
-            originalOrderItem.preferred_date_time = PreferedDate;
-
-            dp.UpdateDataBase();
+        public void AddOrderItemReport(OrderItemReport NewReport)
+        {
+            dp.AddOrderItemReport(NewReport);
         }
     }
 }
