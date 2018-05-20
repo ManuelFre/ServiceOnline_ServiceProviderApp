@@ -188,7 +188,9 @@ namespace SPA_Datahandler
             //Auswerten des Order_item aus der DB
             order_item OriginalOrderItem = (from oi in dbContext.order_item
                                             where oi.Id == DetailToUpdate.OrderItemId
-                                            select oi).First<order_item>();
+                                            select oi).FirstOrDefault(); //changed from first() to firstordefault()
+
+            //order_item OriginalOrderItem = new order_item();
 
             //Änderungsfähige Daten übernehmen
             OriginalOrderItem.addittional_cost = DetailToUpdate.AddittionalCost;
@@ -198,7 +200,7 @@ namespace SPA_Datahandler
             OriginalOrderItem.is_finished = DetailToUpdate.IsFinished;
             OriginalOrderItem.preferred_date_time = DetailToUpdate.PreferedDate;
             OriginalOrderItem.service_provider_comment = DetailToUpdate.ServiceProviderComment;
-            OriginalOrderItem.final_price_without_tax = OriginalOrderItem.final_price /1.2;   //Falls der Final_Price geändert wurde
+            OriginalOrderItem.final_price_without_tax = OriginalOrderItem.final_price / 1.2;   //Falls der Final_Price geändert wurde
             OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
             OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
             OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;

@@ -31,6 +31,10 @@ namespace PL_ServiceOnline.ViewModel
         }
 
         public DetailedClass SelectedDetailed { get; set; }
+        public RelayCommand BtnApplyChanges { get; set; }
+
+        public Dataprovider dp { get; set; }
+
 
         public RelayCommand BtnSyncWithBackend { get; set; }
         public ObservableCollection<OrderSummary> UpcomingOrders { get; set; }
@@ -111,6 +115,7 @@ namespace PL_ServiceOnline.ViewModel
 
 
 
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -125,11 +130,19 @@ namespace PL_ServiceOnline.ViewModel
 
             OS = new DetailedClass();
 
-            
+            dp = new Dataprovider();
+
+            BtnApplyChanges = new RelayCommand(() => ApplyChanges());
 
         }
 
+        private void ApplyChanges()
+        {
+            //TODO: update db
+            OS.AddittionalCost = AddittionalCost;
 
+            dp.UpdateOrderItemData(OS);
+        }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
