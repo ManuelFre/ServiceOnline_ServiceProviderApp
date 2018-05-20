@@ -120,7 +120,7 @@ namespace PL_ServiceOnline.ViewModel
 
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
 
-            BtnSyncWithBackend = new RelayCommand(() => startSync());
+            BtnSyncWithBackend = new RelayCommand(() => StartSync());
             MyClassInitialize();
 
             OS = new DetailedClass();
@@ -128,6 +128,8 @@ namespace PL_ServiceOnline.ViewModel
             
 
         }
+
+
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
@@ -146,7 +148,31 @@ namespace PL_ServiceOnline.ViewModel
 
             if (SelectedJob != null)
             {
-                //SelectedDetailed = OS.GetDetailView(SelectedJob);
+                SelectedDetailed = OS.GetDetailView(SelectedJob);
+
+                CustomerId = SelectedDetailed.CustomerId;
+                Firstname = SelectedDetailed.Firstname;
+                Lastname = SelectedDetailed.Lastname;
+                Address = SelectedDetailed.Address;
+                Zip = SelectedDetailed.Zip;
+                City = SelectedDetailed.City;
+                Phone = SelectedDetailed.Phone;
+                Email = SelectedDetailed.Email;
+                OrderItemId = SelectedDetailed.OrderItemId;
+                OrderId = SelectedDetailed.OrderId;
+                PreferedDate = SelectedDetailed.PreferedDate;
+                Servicedescription = SelectedDetailed.Servicedescription;
+                BookedItems = SelectedDetailed.BookedItems;
+                IsAllInclusive = SelectedDetailed.IsAllInclusive;
+                Finalprice = SelectedDetailed.Finalprice;
+                OrderedDateTime = SelectedDetailed.OrderedDateTime;
+                CustomerNotice = SelectedDetailed.CustomerNotice;
+                IsFinished = SelectedDetailed.IsFinished;
+                IsConfirmed = SelectedDetailed.IsConfirmed;
+                AddittionalCost = SelectedDetailed.AddittionalCost;
+                ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
+                OrderItemReports = SelectedDetailed.OrderItemReports;
+                
                 //OrderItemId = SelectedJob.OrderItemId;
                 //Customername = SelectedDetailed.Lastname;
                 //Servicedescription = SelectedDetailed.Servicedescription;
@@ -162,7 +188,7 @@ namespace PL_ServiceOnline.ViewModel
 
         }
 
-        public void startSync()
+        public void StartSync()
         {
             SyncFromBackend SFB = new SyncFromBackend();
             MessageBox.Show(SFB.StartSync().ToString());
