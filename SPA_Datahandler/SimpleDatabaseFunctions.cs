@@ -19,7 +19,7 @@ namespace SPA_Datahandler
                     dbContext.SaveChanges();
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return false;
             }
@@ -35,7 +35,7 @@ namespace SPA_Datahandler
                 dbContext.Set<T>().Add(item);
                 dbContext.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 dbContext.Set<T>().Remove(item);
                 return false;

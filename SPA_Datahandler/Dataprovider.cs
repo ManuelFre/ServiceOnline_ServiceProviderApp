@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace SPA_Datahandler
 {
@@ -178,7 +179,7 @@ namespace SPA_Datahandler
         }
 
         //Updated Änderungen am Detailitem
-        public void UpdateOrderItemData(DetailedClass DetailToUpdate)
+        public bool UpdateOrderItemData(DetailedClass DetailToUpdate)
         {
             //Auswerten des Order_item aus der DB
             order_item OriginalOrderItem = (from oi in dbContext.order_item
@@ -206,7 +207,13 @@ namespace SPA_Datahandler
 
                 //Änderungen speichern
                 dbContext.SaveChanges();
+                return true;
             }
+            else
+            {
+                return false;
+            }
+            
 
 
 

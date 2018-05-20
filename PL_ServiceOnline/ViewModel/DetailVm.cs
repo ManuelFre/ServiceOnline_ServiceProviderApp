@@ -33,7 +33,7 @@ namespace PL_ServiceOnline.ViewModel
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
 
-        public Dataprovider dp { get; set; }
+        public Dataprovider Dp { get; set; }
 
 
         public RelayCommand BtnSyncWithBackend { get; set; }
@@ -130,7 +130,7 @@ namespace PL_ServiceOnline.ViewModel
 
             OS = new DetailedClass();
 
-            dp = new Dataprovider();
+            Dp = new Dataprovider();
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
 
@@ -141,7 +141,7 @@ namespace PL_ServiceOnline.ViewModel
             //TODO: update db
             OS.AddittionalCost = AddittionalCost;
 
-            dp.UpdateOrderItemData(OS);
+            Dp.UpdateOrderItemData(OS);
         }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
