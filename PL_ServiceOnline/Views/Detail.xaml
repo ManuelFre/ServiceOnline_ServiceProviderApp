@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL_ServiceOnline.Views"
-             xmlns:Converter="clr-namespace:PL_ServiceOnline.Converter" x:Class="PL_ServiceOnline.Views.Detail"
-             mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574" >
+             xmlns:Converter="clr-namespace:PL_ServiceOnline.Converter" x:Class="PL_ServiceOnline.Views.Detail">
+             <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">--> 
     <UserControl.Resources>
         <Converter:StringToBoolean x:Key="StringToBoolean"/>
-<!-- -->
+ 
         <DataTemplate x:Key="OrderReportLayout">
             <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="Auto">
                 <StackPanel Orientation="Horizontal">
@@ -24,80 +24,98 @@
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
 
+    <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="5">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <Grid  MinHeight="800" MinWidth="800">
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
 
-    <Grid Margin="0">
-
-
-        <StackPanel Orientation="Horizontal" Height="Auto">
-
-
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto">
-
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition MinHeight="30" Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
 
-                    <Label Content="Kundennummer:"              Grid.Row="0"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Vorname:"                   Grid.Row="1"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Nachname:"                  Grid.Row="2"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Adresse:"                   Grid.Row="3"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="PLZ:"                       Grid.Row="4"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Stadt:"                     Grid.Row="5"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Telefon:"                   Grid.Row="6"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Email:"                     Grid.Row="7"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Bestellnummern ID:"         Grid.Row="8"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Bestellnummer:"             Grid.Row="9"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Bevorzugtes Datum:"         Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Gebuchte Posten:"           Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Bestelldatum:"              Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Kunden Kommentar:"          Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Top" Height="30"  Width="150"/>
-                    <Label Content="Bestellreport:"             Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
+            <Label Content="Kundennummer:"      Grid.Row="0"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Vorname:"           Grid.Row="1"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Nachname:"          Grid.Row="2"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Adresse:"           Grid.Row="3"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="PLZ:"               Grid.Row="4"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Stadt:"             Grid.Row="5"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Telefon:"           Grid.Row="6"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Email:"             Grid.Row="7"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestellnummern ID:" Grid.Row="8"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestellnummer:"     Grid.Row="9"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bevorzugtes Datum:" Grid.Row="10" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Gebuchte Posten:"   Grid.Row="11" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestelldatum:"      Grid.Row="12" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Kunden Kommentar:"  Grid.Row="13" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Top" Height="30"/>
+            <Label Content="Bestellreport:"     Grid.Row="14" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
 
 
-                    <ListBox Grid.Row="15" Grid.ColumnSpan="2" ItemsSource="{Binding OrderItemReports}" ItemTemplate="{StaticResource OrderReportLayout}"></ListBox>
+            <ListBox Grid.Row="15" Grid.ColumnSpan="4" ItemsSource="{Binding OrderItemReports}" ItemTemplate="{StaticResource OrderReportLayout}"></ListBox>
 
 
 
-                    <Label Grid.Column="1" Content="{Binding CustomerId}"                                                       Width="200" Grid.Row="0"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Firstname}"                                                        Width="200" Grid.Row="1"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Lastname}"                                                         Width="200" Grid.Row="2"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Address}"                                                          Width="200" Grid.Row="3"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Zip}"                                                              Width="200" Grid.Row="4"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding City}"                                                             Width="200" Grid.Row="5"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Phone}"                                                            Width="200" Grid.Row="6"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Email}"                                                            Width="200" Grid.Row="7"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding OrderItemId}"                                                      Width="200" Grid.Row="8"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding OrderId}"                                                          Width="200" Grid.Row="9"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding Servicedescription}"                                               Width="200" Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding BookedItems}"                                                      Width="200" Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding OrderedDateTime}"                                                  Width="200" Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <TextBlock TextWrapping="WrapWithOverflow" Grid.Column="1" Text="{Binding CustomerNotice}"                  Width="200" Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" />
-                    <Label Grid.Column="1" Content="{Binding OrderItemReports}"                                                 Width="200" Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding CustomerId}"                                                      MinWidth="200" Grid.Row="0"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Firstname}"                                                       MinWidth="200" Grid.Row="1"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Lastname}"                                                        MinWidth="200" Grid.Row="2"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Address}"                                                         MinWidth="200" Grid.Row="3"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Zip}"                                                             MinWidth="200" Grid.Row="4"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding City}"                                                            MinWidth="200" Grid.Row="5"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Phone}"                                                           MinWidth="200" Grid.Row="6"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Email}"                                                           MinWidth="200" Grid.Row="7"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding OrderItemId}"                                                     MinWidth="200" Grid.Row="8"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding OrderId}"                                                         MinWidth="200" Grid.Row="9"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding Servicedescription}"                                              MinWidth="200" Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding BookedItems}"                                                     MinWidth="200" Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Grid.Column="1" Content="{Binding OrderedDateTime}"                                                 MinWidth="200" Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <TextBlock TextWrapping="WrapWithOverflow" Grid.Column="1" Text="{Binding CustomerNotice}"                 MinWidth="200" Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" />
+            <Label Grid.Column="1" Content="{Binding OrderItemReports}"                                                MinWidth="200" Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
 
-                    <!--<Label Content="Order Id:"  Grid.Row="1" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
+
+        <Label Content="Zusätzliche Kosten:"    Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Endpreis:"              Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Alles inclusive?"       Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Fertig?"                Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Bestätigt?"             Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Service Beschreibung:"  Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Kommentar:"             Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>
+
+
+        <TextBox    Margin="1" Grid.Column="3" Grid.Row="0" Text="{Binding AddittionalCost}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+        <TextBox    Margin="1" Grid.Column="3" Grid.Row="1" Text="{Binding Finalprice}"  Width="280" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="2" IsChecked="{Binding IsAllInclusive, Converter={StaticResource StringToBoolean}}"    HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center"  />
+        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="3" IsChecked="{Binding IsFinished, Converter={StaticResource StringToBoolean}}"        HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="4" IsChecked="{Binding IsConfirmed, Converter={StaticResource StringToBoolean}}"       HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+        <TextBox    Margin="1" Grid.Column="3" Grid.Row="5" Text="{Binding PreferedDate}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+        <TextBox    Margin="1" Grid.Column="3" Grid.Row="6" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center"/>
+
+        <Button     Margin="1" Grid.Column="3" Grid.Row="10" Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
+
+    </Grid>
+    </ScrollViewer>
+    </Border>
+</UserControl>
+            <!--<Label Content="Order Id:"  Grid.Row="1" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
         <TextBox Text="{Binding OrderItemId}" Grid.Column="1" Grid.Row="1"></TextBox>
         <Label Content="Customer Name:"  Grid.Row="2" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
         <TextBox Text="{Binding Customername}" Grid.Column="1" Grid.Row="2"></TextBox>
@@ -109,50 +127,3 @@
         <TextBox Text="{Binding City}" Grid.Row="5" Grid.Column="1"/>
         <Label Content="Fertig?"  Grid.Row="6" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
         <TextBox Text="{Binding IsFinished}" Grid.Column="1" Grid.Row="6"></TextBox>-->
-
-
-                </Grid>
-            </ScrollViewer>
-
-        </StackPanel>
-        <StackPanel Orientation="Vertical" Margin="500,40,10,10">
-
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Zusätzliche Kosten:" Grid.Row="15" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <TextBox Grid.Column="1" Text="{Binding AddittionalCost}" Width="280" Grid.Row="15" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Endpreis:" Grid.Row="16" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <TextBox Grid.Column="1" Text="{Binding Finalprice}" Width="280" Grid.Row="16" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Alles inclusive?" Grid.Row="17" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <CheckBox Grid.Column="1" IsChecked="{Binding IsAllInclusive, Converter={StaticResource StringToBoolean}}"  Width="280" Grid.Row="17" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Bottom" Height="30" Margin="0,10,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Fertig?"  Grid.Row="18" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <CheckBox Grid.Column="1" IsChecked="{Binding IsFinished, Converter={StaticResource StringToBoolean}}" Width="280" Grid.Row="18" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Bottom" Height="30" Margin="0,10,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Bestätigt?" Grid.Row="19" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <CheckBox Grid.Column="1" IsChecked="{Binding IsConfirmed, Converter={StaticResource StringToBoolean}}" Width="280" Grid.Row="19" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30" Margin="0,10,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Service Beschreibung:" Grid.Row="20" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <TextBox Grid.Column="1" Text="{Binding PreferedDate}" Width="280" Grid.Row="20" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <Label Content="Kommentar:" Grid.Row="21" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Grid.Column="1" Text="{Binding ServiceProviderComment}" Width="280" Grid.Row="21" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" MinHeight="120"/>
-            </StackPanel>
-
-
-
-
-
-            <Button Content="Auftragsdaten ändern" Margin="10,40" Width="150" Height="40" Command="{Binding BtnApplyChanges}"/>
-
-        </StackPanel>
-    </Grid>
-</UserControl>
