@@ -132,7 +132,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5">
                 <Label Content="Kommentar:" Grid.Row="21" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="200"/>
-                <TextBox AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Grid.Column="1" Text="{Binding ServiceProviderComment}" Width="280" Grid.Row="21" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" MinHeight="120"/>
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Grid.Column="1" Text="{Binding ServiceProviderComment}" Width="280" Grid.Row="21" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" MinHeight="120"/>
             </StackPanel>
 
 
