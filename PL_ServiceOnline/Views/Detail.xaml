@@ -8,21 +8,15 @@
              <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">--> 
     <UserControl.Resources>
         <Converter:StringToBoolean x:Key="StringToBoolean"/>
+        <SolidColorBrush x:Key="BoldTextColor" Color="Black" />
  
-        <DataTemplate x:Key="OrderReportLayout">
-            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="Auto">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="{Binding OrderItemReports/Appendix/Picture}" Height="60" Margin="3"/>
-                    <Label Content="{Binding OrderItemReports.Capacity}" VerticalAlignment="Center" Margin="5,0"/>
-                    <Label Content="{Binding OrderItemReports.Count}" VerticalAlignment="Center" Margin="5,0"/>
-                    <Label Content="{Binding OrderItemReports/Comment}" VerticalAlignment="Center" Margin="5,0"/>
-                </StackPanel>
-            </Border>
-        </DataTemplate>
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
+
+
+    
 
     <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="10">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -51,28 +45,94 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
 
 
-            <Label Content="Kundennummer:"      Grid.Row="0"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Vorname:"           Grid.Row="1"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Nachname:"          Grid.Row="2"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Adresse:"           Grid.Row="3"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="PLZ:"               Grid.Row="4"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Stadt:"             Grid.Row="5"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Telefon:"           Grid.Row="6"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Email:"             Grid.Row="7"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestellnummern ID:" Grid.Row="8"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestellnummer:"     Grid.Row="9"  HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bevorzugtes Datum:" Grid.Row="10" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Gebuchte Posten:"   Grid.Row="11" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestelldatum:"      Grid.Row="12" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Kunden Kommentar:"  Grid.Row="13" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Top" Height="30"/>
-            <Label Content="Bestellreport:"     Grid.Row="14" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Kundennummer:"      Grid.Row="0"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Vorname:"           Grid.Row="1"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Nachname:"          Grid.Row="2"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Adresse:"           Grid.Row="3"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="PLZ:"               Grid.Row="4"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Stadt:"             Grid.Row="5"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Telefon:"           Grid.Row="6"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Email:"             Grid.Row="7"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestellnummern ID:" Grid.Row="8"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestellnummer:"     Grid.Row="9"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bevorzugtes Datum:" Grid.Row="10" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Gebuchte Einheit:"  Grid.Row="11" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Bestelldatum:"      Grid.Row="12" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+            <Label Content="Kunden Kommentar:"  Grid.Row="13" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Top" Height="30"/>
+            <Label Content="Bestellreport:"     Grid.Row="14" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
 
 
-            <ListBox Grid.Row="15" Grid.ColumnSpan="4" ItemsSource="{Binding OrderItemReports}" ItemTemplate="{StaticResource OrderReportLayout}"></ListBox>
 
+
+
+                <ListBox Grid.Row="15" Grid.ColumnSpan="5" ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch">
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                            <Label Content="{Binding Id}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                            <Label Content="{Binding OrderItemId}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                            <Label Content="{Binding ReportDate}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                            <Label Content="{Binding Comment}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                        <ListBox x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+
+                                        <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel Orientation="Vertical" Margin="5,0">
+                                                            <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" />
+                                                                <Label Content="{Binding Id}"/>
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Vertical" Margin="5,0">
+                                                            <Label Content="Bestell Item Report ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                                <Label Content="{Binding OrderItemReportId}"/>
+                                                            </StackPanel>
+                                                            <Border BorderBrush="Black" BorderThickness="0.5" >
+                                                                <Image Source="{Binding Picture}" Width="80" Height="100"/>                                                            
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    
+                                </StackPanel>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}, Path=IsSelected}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="SelectedOnlyListBox" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                        
 
 
             <Label Grid.Column="1" Content="{Binding CustomerId}"                                                      MinWidth="200" Grid.Row="0"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
@@ -92,13 +152,13 @@
             <Label Grid.Column="1" Content="{Binding OrderItemReports}"                                                MinWidth="200" Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
 
 
-        <Label Content="Zusätzliche Kosten:"    Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Endpreis:"              Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Alles inclusive?"       Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Fertig?"                Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Bestätigt?"             Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Service Beschreibung:"  Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Kommentar:"             Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>
+        <Label Content="Zusätzliche Kosten:"   FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Endpreis:"             FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Alles inclusive?"      FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Fertig?"               FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Bestätigt?"            FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Service Beschreibung:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
+        <Label Content="Kommentar:"            FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>
 
 
         <TextBox    Margin="1" Grid.Column="3" Grid.Row="0" Text="{Binding AddittionalCost}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />

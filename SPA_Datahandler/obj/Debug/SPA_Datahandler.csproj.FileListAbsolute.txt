@@ -108,7 +108,6 @@ C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.xml
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll

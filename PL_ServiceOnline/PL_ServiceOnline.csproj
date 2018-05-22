@@ -96,6 +96,7 @@
     <Compile Include="Converter\AllIncStringToStringColor.cs" />
     <Compile Include="Converter\ImageConverter.cs" />
     <Compile Include="Converter\StringToBoolean.cs" />
+    <Compile Include="Converter\ByteToImage.cs" />
     <Compile Include="Converter\StringToColourString.cs" />
     <Compile Include="Synchronisation\Dataset.cs" />
     <Compile Include="Synchronisation\Synchronisation.cs" />

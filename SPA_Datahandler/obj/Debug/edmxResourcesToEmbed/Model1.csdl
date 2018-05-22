@@ -540,6 +540,9 @@
       <End Role="order_item_report" EntitySet="order_item_report" />
       <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
     </AssociationSet>
+    <EntitySet Name="spa_changes" EntityType="DbServiceProviderAppModel.spa_changes" />
+    <EntitySet Name="spa_log_in" EntityType="DbServiceProviderAppModel.spa_log_in" />
+    <EntitySet Name="spa_synctimes" EntityType="DbServiceProviderAppModel.spa_synctimes" />
   </EntityContainer>
   <EntityType Name="order_item_report">
     <Key>
@@ -585,4 +588,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="spa_changes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="spa_log_in">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="last_login" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="spa_synctimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="synctime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>

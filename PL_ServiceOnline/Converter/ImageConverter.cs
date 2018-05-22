@@ -10,21 +10,18 @@ namespace PL_ServiceOnline.Converter
 {
     internal static class ImageConverter
     {
-        public static byte[] ImageToByteArray(BitmapImage image)
+        internal static byte[] ImageToByteArray(BitmapImage image)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = new MemoryStream()) //Image resourcen sind sehr groß und damit der Stream sofort wieder disposed wird diesen in ein using statement
             {
-
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(image));
                 encoder.Save(ms);
                 return ms.ToArray();
             }
 
-        }
-
-        //TODO: byte[] to BitmapImage converter (still needs to be tested)
-        public static BitmapImage ByteArrayToImage(byte[] array)
+        }        
+        internal static BitmapImage ByteArrayToImage(byte[] array)
         {
             using (var ms = new MemoryStream(array))
             {

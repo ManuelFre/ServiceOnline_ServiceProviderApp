@@ -82,7 +82,7 @@ namespace PL_ServiceOnline.ViewModel
 
         public string ServiceProviderComment { get; set; }
 
-        public List<OrderItemReport> OrderItemReports { get; set; }
+        public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
 
 
 
@@ -136,7 +136,7 @@ namespace PL_ServiceOnline.ViewModel
             IsConfirmed = "Y";
             AddittionalCost = 84.44;
             ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
-            OrderItemReports = new List<OrderItemReport>()
+            OrderItemReports = new ObservableCollection<OrderItemReport>()
             {
                 new OrderItemReport()
                 {
@@ -244,7 +244,7 @@ namespace PL_ServiceOnline.ViewModel
                 IsConfirmed = SelectedDetailed.IsConfirmed;
                 AddittionalCost = SelectedDetailed.AddittionalCost;
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
-                OrderItemReports = SelectedDetailed.OrderItemReports;
+                OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
 
             }
 
