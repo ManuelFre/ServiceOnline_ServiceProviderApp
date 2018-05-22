@@ -8,10 +8,27 @@
              mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574" >
     <UserControl.Resources>
         <Converter:StringToBoolean x:Key="StringToBoolean"/>
+
+        <DataTemplate x:Key="OrderReportLayout">
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="200">
+                <StackPanel Orientation="Horizontal">
+                    <!--<Image Source="{Binding Image}" Height="60" Margin="3"/>-->
+                    <Label Content="{Binding OrderItemReports.Capacity}" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Content="{Binding OrderItemReports.Count}" VerticalAlignment="Center" Margin="5,0"/>
+                    <!--public int Id { get; set; }
+        public string Comment { get; set; }
+        public DateTime ReportDate { get; set; }
+        public int OrderItemId { get; set; }
+        public List
+                    <OrderItemReportAppendix>Appendix { get; set; }-->
+                </StackPanel>
+            </Border>
+        </DataTemplate>
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
+
 
     <Grid>
 
@@ -39,7 +56,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="200"/>
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -65,7 +82,7 @@
                     <Label Content="Bestellreport:"             Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
 
 
-
+                    <ListBox Grid.Row="15" Grid.ColumnSpan="2" ItemsSource="{Binding OrderItemReports}" ItemTemplate="{StaticResource OrderReportLayout}"></ListBox>
 
 
 

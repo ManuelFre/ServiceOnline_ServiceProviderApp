@@ -2,14 +2,13 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using SPA_Datahandler;
+using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using SPA_Datahandler.Datamodel;
+using System.Windows.Media.Imaging;
 
 namespace PL_ServiceOnline.ViewModel
 {
@@ -26,7 +25,7 @@ namespace PL_ServiceOnline.ViewModel
             set
             {
                 selectedJob = value;
-                
+
             }
         }
 
@@ -66,47 +65,47 @@ namespace PL_ServiceOnline.ViewModel
 
 
         public int CustomerId { get; set; }
-        
+
         public string Firstname { get; set; }
-        
+
         public string Lastname { get; set; }
-        
+
         public string Address { get; set; }
-        
+
         public string Zip { get; set; }
-        
+
         public string City { get; set; }
-        
+
         public string Phone { get; set; }
-        
+
         public string Email { get; set; }
-        
+
         public int OrderItemId { get; set; }
-        
+
         public long OrderId { get; set; }
-        
+
         public DateTime PreferedDate { get; set; }
-        
+
         public string Servicedescription { get; set; }
-        
+
         public int BookedItems { get; set; }
-        
+
         public string IsAllInclusive { get; set; }
-        
+
         public double Finalprice { get; set; }
-        
+
         public DateTime OrderedDateTime { get; set; }
-        
+
         public string CustomerNotice { get; set; }
-        
+
         public string IsFinished { get; set; }
-        
+
         public string IsConfirmed { get; set; }
-        
+
         public double? AddittionalCost { get; set; }
-        
+
         public string ServiceProviderComment { get; set; }
-        
+
         public List<OrderItemReport> OrderItemReports { get; set; }
 
 
@@ -134,6 +133,91 @@ namespace PL_ServiceOnline.ViewModel
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
 
+            CreateDemoData();
+
+        }
+
+        private void CreateDemoData()
+        {
+            CustomerId = 123;
+            Firstname = "TestVorname";
+            Lastname = "TestNachname";
+            Address = "Testadresse 4";
+            Zip = "Zip1234";
+            City = "TestStadt";
+            Phone = "12345";
+            Email = "test@test.test";
+            OrderItemId = 55;
+            OrderId = 100000000;
+            PreferedDate = new DateTime(2018, 1, 1);
+            Servicedescription = "Beschreibung des Services, sehr guter service. Sehr toll!!!!!";
+            BookedItems = 444;
+            IsAllInclusive = "Y";
+            Finalprice = 76.43;
+            OrderedDateTime = new DateTime(2018, 1, 1);
+            CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?";
+            IsFinished = "N";
+            IsConfirmed = "Y";
+            AddittionalCost = 84.44;
+            ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
+            OrderItemReports = new List<OrderItemReport>()
+            {
+                new OrderItemReport()
+                {
+                    Comment = "Kommentar kksksksksk",
+                    Id = 15,
+                    OrderItemId = 94,
+                    ReportDate = new DateTime(2018, 1, 1),
+                    Appendix= new List<OrderItemReportAppendix>()
+                    {
+                        new OrderItemReportAppendix()
+                        {
+                            Id =939,
+                            OrderItemReportId = 99,
+                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                        },
+                        new OrderItemReportAppendix()
+                        {
+                            Id =112,
+                            OrderItemReportId = 12,
+                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                        },
+                        new OrderItemReportAppendix()
+                        {
+                            Id =934,
+                            OrderItemReportId = 59,
+                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                        }
+                    }
+
+                },
+                new OrderItemReport()
+                {
+                    Comment = "2. Kommentar kkasksk",
+                    Id = 16,
+                    OrderItemId = 345,
+                    ReportDate = new DateTime(2018, 2, 1),
+                    Appendix= new List<OrderItemReportAppendix>()
+                    {
+                        new OrderItemReportAppendix()
+                        {
+                            Id =111,
+                            OrderItemReportId = 22,
+                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                        }
+                    }
+
+                }
+            };
+
+        }
+        public byte[] GetJPGFromImageControl(BitmapImage imageC)
+        {
+            MemoryStream memStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageC));
+            encoder.Save(memStream);
+            return memStream.ToArray();
         }
 
         private void ApplyChanges()
@@ -193,7 +277,7 @@ namespace PL_ServiceOnline.ViewModel
                 AddittionalCost = SelectedDetailed.AddittionalCost;
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
                 OrderItemReports = SelectedDetailed.OrderItemReports;
-                
+
                 //OrderItemId = SelectedJob.OrderItemId;
                 //Customername = SelectedDetailed.Lastname;
                 //Servicedescription = SelectedDetailed.Servicedescription;
