@@ -155,7 +155,7 @@ namespace PL_ServiceOnline.ViewModel
             IsAllInclusive = "Y";
             Finalprice = 76.43;
             OrderedDateTime = new DateTime(2018, 1, 1);
-            CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?";
+            CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?\n\nnoch mehr text";
             IsFinished = "N";
             IsConfirmed = "Y";
             AddittionalCost = 84.44;
@@ -174,19 +174,19 @@ namespace PL_ServiceOnline.ViewModel
                         {
                             Id =939,
                             OrderItemReportId = 99,
-                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
                         },
                         new OrderItemReportAppendix()
                         {
                             Id =112,
                             OrderItemReportId = 12,
-                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
                         },
                         new OrderItemReportAppendix()
                         {
                             Id =934,
                             OrderItemReportId = 59,
-                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
                         }
                     }
 
@@ -203,7 +203,7 @@ namespace PL_ServiceOnline.ViewModel
                         {
                             Id =111,
                             OrderItemReportId = 22,
-                            Picture = GetJPGFromImageControl(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
                         }
                     }
 
@@ -211,13 +211,30 @@ namespace PL_ServiceOnline.ViewModel
             };
 
         }
-        public byte[] GetJPGFromImageControl(BitmapImage imageC)
+        public byte[] ImageToByteArray(BitmapImage image)
         {
-            MemoryStream memStream = new MemoryStream();
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(imageC));
-            encoder.Save(memStream);
-            return memStream.ToArray();
+            using (var ms = new MemoryStream())            {
+
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+                encoder.Save(ms);
+                return ms.ToArray();
+            }
+
+        }
+
+        //TODO: byte[] to BitmapImage converter (still needs to be tested)
+        public BitmapImage ByteArrayToImage(byte[] array)
+        {
+            using (var ms = new MemoryStream(array))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
         }
 
         private void ApplyChanges()

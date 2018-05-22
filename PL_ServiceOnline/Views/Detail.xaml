@@ -10,17 +10,12 @@
         <Converter:StringToBoolean x:Key="StringToBoolean"/>
 
         <DataTemplate x:Key="OrderReportLayout">
-            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="200">
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="Auto">
                 <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="{Binding Image}" Height="60" Margin="3"/>-->
+                    <Image Source="{Binding OrderItemReports/Appendix/Picture}" Height="60" Margin="3"/>
                     <Label Content="{Binding OrderItemReports.Capacity}" VerticalAlignment="Center" Margin="5,0"/>
                     <Label Content="{Binding OrderItemReports.Count}" VerticalAlignment="Center" Margin="5,0"/>
-                    <!--public int Id { get; set; }
-        public string Comment { get; set; }
-        public DateTime ReportDate { get; set; }
-        public int OrderItemId { get; set; }
-        public List
-                    <OrderItemReportAppendix>Appendix { get; set; }-->
+                    <Label Content="{Binding OrderItemReports/Comment}" VerticalAlignment="Center" Margin="5,0"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -54,7 +49,7 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition MinHeight="30" Height="Auto"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="200"/>
 
@@ -78,7 +73,7 @@
                     <Label Content="Bevorzugtes Datum:"         Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
                     <Label Content="Gebuchte Posten:"           Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
                     <Label Content="Bestelldatum:"              Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
-                    <Label Content="Kunden Kommentar:"          Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
+                    <Label Content="Kunden Kommentar:"          Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Top" Height="30"  Width="150"/>
                     <Label Content="Bestellreport:"             Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"  Width="150"/>
 
 
@@ -99,7 +94,7 @@
                     <Label Grid.Column="1" Content="{Binding Servicedescription}"                                               Width="200" Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
                     <Label Grid.Column="1" Content="{Binding BookedItems}"                                                      Width="200" Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
                     <Label Grid.Column="1" Content="{Binding OrderedDateTime}"                                                  Width="200" Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-                    <Label Grid.Column="1" Content="{Binding CustomerNotice}"                                                   Width="200" Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30"/>
+                    <TextBlock TextWrapping="WrapWithOverflow" Grid.Column="1" Text="{Binding CustomerNotice}"                  Width="200" Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" />
                     <Label Grid.Column="1" Content="{Binding OrderItemReports}"                                                 Width="200" Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
 
                     <!--<Label Content="Order Id:"  Grid.Row="1" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
