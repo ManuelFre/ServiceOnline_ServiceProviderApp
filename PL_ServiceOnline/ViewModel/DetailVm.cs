@@ -1,12 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using PL_ServiceOnline.Converter;
 using SPA_Datahandler;
 using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -38,30 +38,6 @@ namespace PL_ServiceOnline.ViewModel
         public RelayCommand BtnSyncWithBackend { get; set; }
         public ObservableCollection<OrderSummary> UpcomingOrders { get; set; }
 
-
-        /*
-        public long OrderItemId { get; set; }
-        
-        public string Customername { get; set; }
-        
-        public string Servicedescription { get; set; }
-        
-        public DateTime PreferedDate { get; set; }
-        
-        public int BookedItems { get; set; }
-        
-        public string Address { get; set; }
-        
-        public string Zip { get; set; }
-        
-        public string City { get; set; }
-        
-        public string Phone { get; set; }
-        
-        public string IsAllInclusive { get; set; }
-        
-        public string IsFinished { get; set; }
-        */
 
 
         public int CustomerId { get; set; }
@@ -174,19 +150,19 @@ namespace PL_ServiceOnline.ViewModel
                         {
                             Id =939,
                             OrderItemReportId = 99,
-                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"..\Images\TestPicture.jpg",UriKind.Relative)))
+                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
                         },
                         new OrderItemReportAppendix()
                         {
                             Id =112,
                             OrderItemReportId = 12,
-                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
                         },
                         new OrderItemReportAppendix()
                         {
                             Id =934,
                             OrderItemReportId = 59,
-                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
                         }
                     }
 
@@ -203,7 +179,7 @@ namespace PL_ServiceOnline.ViewModel
                         {
                             Id =111,
                             OrderItemReportId = 22,
-                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture2.jpg")))
+                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
                         }
                     }
 
@@ -211,32 +187,7 @@ namespace PL_ServiceOnline.ViewModel
             };
 
         }
-        public byte[] ImageToByteArray(BitmapImage image)
-        {
-            using (var ms = new MemoryStream())
-            {
 
-                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(image));
-                encoder.Save(ms);
-                return ms.ToArray();
-            }
-
-        }
-
-        //TODO: byte[] to BitmapImage converter (still needs to be tested)
-        public BitmapImage ByteArrayToImage(byte[] array)
-        {
-            using (var ms = new MemoryStream(array))
-            {
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.StreamSource = ms;
-                image.EndInit();
-                return image;
-            }
-        }
 
         private void ApplyChanges()
         {
@@ -252,11 +203,10 @@ namespace PL_ServiceOnline.ViewModel
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
             //TODO: proper view for OrderItemReport
-            //TODO: nur änderbare Daten änderbar machen und auf der view besser von standard daten separieren...
 
 
             SelectedJob = obj.Content;
-            //Todo: folgendes soll Änderbar (DB-Query gibts dafür bereits!) sein:
+
 
             //AddittionalCost;
             //Finalprice;
@@ -296,17 +246,6 @@ namespace PL_ServiceOnline.ViewModel
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
                 OrderItemReports = SelectedDetailed.OrderItemReports;
 
-                //OrderItemId = SelectedJob.OrderItemId;
-                //Customername = SelectedDetailed.Lastname;
-                //Servicedescription = SelectedDetailed.Servicedescription;
-                //PreferedDate = SelectedDetailed.PreferedDate;
-                //BookedItems = SelectedDetailed.BookedItems;
-                //Address = SelectedDetailed.Address;
-                //Zip = SelectedDetailed.Zip;
-                //City = SelectedDetailed.City;
-                //Phone = SelectedDetailed.Phone;
-                //IsAllInclusive = SelectedDetailed.IsAllInclusive;
-                //IsFinished = SelectedDetailed.IsFinished;
             }
 
         }
@@ -323,7 +262,6 @@ namespace PL_ServiceOnline.ViewModel
             int index = baseDir.IndexOf("ServiceOnline_ServiceProviderApp");
             string dataDir = baseDir.Substring(0, index) + @"ServiceOnline_ServiceProviderApp";
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
-
         }
     }
 }
