@@ -226,11 +226,13 @@ namespace SPA_Datahandler
                           select oim.Id).Max() + 1;
 
             //Umwandeln des OrderItemReport in das DB-Objekt
-            order_item_report DbNewReport = new order_item_report();
-            DbNewReport.report_date = NewReport.ReportDate;
-            DbNewReport.order_item_id = NewReport.OrderItemId;
-            DbNewReport.comment = NewReport.Comment;
-            DbNewReport.Id = NextId;
+            order_item_report DbNewReport = new order_item_report
+            {
+                report_date = NewReport.ReportDate,
+                order_item_id = NewReport.OrderItemId,
+                comment = NewReport.Comment,
+                Id = NextId
+            };
 
             dbContext.Set<order_item_report>().Add(DbNewReport);
 
@@ -238,9 +240,11 @@ namespace SPA_Datahandler
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
             {
-                order_item_report_appendix DbOima = new order_item_report_appendix();
-                DbOima.order_item_report_id = DbNewReport.Id;
-                DbOima.appendix = oima.Picture;
+                order_item_report_appendix DbOima = new order_item_report_appendix
+                {
+                    order_item_report_id = DbNewReport.Id,
+                    appendix = oima.Picture
+                };
 
                 dbContext.Set<order_item_report_appendix>().Add(DbOima);
             }

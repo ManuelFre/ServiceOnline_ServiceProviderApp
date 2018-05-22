@@ -24,7 +24,7 @@
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
 
-    <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="5">
+    <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="10">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid  MinHeight="800" MinWidth="800">
         <Grid.RowDefinitions>
