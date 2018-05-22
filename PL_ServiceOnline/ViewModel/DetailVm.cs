@@ -174,7 +174,7 @@ namespace PL_ServiceOnline.ViewModel
                         {
                             Id =939,
                             OrderItemReportId = 99,
-                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\Images\TestPicture.jpg")))
+                            Picture = ImageToByteArray(new BitmapImage(new Uri(@"..\Images\TestPicture.jpg",UriKind.Relative)))
                         },
                         new OrderItemReportAppendix()
                         {
@@ -213,7 +213,8 @@ namespace PL_ServiceOnline.ViewModel
         }
         public byte[] ImageToByteArray(BitmapImage image)
         {
-            using (var ms = new MemoryStream())            {
+            using (var ms = new MemoryStream())
+            {
 
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(image));
