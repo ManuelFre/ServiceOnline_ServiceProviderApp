@@ -242,7 +242,7 @@ namespace PL_ServiceOnline.ViewModel
             //TODO: update db and test if it works
             OS.AddittionalCost = AddittionalCost;
 
-            if (Dp.UpdateOrderItemData(OS))
+            if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
