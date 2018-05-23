@@ -91,8 +91,14 @@
                 <DataGridTextColumn Binding="{Binding IsFinished}" Header="Fertig?" />
             </DataGrid.Columns>
         </DataGrid>-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Button Content="Get Data from Backend" Command="{Binding BtnSyncWithBackend}"/>
-        </StackPanel>
+            <Button Grid.Column="2" Command="{Binding BtnDetailView}">Detailansicht</Button>
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SPA_Datahandler"
+    "\\PL_ServiceOnline",
+    "\\PL_ServiceOnline\\ViewModel"
   ],
-  "SelectedNode": "\\ServiceOnline_ServiceProviderApp.sln",
   "PreviewInSolutionExplorer": false
 }
