@@ -32,10 +32,11 @@ namespace SPA_Datahandler
         {
             try
             {
+                dbContext = new DbServiceProviderAppEntities();
                 dbContext.Set<T>().Add(item);
                 dbContext.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 dbContext.Set<T>().Remove(item);
                 return false;
