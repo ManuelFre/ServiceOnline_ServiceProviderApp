@@ -127,3 +127,4 @@ C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandl
 C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.dll
 C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
