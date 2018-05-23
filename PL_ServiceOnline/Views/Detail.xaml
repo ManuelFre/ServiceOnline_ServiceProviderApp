@@ -94,33 +94,33 @@
                                             <Label Content="{Binding Comment}"/>
                                         </StackPanel>
                                     </StackPanel>
-                                        <ListBox x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
-                                        <ListBox.ItemsPanel>
+                                        <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
+                                        <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
                                             </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
+                                        </ItemsControl.ItemsPanel>
 
-                                        <ListBox.ItemTemplate>
+                                        <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="10">
                                                         <StackPanel Orientation="Horizontal">
-                                                            <StackPanel Orientation="Vertical" Margin="5,0">
+                                                            <!--<StackPanel Orientation="Vertical" Margin="5,0">
                                                             <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" />
                                                                 <Label Content="{Binding Id}"/>
                                                             </StackPanel>
                                                             <StackPanel Orientation="Vertical" Margin="5,0">
                                                             <Label Content="Bestell Item Report ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
                                                                 <Label Content="{Binding OrderItemReportId}"/>
-                                                            </StackPanel>
-                                                            <Border BorderBrush="Black" BorderThickness="0.5" >
-                                                                <Image Source="{Binding Picture}" Width="80" Height="100"/>                                                            
-                                                            </Border>
+                                                            </StackPanel>-->
+                                                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Margin="20" >-->
+                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />                                                            
+                                                            <!--</Border>-->
                                                         </StackPanel>
                                                     </Border>
                                                 </DataTemplate>
-                                            </ListBox.ItemTemplate>
-                                        </ListBox>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     
                                 </StackPanel>
                             </Border>

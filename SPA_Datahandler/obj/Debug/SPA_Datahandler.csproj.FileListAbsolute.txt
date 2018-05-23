@@ -112,3 +112,4 @@ C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
+C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
