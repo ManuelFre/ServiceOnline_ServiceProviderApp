@@ -12,6 +12,7 @@ namespace SPA_Datahandler
         {
             //Herstellung einer Datenbankverbindung:
             dbContext = new DbServiceProviderAppEntities();
+            dbContext.Configuration.AutoDetectChangesEnabled = true;
         }
 
         public List<country> QueryAllCountries()
@@ -201,12 +202,19 @@ namespace SPA_Datahandler
                 OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
                 OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
                 OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
+ 
 
                 //schreiben der Änderung in die spa_changes Tabelle
-                dbContext.Set<spa_changes>().Add(new spa_changes { order_id = OriginalOrderItem.Id, change_date = DateTime.Now });
+                spa_changes chng = new spa_changes();
+                chng.order_id = OriginalOrderItem.Id;
+                chng.change_date = DateTime.Now;
+
+                dbContext.Set<spa_changes>().Add(chng);
 
                 //Änderungen speichern
+
                 dbContext.SaveChanges();
+
                 return true;
             }
             else

@@ -192,7 +192,7 @@ namespace PL_ServiceOnline.ViewModel
         private void ApplyChanges()
         {
             //TODO: update db and test if it works
-            OS.AddittionalCost = AddittionalCost;
+            SelectedDetailed.AddittionalCost = AddittionalCost;
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
