@@ -79,8 +79,16 @@ namespace PL_ServiceOnline.ViewModel
         public string IsConfirmed { get; set; }
 
         public double? AddittionalCost { get; set; }
+        
 
-        public string ServiceProviderComment { get; set; }
+        private string serviceProviderComment;
+
+        public string ServiceProviderComment
+        {
+            get { return serviceProviderComment; }
+            set { serviceProviderComment = value; RaisePropertyChanged(); }
+        }
+
 
         public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
 
@@ -192,7 +200,16 @@ namespace PL_ServiceOnline.ViewModel
         private void ApplyChanges()
         {
             //TODO: update db and test if it works
+            //OS.AddittionalCost = AddittionalCost;
             SelectedDetailed.AddittionalCost = AddittionalCost;
+            SelectedDetailed.Finalprice = Finalprice;
+            SelectedDetailed.IsAllInclusive = IsAllInclusive;
+            SelectedDetailed.IsConfirmed = IsConfirmed;
+            SelectedDetailed.IsFinished = IsFinished;
+            SelectedDetailed.PreferedDate = PreferedDate;
+            SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
+
+            
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
