@@ -68,7 +68,7 @@
     <Property Name="is_all_inclusive" Type="text" Nullable="false" />
     <Property Name="preferred_date_time" Type="date" Nullable="false" />
     <Property Name="is_finished" Type="char" MaxLength="1" Nullable="false" />
-    <Property Name="is_confirmed" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="is_confirmed" Type="char" MaxLength="1" />
     <Property Name="addittional_cost" Type="float" />
     <Property Name="service_provider_comment" Type="text" />
     <Property Name="createdAt" Type="date" Nullable="false" />

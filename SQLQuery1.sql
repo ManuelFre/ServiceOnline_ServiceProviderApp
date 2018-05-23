@@ -1,1 +1,1 @@
-﻿INSERT INTO order_item_report (id,order_item_id, comment,report_date) VALUES (2,42, 'Zweiter Testcomment für Report',GETDATE())
+﻿SELECT * FROM zone;

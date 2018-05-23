@@ -83,7 +83,7 @@
     <Property Name="deletedAt" Type="DateTime" Precision="0" />
     <NavigationProperty Name="order_header" Relationship="Self.order_item_header_fk" FromRole="order_item" ToRole="order_header" />
     <NavigationProperty Name="service" Relationship="Self.order_item_service_fk" FromRole="order_item" ToRole="service" />
-    <Property Name="is_confirmed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="is_confirmed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="true" />
     <Property Name="addittional_cost" Type="Double" />
     <Property Name="service_provider_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item" ToRole="order_item_report" />
@@ -602,7 +602,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
-    <Property Name="last_login" Type="DateTime" Nullable="false" />
+    <Property Name="last_login" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="spa_synctimes">
     <Key>

@@ -62,16 +62,35 @@ namespace SPA_Datahandler
             DeleteTables();
             //if (DeleteTables())
             //{
-                return  InsertCountriesFromSync() && InsertServiceCategoryFromSync() && InsertServiceProviderFromSync() && InsertServiceCategoryFromSync()
-                    && InsertServiceFromSync() && InsertSowUserFromSync() && InsertSowUserDeliveryAddressFromSync() && InsertOrderStateFromSync() 
-                    && InsertOrderHeaderFromSync() && InsertOrderItemFromSync() && InsertOrderDetailFromSync();       //&& InsertZonesFromSync()
+            //return  InsertCountriesFromSync() && 
+            //InsertServiceCategoryFromSync() &&
+            //InsertServiceProviderFromSync() && 
+            //InsertServiceCategoryFromSync() && 
+            //InsertServiceFromSync() && 
+            //InsertSowUserFromSync() && 
+            //InsertSowUserDeliveryAddressFromSync() && 
+            //InsertOrderStateFromSync() &&
+            //InsertOrderHeaderFromSync() && 
+            //InsertOrderItemFromSync() && 
+            //InsertOrderDetailFromSync();       //&& InsertZonesFromSync()
+            InsertCountriesFromSync();
+            InsertServiceCategoryFromSync();
+            InsertServiceProviderFromSync();
+            InsertServiceCategoryFromSync();
+            InsertServiceFromSync();
+            InsertSowUserFromSync();
+            InsertSowUserDeliveryAddressFromSync();
+            InsertOrderStateFromSync();
+            InsertOrderHeaderFromSync();
+            InsertOrderItemFromSync();
+            InsertOrderDetailFromSync();
             //}
             return false;
         }
 
         private bool DeleteTables()
         {
-            return OrderDetailDbF.ClearTable() && OrderItemDbF.ClearTable() &&OrderHeaderDbF.ClearTable() && OrderStateDbF.ClearTable() && SowUserDbF.ClearTable() 
+            return OrderDetailDbF.ClearTable() && /*OrderItemDbF.ClearTable() &&*/ OrderHeaderDbF.ClearTable() && OrderStateDbF.ClearTable() && SowUserDbF.ClearTable() 
                 && SowUserDeliveryAddressDbF.ClearTable() && ServiceDbF.ClearTable() && ServiceCategoryDbF.ClearTable() 
                 && ServiceProviderDbF.ClearTable()  && CountryDbF.ClearTable();      //&& ZoneDbF.ClearTable()
 

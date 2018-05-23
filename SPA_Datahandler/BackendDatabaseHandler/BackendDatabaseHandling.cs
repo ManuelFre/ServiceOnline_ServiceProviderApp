@@ -50,6 +50,12 @@ namespace SPA_Datahandler.BackendDatabaseHandler
                             propertyInfo.SetValue(Item, Convert.ChangeType(DataRow[propertyInfo.Name], t) );
                         }
                     }
+                    //else
+                    //{
+                    //    Type t;
+                    //    t = propertyInfo.PropertyType;
+                    //    propertyInfo.SetValue(Item, t.GetTypeInfo().AsType());
+                    //}
                     cnt++;
                 }
                 ReturnItems.Add(Item);
