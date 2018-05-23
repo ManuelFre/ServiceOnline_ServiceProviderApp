@@ -17,6 +17,7 @@ namespace PL_ServiceOnline.ViewModel
     {
 
         private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
+        
 
         private IMessenger msg = Messenger.Default;
 
@@ -28,10 +29,15 @@ namespace PL_ServiceOnline.ViewModel
             set
             {
                 selectedJob = value;
-                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
+                
+                //msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
             }
         }
         public RelayCommand BtnSyncWithBackend { get; set; }
+
+
+
+        public RelayCommand BtnDetailView { get; set; }
         public ObservableCollection<OrderSummary> Orders { get; set; }
         public string CountryName { get; set; }
         public string CountryIso2 { get; set; }
@@ -53,6 +59,16 @@ namespace PL_ServiceOnline.ViewModel
             Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
 
             msg.Register<GenericMessage<string>>(this, ChangeOrder);
+
+            BtnDetailView = new RelayCommand(() =>
+            {
+                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
+
+            }, () =>
+            {
+                return (SelectedJob != null);
+            });
+
 
             //Countries = new ObservableCollection<country>();
 

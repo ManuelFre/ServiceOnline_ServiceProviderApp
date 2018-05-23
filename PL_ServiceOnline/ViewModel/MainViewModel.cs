@@ -81,11 +81,7 @@ namespace PL_ServiceOnline.ViewModel
                     CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
                 });
 
-                Btn_Detail = new RelayCommand(() =>
-                {
-                    CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
-                    msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-                }, () => 
+                Btn_Detail = new RelayCommand(execute: ChangeDetail, canExecute: () => 
                 {
                     return (SelectedJob != null);
                 }
@@ -94,19 +90,26 @@ namespace PL_ServiceOnline.ViewModel
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
             }
 
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+        }
+
+        private void ChangeDetail()
+        {
+            
+            //msg.Send<>
+            msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
+
         }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
-            SelectedJob = obj.Content;
+            if(selectedJob != obj.Content)
+            {
+                SelectedJob = obj.Content;
+                
+                ChangeDetail();
+            }
+            CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
+
         }
     }
 }
