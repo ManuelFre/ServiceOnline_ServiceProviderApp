@@ -17,6 +17,7 @@ namespace PL_ServiceOnline.ViewModel
     {
 
         private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
+        
 
         private IMessenger msg = Messenger.Default;
 
@@ -33,6 +34,9 @@ namespace PL_ServiceOnline.ViewModel
             }
         }
         public RelayCommand BtnSyncWithBackend { get; set; }
+
+
+
         public RelayCommand BtnDetailView { get; set; }
         public ObservableCollection<OrderSummary> Orders { get; set; }
         public string CountryName { get; set; }

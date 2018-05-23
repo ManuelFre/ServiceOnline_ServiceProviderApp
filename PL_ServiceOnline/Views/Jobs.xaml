@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <converters:StringToColourString x:Key="StringToColourString"/>
         <converters:AllIncStringToStringColor x:Key="AllIncStringToStringColor"/>
+        <converters:TwoStringToStatusString x:Key="TwoStringToStatusString"/>
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="JobsVm"/>
@@ -17,7 +18,7 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}">
@@ -50,8 +51,20 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Zip}" Header="PLZ" />
                     <GridViewColumn DisplayMemberBinding="{Binding City}" Header="Ort" />
                     <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Telefon" />
-                    
-                    <GridViewColumn  Header="Abgeschlossen" >
+                    <GridViewColumn  Header="Auftragsstatus">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label>
+                                    <MultiBinding Converter="{StaticResource TwoStringToStatusString}">
+                                        <Binding Path="IsConfirmed" />
+                                        <Binding Path="IsFinished" />
+                                    </MultiBinding>
+                                </Label>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <!--<GridViewColumn  Header="Abgeschlossen" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel MinWidth="80" HorizontalAlignment="Center">
@@ -69,7 +82,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
 
                 </GridView>
             </ListView.View>

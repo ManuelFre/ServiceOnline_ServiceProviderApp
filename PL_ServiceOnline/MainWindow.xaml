@@ -16,11 +16,13 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Command="{Binding Btn_UpcomingJobs}">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Aufträge</TextBlock>
@@ -28,20 +30,26 @@
             <Button Grid.Row="1" Command="{Binding Btn_PastJobs}">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
             </Button>
-            <Button Grid.Row="2" Command="{Binding Btn_Detail}">
+
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"> Eingeloggt als:</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3">Dummy User</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">Zuletzt synchronisiert:</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">DummyTimeStamp</Label>
+
+            <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Detailansicht</TextBlock>
             </Button>
-            <Button Grid.Row="3">
+            <Button Grid.Row="3"  >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">PDF</TextBlock>
-            </Button>
-            <Button Grid.Row="4" Command="{Binding Btn_Logout}">
+            </Button>-->
+            <Button Grid.Row="6" Command="{Binding Btn_Logout}">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Logout</TextBlock>
             </Button>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
+                <!--<RowDefinition Height="40"/>-->
             </Grid.RowDefinitions>
             <ContentControl Grid.Column="0" Grid.Row="0" Content="{Binding CurrentDetailView}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <ContentControl.Resources>
@@ -59,7 +67,7 @@
                     </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
-            <StatusBar Grid.Row="1">
+            <!--<StatusBar Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="1*"/>
@@ -73,7 +81,7 @@
                     <Label Grid.Column="2">Zuletzt gesynct:</Label>
                     <Label Grid.Column="3">Dummy</Label>
                 </Grid>
-            </StatusBar>
+            </StatusBar>-->
         </Grid>
 
     </Grid>

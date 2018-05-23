@@ -90,19 +90,11 @@ namespace PL_ServiceOnline.ViewModel
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
             }
 
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
         }
 
         private void ChangeDetail()
         {
-            CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
+            
             //msg.Send<>
             msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
 
@@ -113,8 +105,10 @@ namespace PL_ServiceOnline.ViewModel
             if(selectedJob != obj.Content)
             {
                 SelectedJob = obj.Content;
+                
                 ChangeDetail();
             }
+            CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
 
         }
     }
