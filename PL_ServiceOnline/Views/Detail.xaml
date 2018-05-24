@@ -170,8 +170,8 @@
         <TextBox    Margin="1" Grid.Column="3" Grid.Row="6" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center"/>
 
         <Button     Margin="1" Grid.Column="3" Grid.Row="10" Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
-
-    </Grid>
+        <Button     Margin="1" Grid.Column="3" Grid.Row="12" Content="Servicereport erstellen"  Height="40"  Width="280" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
+            </Grid>
     </ScrollViewer>
     </Border>
 </UserControl>
