@@ -254,6 +254,7 @@
     <EntitySetMapping Name="spa_log_in">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_log_in">
         <MappingFragment StoreEntitySet="spa_log_in">
+          <ScalarProperty Name="is_logged_in" ColumnName="is_logged_in" />
           <ScalarProperty Name="last_login" ColumnName="last_login" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="Id" ColumnName="Id" />

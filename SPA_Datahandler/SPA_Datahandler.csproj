@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Datamodel\OrderItemReport.cs" />
     <Compile Include="Datamodel\OrderItemReportAppendix.cs" />
+    <Compile Include="Datamodel\ServiceProviderData.cs" />
     <Compile Include="Dataprovider.cs" />
     <Compile Include="Datamodel\DetailedClass.cs" />
     <Compile Include="Model1.Context.cs">

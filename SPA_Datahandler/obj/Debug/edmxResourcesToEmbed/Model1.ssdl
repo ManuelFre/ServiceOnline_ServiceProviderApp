@@ -217,6 +217,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="last_login" Type="datetime" Nullable="false" />
+    <Property Name="is_logged_in" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <EntityType Name="spa_synctimes">
     <Key>

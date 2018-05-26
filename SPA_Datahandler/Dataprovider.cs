@@ -8,6 +8,8 @@ namespace SPA_Datahandler
 {
     public class Dataprovider
     {
+        protected DbServiceProviderAppEntities dbContext;
+
         public Dataprovider()
         {
             //Herstellung einer Datenbankverbindung:
@@ -212,7 +214,7 @@ namespace SPA_Datahandler
                 OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
                 OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
                 OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
-
+                OriginalOrderItem.createdAt = DateTime.Now;
                
 
                 //schreiben der Änderung in die spa_changes Tabelle
@@ -295,11 +297,25 @@ namespace SPA_Datahandler
             //gibt True zurück, wenn es genau einen DB-Eintrag mit dem Usernamen und Passwort gibt.
             if (Userdata.Count() == 1)
             {
-                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = Userdata[0].Id, last_login = DateTime.Now });
+                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = Userdata[0].Id, last_login = DateTime.Now, is_logged_in ="Y" });
                 dbContext.SaveChanges();
                 return true;
             }
             return false;
+        }
+
+        public bool LogOut()
+        {
+            var query = from li in dbContext.spa_log_in
+            where li.is_logged_in == "Y"
+            select li;
+
+            foreach(spa_log_in sli in query.ToList())
+            {
+                sli.is_logged_in = "N";
+            }
+
+            return true;
         }
 
         public string GetLoggedInUsername()
@@ -312,6 +328,7 @@ namespace SPA_Datahandler
                             (
                                 from li in dbContext.spa_log_in
                                 where li.last_login > DateTime.Now.AddHours(-48)
+                                && li.is_logged_in =="Y"
                                 orderby li.last_login descending
                                 select li.user_id
                             ).First()
@@ -346,9 +363,92 @@ namespace SPA_Datahandler
             dbContext.SaveChanges();
         }
 
+        public ServiceProviderData QueryServiceProviderData()
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            //prüfen ob jemand und wenn ja, wer angemeldet ist
+            var CheckQuery = from li in dbContext.spa_log_in
+                        where li.last_login > DateTime.Now.AddHours(-4800)          //ToDo: LastLogIn noch ändern!!!
+                        && li.is_logged_in == "Y"
+                        orderby li.last_login descending
+                        select li;
+
+            if(CheckQuery.ToList().Count() == 1)
+            {
+                int UserId = CheckQuery.ToList()[0].Id;
+
+                //STAMMDATEN:
+                var MasterDataQuery = from sp in dbContext.service_provider
+                                      where sp.Id == UserId
+                                      select new ServiceProviderData
+                                      {
+                                          Id = sp.Id,
+                                          CompanyName = sp.company_name,
+                                          Address = sp.address_1,
+                                          City = sp.city,
+                                          Zip = sp.zip,
+                                          Phone = sp.phone_1
+                                      };
+                ServiceProviderData RetVal = MasterDataQuery.FirstOrDefault();
 
 
-        protected DbServiceProviderAppEntities dbContext;
+                //ABGESCHLOSSENE AUFTRÄGE:
+                var CntCompletedOrdersQuery = from oi in dbContext.order_item
+                                              join s in dbContext.service on oi.service_id equals s.Id
+                                              join sp in dbContext.service_provider on s.service_provider_id equals sp.Id
+                                              where sp.Id == UserId && oi.is_finished =="Y" && oi.is_confirmed == "Y"
+                                              select oi;
+
+                RetVal.CntCompletedOrders = CntCompletedOrdersQuery.ToList().Count();
+
+                //OFFENE AUFTRÄGE:
+                var CntOpenOrdersQuery = from oi in dbContext.order_item
+                                              join s in dbContext.service on oi.service_id equals s.Id
+                                              join sp in dbContext.service_provider on s.service_provider_id equals sp.Id
+                                              where sp.Id == UserId && oi.is_finished == "N" && oi.is_confirmed == "Y"
+                                              select oi;
+                RetVal.CntOpenOrders = CntOpenOrdersQuery.ToList().Count();
+
+                //LUKRIERTER UMSATZ
+                double SumTargetedSales = 0;
+
+                foreach (var orderitem in CntCompletedOrdersQuery.ToList())
+                {
+                    SumTargetedSales += orderitem.final_price_with_tax;
+                }
+                RetVal.SumTargetedSales = SumTargetedSales;
+
+                return RetVal;
+            }
+            return null;
+        }
+
+
+        public bool UpdateServiceProviderData(ServiceProviderData ServiceProvider)
+        {
+            service_provider OrignialServiceProvider = (from sp in dbContext.service_provider
+                                where sp.Id == ServiceProvider.Id
+                                select sp).FirstOrDefault();
+
+            if(OrignialServiceProvider != null)
+            {
+                OrignialServiceProvider.address_1 = ServiceProvider.Address;
+                OrignialServiceProvider.city = ServiceProvider.City;
+                OrignialServiceProvider.createdAt = DateTime.Now;
+                OrignialServiceProvider.phone_1 = ServiceProvider.Phone;
+                OrignialServiceProvider.zip = ServiceProvider.Zip;
+
+                dbContext.SaveChanges();
+
+                return true;
+            }
+
+            return false;
+            
+        }
+
+
         //public List<country> InsertAndShowCountry(string Name, String iso_2, String iso_3)
         //{
         //    //Quelle: https://docs.telerik.com/devtools/wpf/consuming-data/linq-to-ado-net-entity-data-model

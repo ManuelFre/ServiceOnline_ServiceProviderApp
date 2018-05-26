@@ -603,6 +603,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="last_login" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="is_logged_in" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
   <EntityType Name="spa_synctimes">
     <Key>
