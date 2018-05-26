@@ -164,8 +164,9 @@ namespace PL_ServiceOnline.ViewModel
 
         public void StartSync()
         {
-            SyncFromBackend SFB = new SyncFromBackend();
-            MessageBox.Show(SFB.StartSync().ToString());
+            //SyncFromBackend SFB = new SyncFromBackend();
+            //MessageBox.Show(SFB.StartSync().ToString());
+            MessageBox.Show("Aus Sicherheitsgründen deaktiviert von Freischlager");
 
         }
 

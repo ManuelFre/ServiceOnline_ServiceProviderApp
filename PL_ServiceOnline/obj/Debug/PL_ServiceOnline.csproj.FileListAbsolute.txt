@@ -341,6 +341,7 @@ C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\System.Data.SQLite.xml
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csprojResolveAssemblyReference.cache
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\MainWindow.g.cs
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\Detail.g.cs
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\Login.g.cs
@@ -495,4 +496,5 @@ C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bi
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\de\PdfSharp.Charting.resources.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csprojAssemblyReference.cache
+C:\Users\manue\source\repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
+C:\Users\manue\source\repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml

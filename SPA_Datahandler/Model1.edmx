@@ -114,6 +114,7 @@
           <Property Name="name" Type="text" Nullable="false" />
           <Property Name="short_name" Type="text" Nullable="false" />
           <Property Name="intro_text" Type="text" Nullable="false" />
+          <Property Name="service_unit" Type="text" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="service_provider_id" Type="int" Nullable="false" />
           <Property Name="tax_type" Type="text" Nullable="false" />
@@ -222,6 +223,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="last_login" Type="datetime" Nullable="false" />
+          <Property Name="is_logged_in" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="spa_synctimes">
           <Key>
@@ -703,6 +705,7 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <NavigationProperty Name="order_item" Relationship="Self.order_item_service_fk" FromRole="service" ToRole="order_item" />
           <NavigationProperty Name="service_category" Relationship="Self.service_service_category_fk" FromRole="service" ToRole="service_category" />
           <NavigationProperty Name="service_provider" Relationship="Self.service_service_provider_fk" FromRole="service" ToRole="service_provider" />
+          <Property Name="service_unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="service_category">
           <Key>
@@ -1188,6 +1191,7 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="last_login" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_logged_in" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="spa_synctimes">
           <Key>
@@ -1293,6 +1297,7 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <EntitySetMapping Name="service">
             <EntityTypeMapping TypeName="DbServiceProviderAppModel.service">
               <MappingFragment StoreEntitySet="service">
+                <ScalarProperty Name="service_unit" ColumnName="service_unit" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="product_source_id" ColumnName="product_source_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1455,6 +1460,7 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
           <EntitySetMapping Name="spa_log_in">
             <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_log_in">
               <MappingFragment StoreEntitySet="spa_log_in">
+                <ScalarProperty Name="is_logged_in" ColumnName="is_logged_in" />
                 <ScalarProperty Name="last_login" ColumnName="last_login" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

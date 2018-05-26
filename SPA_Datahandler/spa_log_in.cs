@@ -17,5 +17,6 @@ namespace SPA_Datahandler
         public int Id { get; set; }
         public int user_id { get; set; }
         public System.DateTime last_login { get; set; }
+        public string is_logged_in { get; set; }
     }
 }

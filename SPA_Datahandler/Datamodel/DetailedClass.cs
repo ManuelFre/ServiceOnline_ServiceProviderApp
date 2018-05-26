@@ -54,6 +54,8 @@ namespace SPA_Datahandler.Datamodel
         [DataMember]
         public string ServiceProviderComment { get; set; }
         [DataMember]
+        public string ServiceUnit { get; set; }
+        [DataMember]
         public List<OrderItemReport> OrderItemReports { get; set; }
 
 

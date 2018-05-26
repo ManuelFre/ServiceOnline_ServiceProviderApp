@@ -109,6 +109,7 @@
     <Property Name="name" Type="text" Nullable="false" />
     <Property Name="short_name" Type="text" Nullable="false" />
     <Property Name="intro_text" Type="text" Nullable="false" />
+    <Property Name="service_unit" Type="text" />
     <Property Name="category_id" Type="int" Nullable="false" />
     <Property Name="service_provider_id" Type="int" Nullable="false" />
     <Property Name="tax_type" Type="text" Nullable="false" />
@@ -217,6 +218,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_id" Type="int" Nullable="false" />
     <Property Name="last_login" Type="datetime" Nullable="false" />
+    <Property Name="is_logged_in" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <EntityType Name="spa_synctimes">
     <Key>
