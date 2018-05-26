@@ -51,6 +51,7 @@ namespace PL_ServiceOnline.ViewModel
                 { "Servicedescription", false },
                 { "IsAllInclusive", false },
                 { "PreferedDate", false },
+                { "ServiceUnit" ,false },
                 { "BookedItems", false },
                 { "Address", false },
                 { "Zip", false },

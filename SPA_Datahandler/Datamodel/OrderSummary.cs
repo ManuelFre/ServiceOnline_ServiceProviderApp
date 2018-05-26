@@ -14,6 +14,8 @@ namespace SPA_Datahandler.Datamodel
         private string isFinished;
         private string isConfirmed;
 
+        [DataMember]
+        public string ServiceUnit { get; set; }
 
         [DataMember]
         public long OrderItemId { get; set; }

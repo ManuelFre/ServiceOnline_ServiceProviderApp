@@ -42,6 +42,7 @@
 
             <ListView.View>
                 <GridView>
+                 
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
                             <!--HIER DAS STYLING DER COLUMN-HEADERS -->
@@ -83,7 +84,13 @@
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="BookedItems"  >Einheiten</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding ServiceUnit}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="ServiceUnit"  >Einheitendefinition</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
                     <GridViewColumn DisplayMemberBinding="{Binding Address}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Address"  >Adresse</GridViewColumnHeader>
