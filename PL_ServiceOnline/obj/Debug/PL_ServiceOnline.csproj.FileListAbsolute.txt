@@ -494,3 +494,5 @@ C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bi
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\PdfSharp.Charting.xml
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\de\PdfSharp.resources.dll
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml

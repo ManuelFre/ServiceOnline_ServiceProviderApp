@@ -91,7 +91,6 @@ C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.xml
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
@@ -128,3 +127,4 @@ C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandl
 C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojResolveAssemblyReference.cache

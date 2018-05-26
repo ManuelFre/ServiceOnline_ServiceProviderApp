@@ -18,6 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -31,10 +32,14 @@
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
             </Button>
 
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"> Eingeloggt als:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3">Dummy User</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">Zuletzt synchronisiert:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">DummyTimeStamp</Label>
+            <Button Grid.Row="2" Command="{Binding Btn_CompanyData}">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Stammdaten</TextBlock>
+            </Button>
+
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3"> Eingeloggt als:</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">Dummy User</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">Zuletzt synchronisiert:</Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">DummyTimeStamp</Label>
 
             <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Detailansicht</TextBlock>
@@ -42,7 +47,7 @@
             <Button Grid.Row="3"  >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">PDF</TextBlock>
             </Button>-->
-            <Button Grid.Row="6" Command="{Binding Btn_Logout}">
+            <Button Grid.Row="7" Command="{Binding Btn_Logout}">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Logout</TextBlock>
             </Button>
         </Grid>
@@ -64,6 +69,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:DetailVm}">
                         <views:Detail/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:CompanyDataVm}">
+                        <views:CompanyData/>
                     </DataTemplate>
                 </ContentControl.Resources>
             </ContentControl>
