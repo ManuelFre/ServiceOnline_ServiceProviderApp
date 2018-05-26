@@ -323,11 +323,14 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
             // Mittleres Query wertet die Service_Provider_Id des zuletzt eingeloggten User aus,
             // äußeres Query holt mittels der ID den Username aus der service_provider_login Tabelle.
+
+            DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
+
             var query = (from spl in dbContext.service_provider_login
                          where spl.service_provider_id ==
                             (
                                 from li in dbContext.spa_log_in
-                                where li.last_login > DateTime.Now.AddHours(-48)
+                                where li.last_login > LastGuiltyLogIn
                                 && li.is_logged_in =="Y"
                                 orderby li.last_login descending
                                 select li.user_id
@@ -368,15 +371,18 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
 
             //prüfen ob jemand und wenn ja, wer angemeldet ist
+
+            DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
+
             var CheckQuery = from li in dbContext.spa_log_in
-                        where li.last_login > DateTime.Now.AddHours(-4800)          //ToDo: LastLogIn noch ändern!!!
+                        where li.last_login > LastGuiltyLogIn          
                         && li.is_logged_in == "Y"
                         orderby li.last_login descending
                         select li;
 
             if(CheckQuery.ToList().Count() == 1)
             {
-                int UserId = CheckQuery.ToList()[0].Id;
+                int UserId = CheckQuery.ToList()[0].user_id;
 
                 //STAMMDATEN:
                 var MasterDataQuery = from sp in dbContext.service_provider
@@ -419,6 +425,26 @@ namespace SPA_Datahandler
                 }
                 RetVal.SumTargetedSales = SumTargetedSales;
 
+
+                //Unbestätigte Aufträge
+                var CntUnconfirmedOrdersQuery = from oi in dbContext.order_item
+                                         join s in dbContext.service on oi.service_id equals s.Id
+                                         join sp in dbContext.service_provider on s.service_provider_id equals sp.Id
+                                         where sp.Id == UserId && (oi.is_confirmed == "N" || oi.is_confirmed == null)
+                                                select oi;
+                RetVal.CntUnconfirmedOrders = CntUnconfirmedOrdersQuery.ToList().Count();
+
+                //angenommene Aufträge diese Woche
+
+                int ThisMonth = DateTime.Now.Month;
+
+                var CntOpenOrdersThisMonthQuery = from oi in dbContext.order_item
+                                                join s in dbContext.service on oi.service_id equals s.Id
+                                                join sp in dbContext.service_provider on s.service_provider_id equals sp.Id
+                                                where sp.Id == UserId && oi.is_finished == "N" && oi.is_confirmed == "Y" && oi.preferred_date_time.Month == ThisMonth
+                                                select oi;
+                RetVal.CntOpenOrdersThisMonth = CntOpenOrdersThisMonthQuery.ToList().Count();
+
                 return RetVal;
             }
             return null;
@@ -449,156 +475,5 @@ namespace SPA_Datahandler
         }
 
 
-        //public List<country> InsertAndShowCountry(string Name, String iso_2, String iso_3)
-        //{
-        //    //Quelle: https://docs.telerik.com/devtools/wpf/consuming-data/linq-to-ado-net-entity-data-model
-        //    //Query auf Datenbank absetzen und auswerten
-        //    var query = (from p in dbContext.country.Cast<country>() where p.Id > -1 select p);
-
-        //    //neues Datenbankobjekt anlegen
-        //    country Country = new country();
-        //    Country.Id = query.ToList().Count()+2;
-        //    Country.name = Name;
-        //    Country.iso_2 = iso_2;
-        //    Country.iso_3 = iso_3;
-        //    Country.createdAt = DateTime.Now;
-        //    Country.deletedAt = null;
-
-        //    //Datenbankobjekt in DB importieren
-        //    dbContext.country.Add(Country);
-        //    dbContext.SaveChanges();
-
-        //    query = (from p in dbContext.country.Cast<country>() where p.Id > -1 select p);
-
-        //    List<country> ReturnCountries = new List<country>();
-        //    foreach (country item in query.ToList())
-        //    {
-        //        ReturnCountries.Add(item);
-        //    }
-        //    return ReturnCountries;
-        //}
-
-
-
-
-
-
-
-        //public bool InsertOrder_Detail(country Country,int Id, string address1, string address2, string city, string company, int countryId, DateTime createdAt, DateTime deletedAt,string firstname, string lastname,order_header orderHeader,string phone1, string phone2,int orderid, string taxNumber, string zip, zone zone, int zoneId)
-        //{
-        //    try
-        //    {
-        //        order_detail orderDetail = new order_detail
-        //        {
-        //            country = Country,
-        //            Id = Id,
-        //            address_1 = address1,
-        //            address_2 = address2,
-        //            city = city,
-        //            company = company,
-        //            country_id = countryId,
-        //            createdAt = createdAt,
-        //            deletedAt = deletedAt,
-        //            first_name = firstname,
-        //            last_name = lastname,
-        //            order_header = orderHeader,
-        //            phone_1 = phone1,
-        //            phone_2 = phone2,
-        //            order_id = orderid,
-        //            tax_number = taxNumber,
-        //            zip = zip,
-        //            zone = zone,
-        //            zone_id = zoneId
-        //        };
-
-        //        dbContext.order_detail.Add(orderDetail);
-        //        dbContext.SaveChanges();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-        ////public bool ClearTableCountry()
-        ////{
-        ////    try
-        ////    {
-        ////        foreach (country cntry in QueryAllCountries())
-        ////        {
-        ////            dbContext.country.Remove(cntry);
-        ////        }
-        ////    }catch
-        ////    {
-        ////        return false;
-        ////    }
-        ////    return true;
-
-        ////}
-
-
-        //public bool InsertCountry(int Id, string Name, String iso_2, String iso_3, DateTime createdAt, DateTime? deletedAt)
-        //{
-        //    country cntry = new country();
-        //    try
-        //    {
-        //        cntry = new country
-        //        {
-        //            Id = Id,
-        //            name = Name,
-        //            iso_2 = iso_2,
-        //            iso_3 = iso_3,
-        //            createdAt = createdAt,
-        //            deletedAt = deletedAt
-        //        };
-        //        dbContext.country.Add(cntry);
-        //        dbContext.SaveChanges();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        dbContext.country.Remove(cntry);
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-
-
-
-        //public bool InsertOrderHeader(int id, int sowUserId, double total, double subtotal, double subtotalExTax, double tax, string orderpaymentType, string currencyCode, string ipAddress, string customerNote, int orderStateId, DateTime createdAt, DateTime? deletedAt, ICollection<order_detail> orderDetail, sow_user sowUser, order_state orderState, ICollection<order_item> orderItem)
-        //{
-        //    try
-        //    {
-
-        //        order_header orderHeader = new order_header
-        //        {
-        //            Id = id,
-        //            sow_user_id = sowUserId,
-        //            total = total,
-        //            subtotal = subtotal,
-        //            subtotal_ex_tax = subtotalExTax,
-        //            tax = tax,
-        //            orderpayment_type = orderpaymentType,
-        //            currency_code = currencyCode,
-        //            ip_address = ipAddress,
-        //            customer_note = customerNote,
-        //            order_state_id = orderStateId,
-        //            createdAt = createdAt,
-        //            deletedAt = deletedAt,
-        //            order_detail = orderDetail,
-        //            sow_user = sowUser,
-        //            order_state = orderState,
-        //            order_item = orderItem
-        //        };
-        //        dbContext.order_header.Add(orderHeader);
-        //        dbContext.SaveChanges();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
     }
 }

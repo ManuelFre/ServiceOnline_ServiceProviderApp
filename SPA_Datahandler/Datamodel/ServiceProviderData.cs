@@ -19,25 +19,13 @@ namespace SPA_Datahandler.Datamodel
         public int CntCompletedOrders { get; set; }
         public int CntOpenOrders { get; set; }
         public double SumTargetedSales { get; set; }
-
+        public int CntUnconfirmedOrders { get; set; }
+        public int CntOpenOrdersThisMonth { get; set; }
 
         public ServiceProviderData()
         {
 
         }
 
-        public ServiceProviderData(int id, string companyName, string address, string city, string zip, string phone1, DateTime createdAt, int cntCompletedOrders, int cntOpenOrders, double sumTargetedSales)
-        {
-            Id = id;
-            CompanyName = companyName;
-            Address = address;
-            City = city;
-            Zip = zip;
-            Phone = phone1;
-            CreatedAt = createdAt;
-            CntCompletedOrders = cntCompletedOrders;
-            CntOpenOrders = cntOpenOrders;
-            SumTargetedSales = sumTargetedSales;
-        }
     }
 }
