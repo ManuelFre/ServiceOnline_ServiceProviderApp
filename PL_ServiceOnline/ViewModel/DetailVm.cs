@@ -1,12 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using PdfSharp.Pdf;
 using PL_ServiceOnline.Converter;
 using SPA_Datahandler;
 using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -31,6 +33,7 @@ namespace PL_ServiceOnline.ViewModel
 
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
+        public RelayCommand BtnCreateReport { get; set; }
 
         public Dataprovider Dp { get; set; }
 
@@ -79,7 +82,7 @@ namespace PL_ServiceOnline.ViewModel
         public string IsConfirmed { get; set; }
 
         public double? AddittionalCost { get; set; }
-        
+
 
         private string serviceProviderComment;
 
@@ -96,6 +99,15 @@ namespace PL_ServiceOnline.ViewModel
 
         private DetailedClass OS { get; set; }
 
+        //TODO: IsFinished und IsConfirmed zusammenfassen und als Combobox ("Status:") anzeigen "nicht angenommen"(default wenn null, N, Nein), "abgelehnt" (msgBox=>confirm das der auftrag wirklich abgelehnt werden will), "angenommen" und "erledigt" 
+        //Auftrag löschen
+        //Gibt der Dienstleister im Schritt „Auftragsdetails bearbeiten“ bekannt, dass er den Auftrag ablehnen möchte, 
+        //so wird um erneute Bestätigung gebeten und der Auftrag als "abgelehnt" in der Datenbank persistiert.
+
+        /// <summary>
+        /// "nicht angenommen"(default wenn null, N, Nein), "abgelehnt" (msgBox=>confirm das der auftrag wirklich abgelehnt werden will), "angenommen" und "erledigt" 
+        /// </summary>
+        public string Status { get; set; }
 
 
 
@@ -116,9 +128,38 @@ namespace PL_ServiceOnline.ViewModel
             Dp = new Dataprovider();
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
+            BtnCreateReport = new RelayCommand(() => CreateReport());
 
             CreateDemoData();
 
+        }
+
+        private void CreateReport()
+        {
+            //TODO: Create PDF here (PDFsharp NuGet package schon eingebaut)
+
+
+            // Create a temporary file
+            string filename = String.Format("{0}_tempfile.pdf", Guid.NewGuid().ToString("D").ToUpper());
+            var s_document = new PdfDocument();
+            s_document.Info.Title = "PDFsharp XGraphic Sample";
+            s_document.Info.Author = "Stefan Lange";
+            s_document.Info.Subject = "Created with code snippets that show the use of graphical functions";
+            s_document.Info.Keywords = "PDFsharp, XGraphics";
+
+            //// Create demonstration pages
+            //new LinesAndCurves().DrawPage(s_document.AddPage());
+            //new Shapes().DrawPage(s_document.AddPage());
+            //new Paths().DrawPage(s_document.AddPage());
+            //new Text().DrawPage(s_document.AddPage());
+            //new Images().DrawPage(s_document.AddPage());
+
+            // Save the s_document...
+            s_document.Save(filename);
+            // ...and start a viewer
+            Process.Start(filename);
+
+            throw new NotImplementedException();
         }
 
         private void CreateDemoData()
@@ -209,8 +250,7 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.PreferedDate = PreferedDate;
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
-            ////für refresh der Liste
-            //msg.Send<GenericMessage<string>>(new GenericMessage<string>("refreshJobs"));
+
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
