@@ -10,6 +10,17 @@
         Title="ServiceProvider-App" Height="600" Width="1400" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}" >
 
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Grid}">
+                <!--<Setter Property="Background" Value="Gray" />-->
+                <Style.Resources>
+                    <Style TargetType="{x:Type Button}">
+
+                        <Setter Property="Background" Value="#F5F5F8" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="9*"/>

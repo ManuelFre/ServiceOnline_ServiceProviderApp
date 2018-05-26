@@ -76,7 +76,7 @@ namespace PL_ServiceOnline.ViewModel
                 return (SelectedJob != null);
             });
 
-
+            // Befehl bei Klick auf eine Column
             ClmOrder = new RelayCommand<string>(OrderColumns());
 
 
@@ -103,52 +103,43 @@ namespace PL_ServiceOnline.ViewModel
         {
             return (para) =>
             {
+                IEnumerable<OrderSummary> query;
+
                 if(para != "Status")
                 {
                     if (!OrderDirection[para])
                     {
-                        var query = (from x in Orders
+                        query = (from x in Orders
                                      orderby x.GetType().GetProperty(para).GetValue(x, null) ascending
                                      select x);
-                        Orders = new ObservableCollection<OrderSummary>(query);
-                        RaisePropertyChanged("Orders");
-                        OrderDirection[para] = !OrderDirection[para];
                     }
                     else
                     {
-                        var query = (from x in Orders
+                        query = (from x in Orders
                                      orderby x.GetType().GetProperty(para).GetValue(x, null) descending
                                      select x);
-                        Orders = new ObservableCollection<OrderSummary>(query);
-                        RaisePropertyChanged("Orders");
-                        OrderDirection[para] = !OrderDirection[para];
                     }
                 }
                 else
                 {
-
                     if (!OrderDirection[para])
                     {
-                        var query = (from x in Orders
+                        query = (from x in Orders
                                      orderby x.IsFinished ascending, x.IsConfirmed ascending
                                      select x);
-                        Orders = new ObservableCollection<OrderSummary>(query);
-                        RaisePropertyChanged("Orders");
-                        OrderDirection[para] = !OrderDirection[para];
                     }
                     else
                     {
-                        var query = (from x in Orders
+                        query = (from x in Orders
                                      orderby x.IsFinished descending, x.IsConfirmed descending
                                      select x);
-                        Orders = new ObservableCollection<OrderSummary>(query);
-                        RaisePropertyChanged("Orders");
-                        OrderDirection[para] = !OrderDirection[para];
                     }
 
 
                 }
-
+                Orders = new ObservableCollection<OrderSummary>(query);
+                RaisePropertyChanged("Orders");
+                OrderDirection[para] = !OrderDirection[para];
 
             };
         }
