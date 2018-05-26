@@ -134,7 +134,7 @@ namespace PL_ServiceOnline.ViewModel
                     if (!OrderDirection[para])
                     {
                         var query = (from x in Orders
-                                     orderby x.IsConfirmed ascending, x.IsFinished ascending
+                                     orderby x.IsFinished ascending, x.IsConfirmed ascending
                                      select x);
                         Orders = new ObservableCollection<OrderSummary>(query);
                         RaisePropertyChanged("Orders");
@@ -143,7 +143,7 @@ namespace PL_ServiceOnline.ViewModel
                     else
                     {
                         var query = (from x in Orders
-                                     orderby x.IsConfirmed descending, x.IsFinished descending
+                                     orderby x.IsFinished descending, x.IsConfirmed descending
                                      select x);
                         Orders = new ObservableCollection<OrderSummary>(query);
                         RaisePropertyChanged("Orders");
