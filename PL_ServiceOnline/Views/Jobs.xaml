@@ -40,19 +40,68 @@
                             <Setter Property="FontSize" Value="14"></Setter>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}" Header="Order Id"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Customername}" Header="Name" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}" Header="Beschreibung" />
-                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" Header="IsAllInclusive" />
-                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy - hh.mm, Mode=OneWay}" Header="Termin" />
+                    <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId"  >Order Id</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Customername}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Customername"  >Name</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Servicedescription"  >Beschreibung</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="IsAllInclusive"  >Ales ink.</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy - hh.mm, Mode=OneWay}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="PreferedDate"  >Termin</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
                     <!--<GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date.Hour, Mode=OneWay}" Header="Startzeit" />-->
-                    <GridViewColumn DisplayMemberBinding="{Binding BookedItems}" Header="Einheiten" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Address}" Header="Adresse" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Zip}" Header="PLZ" />
-                    <GridViewColumn DisplayMemberBinding="{Binding City}" Header="Ort" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Telefon" />
-                    <GridViewColumn  Header="Auftragsstatus">
-                        <GridViewColumn.CellTemplate>
+                    <GridViewColumn DisplayMemberBinding="{Binding BookedItems}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="BookedItems"  >Einheiten</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding Address}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Address"  >Adresse</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding Zip}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Zip"  >PLZ</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding City}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="City"  >Ort</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding Phone}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Phone"  >Telefon</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Status"  >Auftragsstatus</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    
+                    <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label>
                                     <MultiBinding Converter="{StaticResource TwoStringToStatusString}">
@@ -62,6 +111,7 @@
                                 </Label>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
+                        
                     </GridViewColumn>
 
                     <!--<GridViewColumn  Header="Abgeschlossen" >

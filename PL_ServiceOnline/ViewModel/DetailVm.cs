@@ -209,7 +209,8 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.PreferedDate = PreferedDate;
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
-            
+            ////für refresh der Liste
+            //msg.Send<GenericMessage<string>>(new GenericMessage<string>("refreshJobs"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);

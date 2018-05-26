@@ -15,6 +15,8 @@ namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
+        public Dictionary<string,bool> OrderDirection { get; set; }
+        public RelayCommand<string> ClmOrder { get; set; }
 
         private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
         
@@ -49,6 +51,20 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public JobsVm()
         {
+            OrderDirection = new Dictionary<string, bool>()
+            {
+                { "OrderItemId", false },
+                { "Customername", false },
+                { "Servicedescription", false },
+                { "IsAllInclusive", false },
+                { "PreferedDate", false },
+                { "BookedItems", false },
+                { "Address", false },
+                { "Zip", false },
+                { "City", false },
+                { "Phone", false },
+                { "Status", false }
+            };
 
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
@@ -70,6 +86,8 @@ namespace PL_ServiceOnline.ViewModel
             });
 
 
+            ClmOrder = new RelayCommand<string>(OrderColumns());
+
             //Countries = new ObservableCollection<country>();
 
             //Dataprovider = new Dataprovider();
@@ -85,12 +103,64 @@ namespace PL_ServiceOnline.ViewModel
             //}
         }
 
+        private Action<string> OrderColumns()
+        {
+            return (para) =>
+            {
+                if(para != "Status")
+                {
+                    if (!OrderDirection[para])
+                    {
+                        var query = (from x in Orders
+                                     orderby x.GetType().GetProperty(para).GetValue(x, null) ascending
+                                     select x);
+                        Orders = new ObservableCollection<OrderSummary>(query);
+                        RaisePropertyChanged("Orders");
+                        OrderDirection[para] = !OrderDirection[para];
+                    }
+                    else
+                    {
+                        var query = (from x in Orders
+                                     orderby x.GetType().GetProperty(para).GetValue(x, null) descending
+                                     select x);
+                        Orders = new ObservableCollection<OrderSummary>(query);
+                        RaisePropertyChanged("Orders");
+                        OrderDirection[para] = !OrderDirection[para];
+                    }
+                }
+                else
+                {
+
+                    if (!OrderDirection[para])
+                    {
+                        var query = (from x in Orders
+                                     orderby x.IsConfirmed ascending, x.IsFinished ascending
+                                     select x);
+                        Orders = new ObservableCollection<OrderSummary>(query);
+                        RaisePropertyChanged("Orders");
+                        OrderDirection[para] = !OrderDirection[para];
+                    }
+                    else
+                    {
+                        var query = (from x in Orders
+                                     orderby x.IsConfirmed descending, x.IsFinished descending
+                                     select x);
+                        Orders = new ObservableCollection<OrderSummary>(query);
+                        RaisePropertyChanged("Orders");
+                        OrderDirection[para] = !OrderDirection[para];
+                    }
+
+
+                }
+
+
+            };
+        }
+
         private void ChangeOrder(GenericMessage<string> obj)
         {
-            
 
-
-            if(last != "past" && obj.Content == "past")
+            if (last != "past" && obj.Content == "past")
             {
                 Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
                 RaisePropertyChanged("Orders");

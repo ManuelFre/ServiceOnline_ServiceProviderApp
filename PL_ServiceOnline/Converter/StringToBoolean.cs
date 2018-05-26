@@ -12,7 +12,7 @@ namespace PL_ServiceOnline.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (((string)value).Equals("Y"))
+            if (value != null && ((string)value).Equals("Y"))
             {
                 return true;
             }
