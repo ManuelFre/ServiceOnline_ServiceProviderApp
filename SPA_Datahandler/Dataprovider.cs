@@ -17,12 +17,15 @@ namespace SPA_Datahandler
 
         public List<country> QueryAllCountries()
         {
+            
             SimpleDatabaseFunctions<country> SDF = new SimpleDatabaseFunctions<country>();
             return SDF.QueryAll();
         }
 
         public List<OrderSummary> QueryOrderSummaries()
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
@@ -52,6 +55,8 @@ namespace SPA_Datahandler
 
         public List<OrderSummary> QueryOrders()
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
@@ -82,6 +87,8 @@ namespace SPA_Datahandler
 
         public List<OrderSummary> QueryUpcomingOrders()
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
@@ -111,6 +118,8 @@ namespace SPA_Datahandler
         }
         public DetailedClass QueryDetailView(long OrderItemId)
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
@@ -182,6 +191,7 @@ namespace SPA_Datahandler
         //Updated Änderungen am Detailitem
         public bool UpdateOrderItemData(DetailedClass DetailToUpdate)
         {
+            dbContext = new DbServiceProviderAppEntities();
             //Auswerten des Order_item aus der DB
             order_item OriginalOrderItem = (from oi in dbContext.order_item
                                             where oi.Id == DetailToUpdate.OrderItemId
@@ -202,7 +212,8 @@ namespace SPA_Datahandler
                 OriginalOrderItem.final_price_with_tax = OriginalOrderItem.final_price;           //Falls der Final_Price geändert wurde
                 OriginalOrderItem.tax = OriginalOrderItem.final_price_with_tax - OriginalOrderItem.final_price_without_tax;
                 OriginalOrderItem.per_item_tax = OriginalOrderItem.tax / OriginalOrderItem.quantity;
- 
+
+               
 
                 //schreiben der Änderung in die spa_changes Tabelle
                 spa_changes chng = new spa_changes();
@@ -210,11 +221,11 @@ namespace SPA_Datahandler
                 chng.change_date = DateTime.Now;
 
                 dbContext.Set<spa_changes>().Add(chng);
-
+                
                 //Änderungen speichern
 
                 dbContext.SaveChanges();
-
+                
                 return true;
             }
             else
@@ -229,6 +240,8 @@ namespace SPA_Datahandler
 
         public void AddOrderItemReport(OrderItemReport NewReport)
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             //Holen der maximalen Order_item_report_id:
             int NextId = (from oim in dbContext.order_item_report
                           select oim.Id).Max() + 1;
@@ -264,11 +277,15 @@ namespace SPA_Datahandler
 
         public DateTime QueryLastSync()
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             return (from ls in dbContext.spa_synctimes
                     select ls.synctime).Max<DateTime>();
         }
         public bool LogInAndCheckUserData(string username, string password)
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = from ud in dbContext.service_provider_login
                         where ud.username == username && ud.password == password
                         select ud;
@@ -287,6 +304,7 @@ namespace SPA_Datahandler
 
         public string GetLoggedInUsername()
         {
+            dbContext = new DbServiceProviderAppEntities();
             // Mittleres Query wertet die Service_Provider_Id des zuletzt eingeloggten User aus,
             // äußeres Query holt mittels der ID den Username aus der service_provider_login Tabelle.
             var query = (from spl in dbContext.service_provider_login
@@ -303,6 +321,8 @@ namespace SPA_Datahandler
 
         public order_detail QueryOrderDetail(long OrderItemId)
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = from od in dbContext.order_detail
                         where od.Id == OrderItemId
                         select od;
@@ -312,6 +332,8 @@ namespace SPA_Datahandler
 
         public order_item QueryOrderItem(long OrderItemId)
         {
+            dbContext = new DbServiceProviderAppEntities();
+
             var query = from oi in dbContext.order_item
                         where oi.Id == OrderItemId
                         select oi;
