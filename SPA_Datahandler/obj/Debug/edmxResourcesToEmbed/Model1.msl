@@ -92,6 +92,7 @@
     <EntitySetMapping Name="service">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.service">
         <MappingFragment StoreEntitySet="service">
+          <ScalarProperty Name="service_unit" ColumnName="service_unit" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="product_source_id" ColumnName="product_source_id" />
           <ScalarProperty Name="name" ColumnName="name" />

@@ -152,7 +152,8 @@ namespace SPA_Datahandler
                     OrderId = x.oi.order_id,
                     IsConfirmed = x.oi.is_confirmed,
                     AddittionalCost = x.oi.addittional_cost,
-                    ServiceProviderComment = x.oi.service_provider_comment
+                    ServiceProviderComment = x.oi.service_provider_comment,
+                    ServiceUnit = x.sv.service_unit
                 });
 
             DetailedClass RetVal = query.Single();

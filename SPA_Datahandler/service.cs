@@ -33,6 +33,7 @@ namespace SPA_Datahandler
         public Nullable<double> all_inclusive_extra_charge { get; set; }
         public System.DateTime createdAt { get; set; }
         public Nullable<System.DateTime> deletedAt { get; set; }
+        public string service_unit { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_item> order_item { get; set; }
