@@ -21,7 +21,8 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}">
+        <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}"  >
+            
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <!--HIER DIE HOEHE UMSTELLEN--> 
@@ -37,12 +38,16 @@
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
+                            <!--HIER DAS STYLING DER COLUMN-HEADERS -->
                             <Setter Property="FontSize" Value="14"></Setter>
+                            <Setter Property="Height" Value="40"></Setter>
+                            <Setter Property="MinWidth" Value="60"></Setter>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
+                    
                     <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId"  >Order Id</GridViewColumnHeader>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId" >Order Id</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Customername}" >

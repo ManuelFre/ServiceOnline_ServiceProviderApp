@@ -24,5 +24,7 @@ namespace PL_ServiceOnline.Views
         {
             InitializeComponent();
         }
+
+
     }
 }

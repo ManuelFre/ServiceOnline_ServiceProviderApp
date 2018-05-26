@@ -35,9 +35,9 @@ namespace SPA_Datahandler.Datamodel
         public string Phone { get; set; }
         [DataMember]
         public string IsAllInclusive { get; set; }
+
         [DataMember]
-
-
+        //Check if null -> default 'N'
         public string IsFinished
         {
             get { return isFinished; }
@@ -45,8 +45,7 @@ namespace SPA_Datahandler.Datamodel
         }
 
         [DataMember]
-
-
+        //Check if null -> default 'N'
         public string IsConfirmed
         {
             get { return isConfirmed; }

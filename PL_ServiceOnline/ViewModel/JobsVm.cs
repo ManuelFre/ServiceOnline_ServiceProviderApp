@@ -7,14 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
+        public EventHandler<MouseEventArgs> DoubleClick { get; set; }
         public Dictionary<string,bool> OrderDirection { get; set; }
         public RelayCommand<string> ClmOrder { get; set; }
 
@@ -76,17 +76,16 @@ namespace PL_ServiceOnline.ViewModel
 
             msg.Register<GenericMessage<string>>(this, ChangeOrder);
 
-            BtnDetailView = new RelayCommand(() =>
-            {
-                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-
-            }, () =>
+            BtnDetailView = new RelayCommand(execute: OpenDetailed, canExecute: () =>
             {
                 return (SelectedJob != null);
             });
 
 
             ClmOrder = new RelayCommand<string>(OrderColumns());
+
+
+    
 
             //Countries = new ObservableCollection<country>();
 
@@ -101,6 +100,14 @@ namespace PL_ServiceOnline.ViewModel
             //{
             //    Countries.Add(item);
             //}
+        }
+
+        private void OpenDetailed()
+        {
+
+                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
+
+            
         }
 
         private Action<string> OrderColumns()
@@ -200,5 +207,7 @@ namespace PL_ServiceOnline.ViewModel
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
 
         }
+
+
     }
 }
