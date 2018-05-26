@@ -41,6 +41,7 @@ namespace PL_ServiceOnline.ViewModel
         public RelayCommand Btn_PastJobs { get;  set; }
         public RelayCommand Btn_Logout { get; set; }
         public RelayCommand Btn_Detail { get; set; }
+        public RelayCommand Btn_CompanyData { get; set; }
 
         public ViewModelBase CurrentDetailView
         {
@@ -86,7 +87,14 @@ namespace PL_ServiceOnline.ViewModel
                     return (SelectedJob != null);
                 }
                 );
-                
+
+                Btn_CompanyData = new RelayCommand(() =>
+                {
+
+                    CurrentDetailView = SimpleIoc.Default.GetInstance<CompanyDataVm>();
+
+                });
+
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
             }
 
