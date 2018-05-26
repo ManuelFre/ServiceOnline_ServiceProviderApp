@@ -14,37 +14,30 @@ namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
-        public EventHandler<MouseEventArgs> DoubleClick { get; set; }
-        public Dictionary<string,bool> OrderDirection { get; set; }
-        public RelayCommand<string> ClmOrder { get; set; }
-
         private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
-        
 
         private IMessenger msg = Messenger.Default;
 
         private OrderSummary selectedJob;
 
+
+        public Dictionary<string,bool> OrderDirection { get; set; }
+        public RelayCommand<string> ClmOrder { get; set; }
         public OrderSummary SelectedJob
         {
             get { return selectedJob; }
             set
             {
                 selectedJob = value;
-                
                 //msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
             }
         }
         public RelayCommand BtnSyncWithBackend { get; set; }
-
-
-
         public RelayCommand BtnDetailView { get; set; }
         public ObservableCollection<OrderSummary> Orders { get; set; }
         public string CountryName { get; set; }
         public string CountryIso2 { get; set; }
         public string CountryIso3 { get; set; }
-
         private OrderSummary OS { get; set; }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
@@ -76,7 +69,9 @@ namespace PL_ServiceOnline.ViewModel
 
             msg.Register<GenericMessage<string>>(this, ChangeOrder);
 
-            BtnDetailView = new RelayCommand(execute: OpenDetailed, canExecute: () =>
+            BtnDetailView = new RelayCommand(execute: () => {
+                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
+            }, canExecute: () =>
             {
                 return (SelectedJob != null);
             });
@@ -85,7 +80,7 @@ namespace PL_ServiceOnline.ViewModel
             ClmOrder = new RelayCommand<string>(OrderColumns());
 
 
-    
+        
 
             //Countries = new ObservableCollection<country>();
 
@@ -102,13 +97,7 @@ namespace PL_ServiceOnline.ViewModel
             //}
         }
 
-        private void OpenDetailed()
-        {
 
-                msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-
-            
-        }
 
         private Action<string> OrderColumns()
         {
