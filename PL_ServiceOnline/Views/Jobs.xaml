@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL_ServiceOnline.Views"
              xmlns:converters="clr-namespace:PL_ServiceOnline.Converter"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="1000">
     <UserControl.Resources>
@@ -21,19 +22,24 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}"  >
-            
+        <ListView ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedJob}" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding BtnDetailView}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <!--HIER DIE HOEHE UMSTELLEN--> 
+                    <!--HIER DIE HOEHE UMSTELLEN-->
                     <Setter Property="Height" Value="70"></Setter>
                     <Setter Property="BorderThickness" Value="2"></Setter>
                     <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
                     <Setter Property="FontSize" Value="14"></Setter>
-                    
+
                     <!--<Setter Property="Background" Value="{Binding IsAllInclusive, Converter={StaticResource AllIncStringToStringColor}}"></Setter>-->
                 </Style>
             </ListView.ItemContainerStyle>
+
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -44,7 +50,7 @@
                             <Setter Property="MinWidth" Value="60"></Setter>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId" >Order Id</GridViewColumnHeader>
@@ -55,7 +61,7 @@
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Customername"  >Name</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding Servicedescription}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Servicedescription"  >Beschreibung</GridViewColumnHeader>
@@ -77,25 +83,25 @@
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="BookedItems"  >Einheiten</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding Address}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Address"  >Adresse</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding Zip}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Zip"  >PLZ</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding City}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="City"  >Ort</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    
+
                     <GridViewColumn DisplayMemberBinding="{Binding Phone}">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Phone"  >Telefon</GridViewColumnHeader>
@@ -105,8 +111,8 @@
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Status"  >Auftragsstatus</GridViewColumnHeader>
                         </GridViewColumn.Header>
-                    
-                    <GridViewColumn.CellTemplate>
+
+                        <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Label>
                                     <MultiBinding Converter="{StaticResource TwoStringToStatusString}">
@@ -116,7 +122,7 @@
                                 </Label>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                        
+
                     </GridViewColumn>
 
                     <!--<GridViewColumn  Header="Abgeschlossen" >
@@ -141,7 +147,7 @@
 
                 </GridView>
             </ListView.View>
-            
+
         </ListView>
         <!--<DataGrid  Margin="5" ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedJob}">
             <DataGrid.Columns>
