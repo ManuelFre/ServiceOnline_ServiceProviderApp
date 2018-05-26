@@ -7,26 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="1000">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type GroupBox}">
+                <!--<Setter Property="Background" Value="Gray" />-->
+                <Style.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
 
-        <GroupBox Header="Ihre Daten" FontSize="20">
-            <GroupBox.Resources>
-                <Style TargetType="{x:Type GroupBox}">
-                    <!--<Setter Property="Background" Value="Gray" />-->
-                    <Style.Resources>
-                        <Style TargetType="{x:Type Label}">
-                            <Setter Property="FontSize" Value="18" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                        </Style>
-                        <Style TargetType="{x:Type TextBox}">
-                            <Setter Property="FontSize" Value="18" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="HorizontalAlignment" Value="Stretch" />
-                            
-                        </Style>
-                    </Style.Resources>
-                </Style>
-            </GroupBox.Resources>
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
+        <GroupBox Header="Ihre Stammdaten" FontSize="20">
+
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -38,8 +42,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -58,20 +60,48 @@
                 <TextBox Grid.Row="3" Grid.Column="1"  Text=""></TextBox>
                 <TextBox Grid.Row="4" Grid.Column="1"  Text=""></TextBox>
 
-                <Label Grid.Row="0" Grid.Column="2">Ihre Statistiken</Label>
-                <Label Grid.Row="1" Grid.Column="2">KennzahlLabel1</Label>
-                <Label Grid.Row="2" Grid.Column="2">KennzahlLabel2</Label>
-                <Label Grid.Row="3" Grid.Column="2">KennzahlLabel3</Label>
-                <Label Grid.Row="4" Grid.Column="2">KennzahlLabel4</Label>
 
 
-                <Label  Grid.Row="1" Grid.Column="3" Content=""></Label>
-                <Label  Grid.Row="2" Grid.Column="3" Content=""></Label>
-                <Label  Grid.Row="3" Grid.Column="3" Content=""></Label>
-                <Label  Grid.Row="4" Grid.Column="3" Content=""></Label>
-
-                <Button Grid.Row="5" Grid.Column="3">Speichern</Button>
                 
+                
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Ihre Statistiken" FontSize="20" Grid.Column="1">
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#F5F5F8"></Border>
+                <Border Grid.Row="2" Grid.ColumnSpan="4" Background="#F5F5F8"></Border>
+                <Border Grid.Row="4" Grid.ColumnSpan="4" Background="#F5F5F8"></Border>
+                
+                <Label Grid.Row="0" Grid.Column="0">KennzahlLabel1</Label>
+                <Label Grid.Row="1" Grid.Column="0">KennzahlLabel2</Label>
+                <Label Grid.Row="2" Grid.Column="0">KennzahlLabel3</Label>
+                <Label Grid.Row="3" Grid.Column="0">KennzahlLabel4</Label>
+                <Label Grid.Row="4" Grid.Column="0">KennzahlLabel5</Label>
+
+
+                <Label  Grid.Row="1" Grid.Column="1" Content=""></Label>
+                <Label  Grid.Row="2" Grid.Column="1" Content=""></Label>
+                <Label  Grid.Row="3" Grid.Column="1" Content=""></Label>
+                <Label  Grid.Row="4" Grid.Column="1" Content=""></Label>
+
+                <Button Grid.Row="5" Grid.Column="1">Änderungen übernehmen</Button>
+
             </Grid>
         </GroupBox>
     </Grid>
