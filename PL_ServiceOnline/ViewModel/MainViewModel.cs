@@ -59,8 +59,8 @@ namespace PL_ServiceOnline.ViewModel
         {
             if (!IsInDesignMode)
             {
-                //CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
-                CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
+                CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
+                //CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
 
                 Btn_UpcomingJobs = new RelayCommand(() =>
                 {

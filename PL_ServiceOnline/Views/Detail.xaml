@@ -5,107 +5,398 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL_ServiceOnline.Views"
              xmlns:Converter="clr-namespace:PL_ServiceOnline.Converter" x:Class="PL_ServiceOnline.Views.Detail">
-             <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">--> 
+    <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">-->
     <UserControl.Resources>
+        <Converter:ByteToImage x:Key="ByteToImage"/>
+        <Converter:BoolStringToGerman x:Key="BoolStringToGerman"/>
         <Converter:StringToBoolean x:Key="StringToBoolean"/>
         <SolidColorBrush x:Key="BoldTextColor" Color="Black" />
- 
+        <SolidColorBrush x:Key="UnevenBackgroundColor" Color="WhiteSmoke" />
+
+
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
 
 
-    
 
-    <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="10">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-    <Grid  MinHeight="800" MinWidth="800">
-        <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="10*"/>
 
+    <Border BorderBrush="Black" BorderThickness="0.5"  Width="Auto" Margin="10" >
+        <Grid Margin="10,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Label Content="Auftrag" FontSize="28" FontWeight="Bold" />
+                <Label Content="{Binding OrderId}" FontSize="28" FontWeight="Bold" />
+            </StackPanel>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <Grid Margin="0,0,5,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Header="Kundendaten" Grid.Row="0" Margin="0,15,0,0">
+                        <!--<Label Content="Kundendaten" FontSize="20" Grid.Row="0" VerticalAlignment="Bottom"/>-->
+
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
 
-            <Label Content="Kundennummer:"      Grid.Row="0"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Vorname:"           Grid.Row="1"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Nachname:"          Grid.Row="2"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Adresse:"           Grid.Row="3"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="PLZ:"               Grid.Row="4"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Stadt:"             Grid.Row="5"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Telefon:"           Grid.Row="6"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Email:"             Grid.Row="7"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestellnummern ID:" Grid.Row="8"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestellnummer:"     Grid.Row="9"  HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bevorzugtes Datum:" Grid.Row="10" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Gebuchte Einheit:"  Grid.Row="11" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Bestelldatum:"      Grid.Row="12" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Content="Kunden Kommentar:"  Grid.Row="13" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Top" Height="30"/>
-            <Label Content="Bestellreport:"     Grid.Row="14" HorizontalAlignment="Right" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30"/>
+                            <Label Content="Kundennummer:" Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Vorname:"      Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Nachname:"     Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Adresse:"      Grid.Row="3" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="PLZ:"          Grid.Row="4" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Stadt:"        Grid.Row="5" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Telefon:"      Grid.Row="6" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Email:"        Grid.Row="7" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="3"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="4"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="5"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="6"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7"/>
+
+
+
+                            <Label  Grid.Column="1" Content="{Binding CustomerId}" Grid.Row="0"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label  Grid.Column="1" Content="{Binding Firstname}"  Grid.Row="1"    FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label  Grid.Column="1" Content="{Binding Lastname}"   Grid.Row="2"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label  Grid.Column="1" Content="{Binding Address}"    Grid.Row="3"    FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label  Grid.Column="1" Content="{Binding Zip}"        Grid.Row="4"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label  Grid.Column="1" Content="{Binding City}"       Grid.Row="5"    FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label  Grid.Column="1" Content="{Binding Phone}"      Grid.Row="6"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label  Grid.Column="1" Content="{Binding Email}"      Grid.Row="7"    FontSize="14" VerticalAlignment="Center" Height="30" />
+
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="3" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="4" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="5" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="6" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!--<Label Content="Auftragsdaten (vom Kunden festgelegt)" FontSize="20" Grid.Row="2" VerticalAlignment="Bottom"/>-->
+                    <GroupBox Header="Auftragsdaten (vom Kunden festgelegt)" Grid.Row="1" Margin="0,15,0,0">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Label Content="Bestellnummer:"         Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Bestelldatum:"          Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Beschreibung:"          Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Einheiten:"             Grid.Row="3" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Einheitendefinition:"   Grid.Row="4" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Termin:"                Grid.Row="5" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Kunden Kommentar:"      Grid.Row="6" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Stretch" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label Content="Alles inclusive:"       Grid.Row="7" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+                            <Label Content="Gesamtbetrag:"          Grid.Row="8" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Background="{StaticResource UnevenBackgroundColor}"/>
+
+
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="3"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="4"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="5"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="6"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="8"/>
+
+
+
+                            <Label     Grid.Row="0" Grid.Column="1" Content="{Binding OrderItemId}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="1" Grid.Column="1" Content="{Binding OrderedDateTime.Date, StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}"  FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="2" Grid.Column="1" Content="{Binding Servicedescription}"                                                      FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="3" Grid.Column="1" Content="{Binding BookedItems}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="4" Grid.Column="1" Content="{Binding ServiceUnit}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="5" Grid.Column="1" Content="{Binding PreferedDate.Date , StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}"    FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                             FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="7" Grid.Column="1" Content="{Binding IsAllInclusive, Converter={StaticResource BoolStringToGerman}}"           FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="8" Grid.Column="1" Content="{Binding Finalprice}"                                                              FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+
+
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="3" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="4" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="5" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="6" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7" Grid.Column="1"/>
+                            <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="8" Grid.Column="1"/>
+                        </Grid>
+                    </GroupBox>
+
+
+                    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+
+
+
+
+                    <!--<Label Content="Auftragsdaten ändern" FontSize="20" Grid.Row="4" VerticalAlignment="Bottom"/>-->
+
+                    <GroupBox Header="Auftragsdaten ändern" Grid.Row="2" Margin="0,15,0,0">
+
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Content="Zusätzliche Kosten:"   Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+                            <Label Content="Service Beschreibung:" Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+                            <!--<Label Content="Kommentare:"            Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>-->
+                            <Label Content="Auftragstatus:"               Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center"/>
+
+                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0"/>-->
+                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1"/>-->
+                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.RowSpan="4"/>-->
+                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2"/>-->
+
+
+                            <TextBox    Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalContentAlignment="Center"/>
+                            <TextBox    Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate}"  FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalContentAlignment="Center"/>
+                            <!--<TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Center" Margin="5" VerticalContentAlignment="Center"/>-->
+                            <ComboBox   Grid.Column="2" Grid.Row="2" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="16" Height="30" Margin="5" VerticalContentAlignment="Center"/>
+
+                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
+                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
+                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.RowSpan="4" Grid.Column="1"/>
+                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7" Grid.Column="1"/>-->
+
+
+
+                        </Grid>
 
 
 
 
 
-                <ListBox Grid.Row="15" Grid.ColumnSpan="5" ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch">
-                    
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            
-                            <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
+                    </GroupBox>
+
+
+
+
+
+                    <GroupBox Header="Kommentare" Grid.Row="3" Margin="0,15,0,0">
+
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Top" Margin="5" VerticalContentAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+
+
+                    <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" >
+
+                        <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10">
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
                                         <StackPanel Orientation="Vertical">
-                                            <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                            <Label Content="{Binding Id}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                            <Label Content="{Binding OrderItemId}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                            <Label Content="{Binding ReportDate}"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Vertical">
-                                            <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                            <Label Content="{Binding Comment}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                        <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
+                                            <StackPanel Orientation="Horizontal" Height="50">
+                                                <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                <Label Content="{Binding ReportDate.Date, StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}"/>
+                                                <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                <Label Content="{Binding Comment}"/>
+                                            </StackPanel>
 
-                                        <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="10">
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <!--<StackPanel Orientation="Vertical" Margin="5,0">
+
+
+
+                                            <!--<StackPanel Orientation="Horizontal">
+                                                -->
+                                            <!--<StackPanel Orientation="Vertical">
+                                                    <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding Id}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding OrderItemId}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding ReportDate}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding Comment}"/>
+                                                </StackPanel>-->
+                                            <!--
+                                            </StackPanel>-->
+                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border BorderBrush="Black" BorderThickness="0" CornerRadius="5" Margin="10">
+                                                            <StackPanel Orientation="Horizontal">
+
+
+
+                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />
+
+
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}, Path=IsSelected}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" TargetName="SelectedOnlyListBox" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+                    </GroupBox>
+
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,15,0,0">
+                        <Button Margin="5"  Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
+                        <Button Margin="5"  Content="Dokumente anhängen"  Height="40"  Width="280" Command="{Binding BtnAppendDocuments}" HorizontalAlignment="Left"/>
+                        <Button Margin="5"  Content="Servicereport erstellen"  Height="40"  Width="280" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<Label Content="Fertig?"               Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+<Label Content="Bestätigt?"            Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />-->
+<!--<CheckBox   Grid.Column="2" Grid.Row="1" IsChecked="{Binding IsFinished, Converter={StaticResource StringToBoolean}}"        HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
+<CheckBox   Grid.Column="2" Grid.Row="2" IsChecked="{Binding IsConfirmed, Converter={StaticResource StringToBoolean}}"       HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />-->
+
+
+
+
+
+
+<!-- <ListBox Grid.Row="15" Grid.ColumnSpan="5" ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch">
+
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding Id}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding OrderItemId}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding ReportDate}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
+                                                    <Label Content="{Binding Comment}"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="10">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                -->
+<!--<StackPanel Orientation="Vertical" Margin="5,0">
                                                             <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" />
                                                                 <Label Content="{Binding Id}"/>
                                                             </StackPanel>
@@ -113,77 +404,25 @@
                                                             <Label Content="Bestell Item Report ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
                                                                 <Label Content="{Binding OrderItemReportId}"/>
                                                             </StackPanel>-->
-                                                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Margin="20" >-->
-                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />                                                            
-                                                            <!--</Border>-->
-                                                        </StackPanel>
-                                                    </Border>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    
-                                </StackPanel>
-                            </Border>
-                            <DataTemplate.Triggers>
-                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}, Path=IsSelected}" Value="True">
-                                    <Setter Property="Visibility" Value="Visible" TargetName="SelectedOnlyListBox" />
-                                </DataTrigger>
-                            </DataTemplate.Triggers>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                        
+<!--<Border BorderBrush="Black" BorderThickness="0.5" Margin="20" >-->
+<!--
+                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />
+                                                                -->
+<!--</Border>-->
+<!--
+                                                            </StackPanel>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
 
-
-            <Label Grid.Column="1" Content="{Binding CustomerId}"                                                      MinWidth="200" Grid.Row="0"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Firstname}"                                                       MinWidth="200" Grid.Row="1"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Lastname}"                                                        MinWidth="200" Grid.Row="2"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Address}"                                                         MinWidth="200" Grid.Row="3"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Zip}"                                                             MinWidth="200" Grid.Row="4"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding City}"                                                            MinWidth="200" Grid.Row="5"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Phone}"                                                           MinWidth="200" Grid.Row="6"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Email}"                                                           MinWidth="200" Grid.Row="7"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding OrderItemId}"                                                     MinWidth="200" Grid.Row="8"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding OrderId}"                                                         MinWidth="200" Grid.Row="9"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding Servicedescription}"                                              MinWidth="200" Grid.Row="10" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding BookedItems}"                                                     MinWidth="200" Grid.Row="11" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <Label Grid.Column="1" Content="{Binding OrderedDateTime}"                                                 MinWidth="200" Grid.Row="12" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-            <TextBlock TextWrapping="WrapWithOverflow" Grid.Column="1" Text="{Binding CustomerNotice}"                 MinWidth="200" Grid.Row="13" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" />
-            <Label Grid.Column="1" Content="{Binding OrderItemReports}"                                                MinWidth="200" Grid.Row="14" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" Height="30"/>
-
-
-        <Label Content="Zusätzliche Kosten:"   FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Endpreis:"             FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Alles inclusive?"      FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Fertig?"               FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Bestätigt?"            FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Service Beschreibung:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center" />
-        <Label Content="Kommentar:"            FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right"  FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>
-
-
-        <TextBox    Margin="1" Grid.Column="3" Grid.Row="0" Text="{Binding AddittionalCost}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-        <TextBox    Margin="1" Grid.Column="3" Grid.Row="1" Text="{Binding Finalprice}"  Width="280" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="2" IsChecked="{Binding IsAllInclusive, Converter={StaticResource StringToBoolean}}"    HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center"  />
-        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="3" IsChecked="{Binding IsFinished, Converter={StaticResource StringToBoolean}}"        HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-        <CheckBox   Margin="1" Grid.Column="3" Grid.Row="4" IsChecked="{Binding IsConfirmed, Converter={StaticResource StringToBoolean}}"       HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-        <TextBox    Margin="1" Grid.Column="3" Grid.Row="5" Text="{Binding PreferedDate}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-        <TextBox    Margin="1" Grid.Column="3" Grid.Row="6" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}" Width="280"  HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center"/>
-
-        <Button     Margin="1" Grid.Column="3" Grid.Row="10" Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
-        <Button     Margin="1" Grid.Column="3" Grid.Row="12" Content="Servicereport erstellen"  Height="40"  Width="280" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
-            </Grid>
-    </ScrollViewer>
-    </Border>
-</UserControl>
-            <!--<Label Content="Order Id:"  Grid.Row="1" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding OrderItemId}" Grid.Column="1" Grid.Row="1"></TextBox>
-        <Label Content="Customer Name:"  Grid.Row="2" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding Customername}" Grid.Column="1" Grid.Row="2"></TextBox>
-        <Label Content="Beschreibung:"  Grid.Row="3" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding Servicedescription}" Grid.Column="1" Grid.Row="3"></TextBox>
-        <Label Content="Adresse:"  Grid.Row="4" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding Address}" Grid.Column="1" Grid.Row="4"></TextBox>
-        <Label Content="Stadt:"  Grid.Row="5" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding City}" Grid.Row="5" Grid.Column="1"/>
-        <Label Content="Fertig?"  Grid.Row="6" FontSize="20" VerticalAlignment="Center" Height="36" Margin="0,12"/>
-        <TextBox Text="{Binding IsFinished}" Grid.Column="1" Grid.Row="6"></TextBox>-->
+                                        </StackPanel>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}, Path=IsSelected}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" TargetName="SelectedOnlyListBox" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>-->

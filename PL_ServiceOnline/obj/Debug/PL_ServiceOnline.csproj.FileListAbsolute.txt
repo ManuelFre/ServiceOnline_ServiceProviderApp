@@ -498,3 +498,5 @@ C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj
 C:\Users\manue\source\repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
 C:\Users\manue\source\repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csprojAssemblyReference.cache
+C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
+C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml

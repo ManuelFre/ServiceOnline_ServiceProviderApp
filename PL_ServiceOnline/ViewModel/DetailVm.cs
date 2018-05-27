@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Win32;
 using PdfSharp.Pdf;
 using PL_ServiceOnline.Converter;
 using SPA_Datahandler;
@@ -40,6 +41,8 @@ namespace PL_ServiceOnline.ViewModel
 
         public RelayCommand BtnSyncWithBackend { get; set; }
         public ObservableCollection<OrderSummary> UpcomingOrders { get; set; }
+
+        public RelayCommand BtnAppendDocuments { get; set; }
 
 
 
@@ -92,12 +95,7 @@ namespace PL_ServiceOnline.ViewModel
             set { serviceProviderComment = value; RaisePropertyChanged(); }
         }
 
-
-        public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
-
-
-
-        private DetailedClass OS { get; set; }
+        public string ServiceUnit { get; set; }
 
         //TODO: IsFinished und IsConfirmed zusammenfassen und als Combobox ("Status:") anzeigen "nicht angenommen"(default wenn null, N, Nein), "abgelehnt" (msgBox=>confirm das der auftrag wirklich abgelehnt werden will), "angenommen" und "erledigt" 
         //Auftrag löschen
@@ -107,7 +105,26 @@ namespace PL_ServiceOnline.ViewModel
         /// <summary>
         /// "nicht angenommen"(default wenn null, N, Nein), "abgelehnt" (msgBox=>confirm das der auftrag wirklich abgelehnt werden will), "angenommen" und "erledigt" 
         /// </summary>
-        public string Status { get; set; }
+
+        private string status;
+                    
+        public string Status
+        {
+            get { return status; }
+            set { status = value; RaisePropertyChanged(); }
+        }
+
+
+        //public string Status { get; set; }
+
+        public string[] AllStatuses { get; set; }
+
+
+        public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
+
+
+
+        private DetailedClass OS { get; set; }
 
 
 
@@ -116,6 +133,8 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public DetailVm()
         {
+            AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt" };
+
             SelectedJob = new OrderSummary();
 
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
@@ -129,9 +148,20 @@ namespace PL_ServiceOnline.ViewModel
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
             BtnCreateReport = new RelayCommand(() => CreateReport());
+            BtnAppendDocuments = new RelayCommand(() => AppendDocuments());
 
             CreateDemoData();
 
+        }
+
+        private void AppendDocuments()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPEG files (*.jpg)|*jpg";
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+            }
         }
 
         private void CreateReport()
@@ -174,17 +204,18 @@ namespace PL_ServiceOnline.ViewModel
             Email = "test@test.test";
             OrderItemId = 55;
             OrderId = 100000000;
-            PreferedDate = new DateTime(2018, 1, 1);
+            PreferedDate = new DateTime(2018, 12, 31);
             Servicedescription = "Beschreibung des Services, sehr guter service. Sehr toll!!!!!";
             BookedItems = 444;
             IsAllInclusive = "Y";
             Finalprice = 76.43;
-            OrderedDateTime = new DateTime(2018, 1, 1);
+            OrderedDateTime = new DateTime(2018, 12, 31);
             CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?\n\nnoch mehr text";
             IsFinished = "N";
             IsConfirmed = "Y";
             AddittionalCost = 84.44;
             ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
+            ServiceUnit = "Arbeitsstunde";
             OrderItemReports = new ObservableCollection<OrderItemReport>()
             {
                 new OrderItemReport()
@@ -245,8 +276,11 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.AddittionalCost = AddittionalCost;
             SelectedDetailed.Finalprice = Finalprice;
             SelectedDetailed.IsAllInclusive = IsAllInclusive;
-            SelectedDetailed.IsConfirmed = IsConfirmed;
-            SelectedDetailed.IsFinished = IsFinished;
+            //SelectedDetailed.IsConfirmed = IsConfirmed;
+            //SelectedDetailed.IsFinished = IsFinished;
+            SelectedDetailed.IsConfirmed = GetConfirmStatus(Status);
+            SelectedDetailed.IsFinished = GetFinishedStatus(Status);
+
             SelectedDetailed.PreferedDate = PreferedDate;
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
@@ -256,6 +290,46 @@ namespace PL_ServiceOnline.ViewModel
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+
+        private string GetStatus(string isFinished, string isConfirmed)
+        {
+            if (IsFinished != null && isConfirmed != null)
+            {
+                if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
+                {
+                    return AllStatuses[0];//Abgeschlossen
+                }
+                else if (isConfirmed.Equals("Y") || isConfirmed.Equals("Ja"))
+                {
+                    return AllStatuses[1]; // Angenommen
+                }
+            }
+
+
+            return AllStatuses[2]; //Nicht bestätigt"
+        }
+        private string GetFinishedStatus(string status)
+        {
+            //wenn status in checkbox == Abgeschlossen [0]
+            if (status != null)
+            {
+                if (status.Equals(AllStatuses[0]))
+                    return "Y";
+            }
+            return "N";
+        }
+
+        private string GetConfirmStatus(string status)
+        {
+            //wenn status in checkbox == Abgeschlossen [0] oder Angenommen [1]  dann 'Y'
+            if (status != null)
+            {
+                if (status.Equals(AllStatuses[0]) || status.Equals(AllStatuses[1]))
+                        return "Y";
+            }
+            return "N";
         }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
@@ -302,11 +376,15 @@ namespace PL_ServiceOnline.ViewModel
                 IsConfirmed = SelectedDetailed.IsConfirmed;
                 AddittionalCost = SelectedDetailed.AddittionalCost;
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
+                ServiceUnit = SelectedDetailed.ServiceUnit;
                 OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
+                Status = GetStatus(IsFinished, IsConfirmed);
 
             }
 
         }
+
+        
 
         public void StartSync()
         {
