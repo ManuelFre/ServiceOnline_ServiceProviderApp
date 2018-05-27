@@ -44,6 +44,7 @@ namespace PL_ServiceOnline.ViewModel
             SimpleIoc.Default.Register<LoginVm>(true);
             //SimpleIoc.Default.Register<UpcomingJobsVm>(true); not used anymore!
             SimpleIoc.Default.Register<JobsVm>(true);
+            SimpleIoc.Default.Register<CompanyDataVm>(true);
             SimpleIoc.Default.Register<DetailVm>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
@@ -83,6 +84,15 @@ namespace PL_ServiceOnline.ViewModel
                 return ServiceLocator.Current.GetInstance<DetailVm>();
             }
         }
+        public CompanyDataVm CompanyData
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CompanyDataVm>();
+            }
+        }
+
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

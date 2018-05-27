@@ -7,48 +7,58 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
-
         private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
-        
 
         private IMessenger msg = Messenger.Default;
 
         private OrderSummary selectedJob;
 
+
+        public Dictionary<string,bool> OrderDirection { get; set; }
+        public RelayCommand<string> ClmOrder { get; set; }
         public OrderSummary SelectedJob
         {
             get { return selectedJob; }
             set
             {
                 selectedJob = value;
-                
                 //msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
             }
         }
         public RelayCommand BtnSyncWithBackend { get; set; }
-
-
-
         public RelayCommand BtnDetailView { get; set; }
         public ObservableCollection<OrderSummary> Orders { get; set; }
         public string CountryName { get; set; }
         public string CountryIso2 { get; set; }
         public string CountryIso3 { get; set; }
-
         private OrderSummary OS { get; set; }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public JobsVm()
         {
+            OrderDirection = new Dictionary<string, bool>()
+            {
+                { "OrderItemId", false },
+                { "Customername", false },
+                { "Servicedescription", false },
+                { "IsAllInclusive", false },
+                { "PreferedDate", false },
+                { "ServiceUnit" ,false },
+                { "BookedItems", false },
+                { "Address", false },
+                { "Zip", false },
+                { "City", false },
+                { "Phone", false },
+                { "Status", false }
+            };
 
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
@@ -60,15 +70,18 @@ namespace PL_ServiceOnline.ViewModel
 
             msg.Register<GenericMessage<string>>(this, ChangeOrder);
 
-            BtnDetailView = new RelayCommand(() =>
-            {
+            BtnDetailView = new RelayCommand(execute: () => {
                 msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-
-            }, () =>
+            }, canExecute: () =>
             {
                 return (SelectedJob != null);
             });
 
+            // Befehl bei Klick auf eine Column
+            ClmOrder = new RelayCommand<string>(OrderColumns());
+
+
+        
 
             //Countries = new ObservableCollection<country>();
 
@@ -85,12 +98,57 @@ namespace PL_ServiceOnline.ViewModel
             //}
         }
 
+
+
+        private Action<string> OrderColumns()
+        {
+            return (para) =>
+            {
+                IEnumerable<OrderSummary> query;
+
+                if(para != "Status")
+                {
+                    if (!OrderDirection[para])
+                    {
+                        query = (from x in Orders
+                                     orderby x.GetType().GetProperty(para).GetValue(x, null) ascending
+                                     select x);
+                    }
+                    else
+                    {
+                        query = (from x in Orders
+                                     orderby x.GetType().GetProperty(para).GetValue(x, null) descending
+                                     select x);
+                    }
+                }
+                else
+                {
+                    if (!OrderDirection[para])
+                    {
+                        query = (from x in Orders
+                                     orderby x.IsFinished ascending, x.IsConfirmed ascending
+                                     select x);
+                    }
+                    else
+                    {
+                        query = (from x in Orders
+                                     orderby x.IsFinished descending, x.IsConfirmed descending
+                                     select x);
+                    }
+
+
+                }
+                Orders = new ObservableCollection<OrderSummary>(query);
+                RaisePropertyChanged("Orders");
+                OrderDirection[para] = !OrderDirection[para];
+
+            };
+        }
+
         private void ChangeOrder(GenericMessage<string> obj)
         {
-            
 
-
-            if(last != "past" && obj.Content == "past")
+            if (last != "past" && obj.Content == "past")
             {
                 Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
                 RaisePropertyChanged("Orders");
@@ -107,8 +165,9 @@ namespace PL_ServiceOnline.ViewModel
 
         public void StartSync()
         {
-            SyncFromBackend SFB = new SyncFromBackend();
-            MessageBox.Show(SFB.StartSync().ToString());
+            //SyncFromBackend SFB = new SyncFromBackend();
+            //MessageBox.Show(SFB.StartSync().ToString());
+            MessageBox.Show("Aus Sicherheitsgründen deaktiviert von Freischlager");
 
         }
 
@@ -130,5 +189,7 @@ namespace PL_ServiceOnline.ViewModel
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
 
         }
+
+
     }
 }

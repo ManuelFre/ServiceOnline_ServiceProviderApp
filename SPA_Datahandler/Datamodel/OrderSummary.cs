@@ -10,6 +10,13 @@ namespace SPA_Datahandler.Datamodel
     [DataContract]
     public class OrderSummary
     {
+
+        private string isFinished;
+        private string isConfirmed;
+
+        [DataMember]
+        public string ServiceUnit { get; set; }
+
         [DataMember]
         public long OrderItemId { get; set; }
         [DataMember]
@@ -30,10 +37,23 @@ namespace SPA_Datahandler.Datamodel
         public string Phone { get; set; }
         [DataMember]
         public string IsAllInclusive { get; set; }
+
         [DataMember]
-        public string IsFinished { get; set; }
+        //Check if null -> default 'N'
+        public string IsFinished
+        {
+            get { return isFinished; }
+            set { isFinished = value ?? "N"; }
+        }
+
         [DataMember]
-        public string IsConfirmed { get; set; }
+        //Check if null -> default 'N'
+        public string IsConfirmed
+        {
+            get { return isConfirmed; }
+            set { isConfirmed = value ?? "N"; }
+        }
+
 
 
         private Dataprovider dp;

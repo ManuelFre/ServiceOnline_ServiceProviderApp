@@ -1,0 +1,107 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL_ServiceOnline.Views"
+             xmlns:ViewModel="clr-namespace:PL_ServiceOnline.ViewModel" x:Class="PL_ServiceOnline.Views.CompanyData"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <UserControl.DataContext>
+        <ViewModel:CompanyDataVm/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type GroupBox}">
+                <!--<Setter Property="Background" Value="Gray" />-->
+                <Style.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Ihre Stammdaten" FontSize="20">
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+                <Border Grid.Row="2" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+                <Border Grid.Row="4" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+                <Label Grid.Row="0" Content="Firmenname"/>
+                <Label Grid.Row="1" Content="Adresse"/>
+                <Label Grid.Row="2" Content="Postleitzahl"/>
+                <Label Grid.Row="3" Content="Ort"/>
+                <Label Grid.Row="4" Content="Telefonnummer"/>
+
+                <Label  Grid.Row="0" Grid.Column="1"    Content="{Binding CompanyName}"/>
+                <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding Address}"/>
+                <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding Zip}"/>
+                <TextBox Grid.Row="3" Grid.Column="1"  Text="{Binding City}"/>
+                <TextBox Grid.Row="4" Grid.Column="1"  Text="{Binding Phone}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Ihre Statistiken" FontSize="20" Grid.Column="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+                <Border Grid.Row="2" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+                <Border Grid.Row="4" Grid.ColumnSpan="4" Background="#F5F5F8"/>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Anz. abgeschlossener Aufträge"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Anz. offener Aufträge"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Anz. offener Aufträge Monat"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Anz. nicht angenommene Aufträge"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Umsatz abgeschl. Aufträge (€)"/>
+
+
+                <Label  Grid.Row="0" Grid.Column="1" Content="{Binding CntCompletedOrders}"/>
+                <Label  Grid.Row="1" Grid.Column="1" Content="{Binding CntOpenOrders}"/>
+                <Label  Grid.Row="2" Grid.Column="1" Content="{Binding CntOpenOrdersThisMonth}"/>
+                <Label  Grid.Row="3" Grid.Column="1" Content="{Binding CntUnconfirmedOrders}"/>
+                <Label  Grid.Row="4" Grid.Column="1" Content="{Binding SumTargetedSales}"/>
+                
+                <Button Grid.Row="5" Grid.Column="1" Margin="5" Content="Änderungen übernehmen" Command="{Binding BtnChangeClicked}"/>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

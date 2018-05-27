@@ -118,6 +118,7 @@
     <NavigationProperty Name="order_item" Relationship="Self.order_item_service_fk" FromRole="service" ToRole="order_item" />
     <NavigationProperty Name="service_category" Relationship="Self.service_service_category_fk" FromRole="service" ToRole="service_category" />
     <NavigationProperty Name="service_provider" Relationship="Self.service_service_provider_fk" FromRole="service" ToRole="service_provider" />
+    <Property Name="service_unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="service_category">
     <Key>
@@ -603,6 +604,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
     <Property Name="last_login" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="is_logged_in" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
   <EntityType Name="spa_synctimes">
     <Key>
