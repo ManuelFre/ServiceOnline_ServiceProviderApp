@@ -14,7 +14,7 @@ namespace PL_ServiceOnline.ViewModel
 {
     public class JobsVm : ViewModelBase
     {
-        //private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
+        private string last = ""; //Wird benutzt, um zu überprüfen ob VM neu reingeladen werden muss - dient also dazu, dass ein ausgewähltes Element so bleibt.
 
         private IMessenger msg = Messenger.Default;
 
@@ -147,20 +147,34 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ChangeOrder(GenericMessage<string> obj)
         {
+            if(obj.Content == "update")
+            {
+                last = "update";
+            }
 
-            if (/*(last != "past" && */ obj.Content == "past")
-            {
-                Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
-                RaisePropertyChanged("Orders");
+            else {
+                if (last != "past" && obj.Content == "past")
+                {
+                    Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
+                    RaisePropertyChanged("Orders");
+                }
+                else if (last != "future" && obj.Content == "future")
+                {
+                    Orders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
+                    RaisePropertyChanged("Orders");
+                }
+
             }
-            else if(/*last != "future" &&*/ obj.Content == "future")
-            {
-                Orders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
-                RaisePropertyChanged("Orders");
-            }
+
+
+            //else if (obj.Content == "update")
+            //{
+            //    Orders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
+            //    RaisePropertyChanged("Orders");
+            //}
 
             //last = obj.Content;
-            
+
         }
 
         public void StartSync()

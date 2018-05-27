@@ -87,6 +87,10 @@ namespace PL_ServiceOnline.ViewModel
         public double? AddittionalCost { get; set; }
 
 
+        public string StringPreferedDate { get; set; }
+        public string StringOrderedDateTime { get; set; }
+
+
         private string serviceProviderComment;
 
         public string ServiceProviderComment
@@ -152,6 +156,8 @@ namespace PL_ServiceOnline.ViewModel
 
             CreateDemoData();
 
+            StringOrderedDateTime =  OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
+            StringPreferedDate =  PreferedDate.ToString("dd.MM.yyyy - hh.mm");
         }
 
         private void AppendDocuments()
@@ -273,6 +279,9 @@ namespace PL_ServiceOnline.ViewModel
         {
             //TODO: update db and test if it works
             //OS.AddittionalCost = AddittionalCost;
+
+            
+
             SelectedDetailed.AddittionalCost = AddittionalCost;
             SelectedDetailed.Finalprice = Finalprice;
             SelectedDetailed.IsAllInclusive = IsAllInclusive;
@@ -285,6 +294,8 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
 
+            
+            msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -348,7 +359,7 @@ namespace PL_ServiceOnline.ViewModel
             //PreferedDate;
             //ServiceProviderComment;
 
-
+            //.Contains(",") ? AddittionalCost.Replace(',', '.') : AddittionalCost  .Replace('.', ',')
 
 
             if (SelectedJob != null)
