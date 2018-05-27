@@ -2,14 +2,12 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Win32;
-using PdfSharp.Pdf;
 using PL_ServiceOnline.Converter;
 using SPA_Datahandler;
 using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -107,7 +105,7 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
 
         private string status;
-                    
+
         public string Status
         {
             get { return status; }
@@ -136,46 +134,81 @@ namespace PL_ServiceOnline.ViewModel
             AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt" };
 
             SelectedJob = new OrderSummary();
+            OS = new DetailedClass();
 
+            Dp = new Dataprovider();
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
             MyClassInitialize();
 
-            OS = new DetailedClass();
 
-            Dp = new Dataprovider();
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
             BtnCreateReport = new RelayCommand(() => CreateReport());
             BtnAppendDocuments = new RelayCommand(() => AppendDocuments());
 
-            CreateDemoData();
+
+            //CreateDemoData();
 
         }
 
         private void AppendDocuments()
         {
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JPEG files (*.jpg)|*jpg";
+            openFileDialog.Title = "Select a picture";
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"; ;
             if (openFileDialog.ShowDialog() == true)
             {
+                try
+                {
+                    SelectedDetailed.OrderItemReports.Add(
+                        new OrderItemReport()
+                        {
+                            //Comment = "Kommentar kksksksksk",
+                            //Id = 59,
+                            //OrderItemId = 44,
+                            ReportDate = new DateTime(),
+                            Appendix = new List<OrderItemReportAppendix>()
+                            {
+                                new OrderItemReportAppendix()
+                                {
+                                    //Id = 10,
+                                    //OrderItemReportId = 50,
+                                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)))
+                                }
+                            }
+                        });
+                    if (Dp.UpdateOrderItemData(SelectedDetailed))
+                        MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Laden des Bildes fehlgeschlagen!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
             }
         }
 
         private void CreateReport()
         {
+            throw new NotImplementedException();
             //TODO: Create PDF here (PDFsharp NuGet package schon eingebaut)
 
 
             // Create a temporary file
-            string filename = String.Format("{0}_tempfile.pdf", Guid.NewGuid().ToString("D").ToUpper());
-            var s_document = new PdfDocument();
-            s_document.Info.Title = "PDFsharp XGraphic Sample";
-            s_document.Info.Author = "Stefan Lange";
-            s_document.Info.Subject = "Created with code snippets that show the use of graphical functions";
-            s_document.Info.Keywords = "PDFsharp, XGraphics";
+            //string filename = String.Format("{0}_tempfile.pdf", Guid.NewGuid().ToString("D").ToUpper());
+            //var s_document = new PdfDocument();
+            //s_document.Info.Title = "PDFsharp XGraphic Sample";
+            //s_document.Info.Author = "Stefan Lange";
+            //s_document.Info.Subject = "Created with code snippets that show the use of graphical functions";
+            //s_document.Info.Keywords = "PDFsharp, XGraphics";
 
             //// Create demonstration pages
             //new LinesAndCurves().DrawPage(s_document.AddPage());
@@ -185,11 +218,14 @@ namespace PL_ServiceOnline.ViewModel
             //new Images().DrawPage(s_document.AddPage());
 
             // Save the s_document...
-            s_document.Save(filename);
-            // ...and start a viewer
-            Process.Start(filename);
+            //s_document.Save(filename);
 
-            throw new NotImplementedException();
+
+
+            // ...and start a viewer
+            //Process.Start(filename);
+
+
         }
 
         private void CreateDemoData()
@@ -327,7 +363,7 @@ namespace PL_ServiceOnline.ViewModel
             if (status != null)
             {
                 if (status.Equals(AllStatuses[0]) || status.Equals(AllStatuses[1]))
-                        return "Y";
+                    return "Y";
             }
             return "N";
         }
@@ -384,7 +420,7 @@ namespace PL_ServiceOnline.ViewModel
 
         }
 
-        
+
 
         public void StartSync()
         {

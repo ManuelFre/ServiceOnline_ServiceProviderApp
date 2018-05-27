@@ -14,6 +14,7 @@ namespace PL_ServiceOnline.Converter
         {
             using (var ms = new MemoryStream()) //Image resourcen sind sehr groß und damit der Stream sofort wieder disposed wird diesen in ein using statement
             {
+                
                 JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(image));
                 encoder.Save(ms);
