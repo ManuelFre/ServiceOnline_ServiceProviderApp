@@ -45,7 +45,7 @@ namespace PL_ServiceOnline.ViewModel
             //SimpleIoc.Default.Register<UpcomingJobsVm>(true); not used anymore!
             SimpleIoc.Default.Register<JobsVm>(true);
             SimpleIoc.Default.Register<CompanyDataVm>(true);
-            SimpleIoc.Default.Register<DetailVm>();
+            SimpleIoc.Default.Register<DetailVm>(true);
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

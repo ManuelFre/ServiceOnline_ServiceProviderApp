@@ -135,13 +135,15 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public DetailVm()
         {
+            msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
+
             AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt" };
 
             SelectedJob = new OrderSummary();
             OS = new DetailedClass();
 
             Dp = new Dataprovider();
-            msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
+            
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
             MyClassInitialize();
