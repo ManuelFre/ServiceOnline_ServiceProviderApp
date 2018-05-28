@@ -130,7 +130,7 @@
                             <Label Content="Beschreibung:"          Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label Content="Einheiten:"             Grid.Row="3" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
                             <Label Content="Einheitendefinition:"   Grid.Row="4" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label Content="Termin:"                Grid.Row="5" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
+                            <Label Content="Bevorzugter Termin:"    Grid.Row="5" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
                             <Label Content="Kunden Kommentar:"      Grid.Row="6" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Stretch" Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label Content="Alles inclusive:"       Grid.Row="7" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
                             <Label Content="Gesamtbetrag:"          Grid.Row="8" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Background="{StaticResource UnevenBackgroundColor}"/>
@@ -148,15 +148,15 @@
 
 
 
-                            <Label     Grid.Row="0" Grid.Column="1" Content="{Binding OrderItemId}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="1" Grid.Column="1" Content="{Binding StringOrderedDateTime}"  FontSize="14" VerticalAlignment="Center" Height="30"  />
-                            <Label     Grid.Row="2" Grid.Column="1" Content="{Binding Servicedescription}"                                                      FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="3" Grid.Column="1" Content="{Binding BookedItems}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  />
-                            <Label     Grid.Row="4" Grid.Column="1" Content="{Binding ServiceUnit}"                                                             FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="5" Grid.Column="1" Content="{Binding StringPreferedDate}"    FontSize="14" VerticalAlignment="Center" Height="30"  />
-                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                             FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="7" Grid.Column="1" Content="{Binding IsAllInclusive, Converter={StaticResource BoolStringToGerman}}"           FontSize="14" VerticalAlignment="Center" Height="30"  />
-                            <Label     Grid.Row="8" Grid.Column="1" Content="{Binding Finalprice}"                                                              FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="0" Grid.Column="1" Content="{Binding OrderItemId}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="1" Grid.Column="1" Content="{Binding StringOrderedDateTime}"                                         FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="2" Grid.Column="1" Content="{Binding Servicedescription}"                                            FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="3" Grid.Column="1" Content="{Binding BookedItems}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="4" Grid.Column="1" Content="{Binding ServiceUnit}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="5" Grid.Column="1" Content="{Binding StringPreferedDate}"                                            FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                   FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <Label     Grid.Row="7" Grid.Column="1" Content="{Binding IsAllInclusive, Converter={StaticResource BoolStringToGerman}}" FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <Label     Grid.Row="8" Grid.Column="1" Content="{Binding Finalprice}"                                                    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
 
 
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
@@ -197,8 +197,8 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Label Content="Zusätzliche Kosten:"   Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
-                            <Label Content="Service Beschreibung:" Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+                            <Label Content="Zusätzliche Kosten:" Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
+                            <Label Content="Termin:"             Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
                             <!--<Label Content="Kommentare:"            Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>-->
                             <Label Content="Auftragstatus:"               Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center"/>
 
@@ -209,7 +209,7 @@
 
 
                             <TextBox    Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalContentAlignment="Center"/>
-                            <TextBox    Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate, StringFormat=dd.MM.yyyy - hh.mm }"  FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalContentAlignment="Center"/>
+                            <DatePicker  DisplayDate="{Binding PreferedDate, StringFormat=dd.MM.yyyy}"  Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy}"  FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="30" Margin="5" VerticalContentAlignment="Center"/>
                             <!--<TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Center" Margin="5" VerticalContentAlignment="Center"/>-->
                             <ComboBox   Grid.Column="2" Grid.Row="2" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="16" Height="30" Margin="5" VerticalContentAlignment="Center"/>
 

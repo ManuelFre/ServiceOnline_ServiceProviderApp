@@ -157,8 +157,7 @@ namespace PL_ServiceOnline.ViewModel
 
             //CreateDemoData();
 
-            StringOrderedDateTime =  OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
-            StringPreferedDate =  PreferedDate.ToString("dd.MM.yyyy - hh.mm");
+            
         }
 
         private void AppendDocuments()
@@ -428,7 +427,8 @@ namespace PL_ServiceOnline.ViewModel
                 ServiceUnit = SelectedDetailed.ServiceUnit;
                 OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
                 Status = GetStatus(IsFinished, IsConfirmed);
-
+                StringOrderedDateTime = OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
+                StringPreferedDate = PreferedDate.ToString("dd.MM.yyyy - hh.mm");
             }
 
         }

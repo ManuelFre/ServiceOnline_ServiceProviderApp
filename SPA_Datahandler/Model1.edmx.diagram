@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="DbServiceProviderAppModel.country" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.order_detail" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.order_header" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item" Width="1.875" PointX="12.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.order_state" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.service" Width="1.5" PointX="10.5" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.service_category" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
