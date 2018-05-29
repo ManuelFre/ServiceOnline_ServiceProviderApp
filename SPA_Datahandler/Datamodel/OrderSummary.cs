@@ -75,6 +75,9 @@ namespace SPA_Datahandler.Datamodel
             return dp.QueryUpcomingOrders();
         }
 
-
+        public List<OrderSummary> GetDeniedOrderSummaries()
+        {
+            return dp.QueryDeniedOrders();
+        }
     }
 }

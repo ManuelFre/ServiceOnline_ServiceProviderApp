@@ -62,7 +62,7 @@ namespace SPA_Datahandler
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
-                         where oi.preferred_date_time < System.DateTime.Now
+                         where oi.preferred_date_time < System.DateTime.Now && oi.is_confirmed.ToLower() != "x"
                          orderby oi.preferred_date_time descending
                          select new { od, oi, sv })
                 .AsEnumerable()
@@ -95,7 +95,7 @@ namespace SPA_Datahandler
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
-                         where oi.preferred_date_time > System.DateTime.Now
+                         where oi.preferred_date_time > System.DateTime.Now && oi.is_confirmed.ToLower() != "x"
                          orderby oi.preferred_date_time
                          select new { od, oi, sv })
                 .AsEnumerable()
@@ -120,6 +120,41 @@ namespace SPA_Datahandler
 
             return query.ToList();
         }
+
+
+        public List<OrderSummary> QueryDeniedOrders()
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = (from od in dbContext.order_detail
+                         join oi in dbContext.order_item on od.order_id equals oi.order_id
+                         join sv in dbContext.service on oi.service_id equals sv.Id
+                         where oi.is_confirmed.ToLower() == "x"
+                         orderby oi.preferred_date_time descending
+                         select new { od, oi, sv })
+                .AsEnumerable()
+                .Select(x => new OrderSummary()
+                {
+                    OrderItemId = x.oi.Id,
+                    //Address = od.address_1,
+                    Address = String.Format("{0} {1}", x.od.address_1, x.od.address_2),
+                    BookedItems = x.oi.quantity,
+                    ServiceUnit = x.sv.service_unit,
+                    City = x.od.city,
+                    //Customername = x.od.last_name,
+                    Customername = String.Format("{0} {1}", x.od.first_name, x.od.last_name),
+                    IsAllInclusive = x.oi.is_all_inclusive,
+                    IsFinished = x.oi.is_finished,
+                    Phone = x.od.phone_2,
+                    PreferedDate = x.oi.preferred_date_time,
+                    Servicedescription = x.sv.name,
+                    Zip = x.od.zip,
+                    IsConfirmed = x.oi.is_confirmed
+                });
+
+            return query.ToList();
+        }
+
         public DetailedClass QueryDetailView(long OrderItemId)
         {
             dbContext = new DbServiceProviderAppEntities();

@@ -42,6 +42,7 @@ namespace PL_ServiceOnline.ViewModel
         public RelayCommand Btn_Logout { get; set; }
         public RelayCommand Btn_Detail { get; set; }
         public RelayCommand Btn_CompanyData { get; set; }
+        public RelayCommand Btn_DeniedJobs { get; set; }
 
         public ViewModelBase CurrentDetailView
         {
@@ -77,6 +78,14 @@ namespace PL_ServiceOnline.ViewModel
 
                 });
 
+                Btn_DeniedJobs = new RelayCommand(() =>
+                {
+
+                    CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
+                    msg.Send<GenericMessage<string>>(new GenericMessage<string>("denied"));
+
+                });
+
                 Btn_Logout = new RelayCommand(() =>
                 {
                     CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
@@ -94,6 +103,7 @@ namespace PL_ServiceOnline.ViewModel
                     CurrentDetailView = SimpleIoc.Default.GetInstance<CompanyDataVm>();
 
                 });
+
 
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
             }

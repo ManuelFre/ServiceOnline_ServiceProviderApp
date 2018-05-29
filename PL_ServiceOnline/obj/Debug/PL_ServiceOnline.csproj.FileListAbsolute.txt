@@ -500,3 +500,11 @@ C:\Users\manue\source\repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\ob
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csprojAssemblyReference.cache
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\PdfSharp.Charting.dll
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\PdfSharp.dll
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\PdfSharp.xml
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\PdfSharp.Charting.xml
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\de\PdfSharp.Charting.resources.dll
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.g.cs
+C:\Users\Manuel.Gapp\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\Views\CompanyData.baml

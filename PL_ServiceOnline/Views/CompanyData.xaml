@@ -6,10 +6,7 @@
              xmlns:local="clr-namespace:PL_ServiceOnline.Views"
              xmlns:ViewModel="clr-namespace:PL_ServiceOnline.ViewModel" x:Class="PL_ServiceOnline.Views.CompanyData"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="1000">
-    <UserControl.DataContext>
-        <ViewModel:CompanyDataVm/>
-    </UserControl.DataContext>
+             d:DesignHeight="500" d:DesignWidth="1000" DataContext="{Binding CompanyData, Mode=OneWay, Source={StaticResource Locator}}">
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type GroupBox}">
@@ -29,21 +26,25 @@
                 </Style.Resources>
             </Style>
         </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Ihre Stammdaten" FontSize="20">
+        <GroupBox Header="Ihre Stammdaten" FontSize="20" >
 
 
-            <Grid>
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -66,7 +67,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="Ihre Statistiken" FontSize="20" Grid.Column="1">
+        <GroupBox Header="Ihre Statistiken" FontSize="20" Grid.Column="1" >
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -75,7 +76,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -90,18 +91,19 @@
                 <Label Grid.Row="1" Grid.Column="0" Content="Anz. offener Aufträge"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="Anz. offener Aufträge Monat"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="Anz. nicht angenommene Aufträge"/>
-                <Label Grid.Row="4" Grid.Column="0" Content="Umsatz abgeschl. Aufträge (€)"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Umsatz abgeschl. Aufträge"/>
 
 
                 <Label  Grid.Row="0" Grid.Column="1" Content="{Binding CntCompletedOrders}"/>
                 <Label  Grid.Row="1" Grid.Column="1" Content="{Binding CntOpenOrders}"/>
                 <Label  Grid.Row="2" Grid.Column="1" Content="{Binding CntOpenOrdersThisMonth}"/>
                 <Label  Grid.Row="3" Grid.Column="1" Content="{Binding CntUnconfirmedOrders}"/>
-                <Label  Grid.Row="4" Grid.Column="1" Content="{Binding SumTargetedSales}"/>
-                
-                <Button Grid.Row="5" Grid.Column="1" Margin="5" Content="Änderungen übernehmen" Command="{Binding BtnChangeClicked}"/>
+                <Label  Grid.Row="4" Grid.Column="1" Content="{Binding SumTargetedSales}" ContentStringFormat="{}{0:N2} €"/>
+
+
 
             </Grid>
         </GroupBox>
+        <Button Grid.Column="1" Grid.Row="1" Margin="5" Content="Änderungen übernehmen" Command="{Binding BtnChangeClicked}" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>
