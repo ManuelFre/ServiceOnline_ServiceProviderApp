@@ -13,17 +13,23 @@ namespace PL_ServiceOnline.ViewModel
     public class LoginVm : ViewModelBase
     {
         private IMessenger msg = Messenger.Default;
-        public RelayCommand<object> LoginButton { get; set; }
+        public RelayCommand<object> BtnLogin { get; set; }
         public string Username { get; set; }
-        public SecureString Password { get; set; }
+        public string Password { get; set; }
 
         public LoginVm()
         {
-            LoginButton = new RelayCommand<object>((o) =>
+            BtnLogin = new RelayCommand<object>((o) =>
             {
                 if(o != null)
                 {
-                    Password = o as SecureString;
+                    var x = o as System.Windows.Controls.PasswordBox;
+                    Password = x.Password;
+
+                    //Hier sollte die Funktion stehen, die die Anmeldedaten dem Synctool übergibt.
+
+                    
+
                 }
             },
             o => { return Username != null; });

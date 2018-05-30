@@ -25,12 +25,12 @@
 
 
                 <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"   >Ihr Benutzername:</Label>
-                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Username}" VerticalAlignment="Center" VerticalContentAlignment="Center"  Padding="10" />
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" VerticalContentAlignment="Center"  Padding="10" />
 
                 <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"  >Ihr Passwort:</Label>
                 <PasswordBox Grid.Column="1" Grid.Row="1" Name="txtPassword"  VerticalAlignment="Center" VerticalContentAlignment="Center"  Padding="10"  />
 
-                <Button Grid.Column="1" Grid.Row="2" FontSize="20" CommandParameter="{Binding ElementName=txtPassword}"  VerticalAlignment="Center" HorizontalAlignment="Center" Padding="30,10,30,10">Einloggen</Button>
+                <Button Grid.Column="1" Grid.Row="2" FontSize="20" Command="{Binding BtnLogin}" CommandParameter="{Binding ElementName=txtPassword}"  VerticalAlignment="Center" HorizontalAlignment="Center" Padding="30,10,30,10">Einloggen</Button>
             </Grid>
         </GroupBox>
 

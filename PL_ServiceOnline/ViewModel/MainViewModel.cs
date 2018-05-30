@@ -106,6 +106,7 @@ namespace PL_ServiceOnline.ViewModel
 
 
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
+                //msg.Register<GenericMessage<LoginData>>(this, ChangeLoginData);
             }
 
         }
