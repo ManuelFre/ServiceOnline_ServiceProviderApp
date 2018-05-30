@@ -28,6 +28,7 @@
                     <i:InvokeCommandAction Command="{Binding BtnDetailView}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <!--HIER DIE HOEHE UMSTELLEN-->
@@ -35,6 +36,13 @@
                     <Setter Property="BorderThickness" Value="2"></Setter>
                     <Setter Property="BorderBrush" Value="AliceBlue"></Setter>
                     <Setter Property="FontSize" Value="14"></Setter>
+                    
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsConfirmed}" Value="N">
+                            <Setter Property="Background" Value="#FFFFFFBD" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                    
 
                     <!--<Setter Property="Background" Value="{Binding IsAllInclusive, Converter={StaticResource AllIncStringToStringColor}}"></Setter>-->
                 </Style>
@@ -59,7 +67,7 @@
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Customername}" >
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Customername"  >Name</GridViewColumnHeader>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="Customername" MinWidth="70" >Name</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
 
