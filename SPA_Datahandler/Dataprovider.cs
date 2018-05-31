@@ -296,7 +296,7 @@ namespace SPA_Datahandler
             };
 
             dbContext.Set<order_item_report>().Add(DbNewReport);
-
+            dbContext.SaveChanges();
 
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
