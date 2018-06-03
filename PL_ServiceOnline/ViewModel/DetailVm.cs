@@ -143,7 +143,7 @@ namespace PL_ServiceOnline.ViewModel
             OS = new DetailedClass();
 
             Dp = new Dataprovider();
-            
+
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
             MyClassInitialize();
@@ -157,7 +157,7 @@ namespace PL_ServiceOnline.ViewModel
 
             //CreateDemoData();
 
-            
+
         }
 
         private void AppendDocuments()
@@ -170,14 +170,13 @@ namespace PL_ServiceOnline.ViewModel
             {
                 try
                 {
-                    SelectedDetailed.OrderItemReports.Add(
-                        new OrderItemReport()
-                        {
-                            //Comment = "Kommentar kksksksksk",
-                            //Id = 59,
-                            //OrderItemId = 44,
-                            ReportDate = new DateTime(),
-                            Appendix = new List<OrderItemReportAppendix>()
+                    OrderItemReport oir = new OrderItemReport()
+                    {
+                        //Comment = "Kommentar kksksksksk",
+                        //Id = 59,
+                        OrderItemId = SelectedDetailed.OrderItemId,
+                        ReportDate = new DateTime(),
+                        Appendix = new List<OrderItemReportAppendix>()
                             {
                                 new OrderItemReportAppendix()
                                 {
@@ -186,7 +185,15 @@ namespace PL_ServiceOnline.ViewModel
                                     Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)))
                                 }
                             }
-                        });
+                    };
+                    SelectedDetailed.OrderItemReports.Add(oir);
+                    Dp.AddOrderItemReport(oir);
+                    //if(Dp.AddOrderItemReport(oir))
+                    //    MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //else
+                    //    MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+
+
                     if (Dp.UpdateOrderItemData(SelectedDetailed))
                         MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                     else
@@ -194,10 +201,10 @@ namespace PL_ServiceOnline.ViewModel
 
 
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
-                    MessageBox.Show("Laden des Bildes fehlgeschlagen!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Laden des Bildes fehlgeschlagen!\n"+e.InnerException.ToString(), "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }
@@ -317,7 +324,7 @@ namespace PL_ServiceOnline.ViewModel
             //TODO: update db and test if it works
             //OS.AddittionalCost = AddittionalCost;
 
-            
+
 
             SelectedDetailed.AddittionalCost = AddittionalCost;
             SelectedDetailed.Finalprice = Finalprice;
@@ -331,7 +338,7 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
 
-            
+
             msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
