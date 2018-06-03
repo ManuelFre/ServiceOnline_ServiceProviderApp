@@ -204,7 +204,7 @@ namespace PL_ServiceOnline.ViewModel
                 catch (Exception e)
                 {
 
-                    MessageBox.Show("Laden des Bildes fehlgeschlagen!\n"+e.InnerException.ToString(), "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Laden des Bildes fehlgeschlagen!\n"+e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }
