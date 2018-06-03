@@ -84,6 +84,25 @@ namespace PL_ServiceOnline.ViewModel
 
         public double? AddittionalCost { get; set; }
 
+        //private string time;
+
+        //public string Time
+        //{
+        //    get { return time; }
+        //    set
+        //    {
+        //        int.TryParse(value.Split(':')[0], out int tmp);
+        //        Hour = tmp;
+        //        int.TryParse(value.Split(':')[1], out tmp);
+        //        Minute = tmp;
+        //        time = value;
+        //    }
+        //}
+
+
+        public int Hour { get; set; }
+        public int Minute { get; set; }
+
 
         //public string StringPreferedDate { get; set; }
         //public string StringOrderedDateTime { get; set; }
@@ -204,7 +223,7 @@ namespace PL_ServiceOnline.ViewModel
                 catch (Exception e)
                 {
 
-                    MessageBox.Show("Laden des Bildes fehlgeschlagen!\n"+e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Laden des Bildes fehlgeschlagen!\n" + e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
             }
@@ -244,6 +263,8 @@ namespace PL_ServiceOnline.ViewModel
 
         private void CreateDemoData()
         {
+            Hour = 14;
+            Minute = 12;
             CustomerId = 123;
             Firstname = "TestVorname";
             Lastname = "TestNachname";
@@ -254,12 +275,12 @@ namespace PL_ServiceOnline.ViewModel
             Email = "test@test.test";
             OrderItemId = 55;
             OrderId = 100000000;
-            PreferedDate = new DateTime(2018, 12, 31);
+            PreferedDate = new DateTime(2018, 12, 31, Hour, Minute, 0);
             Servicedescription = "Beschreibung des Services, sehr guter service. Sehr toll!!!!!";
             BookedItems = 444;
             IsAllInclusive = "Y";
             Finalprice = 76.43;
-            OrderedDateTime = new DateTime(2018, 12, 31);
+            OrderedDateTime = new DateTime(2018, 12, 31, Hour, Minute, 0);
             CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?\n\nnoch mehr text";
             IsFinished = "N";
             IsConfirmed = "Y";
@@ -273,7 +294,7 @@ namespace PL_ServiceOnline.ViewModel
                     Comment = "Kommentar kksksksksk",
                     Id = 15,
                     OrderItemId = 94,
-                    ReportDate = new DateTime(2018, 1, 1),
+                    ReportDate = new DateTime(2018, 1, 1,Hour,Minute,0),
                     Appendix= new List<OrderItemReportAppendix>()
                     {
                         new OrderItemReportAppendix()
@@ -302,7 +323,7 @@ namespace PL_ServiceOnline.ViewModel
                     Comment = "2. Kommentar kkasksk",
                     Id = 16,
                     OrderItemId = 345,
-                    ReportDate = new DateTime(2018, 2, 1),
+                    ReportDate = new DateTime(2018, 2, 1,Hour,Minute,0),
                     Appendix= new List<OrderItemReportAppendix>()
                     {
                         new OrderItemReportAppendix()
@@ -408,6 +429,7 @@ namespace PL_ServiceOnline.ViewModel
 
             if (SelectedJob != null)
             {
+
                 SelectedDetailed = OS.GetDetailView(SelectedJob);
 
                 CustomerId = SelectedDetailed.CustomerId;
