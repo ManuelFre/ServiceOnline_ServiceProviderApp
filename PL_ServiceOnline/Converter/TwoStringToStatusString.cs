@@ -12,7 +12,14 @@ namespace PL_ServiceOnline.Converter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if((string)values[1] == "Y")
+
+            if (((string)values[0]).ToLower() == "x")
+            {
+                return "Abgelehnt";
+            }
+
+
+            if ((string)values[1] == "Y")
             {
                 return "Abgeschlossen";
             }

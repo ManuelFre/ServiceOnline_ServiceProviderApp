@@ -85,8 +85,8 @@ namespace PL_ServiceOnline.ViewModel
         public double? AddittionalCost { get; set; }
 
 
-        public string StringPreferedDate { get; set; }
-        public string StringOrderedDateTime { get; set; }
+        //public string StringPreferedDate { get; set; }
+        //public string StringOrderedDateTime { get; set; }
 
 
         private string serviceProviderComment;
@@ -434,8 +434,8 @@ namespace PL_ServiceOnline.ViewModel
                 ServiceUnit = SelectedDetailed.ServiceUnit;
                 OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
                 Status = GetStatus(IsFinished, IsConfirmed);
-                StringOrderedDateTime = OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
-                StringPreferedDate = PreferedDate.ToString("dd.MM.yyyy - hh.mm");
+                //StringOrderedDateTime = OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
+                //StringPreferedDate = PreferedDate.ToString("dd.MM.yyyy - hh.mm");
             }
 
         }

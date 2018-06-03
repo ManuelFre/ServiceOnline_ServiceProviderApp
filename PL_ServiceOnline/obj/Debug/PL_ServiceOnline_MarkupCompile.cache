@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\
+C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\
 PL_ServiceOnline
 none
 false
 DEBUG;TRACE
-C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\App.xaml
+C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\App.xaml
 6461536402
 
-25-820565306
-83-1799726540
+231501013068
+80-1250329233
 MainWindow.xaml;Views\CompanyData.xaml;Views\Detail.xaml;Views\Login.xaml;Views\Jobs.xaml;Views\UpcomingJobs.xaml;
 
 False

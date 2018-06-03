@@ -149,14 +149,14 @@
 
 
                             <Label     Grid.Row="0" Grid.Column="1" Content="{Binding OrderItemId}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="1" Grid.Column="1" Content="{Binding StringOrderedDateTime}"                                         FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <TextBox  IsReadOnly="True"     Grid.Row="1" Grid.Column="1" Text="{Binding OrderedDateTime, StringFormat=dd.MM.yyyy - hh.mm}"           VerticalContentAlignment="Center"                                  FontSize="14" VerticalAlignment="Stretch" Height="30"  />
                             <Label     Grid.Row="2" Grid.Column="1" Content="{Binding Servicedescription}"                                            FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label     Grid.Row="3" Grid.Column="1" Content="{Binding BookedItems}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  />
                             <Label     Grid.Row="4" Grid.Column="1" Content="{Binding ServiceUnit}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
-                            <Label     Grid.Row="5" Grid.Column="1" Content="{Binding StringPreferedDate}"                                            FontSize="14" VerticalAlignment="Center" Height="30"  />
+                            <TextBox   IsReadOnly="True"    Grid.Row="5" Grid.Column="1" Text="{Binding PreferedDate,  StringFormat=dd.MM.yyyy - hh.mm}"             VerticalContentAlignment="Center"                                   FontSize="14" VerticalAlignment="Stretch" Height="30"  />
                             <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                   FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label     Grid.Row="7" Grid.Column="1" Content="{Binding IsAllInclusive, Converter={StaticResource BoolStringToGerman}}" FontSize="14" VerticalAlignment="Center" Height="30"  />
-                            <Label     Grid.Row="8" Grid.Column="1" Content="{Binding Finalprice}"                                                    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <TextBox  IsReadOnly="True"   Grid.Row="8" Grid.Column="1" Text="{Binding Finalprice,StringFormat=C, ConverterCulture=de-DE}"                      VerticalContentAlignment="Center"                    FontSize="14" VerticalAlignment="Stretch" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
 
 
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>

@@ -165,6 +165,11 @@ namespace PL_ServiceOnline.ViewModel
                     Orders = new ObservableCollection<OrderSummary>(OS.GetUpcomingOrderSummaries());
                     RaisePropertyChanged("Orders");
                 }
+                else if (last != "denied" && obj.Content == "denied")
+                {
+                    Orders = new ObservableCollection<OrderSummary>(OS.GetDeniedOrderSummaries());
+                    RaisePropertyChanged("Orders");
+                }
 
             }
 
