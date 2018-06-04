@@ -17,6 +17,8 @@ namespace PL_ServiceOnline.Converter
             return value;
         }
 
+        //TODO: Check each step to look for time / date changes... solution idea... maybe also a time converter needed to safe the date when time changes...
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)

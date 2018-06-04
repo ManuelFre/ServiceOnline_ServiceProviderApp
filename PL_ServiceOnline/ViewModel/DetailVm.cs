@@ -240,7 +240,7 @@ namespace PL_ServiceOnline.ViewModel
         private void CreateReport()
         {
             throw new NotImplementedException();
-            //TODO: Create PDF here (PDFsharp NuGet package schon eingebaut)
+            //TODO: Actually remove the whole stuff b4 release if not needed [Create PDF here (PDFsharp NuGet package schon eingebaut)]
 
 
             // Create a temporary file

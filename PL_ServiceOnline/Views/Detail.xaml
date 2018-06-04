@@ -9,6 +9,7 @@
              xmlns:Converter="clr-namespace:PL_ServiceOnline.Converter" x:Class="PL_ServiceOnline.Views.Detail">
     <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">-->
     <UserControl.Resources>
+        <Converter:TimeConverter x:Key="TimeConverter"/>
         <Converter:DateConverter x:Key="DateConverter"/>
         <Converter:ByteToImage x:Key="ByteToImage"/>
         <Converter:BoolStringToGerman x:Key="BoolStringToGerman"/>
@@ -234,14 +235,14 @@
                             <TextBox    Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
 
-                            <DatePicker  CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{Binding PreferedDate, Converter={StaticResource DateConverter}, StringFormat=dd.MM.yyyy}" Width="200" Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy}"  FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Height="45" Margin="5" VerticalContentAlignment="Center"/>
+                            <DatePicker  CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{Binding PreferedDate, Converter={StaticResource DateConverter}, StringFormat=dd.MM.yyyy}" Width="200" Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate.Date, Mode=OneWay, StringFormat=dd.MM.yyyy}"  FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
                             <!--<xctk:DateTimePicker CalendarDisplayMode="Month" Value="{Binding PreferedDate}"  />-->
 
                             <!--<xctk:TimePicker Grid.Column="2" Grid.Row="2" FontSize="24" Height="45" Margin="5" HorizontalAlignment="Left" TextAlignment="Left" Width="200" Text="{Binding Time}" />-->
                             
                             <!--Nach einiger recherche kann oder muss ich sogar den TimePicker auf ein DateTime Object binden... er sollte dann aber nur die Uhrzeit ändern. Warum er das aber nicht macht konnte ich noch nicht herausfinden-->
-                            <xctk:TimePicker Grid.Column="2" Grid.Row="2" FontSize="24" Height="45" Margin="5" HorizontalAlignment="Left" TextAlignment="Left" Width="200" Value="{Binding PreferedDate, StringFormat=hh:mm}" Text="{Binding PreferedDate, StringFormat=hh:mm}" StartTime="{Binding PreferedDate, StringFormat=hh:mm}"/>
+                            <xctk:TimePicker Grid.Column="2" Grid.Row="2" FontSize="24" Height="45" Margin="5" HorizontalAlignment="Left" TextAlignment="Left" Width="200" Value="{Binding PreferedDate, Converter={StaticResource TimeConverter}, StringFormat=hh:mm}" Text="{Binding PreferedDate, StringFormat=hh:mm}" StartTime="{Binding PreferedDate, StringFormat=hh:mm}"/>
                             
                             <!--<TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Center" Margin="5" VerticalContentAlignment="Center"/>-->
                             <ComboBox   Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
