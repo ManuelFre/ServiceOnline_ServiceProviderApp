@@ -8,6 +8,7 @@ using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -68,7 +69,7 @@ namespace PL_ServiceOnline.ViewModel
         public DateTime PreferedDate
         {
             get { return preferedDate; }
-            set { preferedDate = value; RaisePropertyChanged("PreferedDate"); }//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert
+            set { preferedDate = value;}//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert
         }
 
         public string Servicedescription { get; set; }
@@ -159,6 +160,9 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public DetailVm()
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
+
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
 
             AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt", "Auftrag ablehnen" };

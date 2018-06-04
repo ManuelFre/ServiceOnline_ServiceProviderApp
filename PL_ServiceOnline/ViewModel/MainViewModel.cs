@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
@@ -58,6 +59,8 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public MainViewModel()
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
             if (!IsInDesignMode)
             {
                 CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
