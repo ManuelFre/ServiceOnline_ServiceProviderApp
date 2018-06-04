@@ -156,7 +156,7 @@ namespace PL_ServiceOnline.ViewModel
         {
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
 
-            AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt" };
+            AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt", "Auftrag ablehnen" };
 
             SelectedJob = new OrderSummary();
             OS = new DetailedClass();
@@ -182,9 +182,12 @@ namespace PL_ServiceOnline.ViewModel
         private void AppendDocuments()
         {
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Select a picture";
-            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"; ;
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Select a picture",
+                Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
+            };
+            ;
             if (openFileDialog.ShowDialog() == true)
             {
                 try
@@ -342,7 +345,13 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ApplyChanges()
         {
-            //TODO: update db and test if it works
+            if (Status.Equals(AllStatuses[3]))
+            {
+                if(MessageBox.Show("Wollen Sie den Auftrag wirklich ablehnen?", "Auftrag ablehnen?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             //OS.AddittionalCost = AddittionalCost;
 
 
@@ -371,15 +380,23 @@ namespace PL_ServiceOnline.ViewModel
 
         private string GetStatus(string isFinished, string isConfirmed)
         {
-            if (IsFinished != null && isConfirmed != null)
+            if (isConfirmed != null)
             {
-                if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
+                if (isConfirmed.Equals("x") || isConfirmed.Equals("X"))
                 {
-                    return AllStatuses[0];//Abgeschlossen
+                    return AllStatuses[3];
                 }
-                else if (isConfirmed.Equals("Y") || isConfirmed.Equals("Ja"))
+
+                if (IsFinished != null)
                 {
-                    return AllStatuses[1]; // Angenommen
+                    if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
+                    {
+                        return AllStatuses[0];//Abgeschlossen
+                    }
+                    else if (isConfirmed.Equals("Y") || isConfirmed.Equals("Ja"))
+                    {
+                        return AllStatuses[1]; // Angenommen
+                    }
                 }
             }
 
@@ -402,6 +419,8 @@ namespace PL_ServiceOnline.ViewModel
             //wenn status in checkbox == Abgeschlossen [0] oder Angenommen [1]  dann 'Y'
             if (status != null)
             {
+                if (status.Equals(AllStatuses[3]))
+                    return "x";
                 if (status.Equals(AllStatuses[0]) || status.Equals(AllStatuses[1]))
                     return "Y";
             }
