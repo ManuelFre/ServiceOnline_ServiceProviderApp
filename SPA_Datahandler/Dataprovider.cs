@@ -58,11 +58,13 @@ namespace SPA_Datahandler
         public List<OrderSummary> QueryOrders()
         {
             dbContext = new DbServiceProviderAppEntities();
+            DateTime dt = DateTime.Now.AddDays(-1d);
+
 
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
-                         where oi.preferred_date_time < System.DateTime.Now && oi.is_confirmed.ToLower() != "x"
+                         where oi.preferred_date_time < dt && oi.is_confirmed.ToLower() != "x"
                          orderby oi.preferred_date_time descending
                          select new { od, oi, sv })
                 .AsEnumerable()
@@ -91,11 +93,12 @@ namespace SPA_Datahandler
         public List<OrderSummary> QueryUpcomingOrders()
         {
             dbContext = new DbServiceProviderAppEntities();
+            DateTime dt = DateTime.Now.AddDays(-1d);
 
             var query = (from od in dbContext.order_detail
                          join oi in dbContext.order_item on od.order_id equals oi.order_id
                          join sv in dbContext.service on oi.service_id equals sv.Id
-                         where oi.preferred_date_time > System.DateTime.Now && oi.is_confirmed.ToLower() != "x"
+                         where oi.preferred_date_time >= dt && oi.is_confirmed.ToLower() != "x"
                          orderby oi.preferred_date_time
                          select new { od, oi, sv })
                 .AsEnumerable()
