@@ -110,6 +110,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\BoolStringToGerman.cs" />
+    <Compile Include="Converter\DateConverter.cs" />
     <Compile Include="Converter\TwoStringToStatusString.cs" />
     <Compile Include="Converter\AllIncStringToStringColor.cs" />
     <Compile Include="Converter\ImageConverter.cs" />

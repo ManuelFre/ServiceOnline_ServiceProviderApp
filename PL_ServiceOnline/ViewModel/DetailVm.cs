@@ -64,7 +64,12 @@ namespace PL_ServiceOnline.ViewModel
 
         public long OrderId { get; set; }
 
-        public DateTime PreferedDate { get; set; }
+        private DateTime preferedDate;
+        public DateTime PreferedDate
+        {
+            get { return preferedDate; }
+            set { preferedDate = value; RaisePropertyChanged("PreferedDate"); }//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert
+        }
 
         public string Servicedescription { get; set; }
 
@@ -347,7 +352,7 @@ namespace PL_ServiceOnline.ViewModel
         {
             if (Status.Equals(AllStatuses[3]))
             {
-                if(MessageBox.Show("Wollen Sie den Auftrag wirklich ablehnen?", "Auftrag ablehnen?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                if (MessageBox.Show("Wollen Sie den Auftrag wirklich ablehnen?", "Auftrag ablehnen?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                 {
                     return;
                 }
