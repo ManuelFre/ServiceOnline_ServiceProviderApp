@@ -81,7 +81,7 @@
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="IsAllInclusive"  >Ales ink.</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate.Date, StringFormat=dd.MM.yyyy - hh.mm, Mode=OneWay}" >
+                    <GridViewColumn DisplayMemberBinding="{Binding PreferedDate, StringFormat=dd.MM.yyyy - HH.mm, Mode=OneWay}" >
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="PreferedDate"  >Termin</GridViewColumnHeader>
                         </GridViewColumn.Header>

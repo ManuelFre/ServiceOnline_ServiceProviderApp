@@ -155,7 +155,7 @@ namespace PL_ServiceOnline.ViewModel
             }
 
             else {
-                if (last != "past" && obj.Content == "past")
+                if (last != "past" && obj.Content == "past") 
                 {
                     Orders = new ObservableCollection<OrderSummary>(OS.GetPastOrderSummaries());
                     RaisePropertyChanged("Orders");
