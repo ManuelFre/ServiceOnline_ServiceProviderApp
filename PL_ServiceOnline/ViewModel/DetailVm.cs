@@ -367,8 +367,13 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
 
+            if(IsConfirmed != null && IsConfirmed != "x" && PreferedDate < DateTime.Now)
+                msg.Send<GenericMessage<string>>(new GenericMessage<string>("past"));
+            else if (IsConfirmed != null && IsConfirmed != "x" && PreferedDate > DateTime.Now)
+                msg.Send<GenericMessage<string>>(new GenericMessage<string>("future"));
+            else
+                msg.Send<GenericMessage<string>>(new GenericMessage<string>("denied"));
 
-            msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
             {
