@@ -18,18 +18,8 @@ namespace PL_ServiceOnline.ViewModel
     {
         private IMessenger msg = Messenger.Default;
 
-        private OrderSummary selectedJob;
-
         //Im Moment wird die Order Summary, die ausgewählt wurde, übergeben, danach wird diese nochmal in der DB abgefragt, damit auch Bilder etc. abgefragt werden können. Das fehlt! Es gibt im Moment nur den selben Inhalt mit selber id zurück.
-        public OrderSummary SelectedJob
-        {
-            get { return selectedJob; }
-            set
-            {
-                selectedJob = value;
-
-            }
-        }
+        public OrderSummary SelectedJob { get; set; }
 
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
@@ -69,7 +59,7 @@ namespace PL_ServiceOnline.ViewModel
         public DateTime PreferedDate
         {
             get { return preferedDate; }
-            set { preferedDate = value;}//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert
+            set { preferedDate = value; }//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert LOL NEIN DB FEHLER FML
         }
 
         public string Servicedescription { get; set; }
@@ -381,7 +371,10 @@ namespace PL_ServiceOnline.ViewModel
             msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
+            {
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                RaisePropertyChanged(nameof(PreferedDate)); //so that the PreferedDate in the DetailView gets actually updated once it's sent to the DB
+            }
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
         }

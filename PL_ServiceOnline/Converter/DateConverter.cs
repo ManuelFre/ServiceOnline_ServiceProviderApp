@@ -8,6 +8,7 @@ using System.Windows.Data;
 
 namespace PL_ServiceOnline.Converter
 {
+    [Obsolete("ForNow")]
     public class DateConverter : IValueConverter
     {
         private DateTime timePickerDate;
