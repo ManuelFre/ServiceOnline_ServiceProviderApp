@@ -8,6 +8,7 @@ using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -17,18 +18,8 @@ namespace PL_ServiceOnline.ViewModel
     {
         private IMessenger msg = Messenger.Default;
 
-        private OrderSummary selectedJob;
-
         //Im Moment wird die Order Summary, die ausgewählt wurde, übergeben, danach wird diese nochmal in der DB abgefragt, damit auch Bilder etc. abgefragt werden können. Das fehlt! Es gibt im Moment nur den selben Inhalt mit selber id zurück.
-        public OrderSummary SelectedJob
-        {
-            get { return selectedJob; }
-            set
-            {
-                selectedJob = value;
-
-            }
-        }
+        public OrderSummary SelectedJob { get; set; }
 
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
@@ -64,7 +55,12 @@ namespace PL_ServiceOnline.ViewModel
 
         public long OrderId { get; set; }
 
-        public DateTime PreferedDate { get; set; }
+        private DateTime preferedDate;
+        public DateTime PreferedDate
+        {
+            get { return preferedDate; }
+            set { preferedDate = value; }//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert LOL NEIN DB FEHLER FML
+        }
 
         public string Servicedescription { get; set; }
 
@@ -154,9 +150,12 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public DetailVm()
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
+
             msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
 
-            AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt" };
+            AllStatuses = new string[] { "Abgeschlossen", "Angenommen", "Nicht bestätigt", "Auftrag ablehnen" };
 
             SelectedJob = new OrderSummary();
             OS = new DetailedClass();
@@ -182,9 +181,12 @@ namespace PL_ServiceOnline.ViewModel
         private void AppendDocuments()
         {
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Select a picture";
-            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"; ;
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Select a picture",
+                Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
+            };
+            ;
             if (openFileDialog.ShowDialog() == true)
             {
                 try
@@ -232,7 +234,7 @@ namespace PL_ServiceOnline.ViewModel
         private void CreateReport()
         {
             throw new NotImplementedException();
-            //TODO: Create PDF here (PDFsharp NuGet package schon eingebaut)
+            //TODO: Actually remove the whole stuff b4 release if not needed [Create PDF here (PDFsharp NuGet package schon eingebaut)]
 
 
             // Create a temporary file
@@ -342,7 +344,13 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ApplyChanges()
         {
-            //TODO: update db and test if it works
+            if (Status.Equals(AllStatuses[3]))
+            {
+                if (MessageBox.Show("Wollen Sie den Auftrag wirklich ablehnen?", "Auftrag ablehnen?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                {
+                    return;
+                }
+            }
             //OS.AddittionalCost = AddittionalCost;
 
 
@@ -363,7 +371,10 @@ namespace PL_ServiceOnline.ViewModel
             msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
 
             if (Dp.UpdateOrderItemData(SelectedDetailed))
+            {
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                RaisePropertyChanged(nameof(PreferedDate)); //so that the PreferedDate in the DetailView gets actually updated once it's sent to the DB
+            }
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
         }
@@ -371,15 +382,23 @@ namespace PL_ServiceOnline.ViewModel
 
         private string GetStatus(string isFinished, string isConfirmed)
         {
-            if (IsFinished != null && isConfirmed != null)
+            if (isConfirmed != null)
             {
-                if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
+                if (isConfirmed.Equals("x") || isConfirmed.Equals("X"))
                 {
-                    return AllStatuses[0];//Abgeschlossen
+                    return AllStatuses[3];
                 }
-                else if (isConfirmed.Equals("Y") || isConfirmed.Equals("Ja"))
+
+                if (IsFinished != null)
                 {
-                    return AllStatuses[1]; // Angenommen
+                    if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
+                    {
+                        return AllStatuses[0];//Abgeschlossen
+                    }
+                    else if (isConfirmed.Equals("Y") || isConfirmed.Equals("Ja"))
+                    {
+                        return AllStatuses[1]; // Angenommen
+                    }
                 }
             }
 
@@ -402,6 +421,8 @@ namespace PL_ServiceOnline.ViewModel
             //wenn status in checkbox == Abgeschlossen [0] oder Angenommen [1]  dann 'Y'
             if (status != null)
             {
+                if (status.Equals(AllStatuses[3]))
+                    return "x";
                 if (status.Equals(AllStatuses[0]) || status.Equals(AllStatuses[1]))
                     return "Y";
             }
