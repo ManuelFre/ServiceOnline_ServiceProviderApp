@@ -1,4 +1,5 @@
 ﻿using SPA_Datahandler.Datamodel;
+using SPA_Datahandler.Sync;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,10 @@ namespace SPA_Datahandler
             //Herstellung einer Datenbankverbindung:
             dbContext = new DbServiceProviderAppEntities();
             dbContext.Configuration.AutoDetectChangesEnabled = true;
+
+            SyncSettings sync = new SyncSettings();
         }
 
-        public List<country> QueryAllCountries()
-        {
-            
-            SimpleDatabaseFunctions<country> SDF = new SimpleDatabaseFunctions<country>();
-            return SDF.QueryAll();
-        }
 
         public List<OrderSummary> QueryOrderSummaries()
         {

@@ -460,6 +460,7 @@
 
                     <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" >
 
+                        
                         <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10">
 
                             <ListBox.ItemTemplate>
