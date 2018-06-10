@@ -172,6 +172,27 @@
     <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.OrderDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.OrderHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.OrderItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.OrderItemReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.OrderItemReportAp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.Service.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.ServiceProvider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.SowUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SyncServiceReference\SPA_Datahandler.SyncServiceReference.SpaUser.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

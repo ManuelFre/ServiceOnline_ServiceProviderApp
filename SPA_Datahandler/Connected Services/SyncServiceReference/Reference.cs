@@ -423,6 +423,1313 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderHeader", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class OrderHeader : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrencyCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerNoteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IpAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderStateIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderpaymentTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SowUserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double SubtotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double SubtotalExTaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double TaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double TotalField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateDat {
+            get {
+                return this.CreateDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateDatField, value) != true)) {
+                    this.CreateDatField = value;
+                    this.RaisePropertyChanged("CreateDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrencyCode {
+            get {
+                return this.CurrencyCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrencyCodeField, value) != true)) {
+                    this.CurrencyCodeField = value;
+                    this.RaisePropertyChanged("CurrencyCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerNote {
+            get {
+                return this.CustomerNoteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerNoteField, value) != true)) {
+                    this.CustomerNoteField = value;
+                    this.RaisePropertyChanged("CustomerNote");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IpAddress {
+            get {
+                return this.IpAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IpAddressField, value) != true)) {
+                    this.IpAddressField = value;
+                    this.RaisePropertyChanged("IpAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderStateId {
+            get {
+                return this.OrderStateIdField;
+            }
+            set {
+                if ((this.OrderStateIdField.Equals(value) != true)) {
+                    this.OrderStateIdField = value;
+                    this.RaisePropertyChanged("OrderStateId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderpaymentType {
+            get {
+                return this.OrderpaymentTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderpaymentTypeField, value) != true)) {
+                    this.OrderpaymentTypeField = value;
+                    this.RaisePropertyChanged("OrderpaymentType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SowUserId {
+            get {
+                return this.SowUserIdField;
+            }
+            set {
+                if ((this.SowUserIdField.Equals(value) != true)) {
+                    this.SowUserIdField = value;
+                    this.RaisePropertyChanged("SowUserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Subtotal {
+            get {
+                return this.SubtotalField;
+            }
+            set {
+                if ((this.SubtotalField.Equals(value) != true)) {
+                    this.SubtotalField = value;
+                    this.RaisePropertyChanged("Subtotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double SubtotalExTax {
+            get {
+                return this.SubtotalExTaxField;
+            }
+            set {
+                if ((this.SubtotalExTaxField.Equals(value) != true)) {
+                    this.SubtotalExTaxField = value;
+                    this.RaisePropertyChanged("SubtotalExTax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Tax {
+            get {
+                return this.TaxField;
+            }
+            set {
+                if ((this.TaxField.Equals(value) != true)) {
+                    this.TaxField = value;
+                    this.RaisePropertyChanged("Tax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Total {
+            get {
+                return this.TotalField;
+            }
+            set {
+                if ((this.TotalField.Equals(value) != true)) {
+                    this.TotalField = value;
+                    this.RaisePropertyChanged("Total");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItem", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class OrderItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double AddCostField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double FinalPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double FinalPriceWithTaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double FinalPriceWithoutTaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsAllInclField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsConfirmedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsFinishedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double OptionPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long OrderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PerItemTaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PreferredDatetimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ServiceIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double TaxField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double AddCost {
+            get {
+                return this.AddCostField;
+            }
+            set {
+                if ((this.AddCostField.Equals(value) != true)) {
+                    this.AddCostField = value;
+                    this.RaisePropertyChanged("AddCost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comment {
+            get {
+                return this.CommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
+                    this.CommentField = value;
+                    this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateDat {
+            get {
+                return this.CreateDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateDatField, value) != true)) {
+                    this.CreateDatField = value;
+                    this.RaisePropertyChanged("CreateDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double FinalPrice {
+            get {
+                return this.FinalPriceField;
+            }
+            set {
+                if ((this.FinalPriceField.Equals(value) != true)) {
+                    this.FinalPriceField = value;
+                    this.RaisePropertyChanged("FinalPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double FinalPriceWithTax {
+            get {
+                return this.FinalPriceWithTaxField;
+            }
+            set {
+                if ((this.FinalPriceWithTaxField.Equals(value) != true)) {
+                    this.FinalPriceWithTaxField = value;
+                    this.RaisePropertyChanged("FinalPriceWithTax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double FinalPriceWithoutTax {
+            get {
+                return this.FinalPriceWithoutTaxField;
+            }
+            set {
+                if ((this.FinalPriceWithoutTaxField.Equals(value) != true)) {
+                    this.FinalPriceWithoutTaxField = value;
+                    this.RaisePropertyChanged("FinalPriceWithoutTax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IsAllIncl {
+            get {
+                return this.IsAllInclField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsAllInclField, value) != true)) {
+                    this.IsAllInclField = value;
+                    this.RaisePropertyChanged("IsAllIncl");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IsConfirmed {
+            get {
+                return this.IsConfirmedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsConfirmedField, value) != true)) {
+                    this.IsConfirmedField = value;
+                    this.RaisePropertyChanged("IsConfirmed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IsFinished {
+            get {
+                return this.IsFinishedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsFinishedField, value) != true)) {
+                    this.IsFinishedField = value;
+                    this.RaisePropertyChanged("IsFinished");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double OptionPrice {
+            get {
+                return this.OptionPriceField;
+            }
+            set {
+                if ((this.OptionPriceField.Equals(value) != true)) {
+                    this.OptionPriceField = value;
+                    this.RaisePropertyChanged("OptionPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long OrderId {
+            get {
+                return this.OrderIdField;
+            }
+            set {
+                if ((this.OrderIdField.Equals(value) != true)) {
+                    this.OrderIdField = value;
+                    this.RaisePropertyChanged("OrderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double PerItemTax {
+            get {
+                return this.PerItemTaxField;
+            }
+            set {
+                if ((this.PerItemTaxField.Equals(value) != true)) {
+                    this.PerItemTaxField = value;
+                    this.RaisePropertyChanged("PerItemTax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PreferredDatetime {
+            get {
+                return this.PreferredDatetimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PreferredDatetimeField, value) != true)) {
+                    this.PreferredDatetimeField = value;
+                    this.RaisePropertyChanged("PreferredDatetime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ServiceId {
+            get {
+                return this.ServiceIdField;
+            }
+            set {
+                if ((this.ServiceIdField.Equals(value) != true)) {
+                    this.ServiceIdField = value;
+                    this.RaisePropertyChanged("ServiceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Tax {
+            get {
+                return this.TaxField;
+            }
+            set {
+                if ((this.TaxField.Equals(value) != true)) {
+                    this.TaxField = value;
+                    this.RaisePropertyChanged("Tax");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Service", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class Service : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double AllInclExtraField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IntroTextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PriceInclTaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductSourceIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ServiceProviderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ShortnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TaxTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double AllInclExtra {
+            get {
+                return this.AllInclExtraField;
+            }
+            set {
+                if ((this.AllInclExtraField.Equals(value) != true)) {
+                    this.AllInclExtraField = value;
+                    this.RaisePropertyChanged("AllInclExtra");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateDat {
+            get {
+                return this.CreateDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateDatField, value) != true)) {
+                    this.CreateDatField = value;
+                    this.RaisePropertyChanged("CreateDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IntroText {
+            get {
+                return this.IntroTextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IntroTextField, value) != true)) {
+                    this.IntroTextField = value;
+                    this.RaisePropertyChanged("IntroText");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double PriceInclTax {
+            get {
+                return this.PriceInclTaxField;
+            }
+            set {
+                if ((this.PriceInclTaxField.Equals(value) != true)) {
+                    this.PriceInclTaxField = value;
+                    this.RaisePropertyChanged("PriceInclTax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductSourceId {
+            get {
+                return this.ProductSourceIdField;
+            }
+            set {
+                if ((this.ProductSourceIdField.Equals(value) != true)) {
+                    this.ProductSourceIdField = value;
+                    this.RaisePropertyChanged("ProductSourceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ServiceProviderId {
+            get {
+                return this.ServiceProviderIdField;
+            }
+            set {
+                if ((this.ServiceProviderIdField.Equals(value) != true)) {
+                    this.ServiceProviderIdField = value;
+                    this.RaisePropertyChanged("ServiceProviderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Shortname {
+            get {
+                return this.ShortnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShortnameField, value) != true)) {
+                    this.ShortnameField = value;
+                    this.RaisePropertyChanged("Shortname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TaxType {
+            get {
+                return this.TaxTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TaxTypeField, value) != true)) {
+                    this.TaxTypeField = value;
+                    this.RaisePropertyChanged("TaxType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Unit {
+            get {
+                return this.UnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
+                    this.UnitField = value;
+                    this.RaisePropertyChanged("Unit");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceProvider", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class ServiceProvider : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Address1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Address2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Phone1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Phone2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TaxnumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimestampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZipField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ZoneIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address1 {
+            get {
+                return this.Address1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Address1Field, value) != true)) {
+                    this.Address1Field = value;
+                    this.RaisePropertyChanged("Address1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address2 {
+            get {
+                return this.Address2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Address2Field, value) != true)) {
+                    this.Address2Field = value;
+                    this.RaisePropertyChanged("Address2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CompanyName {
+            get {
+                return this.CompanyNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyNameField, value) != true)) {
+                    this.CompanyNameField = value;
+                    this.RaisePropertyChanged("CompanyName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CountryId {
+            get {
+                return this.CountryIdField;
+            }
+            set {
+                if ((this.CountryIdField.Equals(value) != true)) {
+                    this.CountryIdField = value;
+                    this.RaisePropertyChanged("CountryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phone1 {
+            get {
+                return this.Phone1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Phone1Field, value) != true)) {
+                    this.Phone1Field = value;
+                    this.RaisePropertyChanged("Phone1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phone2 {
+            get {
+                return this.Phone2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Phone2Field, value) != true)) {
+                    this.Phone2Field = value;
+                    this.RaisePropertyChanged("Phone2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Taxnumber {
+            get {
+                return this.TaxnumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TaxnumberField, value) != true)) {
+                    this.TaxnumberField = value;
+                    this.RaisePropertyChanged("Taxnumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Timestamp {
+            get {
+                return this.TimestampField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimestampField, value) != true)) {
+                    this.TimestampField = value;
+                    this.RaisePropertyChanged("Timestamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Zip {
+            get {
+                return this.ZipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZipField, value) != true)) {
+                    this.ZipField = value;
+                    this.RaisePropertyChanged("Zip");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ZoneId {
+            get {
+                return this.ZoneIdField;
+            }
+            set {
+                if ((this.ZoneIdField.Equals(value) != true)) {
+                    this.ZoneIdField = value;
+                    this.RaisePropertyChanged("ZoneId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SowUser", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class SowUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegisteredDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimestampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegisteredDat {
+            get {
+                return this.RegisteredDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegisteredDatField, value) != true)) {
+                    this.RegisteredDatField = value;
+                    this.RaisePropertyChanged("RegisteredDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Timestamp {
+            get {
+                return this.TimestampField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimestampField, value) != true)) {
+                    this.TimestampField = value;
+                    this.RaisePropertyChanged("Timestamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItemReport", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class OrderItemReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReportCommentField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateDat {
+            get {
+                return this.CreateDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateDatField, value) != true)) {
+                    this.CreateDatField = value;
+                    this.RaisePropertyChanged("CreateDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderItemId {
+            get {
+                return this.OrderItemIdField;
+            }
+            set {
+                if ((this.OrderItemIdField.Equals(value) != true)) {
+                    this.OrderItemIdField = value;
+                    this.RaisePropertyChanged("OrderItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReportComment {
+            get {
+                return this.ReportCommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportCommentField, value) != true)) {
+                    this.ReportCommentField = value;
+                    this.RaisePropertyChanged("ReportComment");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItemReportAp", Namespace="http://schemas.datacontract.org/2004/07/SharedTypes")]
+    [System.SerializableAttribute()]
+    public partial class OrderItemReportAp : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AppendixField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateDatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderItemReportIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Appendix {
+            get {
+                return this.AppendixField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AppendixField, value) != true)) {
+                    this.AppendixField = value;
+                    this.RaisePropertyChanged("Appendix");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateDat {
+            get {
+                return this.CreateDatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateDatField, value) != true)) {
+                    this.CreateDatField = value;
+                    this.RaisePropertyChanged("CreateDat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderItemReportId {
+            get {
+                return this.OrderItemReportIdField;
+            }
+            set {
+                if ((this.OrderItemReportIdField.Equals(value) != true)) {
+                    this.OrderItemReportIdField = value;
+                    this.RaisePropertyChanged("OrderItemReportId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SyncServiceReference.ISpaServ")]
     public interface ISpaServ {
@@ -439,17 +1746,83 @@ namespace SPA_Datahandler.SyncServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/Logon", ReplyAction="http://tempuri.org/ISpaServ/LogonResponse")]
         System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.SpaUser> LogonAsync(string username, string pw);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/InitSync", ReplyAction="http://tempuri.org/ISpaServ/InitSyncResponse")]
-        void InitSync(bool fullsync, string lastsync);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/InitSync", ReplyAction="http://tempuri.org/ISpaServ/InitSyncResponse")]
-        System.Threading.Tasks.Task InitSyncAsync(bool fullsync, string lastsync);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderDetail", ReplyAction="http://tempuri.org/ISpaServ/GetOrderDetailResponse")]
+        SPA_Datahandler.SyncServiceReference.OrderDetail[] GetOrderDetail(string lastSync, string currentSync, int serviceproviderid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderDetail", ReplyAction="http://tempuri.org/ISpaServ/GetOrderDetailResponse")]
-        SPA_Datahandler.SyncServiceReference.OrderDetail[] GetOrderDetail();
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderDetail[]> GetOrderDetailAsync(string lastSync, string currentSync, int serviceproviderid);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderDetail", ReplyAction="http://tempuri.org/ISpaServ/GetOrderDetailResponse")]
-        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderDetail[]> GetOrderDetailAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderHeader", ReplyAction="http://tempuri.org/ISpaServ/GetOrderHeaderResponse")]
+        SPA_Datahandler.SyncServiceReference.OrderHeader[] GetOrderHeader(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderHeader", ReplyAction="http://tempuri.org/ISpaServ/GetOrderHeaderResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderHeader[]> GetOrderHeaderAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItem", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemResponse")]
+        SPA_Datahandler.SyncServiceReference.OrderItem[] GetOrderItem(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItem", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItem[]> GetOrderItemAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetService", ReplyAction="http://tempuri.org/ISpaServ/GetServiceResponse")]
+        SPA_Datahandler.SyncServiceReference.Service[] GetService(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetService", ReplyAction="http://tempuri.org/ISpaServ/GetServiceResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.Service[]> GetServiceAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetServiceProvider", ReplyAction="http://tempuri.org/ISpaServ/GetServiceProviderResponse")]
+        SPA_Datahandler.SyncServiceReference.ServiceProvider[] GetServiceProvider(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetServiceProvider", ReplyAction="http://tempuri.org/ISpaServ/GetServiceProviderResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.ServiceProvider[]> GetServiceProviderAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetSowUser", ReplyAction="http://tempuri.org/ISpaServ/GetSowUserResponse")]
+        SPA_Datahandler.SyncServiceReference.SowUser[] GetSowUser(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetSowUser", ReplyAction="http://tempuri.org/ISpaServ/GetSowUserResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.SowUser[]> GetSowUserAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItemReport", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemReportResponse")]
+        SPA_Datahandler.SyncServiceReference.OrderItemReport[] GetOrderItemReport(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItemReport", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemReportResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItemReport[]> GetOrderItemReportAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItemReportAp", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemReportApResponse")]
+        SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] GetOrderItemReportAp(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/GetOrderItemReportAp", ReplyAction="http://tempuri.org/ISpaServ/GetOrderItemReportApResponse")]
+        System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItemReportAp[]> GetOrderItemReportApAsync(string lastSync, string currentSync, int serviceproviderid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItem", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemResponse")]
+        int PutOrderItem(SPA_Datahandler.SyncServiceReference.OrderItem[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItem", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemResponse")]
+        System.Threading.Tasks.Task<int> PutOrderItemAsync(SPA_Datahandler.SyncServiceReference.OrderItem[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutService", ReplyAction="http://tempuri.org/ISpaServ/PutServiceResponse")]
+        int PutService(SPA_Datahandler.SyncServiceReference.Service[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutService", ReplyAction="http://tempuri.org/ISpaServ/PutServiceResponse")]
+        System.Threading.Tasks.Task<int> PutServiceAsync(SPA_Datahandler.SyncServiceReference.Service[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutServiceProvider", ReplyAction="http://tempuri.org/ISpaServ/PutServiceProviderResponse")]
+        int PutServiceProvider(SPA_Datahandler.SyncServiceReference.ServiceProvider[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutServiceProvider", ReplyAction="http://tempuri.org/ISpaServ/PutServiceProviderResponse")]
+        System.Threading.Tasks.Task<int> PutServiceProviderAsync(SPA_Datahandler.SyncServiceReference.ServiceProvider[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItemReport", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemReportResponse")]
+        int PutOrderItemReport(SPA_Datahandler.SyncServiceReference.OrderItemReport[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItemReport", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemReportResponse")]
+        System.Threading.Tasks.Task<int> PutOrderItemReportAsync(SPA_Datahandler.SyncServiceReference.OrderItemReport[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItemReportAp", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemReportApResponse")]
+        int PutOrderItemReportAp(SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] l, string currentSync, bool testing);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISpaServ/PutOrderItemReportAp", ReplyAction="http://tempuri.org/ISpaServ/PutOrderItemReportApResponse")]
+        System.Threading.Tasks.Task<int> PutOrderItemReportApAsync(SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] l, string currentSync, bool testing);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -495,20 +1868,108 @@ namespace SPA_Datahandler.SyncServiceReference {
             return base.Channel.LogonAsync(username, pw);
         }
         
-        public void InitSync(bool fullsync, string lastsync) {
-            base.Channel.InitSync(fullsync, lastsync);
+        public SPA_Datahandler.SyncServiceReference.OrderDetail[] GetOrderDetail(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderDetail(lastSync, currentSync, serviceproviderid);
         }
         
-        public System.Threading.Tasks.Task InitSyncAsync(bool fullsync, string lastsync) {
-            return base.Channel.InitSyncAsync(fullsync, lastsync);
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderDetail[]> GetOrderDetailAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderDetailAsync(lastSync, currentSync, serviceproviderid);
         }
         
-        public SPA_Datahandler.SyncServiceReference.OrderDetail[] GetOrderDetail() {
-            return base.Channel.GetOrderDetail();
+        public SPA_Datahandler.SyncServiceReference.OrderHeader[] GetOrderHeader(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderHeader(lastSync, currentSync, serviceproviderid);
         }
         
-        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderDetail[]> GetOrderDetailAsync() {
-            return base.Channel.GetOrderDetailAsync();
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderHeader[]> GetOrderHeaderAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderHeaderAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.OrderItem[] GetOrderItem(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItem(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItem[]> GetOrderItemAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItemAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.Service[] GetService(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetService(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.Service[]> GetServiceAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetServiceAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.ServiceProvider[] GetServiceProvider(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetServiceProvider(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.ServiceProvider[]> GetServiceProviderAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetServiceProviderAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.SowUser[] GetSowUser(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetSowUser(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.SowUser[]> GetSowUserAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetSowUserAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.OrderItemReport[] GetOrderItemReport(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItemReport(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItemReport[]> GetOrderItemReportAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItemReportAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] GetOrderItemReportAp(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItemReportAp(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public System.Threading.Tasks.Task<SPA_Datahandler.SyncServiceReference.OrderItemReportAp[]> GetOrderItemReportApAsync(string lastSync, string currentSync, int serviceproviderid) {
+            return base.Channel.GetOrderItemReportApAsync(lastSync, currentSync, serviceproviderid);
+        }
+        
+        public int PutOrderItem(SPA_Datahandler.SyncServiceReference.OrderItem[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItem(l, currentSync, testing);
+        }
+        
+        public System.Threading.Tasks.Task<int> PutOrderItemAsync(SPA_Datahandler.SyncServiceReference.OrderItem[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItemAsync(l, currentSync, testing);
+        }
+        
+        public int PutService(SPA_Datahandler.SyncServiceReference.Service[] l, string currentSync, bool testing) {
+            return base.Channel.PutService(l, currentSync, testing);
+        }
+        
+        public System.Threading.Tasks.Task<int> PutServiceAsync(SPA_Datahandler.SyncServiceReference.Service[] l, string currentSync, bool testing) {
+            return base.Channel.PutServiceAsync(l, currentSync, testing);
+        }
+        
+        public int PutServiceProvider(SPA_Datahandler.SyncServiceReference.ServiceProvider[] l, string currentSync, bool testing) {
+            return base.Channel.PutServiceProvider(l, currentSync, testing);
+        }
+        
+        public System.Threading.Tasks.Task<int> PutServiceProviderAsync(SPA_Datahandler.SyncServiceReference.ServiceProvider[] l, string currentSync, bool testing) {
+            return base.Channel.PutServiceProviderAsync(l, currentSync, testing);
+        }
+        
+        public int PutOrderItemReport(SPA_Datahandler.SyncServiceReference.OrderItemReport[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItemReport(l, currentSync, testing);
+        }
+        
+        public System.Threading.Tasks.Task<int> PutOrderItemReportAsync(SPA_Datahandler.SyncServiceReference.OrderItemReport[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItemReportAsync(l, currentSync, testing);
+        }
+        
+        public int PutOrderItemReportAp(SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItemReportAp(l, currentSync, testing);
+        }
+        
+        public System.Threading.Tasks.Task<int> PutOrderItemReportApAsync(SPA_Datahandler.SyncServiceReference.OrderItemReportAp[] l, string currentSync, bool testing) {
+            return base.Channel.PutOrderItemReportApAsync(l, currentSync, testing);
         }
     }
 }

@@ -164,7 +164,6 @@ namespace PL_ServiceOnline.ViewModel
 
 
             BtnSyncWithBackend = new RelayCommand(() => StartSync());
-            MyClassInitialize();
 
 
 
@@ -496,12 +495,5 @@ namespace PL_ServiceOnline.ViewModel
             MessageBox.Show(SFB.StartSync().ToString());
         }
 
-        public static void MyClassInitialize()      //Muss gemacht werden, weil in dem Projekt, welches die Datenbankabfrage anstößt, der Connectionstring im App.config hinterlegt werden muss. Durch das "Umleiten" des datadir kann auf die Datenbank im Schwesternprojekt zugegriffen werden. 
-        {
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            int index = baseDir.IndexOf("ServiceOnline_ServiceProviderApp");
-            string dataDir = baseDir.Substring(0, index) + @"ServiceOnline_ServiceProviderApp";
-            AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
-        }
     }
 }

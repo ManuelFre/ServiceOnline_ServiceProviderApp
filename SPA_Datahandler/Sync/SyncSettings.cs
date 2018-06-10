@@ -20,11 +20,11 @@ namespace SPA_Datahandler.Sync
         public void InitSync()
         {
             string tst = SyncClient.TestString();
+            string currentSyncTime = System.DateTime.Now.ToString();
+            SpaUser user = SyncClient.Logon("franz", "Start123");           //"Start123"
+                                                                            //SyncClient.InitSync(false, "26.12.2017 13:08:00");
 
-            SpaUser user = SyncClient.Logon("franz", "Start123");
-            SyncClient.InitSync(false, "26.12.2017 13:08:00");
-
-            var temp = SyncClient.GetOrderDetail();
+            var temp = SyncClient.GetOrderDetail("26.12.2017 13:17:00", currentSyncTime,user.ServiceProviderId);
 
             string tmp = "asdf";
         }

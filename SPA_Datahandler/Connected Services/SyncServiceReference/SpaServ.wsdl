@@ -30,28 +30,211 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="InitSync">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="fullsync" type="xs:boolean" />
-            <xs:element minOccurs="0" name="lastsync" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="InitSyncResponse">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
       <xs:element name="GetOrderDetail">
         <xs:complexType>
-          <xs:sequence />
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="GetOrderDetailResponse">
         <xs:complexType>
           <xs:sequence>
             <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetOrderDetailResult" nillable="true" type="q2:ArrayOfOrderDetail" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderHeader">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderHeaderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetOrderHeaderResult" nillable="true" type="q3:ArrayOfOrderHeader" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItem">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItemResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetOrderItemResult" nillable="true" type="q4:ArrayOfOrderItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetService">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetServiceResult" nillable="true" type="q5:ArrayOfService" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProvider">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServiceProviderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetServiceProviderResult" nillable="true" type="q6:ArrayOfServiceProvider" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSowUser">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSowUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetSowUserResult" nillable="true" type="q7:ArrayOfSowUser" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItemReport">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItemReportResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetOrderItemReportResult" nillable="true" type="q8:ArrayOfOrderItemReport" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItemReportAp">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lastSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceproviderid" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderItemReportApResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="GetOrderItemReportApResult" nillable="true" type="q9:ArrayOfOrderItemReportAp" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItem">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="l" nillable="true" type="q10:ArrayOfOrderItem" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="testing" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItemResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PutOrderItemResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutService">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="l" nillable="true" type="q11:ArrayOfService" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="testing" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutServiceResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PutServiceResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutServiceProvider">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="l" nillable="true" type="q12:ArrayOfServiceProvider" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="testing" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutServiceProviderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PutServiceProviderResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItemReport">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="l" nillable="true" type="q13:ArrayOfOrderItemReport" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="testing" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItemReportResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PutOrderItemReportResult" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItemReportAp">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/SharedTypes" minOccurs="0" name="l" nillable="true" type="q14:ArrayOfOrderItemReportAp" />
+            <xs:element minOccurs="0" name="currentSync" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="testing" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutOrderItemReportApResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="PutOrderItemReportApResult" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -136,6 +319,152 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="OrderDetail" nillable="true" type="tns:OrderDetail" />
+      <xs:complexType name="ArrayOfOrderHeader">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderHeader" nillable="true" type="tns:OrderHeader" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderHeader" nillable="true" type="tns:ArrayOfOrderHeader" />
+      <xs:complexType name="OrderHeader">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerNote" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="IpAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderStateId" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderpaymentType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SowUserId" type="xs:int" />
+          <xs:element minOccurs="0" name="Subtotal" type="xs:double" />
+          <xs:element minOccurs="0" name="SubtotalExTax" type="xs:double" />
+          <xs:element minOccurs="0" name="Tax" type="xs:double" />
+          <xs:element minOccurs="0" name="Total" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderHeader" nillable="true" type="tns:OrderHeader" />
+      <xs:complexType name="ArrayOfOrderItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItem" nillable="true" type="tns:OrderItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderItem" nillable="true" type="tns:ArrayOfOrderItem" />
+      <xs:complexType name="OrderItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddCost" type="xs:double" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FinalPrice" type="xs:double" />
+          <xs:element minOccurs="0" name="FinalPriceWithTax" type="xs:double" />
+          <xs:element minOccurs="0" name="FinalPriceWithoutTax" type="xs:double" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IsAllIncl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsConfirmed" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsFinished" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OptionPrice" type="xs:double" />
+          <xs:element minOccurs="0" name="OrderId" type="xs:long" />
+          <xs:element minOccurs="0" name="PerItemTax" type="xs:double" />
+          <xs:element minOccurs="0" name="PreferredDatetime" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:double" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Tax" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderItem" nillable="true" type="tns:OrderItem" />
+      <xs:complexType name="ArrayOfService">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfService" nillable="true" type="tns:ArrayOfService" />
+      <xs:complexType name="Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllInclExtra" type="xs:double" />
+          <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IntroText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PriceInclTax" type="xs:double" />
+          <xs:element minOccurs="0" name="ProductSourceId" type="xs:int" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="ServiceProviderId" type="xs:int" />
+          <xs:element minOccurs="0" name="Shortname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TaxType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Service" nillable="true" type="tns:Service" />
+      <xs:complexType name="ArrayOfServiceProvider">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceProvider" nillable="true" type="tns:ServiceProvider" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfServiceProvider" nillable="true" type="tns:ArrayOfServiceProvider" />
+      <xs:complexType name="ServiceProvider">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Phone1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Taxnumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Timestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZoneId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ServiceProvider" nillable="true" type="tns:ServiceProvider" />
+      <xs:complexType name="ArrayOfSowUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SowUser" nillable="true" type="tns:SowUser" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSowUser" nillable="true" type="tns:ArrayOfSowUser" />
+      <xs:complexType name="SowUser">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegisteredDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Timestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SowUser" nillable="true" type="tns:SowUser" />
+      <xs:complexType name="ArrayOfOrderItemReport">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItemReport" nillable="true" type="tns:OrderItemReport" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderItemReport" nillable="true" type="tns:ArrayOfOrderItemReport" />
+      <xs:complexType name="OrderItemReport">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderItemId" type="xs:int" />
+          <xs:element minOccurs="0" name="ReportComment" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderItemReport" nillable="true" type="tns:OrderItemReport" />
+      <xs:complexType name="ArrayOfOrderItemReportAp">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderItemReportAp" nillable="true" type="tns:OrderItemReportAp" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderItemReportAp" nillable="true" type="tns:ArrayOfOrderItemReportAp" />
+      <xs:complexType name="OrderItemReportAp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Appendix" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OrderItemReportId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="OrderItemReportAp" nillable="true" type="tns:OrderItemReportAp" />
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="ISpaServ_TestString_InputMessage">
@@ -150,17 +479,83 @@
   <wsdl:message name="ISpaServ_Logon_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogonResponse" />
   </wsdl:message>
-  <wsdl:message name="ISpaServ_InitSync_InputMessage">
-    <wsdl:part name="parameters" element="tns:InitSync" />
-  </wsdl:message>
-  <wsdl:message name="ISpaServ_InitSync_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InitSyncResponse" />
-  </wsdl:message>
   <wsdl:message name="ISpaServ_GetOrderDetail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderDetail" />
   </wsdl:message>
   <wsdl:message name="ISpaServ_GetOrderDetail_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderHeader_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderHeader" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderHeader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItem" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetService_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetService" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetServiceProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProvider" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetServiceProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceProviderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetSowUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSowUser" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetSowUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSowUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItemReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItemReport" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItemReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItemReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItemReportAp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItemReportAp" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_GetOrderItemReportAp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderItemReportApResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItem" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutService_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutService" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutServiceProvider_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutServiceProvider" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutServiceProvider_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutServiceProviderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItemReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItemReport" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItemReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItemReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItemReportAp_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItemReportAp" />
+  </wsdl:message>
+  <wsdl:message name="ISpaServ_PutOrderItemReportAp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutOrderItemReportApResponse" />
   </wsdl:message>
   <wsdl:portType name="ISpaServ">
     <wsdl:operation name="TestString">
@@ -171,13 +566,57 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/Logon" message="tns:ISpaServ_Logon_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/LogonResponse" message="tns:ISpaServ_Logon_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InitSync">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/InitSync" message="tns:ISpaServ_InitSync_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/InitSyncResponse" message="tns:ISpaServ_InitSync_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetOrderDetail">
       <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetOrderDetail" message="tns:ISpaServ_GetOrderDetail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetOrderDetailResponse" message="tns:ISpaServ_GetOrderDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderHeader">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetOrderHeader" message="tns:ISpaServ_GetOrderHeader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetOrderHeaderResponse" message="tns:ISpaServ_GetOrderHeader_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItem" message="tns:ISpaServ_GetOrderItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItemResponse" message="tns:ISpaServ_GetOrderItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetService">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetService" message="tns:ISpaServ_GetService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetServiceResponse" message="tns:ISpaServ_GetService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetServiceProvider" message="tns:ISpaServ_GetServiceProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetServiceProviderResponse" message="tns:ISpaServ_GetServiceProvider_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSowUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetSowUser" message="tns:ISpaServ_GetSowUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetSowUserResponse" message="tns:ISpaServ_GetSowUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItemReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItemReport" message="tns:ISpaServ_GetOrderItemReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItemReportResponse" message="tns:ISpaServ_GetOrderItemReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItemReportAp">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItemReportAp" message="tns:ISpaServ_GetOrderItemReportAp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/GetOrderItemReportApResponse" message="tns:ISpaServ_GetOrderItemReportAp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItem" message="tns:ISpaServ_PutOrderItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItemResponse" message="tns:ISpaServ_PutOrderItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutService">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/PutService" message="tns:ISpaServ_PutService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/PutServiceResponse" message="tns:ISpaServ_PutService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutServiceProvider">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/PutServiceProvider" message="tns:ISpaServ_PutServiceProvider_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/PutServiceProviderResponse" message="tns:ISpaServ_PutServiceProvider_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItemReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItemReport" message="tns:ISpaServ_PutOrderItemReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItemReportResponse" message="tns:ISpaServ_PutOrderItemReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItemReportAp">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItemReportAp" message="tns:ISpaServ_PutOrderItemReportAp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISpaServ/PutOrderItemReportApResponse" message="tns:ISpaServ_PutOrderItemReportAp_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISpaServ" type="tns:ISpaServ">
@@ -200,8 +639,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InitSync">
-      <soap:operation soapAction="http://tempuri.org/ISpaServ/InitSync" style="document" />
+    <wsdl:operation name="GetOrderDetail">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderDetail" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -209,8 +648,107 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOrderDetail">
-      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderDetail" style="document" />
+    <wsdl:operation name="GetOrderHeader">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItem">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetService">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceProvider">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetServiceProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSowUser">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetSowUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItemReport">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderItemReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderItemReportAp">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/GetOrderItemReportAp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItem">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/PutOrderItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutService">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/PutService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutServiceProvider">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/PutServiceProvider" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItemReport">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/PutOrderItemReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutOrderItemReportAp">
+      <soap:operation soapAction="http://tempuri.org/ISpaServ/PutOrderItemReportAp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -17,7 +17,7 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
             dbContext.Configuration.AutoDetectChangesEnabled = true;
 
-            SyncSettings sync = new SyncSettings();
+            //SyncSettings sync = new SyncSettings();
         }
 
 
