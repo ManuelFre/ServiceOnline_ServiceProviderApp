@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using SPA_Datahandler;
 using SPA_Datahandler.Datamodel;
 using System;
@@ -14,6 +15,8 @@ namespace PL_ServiceOnline.ViewModel
     public class CompanyDataVm : ViewModelBase
     {
         #region Properties
+        public bool Token { get; set; }
+        private IMessenger msg = Messenger.Default;
         private string companyName { get; set; }
         public string CompanyName
         {
@@ -94,13 +97,26 @@ namespace PL_ServiceOnline.ViewModel
         private int ServiceProviderId;
 
         #endregion
+        
+
 
         public CompanyDataVm()
         {
+            msg.Register<GenericMessage<string>>(this, ChangeData);
+
             BtnChangeClicked = new RelayCommand(() => UpdateCompanyData());
             Datahandler = new Dataprovider();
             GetCompanyData();
+        }
 
+        private void ChangeData(GenericMessage<string> obj)
+        {
+            
+            if (obj.Content.Equals("update")){
+
+                GetCompanyData();
+
+            }
         }
 
         private void GetCompanyData()

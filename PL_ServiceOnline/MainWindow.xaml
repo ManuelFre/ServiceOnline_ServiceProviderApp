@@ -35,8 +35,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Command="{Binding Btn_UpcomingJobs}">
@@ -57,17 +56,15 @@
             </Button>
             
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"> Eingeloggt als:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">Dummy User</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">Zuletzt synchronisiert:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7">DummyTimeStamp</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Content="{Binding Username}"></Label>
 
-            <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
+                <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Detailansicht</TextBlock>
             </Button>
             <Button Grid.Row="3"  >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">PDF</TextBlock>
             </Button>-->
-            <Button Grid.Row="8" Command="{Binding Btn_Logout}">
+            <Button Grid.Row="6" Command="{Binding Btn_Logout}">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Logout</TextBlock>
             </Button>
                 
