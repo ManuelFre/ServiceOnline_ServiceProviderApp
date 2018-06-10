@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DbServiceProviderAppModelStoreContainer" CdmEntityContainer="DbServiceProviderAppEntities">
-    <EntitySetMapping Name="country">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.country">
-        <MappingFragment StoreEntitySet="country">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="iso_2" ColumnName="iso_2" />
-          <ScalarProperty Name="iso_3" ColumnName="iso_3" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="order_detail">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_detail">
         <MappingFragment StoreEntitySet="order_detail">
@@ -79,16 +67,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="order_state">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_state">
-        <MappingFragment StoreEntitySet="order_state">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="service">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.service">
         <MappingFragment StoreEntitySet="service">
@@ -109,30 +87,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="service_category">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.service_category">
-        <MappingFragment StoreEntitySet="service_category">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="asset_id" ColumnName="asset_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="service_customer_comment">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.service_customer_comment">
-        <MappingFragment StoreEntitySet="service_customer_comment">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="product_source_id" ColumnName="product_source_id" />
-          <ScalarProperty Name="sow_user_id" ColumnName="sow_user_id" />
-          <ScalarProperty Name="text" ColumnName="text" />
-          <ScalarProperty Name="stars" ColumnName="stars" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="service_provider">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.service_provider">
         <MappingFragment StoreEntitySet="service_provider">
@@ -148,20 +102,6 @@
           <ScalarProperty Name="phone_2" ColumnName="phone_2" />
           <ScalarProperty Name="tax_number" ColumnName="tax_number" />
           <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="service_provider_login">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.service_provider_login">
-        <MappingFragment StoreEntitySet="service_provider_login">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="service_provider_id" ColumnName="service_provider_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="registeredAt" ColumnName="registeredAt" />
           <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -199,35 +139,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="zdv_user">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.zdv_user">
-        <MappingFragment StoreEntitySet="zdv_user">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="registeredAt" ColumnName="registeredAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="zone">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.zone">
-        <MappingFragment StoreEntitySet="zone">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="country_id" ColumnName="country_id" />
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="createdAt" ColumnName="createdAt" />
-          <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="order_item_report">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report">
         <MappingFragment StoreEntitySet="order_item_report">
-          <ScalarProperty Name="report_date" ColumnName="report_date" />
+          <ScalarProperty Name="deletedat" ColumnName="deletedat" />
+          <ScalarProperty Name="createdat" ColumnName="createdat" />
           <ScalarProperty Name="comment" ColumnName="comment" />
           <ScalarProperty Name="order_item_id" ColumnName="order_item_id" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -237,6 +153,8 @@
     <EntitySetMapping Name="order_item_report_appendix">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.order_item_report_appendix">
         <MappingFragment StoreEntitySet="order_item_report_appendix">
+          <ScalarProperty Name="deletedat" ColumnName="deletedat" />
+          <ScalarProperty Name="createdat" ColumnName="createdat" />
           <ScalarProperty Name="appendix" ColumnName="appendix" />
           <ScalarProperty Name="order_item_report_id" ColumnName="order_item_report_id" />
           <ScalarProperty Name="Id" ColumnName="Id" />

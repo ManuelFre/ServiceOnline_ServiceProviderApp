@@ -137,7 +137,7 @@ namespace PL_ServiceOnline.ViewModel
         public string[] AllStatuses { get; set; }
 
 
-        public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
+        public ObservableCollection<OrderItemReport_> OrderItemReports { get; set; }
 
 
 
@@ -190,7 +190,7 @@ namespace PL_ServiceOnline.ViewModel
             {
                 try
                 {
-                    OrderItemReport oir = new OrderItemReport()
+                    OrderItemReport_ oir = new OrderItemReport_()
                     {
                         //Comment = "Kommentar kksksksksk",
                         //Id = 59,
@@ -288,9 +288,9 @@ namespace PL_ServiceOnline.ViewModel
             AddittionalCost = 84.44;
             ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
             ServiceUnit = "Arbeitsstunde";
-            OrderItemReports = new ObservableCollection<OrderItemReport>()
+            OrderItemReports = new ObservableCollection<OrderItemReport_>()
             {
-                new OrderItemReport()
+                new OrderItemReport_()
                 {
                     Comment = "Kommentar kksksksksk",
                     Id = 15,
@@ -319,7 +319,7 @@ namespace PL_ServiceOnline.ViewModel
                     }
 
                 },
-                new OrderItemReport()
+                new OrderItemReport_()
                 {
                     Comment = "2. Kommentar kkasksk",
                     Id = 16,
@@ -479,7 +479,7 @@ namespace PL_ServiceOnline.ViewModel
                 AddittionalCost = SelectedDetailed.AddittionalCost;
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
                 ServiceUnit = SelectedDetailed.ServiceUnit;
-                OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
+                OrderItemReports = new ObservableCollection<OrderItemReport_>(SelectedDetailed.OrderItemReports as List<OrderItemReport_>);
                 Status = GetStatus(IsFinished, IsConfirmed);
                 //StringOrderedDateTime = OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
                 //StringPreferedDate = PreferedDate.ToString("dd.MM.yyyy - hh.mm");

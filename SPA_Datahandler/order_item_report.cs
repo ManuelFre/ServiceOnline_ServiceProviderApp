@@ -23,7 +23,8 @@ namespace SPA_Datahandler
         public int Id { get; set; }
         public int order_item_id { get; set; }
         public string comment { get; set; }
-        public System.DateTime report_date { get; set; }
+        public System.DateTime createdat { get; set; }
+        public Nullable<System.DateTime> deletedat { get; set; }
     
         public virtual order_item order_item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

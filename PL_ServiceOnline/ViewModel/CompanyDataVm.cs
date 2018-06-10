@@ -107,17 +107,21 @@ namespace PL_ServiceOnline.ViewModel
         {
             ServiceProviderData Data = new ServiceProviderData();
             Data = Datahandler.QueryServiceProviderData();
-            ServiceProviderId = Data.Id;
-            CompanyName = Data.CompanyName;
-            Address = Data.Address;
-            Zip = Data.Zip;
-            City = Data.City;
-            Phone = Data.Phone;
-            CntCompletedOrders = Data.CntCompletedOrders;
-            CntOpenOrders = Data.CntOpenOrders;
-            SumTargetedSales = Data.SumTargetedSales;
-            CntOpenOrdersThisMonth = Data.CntOpenOrdersThisMonth;
-            CntUnconfirmedOrders = Data.CntUnconfirmedOrders;
+            if (Data != null)
+            {
+                ServiceProviderId = Data.Id;
+                CompanyName = Data.CompanyName;
+                Address = Data.Address;
+                Zip = Data.Zip;
+                City = Data.City;
+                Phone = Data.Phone;
+                CntCompletedOrders = Data.CntCompletedOrders;
+                CntOpenOrders = Data.CntOpenOrders;
+                SumTargetedSales = Data.SumTargetedSales;
+                CntOpenOrdersThisMonth = Data.CntOpenOrdersThisMonth;
+                CntUnconfirmedOrders = Data.CntUnconfirmedOrders;
+            }
+
                 
         }
 

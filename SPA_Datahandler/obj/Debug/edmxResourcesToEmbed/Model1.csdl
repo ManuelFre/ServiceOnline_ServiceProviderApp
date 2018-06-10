@@ -1,20 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DbServiceProviderAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="country">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="iso_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="iso_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="sow_user_delivery_address" Relationship="Self.address_country_fk" FromRole="country" ToRole="sow_user_delivery_address" />
-    <NavigationProperty Name="order_detail" Relationship="Self.order_detail_country_fk" FromRole="country" ToRole="order_detail" />
-    <NavigationProperty Name="service_provider" Relationship="Self.service_provider_country_fk" FromRole="country" ToRole="service_provider" />
-    <NavigationProperty Name="zone" Relationship="Self.zone_country_fk" FromRole="country" ToRole="zone" />
-  </EntityType>
   <EntityType Name="order_detail">
     <Key>
       <PropertyRef Name="Id" />
@@ -33,11 +18,9 @@
     <Property Name="country_id" Type="Int32" Nullable="false" />
     <Property Name="zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="tax_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="country" Relationship="Self.order_detail_country_fk" FromRole="order_detail" ToRole="country" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_header" Relationship="Self.order_detail_header_fk" FromRole="order_detail" ToRole="order_header" />
-    <NavigationProperty Name="zone" Relationship="Self.order_detail_zone_fk" FromRole="order_detail" ToRole="zone" />
   </EntityType>
   <EntityType Name="order_header">
     <Key>
@@ -54,11 +37,10 @@
     <Property Name="ip_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="customer_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="order_state_id" Type="Int32" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_detail" Relationship="Self.order_detail_header_fk" FromRole="order_header" ToRole="order_detail" />
     <NavigationProperty Name="sow_user" Relationship="Self.order_header_customer_fk" FromRole="order_header" ToRole="sow_user" />
-    <NavigationProperty Name="order_state" Relationship="Self.order_header_state_fk" FromRole="order_header" ToRole="order_state" />
     <NavigationProperty Name="order_item" Relationship="Self.order_item_header_fk" FromRole="order_header" ToRole="order_item" />
   </EntityType>
   <EntityType Name="order_item">
@@ -77,26 +59,16 @@
     <Property Name="final_price_with_tax" Type="Double" Nullable="false" />
     <Property Name="final_price_without_tax" Type="Double" Nullable="false" />
     <Property Name="is_all_inclusive" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="preferred_date_time" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="preferred_date_time" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="is_finished" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_header" Relationship="Self.order_item_header_fk" FromRole="order_item" ToRole="order_header" />
     <NavigationProperty Name="service" Relationship="Self.order_item_service_fk" FromRole="order_item" ToRole="service" />
     <Property Name="is_confirmed" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="true" />
     <Property Name="addittional_cost" Type="Double" />
     <Property Name="service_provider_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item" ToRole="order_item_report" />
-  </EntityType>
-  <EntityType Name="order_state">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="order_header" Relationship="Self.order_header_state_fk" FromRole="order_state" ToRole="order_header" />
   </EntityType>
   <EntityType Name="service">
     <Key>
@@ -113,36 +85,11 @@
     <Property Name="amount_of_bookable_units" Type="Int32" Nullable="false" />
     <Property Name="price_incl_tax" Type="Double" Nullable="false" />
     <Property Name="all_inclusive_extra_charge" Type="Double" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_item" Relationship="Self.order_item_service_fk" FromRole="service" ToRole="order_item" />
-    <NavigationProperty Name="service_category" Relationship="Self.service_service_category_fk" FromRole="service" ToRole="service_category" />
     <NavigationProperty Name="service_provider" Relationship="Self.service_service_provider_fk" FromRole="service" ToRole="service_provider" />
     <Property Name="service_unit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="service_category">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="asset_id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="service" Relationship="Self.service_service_category_fk" FromRole="service_category" ToRole="service" />
-  </EntityType>
-  <EntityType Name="service_customer_comment">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="product_source_id" Type="Int32" Nullable="false" />
-    <Property Name="sow_user_id" Type="Int32" Nullable="false" />
-    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="stars" Type="Int32" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="sow_user" Relationship="Self.customer_comment_customer_fk" FromRole="service_customer_comment" ToRole="sow_user" />
   </EntityType>
   <EntityType Name="service_provider">
     <Key>
@@ -159,26 +106,9 @@
     <Property Name="phone_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="phone_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="tax_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="country" Relationship="Self.service_provider_country_fk" FromRole="service_provider" ToRole="country" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="service" Relationship="Self.service_service_provider_fk" FromRole="service_provider" ToRole="service" />
-    <NavigationProperty Name="service_provider_login" Relationship="Self.service_provider_login_fk" FromRole="service_provider" ToRole="service_provider_login" />
-    <NavigationProperty Name="zone" Relationship="Self.service_provider_zone_fk" FromRole="service_provider" ToRole="zone" />
-  </EntityType>
-  <EntityType Name="service_provider_login">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="service_provider_id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="registeredAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="service_provider" Relationship="Self.service_provider_login_fk" FromRole="service_provider_login" ToRole="service_provider" />
   </EntityType>
   <EntityType Name="sow_user">
     <Key>
@@ -188,10 +118,9 @@
     <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="registeredAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
+    <Property Name="registeredAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="order_header" Relationship="Self.order_header_customer_fk" FromRole="sow_user" ToRole="order_header" />
-    <NavigationProperty Name="service_customer_comment" Relationship="Self.customer_comment_customer_fk" FromRole="sow_user" ToRole="service_customer_comment" />
     <NavigationProperty Name="sow_user_delivery_address" Relationship="Self.address_sow_user_fk" FromRole="sow_user" ToRole="sow_user_delivery_address" />
   </EntityType>
   <EntityType Name="sow_user_delivery_address">
@@ -211,87 +140,10 @@
     <Property Name="phone_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="phone_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="tax_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="country" Relationship="Self.address_country_fk" FromRole="sow_user_delivery_address" ToRole="country" />
+    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="sow_user" Relationship="Self.address_sow_user_fk" FromRole="sow_user_delivery_address" ToRole="sow_user" />
-    <NavigationProperty Name="zone" Relationship="Self.address_zone_fk" FromRole="sow_user_delivery_address" ToRole="zone" />
   </EntityType>
-  <EntityType Name="zdv_user">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="registeredAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-  </EntityType>
-  <EntityType Name="zone">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="country_id" Type="Int32" Nullable="false" />
-    <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="createdAt" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="deletedAt" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="country" Relationship="Self.zone_country_fk" FromRole="zone" ToRole="country" />
-    <NavigationProperty Name="order_detail" Relationship="Self.order_detail_zone_fk" FromRole="zone" ToRole="order_detail" />
-    <NavigationProperty Name="service_provider" Relationship="Self.service_provider_zone_fk" FromRole="zone" ToRole="service_provider" />
-    <NavigationProperty Name="sow_user_delivery_address" Relationship="Self.address_zone_fk" FromRole="zone" ToRole="sow_user_delivery_address" />
-  </EntityType>
-  <Association Name="address_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="sow_user_delivery_address" Type="Self.sow_user_delivery_address" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="sow_user_delivery_address">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="order_detail_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_detail">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_provider_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="zone_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="zone" Type="Self.zone" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="zone">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="order_detail_header_fk">
     <End Role="order_header" Type="Self.order_header" Multiplicity="1" />
     <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
@@ -304,18 +156,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="order_detail_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_detail">
-        <PropertyRef Name="zone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="order_header_customer_fk">
     <End Role="sow_user" Type="Self.sow_user" Multiplicity="1" />
     <End Role="order_header" Type="Self.order_header" Multiplicity="*" />
@@ -325,18 +165,6 @@
       </Principal>
       <Dependent Role="order_header">
         <PropertyRef Name="sow_user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="order_header_state_fk">
-    <End Role="order_state" Type="Self.order_state" Multiplicity="1" />
-    <End Role="order_header" Type="Self.order_header" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="order_state">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_header">
-        <PropertyRef Name="order_state_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -364,18 +192,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="service_service_category_fk">
-    <End Role="service_category" Type="Self.service_category" Multiplicity="1" />
-    <End Role="service" Type="Self.service" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="service_category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service">
-        <PropertyRef Name="category_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="service_service_provider_fk">
     <End Role="service_provider" Type="Self.service_provider" Multiplicity="1" />
     <End Role="service" Type="Self.service" Multiplicity="*" />
@@ -385,42 +201,6 @@
       </Principal>
       <Dependent Role="service">
         <PropertyRef Name="service_provider_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="customer_comment_customer_fk">
-    <End Role="sow_user" Type="Self.sow_user" Multiplicity="1" />
-    <End Role="service_customer_comment" Type="Self.service_customer_comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sow_user">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_customer_comment">
-        <PropertyRef Name="sow_user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_provider_login_fk">
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="1" />
-    <End Role="service_provider_login" Type="Self.service_provider_login" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="service_provider">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider_login">
-        <PropertyRef Name="service_provider_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_provider_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider">
-        <PropertyRef Name="zone_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -436,63 +216,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="address_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="sow_user_delivery_address" Type="Self.sow_user_delivery_address" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="sow_user_delivery_address">
-        <PropertyRef Name="zone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DbServiceProviderAppEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="country" EntityType="Self.country" />
     <EntitySet Name="order_detail" EntityType="Self.order_detail" />
     <EntitySet Name="order_header" EntityType="Self.order_header" />
     <EntitySet Name="order_item" EntityType="Self.order_item" />
-    <EntitySet Name="order_state" EntityType="Self.order_state" />
     <EntitySet Name="service" EntityType="Self.service" />
-    <EntitySet Name="service_category" EntityType="Self.service_category" />
-    <EntitySet Name="service_customer_comment" EntityType="Self.service_customer_comment" />
     <EntitySet Name="service_provider" EntityType="Self.service_provider" />
-    <EntitySet Name="service_provider_login" EntityType="Self.service_provider_login" />
     <EntitySet Name="sow_user" EntityType="Self.sow_user" />
     <EntitySet Name="sow_user_delivery_address" EntityType="Self.sow_user_delivery_address" />
-    <EntitySet Name="zdv_user" EntityType="Self.zdv_user" />
-    <EntitySet Name="zone" EntityType="Self.zone" />
-    <AssociationSet Name="address_country_fk" Association="Self.address_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
-    <AssociationSet Name="order_detail_country_fk" Association="Self.order_detail_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="order_detail" EntitySet="order_detail" />
-    </AssociationSet>
-    <AssociationSet Name="service_provider_country_fk" Association="Self.service_provider_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="service_provider" EntitySet="service_provider" />
-    </AssociationSet>
-    <AssociationSet Name="zone_country_fk" Association="Self.zone_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="zone" EntitySet="zone" />
-    </AssociationSet>
     <AssociationSet Name="order_detail_header_fk" Association="Self.order_detail_header_fk">
       <End Role="order_header" EntitySet="order_header" />
       <End Role="order_detail" EntitySet="order_detail" />
     </AssociationSet>
-    <AssociationSet Name="order_detail_zone_fk" Association="Self.order_detail_zone_fk">
-      <End Role="zone" EntitySet="zone" />
-      <End Role="order_detail" EntitySet="order_detail" />
-    </AssociationSet>
     <AssociationSet Name="order_header_customer_fk" Association="Self.order_header_customer_fk">
       <End Role="sow_user" EntitySet="sow_user" />
-      <End Role="order_header" EntitySet="order_header" />
-    </AssociationSet>
-    <AssociationSet Name="order_header_state_fk" Association="Self.order_header_state_fk">
-      <End Role="order_state" EntitySet="order_state" />
       <End Role="order_header" EntitySet="order_header" />
     </AssociationSet>
     <AssociationSet Name="order_item_header_fk" Association="Self.order_item_header_fk">
@@ -503,32 +240,12 @@
       <End Role="service" EntitySet="service" />
       <End Role="order_item" EntitySet="order_item" />
     </AssociationSet>
-    <AssociationSet Name="service_service_category_fk" Association="Self.service_service_category_fk">
-      <End Role="service_category" EntitySet="service_category" />
-      <End Role="service" EntitySet="service" />
-    </AssociationSet>
     <AssociationSet Name="service_service_provider_fk" Association="Self.service_service_provider_fk">
       <End Role="service_provider" EntitySet="service_provider" />
       <End Role="service" EntitySet="service" />
     </AssociationSet>
-    <AssociationSet Name="customer_comment_customer_fk" Association="Self.customer_comment_customer_fk">
-      <End Role="sow_user" EntitySet="sow_user" />
-      <End Role="service_customer_comment" EntitySet="service_customer_comment" />
-    </AssociationSet>
-    <AssociationSet Name="service_provider_login_fk" Association="Self.service_provider_login_fk">
-      <End Role="service_provider" EntitySet="service_provider" />
-      <End Role="service_provider_login" EntitySet="service_provider_login" />
-    </AssociationSet>
-    <AssociationSet Name="service_provider_zone_fk" Association="Self.service_provider_zone_fk">
-      <End Role="zone" EntitySet="zone" />
-      <End Role="service_provider" EntitySet="service_provider" />
-    </AssociationSet>
     <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">
       <End Role="sow_user" EntitySet="sow_user" />
-      <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
-    <AssociationSet Name="address_zone_fk" Association="Self.address_zone_fk">
-      <End Role="zone" EntitySet="zone" />
       <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
     </AssociationSet>
     <EntitySet Name="order_item_report" EntityType="DbServiceProviderAppModel.order_item_report" />
@@ -552,9 +269,10 @@
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="order_item_id" Type="Int32" Nullable="false" />
     <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="report_date" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
     <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
+    <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedat" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="order_item_report_appendix">
     <Key>
@@ -564,6 +282,8 @@
     <Property Name="order_item_report_id" Type="Int32" Nullable="false" />
     <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
+    <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="deletedat" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK_order_item_report_ToTable">
     <End Type="DbServiceProviderAppModel.order_item" Role="order_item" Multiplicity="1" />

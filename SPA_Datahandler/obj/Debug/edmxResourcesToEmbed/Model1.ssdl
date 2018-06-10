@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DbServiceProviderAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="country">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="iso_2" Type="text" Nullable="false" />
-    <Property Name="iso_3" Type="text" Nullable="false" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
   <EntityType Name="order_detail">
     <Key>
       <PropertyRef Name="Id" />
@@ -29,8 +18,8 @@
     <Property Name="country_id" Type="int" Nullable="false" />
     <Property Name="zip" Type="text" Nullable="false" />
     <Property Name="tax_number" Type="text" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="order_header">
     <Key>
@@ -47,8 +36,8 @@
     <Property Name="ip_address" Type="text" Nullable="false" />
     <Property Name="customer_note" Type="text" />
     <Property Name="order_state_id" Type="int" Nullable="false" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="order_item">
     <Key>
@@ -66,13 +55,13 @@
     <Property Name="final_price_with_tax" Type="float" Nullable="false" />
     <Property Name="final_price_without_tax" Type="float" Nullable="false" />
     <Property Name="is_all_inclusive" Type="text" Nullable="false" />
-    <Property Name="preferred_date_time" Type="date" Nullable="false" />
+    <Property Name="preferred_date_time" Type="datetime" Nullable="false" />
     <Property Name="is_finished" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="is_confirmed" Type="char" MaxLength="1" />
     <Property Name="addittional_cost" Type="float" />
     <Property Name="service_provider_comment" Type="text" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="order_item_report">
     <Key>
@@ -81,7 +70,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_item_id" Type="int" Nullable="false" />
     <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="report_date" Type="datetime" Nullable="false" />
+    <Property Name="createdat" Type="datetime" Nullable="false" />
+    <Property Name="deletedat" Type="datetime" />
   </EntityType>
   <EntityType Name="order_item_report_appendix">
     <Key>
@@ -90,15 +80,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_item_report_id" Type="int" Nullable="false" />
     <Property Name="appendix" Type="image" Nullable="false" />
-  </EntityType>
-  <EntityType Name="order_state">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdat" Type="datetime" Nullable="false" />
+    <Property Name="deletedat" Type="datetime" />
   </EntityType>
   <EntityType Name="service">
     <Key>
@@ -116,30 +99,8 @@
     <Property Name="amount_of_bookable_units" Type="int" Nullable="false" />
     <Property Name="price_incl_tax" Type="float" Nullable="false" />
     <Property Name="all_inclusive_extra_charge" Type="float" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
-  <EntityType Name="service_category">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="asset_id" Type="int" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
-  <EntityType Name="service_customer_comment">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="product_source_id" Type="int" Nullable="false" />
-    <Property Name="sow_user_id" Type="int" Nullable="false" />
-    <Property Name="text" Type="text" Nullable="false" />
-    <Property Name="stars" Type="int" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="service_provider">
     <Key>
@@ -156,21 +117,8 @@
     <Property Name="phone_1" Type="text" />
     <Property Name="phone_2" Type="text" />
     <Property Name="tax_number" Type="text" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
-  <EntityType Name="service_provider_login">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="service_provider_id" Type="int" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="username" Type="text" Nullable="false" />
-    <Property Name="email" Type="text" Nullable="false" />
-    <Property Name="password" Type="text" Nullable="false" />
-    <Property Name="registeredAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="sow_user">
     <Key>
@@ -180,8 +128,8 @@
     <Property Name="name" Type="text" Nullable="false" />
     <Property Name="username" Type="text" Nullable="false" />
     <Property Name="email" Type="text" Nullable="false" />
-    <Property Name="registeredAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="registeredAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="sow_user_delivery_address">
     <Key>
@@ -200,8 +148,8 @@
     <Property Name="phone_1" Type="text" />
     <Property Name="phone_2" Type="text" Nullable="false" />
     <Property Name="tax_number" Type="text" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
+    <Property Name="createdAt" Type="datetime" Nullable="false" />
+    <Property Name="deletedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="spa_changes">
     <Key>
@@ -227,41 +175,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="synctime" Type="datetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="zdv_user">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="username" Type="text" Nullable="false" />
-    <Property Name="email" Type="text" Nullable="false" />
-    <Property Name="password" Type="text" Nullable="false" />
-    <Property Name="registeredAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
-  <EntityType Name="zone">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="country_id" Type="int" Nullable="false" />
-    <Property Name="code" Type="text" Nullable="false" />
-    <Property Name="name" Type="text" Nullable="false" />
-    <Property Name="createdAt" Type="date" Nullable="false" />
-    <Property Name="deletedAt" Type="date" />
-  </EntityType>
-  <Association Name="address_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="sow_user_delivery_address" Type="Self.sow_user_delivery_address" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="sow_user_delivery_address">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="address_sow_user_fk">
     <End Role="sow_user" Type="Self.sow_user" Multiplicity="1" />
     <End Role="sow_user_delivery_address" Type="Self.sow_user_delivery_address" Multiplicity="*" />
@@ -274,33 +187,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="address_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="sow_user_delivery_address" Type="Self.sow_user_delivery_address" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="sow_user_delivery_address">
-        <PropertyRef Name="zone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="customer_comment_customer_fk">
-    <End Role="sow_user" Type="Self.sow_user" Multiplicity="1" />
-    <End Role="service_customer_comment" Type="Self.service_customer_comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sow_user">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_customer_comment">
-        <PropertyRef Name="sow_user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <!--Errors Found During Generation:
-warning 6035: The relationship 'customer_comment_service_fk' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="customer_comment_service_fk" />-->
   <Association Name="FK_order_item_report_appendix_ToTable">
     <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="1" />
     <End Role="order_item_report_appendix" Type="Self.order_item_report_appendix" Multiplicity="*" />
@@ -325,18 +211,6 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="order_detail_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_detail">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="order_detail_header_fk">
     <End Role="order_header" Type="Self.order_header" Multiplicity="1" />
     <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
@@ -349,18 +223,6 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="order_detail_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_detail">
-        <PropertyRef Name="zone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="order_header_customer_fk">
     <End Role="sow_user" Type="Self.sow_user" Multiplicity="1" />
     <End Role="order_header" Type="Self.order_header" Multiplicity="*" />
@@ -370,18 +232,6 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       </Principal>
       <Dependent Role="order_header">
         <PropertyRef Name="sow_user_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="order_header_state_fk">
-    <End Role="order_state" Type="Self.order_state" Multiplicity="1" />
-    <End Role="order_header" Type="Self.order_header" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="order_state">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_header">
-        <PropertyRef Name="order_state_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -409,54 +259,6 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="service_provider_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_provider_login_fk">
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="1" />
-    <End Role="service_provider_login" Type="Self.service_provider_login" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="service_provider">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider_login">
-        <PropertyRef Name="service_provider_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_provider_zone_fk">
-    <End Role="zone" Type="Self.zone" Multiplicity="1" />
-    <End Role="service_provider" Type="Self.service_provider" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service_provider">
-        <PropertyRef Name="zone_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="service_service_category_fk">
-    <End Role="service_category" Type="Self.service_category" Multiplicity="1" />
-    <End Role="service" Type="Self.service" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="service_category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="service">
-        <PropertyRef Name="category_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="service_service_provider_fk">
     <End Role="service_provider" Type="Self.service_provider" Multiplicity="1" />
     <End Role="service" Type="Self.service" Multiplicity="*" />
@@ -469,53 +271,22 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="zone_country_fk">
-    <End Role="country" Type="Self.country" Multiplicity="1" />
-    <End Role="zone" Type="Self.zone" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="country">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="zone">
-        <PropertyRef Name="country_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DbServiceProviderAppModelStoreContainer">
-    <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_header" EntityType="Self.order_header" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_item" EntityType="Self.order_item" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_item_report" EntityType="Self.order_item_report" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_item_report_appendix" EntityType="Self.order_item_report_appendix" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="order_state" EntityType="Self.order_state" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="service_category" EntityType="Self.service_category" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="service_customer_comment" EntityType="Self.service_customer_comment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="service_provider" EntityType="Self.service_provider" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="service_provider_login" EntityType="Self.service_provider_login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sow_user" EntityType="Self.sow_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sow_user_delivery_address" EntityType="Self.sow_user_delivery_address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="spa_changes" EntityType="Self.spa_changes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="spa_log_in" EntityType="Self.spa_log_in" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="spa_synctimes" EntityType="Self.spa_synctimes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="zdv_user" EntityType="Self.zdv_user" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="zone" EntityType="Self.zone" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="address_country_fk" Association="Self.address_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
     <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">
       <End Role="sow_user" EntitySet="sow_user" />
       <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
-    <AssociationSet Name="address_zone_fk" Association="Self.address_zone_fk">
-      <End Role="zone" EntitySet="zone" />
-      <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
-    <AssociationSet Name="customer_comment_customer_fk" Association="Self.customer_comment_customer_fk">
-      <End Role="sow_user" EntitySet="sow_user" />
-      <End Role="service_customer_comment" EntitySet="service_customer_comment" />
     </AssociationSet>
     <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="Self.FK_order_item_report_appendix_ToTable">
       <End Role="order_item_report" EntitySet="order_item_report" />
@@ -525,24 +296,12 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       <End Role="order_item" EntitySet="order_item" />
       <End Role="order_item_report" EntitySet="order_item_report" />
     </AssociationSet>
-    <AssociationSet Name="order_detail_country_fk" Association="Self.order_detail_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="order_detail" EntitySet="order_detail" />
-    </AssociationSet>
     <AssociationSet Name="order_detail_header_fk" Association="Self.order_detail_header_fk">
       <End Role="order_header" EntitySet="order_header" />
       <End Role="order_detail" EntitySet="order_detail" />
     </AssociationSet>
-    <AssociationSet Name="order_detail_zone_fk" Association="Self.order_detail_zone_fk">
-      <End Role="zone" EntitySet="zone" />
-      <End Role="order_detail" EntitySet="order_detail" />
-    </AssociationSet>
     <AssociationSet Name="order_header_customer_fk" Association="Self.order_header_customer_fk">
       <End Role="sow_user" EntitySet="sow_user" />
-      <End Role="order_header" EntitySet="order_header" />
-    </AssociationSet>
-    <AssociationSet Name="order_header_state_fk" Association="Self.order_header_state_fk">
-      <End Role="order_state" EntitySet="order_state" />
       <End Role="order_header" EntitySet="order_header" />
     </AssociationSet>
     <AssociationSet Name="order_item_header_fk" Association="Self.order_item_header_fk">
@@ -553,29 +312,9 @@ warning 6035: The relationship 'customer_comment_service_fk' has columns that ar
       <End Role="service" EntitySet="service" />
       <End Role="order_item" EntitySet="order_item" />
     </AssociationSet>
-    <AssociationSet Name="service_provider_country_fk" Association="Self.service_provider_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="service_provider" EntitySet="service_provider" />
-    </AssociationSet>
-    <AssociationSet Name="service_provider_login_fk" Association="Self.service_provider_login_fk">
-      <End Role="service_provider" EntitySet="service_provider" />
-      <End Role="service_provider_login" EntitySet="service_provider_login" />
-    </AssociationSet>
-    <AssociationSet Name="service_provider_zone_fk" Association="Self.service_provider_zone_fk">
-      <End Role="zone" EntitySet="zone" />
-      <End Role="service_provider" EntitySet="service_provider" />
-    </AssociationSet>
-    <AssociationSet Name="service_service_category_fk" Association="Self.service_service_category_fk">
-      <End Role="service_category" EntitySet="service_category" />
-      <End Role="service" EntitySet="service" />
-    </AssociationSet>
     <AssociationSet Name="service_service_provider_fk" Association="Self.service_service_provider_fk">
       <End Role="service_provider" EntitySet="service_provider" />
       <End Role="service" EntitySet="service" />
-    </AssociationSet>
-    <AssociationSet Name="zone_country_fk" Association="Self.zone_country_fk">
-      <End Role="country" EntitySet="country" />
-      <End Role="zone" EntitySet="zone" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

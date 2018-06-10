@@ -1,5 +1,6 @@
 ﻿using SPA_Datahandler.Datamodel;
 using SPA_Datahandler.Sync;
+using SPA_Datahandler.SyncServiceReference;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,50 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
             dbContext.Configuration.AutoDetectChangesEnabled = true;
 
+           
+
             //SyncSettings sync = new SyncSettings();
         }
 
+
+        public List<order_item> QueryOrderItems(DateTime changeDate)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oi in dbContext.order_item
+                        where oi.createdAt >= changeDate
+                        select oi;
+            return query.ToList<order_item>();
+        }
+
+        public List<order_item_report> QueryOrderItemReports(DateTime changeDate)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oir in dbContext.order_item_report
+                        where oir.createdat >= changeDate
+                        select oir;
+            return query.ToList<order_item_report>();
+        }
+
+        public List<order_item_report_appendix> QueryOrderItemReportAppendix(DateTime changeDate)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oira in dbContext.order_item_report_appendix
+                        where oira.createdat >= changeDate
+                        select oira;
+            return query.ToList<order_item_report_appendix>();
+        }
+        public service_provider QueryServiceProvider (DateTime changeDate)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from sp in dbContext.service_provider
+                        where sp.createdAt >= changeDate
+                        select sp;
+            return query.FirstOrDefault<service_provider>();
+        }
 
         public List<OrderSummary> QueryOrderSummaries()
         {
@@ -198,13 +240,13 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Reports zum Order_Item
             var queryReport = from oim in dbContext.order_item_report
                               where oim.order_item_id == OrderItemId
-                              select new OrderItemReport
+                              select new OrderItemReport_
                               {
                                   Id = oim.Id,
                                   Comment = oim.comment,
-                                  ReportDate = oim.report_date
+                                  ReportDate = oim.createdat
                               };
-            List<OrderItemReport> OIM = queryReport.ToList();
+            List<OrderItemReport_> OIM = queryReport.ToList();
 
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
             for (int i = 0; i < OIM.Count; i++)
@@ -278,7 +320,7 @@ namespace SPA_Datahandler
 
         }
 
-        public void AddOrderItemReport(OrderItemReport NewReport)
+        public void AddOrderItemReport(OrderItemReport_ NewReport)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -289,7 +331,7 @@ namespace SPA_Datahandler
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report
             {
-                report_date = NewReport.ReportDate,
+                createdat = NewReport.ReportDate,
                 order_item_id = NewReport.OrderItemId,
                 comment = NewReport.Comment,
                 Id = NextId
@@ -322,21 +364,26 @@ namespace SPA_Datahandler
             return (from ls in dbContext.spa_synctimes
                     select ls.synctime).Max<DateTime>();
         }
-        public bool LogInAndCheckUserData(string username, string password)
+
+
+
+
+        public bool LogIn(string username, string password)
         {
             dbContext = new DbServiceProviderAppEntities();
 
-            var query = from ud in dbContext.service_provider_login
-                        where ud.username == username && ud.password == password
-                        select ud;
 
-            List<service_provider_login> Userdata = query.ToList();
+            Synchronisation Sync = new Synchronisation();
+            SpaUser NewUser = Sync.LogIn(username, password);
 
-            //gibt True zurück, wenn es genau einen DB-Eintrag mit dem Usernamen und Passwort gibt.
-            if (Userdata.Count() == 1)
+            if (NewUser != null)
             {
-                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = Userdata[0].Id, last_login = DateTime.Now, is_logged_in ="Y" });
+                LogOut();
+
+                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = NewUser.ServiceProviderId, last_login = DateTime.Now, is_logged_in = "Y" });
                 dbContext.SaveChanges();
+                Sync.FullSync(NewUser.ServiceProviderId);
+
                 return true;
             }
             return false;
@@ -352,52 +399,31 @@ namespace SPA_Datahandler
             {
                 sli.is_logged_in = "N";
             }
-
             return true;
         }
 
-        public string GetLoggedInUsername()
-        {
-            dbContext = new DbServiceProviderAppEntities();
-            // Mittleres Query wertet die Service_Provider_Id des zuletzt eingeloggten User aus,
-            // äußeres Query holt mittels der ID den Username aus der service_provider_login Tabelle.
+        //public string GetLoggedInUsername()
+        //{
+        //    dbContext = new DbServiceProviderAppEntities();
+        //    // Mittleres Query wertet die Service_Provider_Id des zuletzt eingeloggten User aus,
+        //    // äußeres Query holt mittels der ID den Username aus der service_provider_login Tabelle.
 
-            DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
+        //    DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
 
-            var query = (from spl in dbContext.service_provider_login
-                         where spl.service_provider_id ==
-                            (
-                                from li in dbContext.spa_log_in
-                                where li.last_login > LastGuiltyLogIn
-                                && li.is_logged_in =="Y"
-                                orderby li.last_login descending
-                                select li.user_id
-                            ).First()
-                         select spl.username);
-            return query.First().ToString();
-        }
+        //    var query = (from spl in dbContext.service_provider_login
+        //                 where spl.service_provider_id ==
+        //                    (
+        //                        from li in dbContext.spa_log_in
+        //                        where li.last_login > LastGuiltyLogIn
+        //                        && li.is_logged_in =="Y"
+        //                        orderby li.last_login descending
+        //                        select li.user_id
+        //                    ).First()
+        //                 select spl.username);
+        //    return query.First().ToString();
+        //}
 
-        public order_detail QueryOrderDetail(long OrderItemId)
-        {
-            dbContext = new DbServiceProviderAppEntities();
-
-            var query = from od in dbContext.order_detail
-                        where od.Id == OrderItemId
-                        select od;
-
-            return query.First();
-        }
-
-        public order_item QueryOrderItem(long OrderItemId)
-        {
-            dbContext = new DbServiceProviderAppEntities();
-
-            var query = from oi in dbContext.order_item
-                        where oi.Id == OrderItemId
-                        select oi;
-
-            return query.First();
-        }
+       
 
         public void UpdateDataBase()
         {
@@ -408,6 +434,7 @@ namespace SPA_Datahandler
         {
             dbContext = new DbServiceProviderAppEntities();
 
+            
             //prüfen ob jemand und wenn ja, wer angemeldet ist
 
             DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
@@ -420,7 +447,7 @@ namespace SPA_Datahandler
 
             if(CheckQuery.ToList().Count() == 1)
             {
-                int UserId = CheckQuery.ToList()[0].user_id;
+                int UserId = CheckQuery.ToList()[0].Id;
 
                 //STAMMDATEN:
                 var MasterDataQuery = from sp in dbContext.service_provider
@@ -436,6 +463,10 @@ namespace SPA_Datahandler
                                       };
                 ServiceProviderData RetVal = MasterDataQuery.FirstOrDefault();
 
+                if (RetVal == null)
+                {
+                    return null;
+                }
 
                 //ABGESCHLOSSENE AUFTRÄGE:
                 var CntCompletedOrdersQuery = from oi in dbContext.order_item
@@ -512,6 +543,95 @@ namespace SPA_Datahandler
             
         }
 
+
+
+        #region Einzelabfragen
+        public order_detail QueryOrderDetail(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from od in dbContext.order_detail
+                        where od.Id == Id
+                        select od;
+
+            return query.FirstOrDefault();
+        }
+
+        public order_item QueryOrderItem(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oi in dbContext.order_item
+                        where oi.Id == Id
+                        select oi;
+
+            return query.FirstOrDefault();
+        }
+        public order_item_report_appendix QueryOrderItemReportAppendix(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oira in dbContext.order_item_report_appendix
+                        where oira.Id == Id
+                        select oira;
+
+            return query.FirstOrDefault();
+        }
+
+        public order_item_report QueryOrderItemReport(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from oir in dbContext.order_item_report
+                        where oir.Id == Id
+                        select oir;
+
+            return query.FirstOrDefault();
+        }
+
+        public service QueryService(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from s in dbContext.service
+                        where s.Id == Id
+                        select s;
+
+            return query.FirstOrDefault();
+        }
+        public service_provider QueryServiceProvider(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from s in dbContext.service_provider
+                        where s.Id == Id
+                        select s;
+
+            return query.FirstOrDefault();
+        }
+        public order_header QueryOrderHeader(long Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from s in dbContext.order_header
+                        where s.Id == Id
+                        select s;
+
+            return query.FirstOrDefault();
+        }
+
+        public sow_user QuerySowUser(int Id)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            var query = from s in dbContext.sow_user
+                        where s.Id == Id
+                        select s;
+
+            return query.FirstOrDefault();
+        }
+
+        #endregion
 
     }
 }

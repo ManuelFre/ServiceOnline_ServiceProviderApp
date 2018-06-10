@@ -1,12 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using SPA_Datahandler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PL_ServiceOnline.ViewModel
 {
@@ -17,6 +19,7 @@ namespace PL_ServiceOnline.ViewModel
         public string Username { get; set; }
         public string Password { get; set; }
 
+        private Dataprovider Dp;
         public LoginVm()
         {
             BtnLogin = new RelayCommand<object>((o) =>
@@ -26,7 +29,19 @@ namespace PL_ServiceOnline.ViewModel
                     var x = o as System.Windows.Controls.PasswordBox;
                     Password = x.Password;
 
-                    //Hier sollte die Funktion stehen, die die Anmeldedaten dem Synctool übergibt.
+
+                    //Hier steht die Funktion, die die Anmeldedaten dem Synctool übergibt.
+                    Dp = new Dataprovider();
+
+                    if(Dp.LogIn(Username, Password))
+                    {
+                        MessageBox.Show("Herzlich Willkommen " + Username);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kein Benutzer mit diesem Passwort bekannt");
+                    }
+                    
 
                     
 

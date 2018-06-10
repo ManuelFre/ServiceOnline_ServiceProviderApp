@@ -17,6 +17,8 @@ namespace SPA_Datahandler
         public int Id { get; set; }
         public int order_item_report_id { get; set; }
         public byte[] appendix { get; set; }
+        public System.DateTime createdat { get; set; }
+        public Nullable<System.DateTime> deletedat { get; set; }
     
         public virtual order_item_report order_item_report { get; set; }
     }

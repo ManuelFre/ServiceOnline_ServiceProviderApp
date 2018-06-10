@@ -18,7 +18,6 @@ namespace SPA_Datahandler
         public service_provider()
         {
             this.service = new HashSet<service>();
-            this.service_provider_login = new HashSet<service_provider_login>();
         }
     
         public int Id { get; set; }
@@ -35,11 +34,7 @@ namespace SPA_Datahandler
         public System.DateTime createdAt { get; set; }
         public Nullable<System.DateTime> deletedAt { get; set; }
     
-        public virtual country country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<service> service { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<service_provider_login> service_provider_login { get; set; }
-        public virtual zone zone { get; set; }
     }
 }

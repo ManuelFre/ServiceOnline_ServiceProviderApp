@@ -25,20 +25,13 @@ namespace SPA_Datahandler
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<country> country { get; set; }
         public virtual DbSet<order_detail> order_detail { get; set; }
         public virtual DbSet<order_header> order_header { get; set; }
         public virtual DbSet<order_item> order_item { get; set; }
-        public virtual DbSet<order_state> order_state { get; set; }
         public virtual DbSet<service> service { get; set; }
-        public virtual DbSet<service_category> service_category { get; set; }
-        public virtual DbSet<service_customer_comment> service_customer_comment { get; set; }
         public virtual DbSet<service_provider> service_provider { get; set; }
-        public virtual DbSet<service_provider_login> service_provider_login { get; set; }
         public virtual DbSet<sow_user> sow_user { get; set; }
         public virtual DbSet<sow_user_delivery_address> sow_user_delivery_address { get; set; }
-        public virtual DbSet<zdv_user> zdv_user { get; set; }
-        public virtual DbSet<zone> zone { get; set; }
         public virtual DbSet<order_item_report> order_item_report { get; set; }
         public virtual DbSet<order_item_report_appendix> order_item_report_appendix { get; set; }
         public virtual DbSet<spa_changes> spa_changes { get; set; }

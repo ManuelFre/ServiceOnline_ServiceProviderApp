@@ -15,11 +15,10 @@ namespace SPA_Datahandler
                 foreach (T item in QueryAll())
                 {
                     dbContext.Set<T>().Remove(item);
-                    //dbContext.T.Remove(item);
                     dbContext.SaveChanges();
                 }
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 return false;
             }

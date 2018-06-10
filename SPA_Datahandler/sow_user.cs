@@ -18,7 +18,6 @@ namespace SPA_Datahandler
         public sow_user()
         {
             this.order_header = new HashSet<order_header>();
-            this.service_customer_comment = new HashSet<service_customer_comment>();
             this.sow_user_delivery_address = new HashSet<sow_user_delivery_address>();
         }
     
@@ -31,8 +30,6 @@ namespace SPA_Datahandler
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_header> order_header { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<service_customer_comment> service_customer_comment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sow_user_delivery_address> sow_user_delivery_address { get; set; }
     }

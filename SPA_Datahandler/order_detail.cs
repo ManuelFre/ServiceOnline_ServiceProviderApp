@@ -31,8 +31,6 @@ namespace SPA_Datahandler
         public System.DateTime createdAt { get; set; }
         public Nullable<System.DateTime> deletedAt { get; set; }
     
-        public virtual country country { get; set; }
         public virtual order_header order_header { get; set; }
-        public virtual zone zone { get; set; }
     }
 }

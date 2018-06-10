@@ -37,7 +37,6 @@ namespace SPA_Datahandler
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_item> order_item { get; set; }
-        public virtual service_category service_category { get; set; }
         public virtual service_provider service_provider { get; set; }
     }
 }
