@@ -331,7 +331,7 @@ namespace SPA_Datahandler
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report
             {
-                createdat = NewReport.ReportDate,
+                createdat = DateTime.Now,
                 order_item_id = NewReport.OrderItemId,
                 comment = NewReport.Comment,
                 Id = NextId
@@ -345,6 +345,7 @@ namespace SPA_Datahandler
             {
                 order_item_report_appendix DbOima = new order_item_report_appendix
                 {
+                    createdat = DateTime.Now,
                     order_item_report_id = DbNewReport.Id,
                     appendix = oima.Picture
                 };
@@ -364,8 +365,6 @@ namespace SPA_Datahandler
             return (from ls in dbContext.spa_synctimes
                     select ls.synctime).Max<DateTime>();
         }
-
-
 
 
         public bool LogIn(string username, string password)
@@ -447,7 +446,7 @@ namespace SPA_Datahandler
 
             if(CheckQuery.ToList().Count() == 1)
             {
-                int UserId = CheckQuery.ToList()[0].Id;
+                int UserId = CheckQuery.ToList()[0].user_id;
 
                 //STAMMDATEN:
                 var MasterDataQuery = from sp in dbContext.service_provider
