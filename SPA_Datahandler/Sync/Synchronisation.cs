@@ -30,7 +30,7 @@ namespace SPA_Datahandler.Sync
             return NewUser;
         }
 
-        public Boolean FullSync( int ServiceProviderId)           //Hier wird die LEERE Datenbank mit Backenddaten zum angemeldeten User versorgt.
+        public Boolean FullSync(int ServiceProviderId)           //Hier wird die LEERE Datenbank mit Backenddaten zum angemeldeten User versorgt.
         {
             GetFromDate = "01.01.1900 00:00:00";
             DateTimeNow = System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
@@ -45,6 +45,7 @@ namespace SPA_Datahandler.Sync
                 GetOrderItem(ServiceProviderId);
                 GetOrderItemReport(ServiceProviderId);
                 GetOrderItemReportAppendix(ServiceProviderId);
+                WriteLastSync(DateTime.Now);
             }
             return true;
         }
@@ -66,6 +67,7 @@ namespace SPA_Datahandler.Sync
             GetOrderItem(ServiceProviderId);
             GetOrderItemReport(ServiceProviderId);
             GetOrderItemReportAppendix(ServiceProviderId);
+            WriteLastSync(DateTime.Now);
 
             return true;
         }
@@ -84,6 +86,7 @@ namespace SPA_Datahandler.Sync
             SimpleDatabaseFunctions<order_header> SDOh = new SimpleDatabaseFunctions<order_header>();
             SimpleDatabaseFunctions<sow_user_delivery_address> SDSuda = new SimpleDatabaseFunctions<sow_user_delivery_address>();
             SimpleDatabaseFunctions<sow_user> SDSu = new SimpleDatabaseFunctions<sow_user>();
+            SimpleDatabaseFunctions<spa_synctimes> SDSync = new SimpleDatabaseFunctions<spa_synctimes>();
 
             return SDOira.ClearTable() &&
             SDOir.ClearTable() &&
@@ -93,7 +96,8 @@ namespace SPA_Datahandler.Sync
             SDOd.ClearTable() &&
             SDOh.ClearTable() &&
             SDSuda.ClearTable() &&
-            SDSu.ClearTable();
+            SDSu.ClearTable() &&
+            SDSync.ClearTable();
         }
 
 
@@ -172,28 +176,33 @@ namespace SPA_Datahandler.Sync
         {
             DateTime FromDate = DateTime.Parse(GetFromDate);
             service_provider LocalServiceProvider = QueryServiceProvider(FromDate);
-            ServiceProvider[] SendServiceProvider = new ServiceProvider[1];
 
+
+            if (LocalServiceProvider != null)
+            {
+                ServiceProvider[] SendServiceProvider = new ServiceProvider[1];
+                
+                ServiceProvider tmp = new ServiceProvider();
+                tmp.Timestamp = LocalServiceProvider.createdAt.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                tmp.Id = LocalServiceProvider.Id;
+                tmp.Address1 = LocalServiceProvider.address_1;
+                tmp.Address2 = LocalServiceProvider.address_2;
+                tmp.City = LocalServiceProvider.city;
+                tmp.CompanyName = LocalServiceProvider.company_name;
+                tmp.CountryId = LocalServiceProvider.country_id;
+                tmp.Phone1 = LocalServiceProvider.phone_1;
+                tmp.Phone2 = LocalServiceProvider.phone_2;
+                tmp.Taxnumber = LocalServiceProvider.tax_number;
+                tmp.Zip = LocalServiceProvider.zip;
+                tmp.ZoneId = LocalServiceProvider.zone_id;
+                //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      funktioniert im Sync noch nicht
+
+                SendServiceProvider[0] = tmp;
+
+                return SyncClient.PutServiceProvider(SendServiceProvider, DateTimeNow, false);
+            }
+            return 0;
             
-           
-            ServiceProvider tmp = new ServiceProvider();
-            tmp.Timestamp= LocalServiceProvider.createdAt.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            tmp.Id = LocalServiceProvider.Id;
-            tmp.Address1 = LocalServiceProvider.address_1;
-            tmp.Address2 = LocalServiceProvider.address_2;
-            tmp.City = LocalServiceProvider.city;
-            tmp.CompanyName = LocalServiceProvider.company_name;
-            tmp.CountryId = LocalServiceProvider.country_id;
-            tmp.Phone1 = LocalServiceProvider.phone_1;
-            tmp.Phone2 = LocalServiceProvider.phone_2;
-            tmp.Taxnumber = LocalServiceProvider.tax_number;
-            tmp.Zip = LocalServiceProvider.zip;
-            tmp.ZoneId = LocalServiceProvider.zone_id;
-            //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      funktioniert im Sync noch nicht
-
-            SendServiceProvider[0] = tmp;
-          
-            return SyncClient.PutServiceProvider(SendServiceProvider, DateTimeNow, false);
         }
 
         #endregion

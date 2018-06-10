@@ -9,6 +9,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace PL_ServiceOnline.ViewModel
 {
@@ -36,9 +37,16 @@ namespace PL_ServiceOnline.ViewModel
                     if(Dp.LogIn(Username, Password))
                     {
                         MessageBox.Show("Herzlich Willkommen " + Username);
+                        UpdateSyncDate();
                         msg.Send<GenericMessage<string>>(new GenericMessage<string>(Username), "userToken");
                         msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
                         msg.Send<GenericMessage<bool>>(new GenericMessage<bool>(true));
+
+                        DispatcherTimer dt = new DispatcherTimer();
+                        dt.Tick += new EventHandler(PartlySynchronisation);
+                        dt.Interval = new TimeSpan(0, 0, 30);
+                        dt.Start();
+
                     }
                     else
                     {
@@ -53,5 +61,19 @@ namespace PL_ServiceOnline.ViewModel
             o => { return Username != null; });
 
         }
+
+        private void PartlySynchronisation(object sender, EventArgs e)
+        {
+            if (Dp.StartSynchronisation())
+            {
+                Application.Current.Dispatcher.Invoke(UpdateSyncDate);
+            }
+        }
+
+        private void UpdateSyncDate()
+        {
+            msg.Send<GenericMessage<DateTime>>(new GenericMessage<DateTime>(DateTime.Now));
+        }
+
     }
 }

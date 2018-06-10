@@ -364,6 +364,14 @@ namespace SPA_Datahandler
         }
 
 
+        public void WriteLastSync(DateTime date)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+
+            dbContext.Set<spa_synctimes>().Add(new spa_synctimes { synctime = date });
+            dbContext.SaveChanges();
+        }
+
         public bool LogIn(string username, string password)
         {
             dbContext = new DbServiceProviderAppEntities();
@@ -395,6 +403,8 @@ namespace SPA_Datahandler
             {
                 sli.is_logged_in = "N";
             }
+
+
 
             Synchronisation Sync = new Synchronisation();
             Sync.ClearAllLocalTables();
@@ -436,17 +446,10 @@ namespace SPA_Datahandler
             
             //prüfen ob jemand und wenn ja, wer angemeldet ist
 
-            DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
-
-            var CheckQuery = from li in dbContext.spa_log_in
-                        where li.last_login > LastGuiltyLogIn          
-                        && li.is_logged_in == "Y"
-                        orderby li.last_login descending
-                        select li;
-
-            if(CheckQuery.ToList().Count() == 1)
+            int UserId = QueryServiceProviderId();
+            if (UserId > 0 )
             {
-                int UserId = CheckQuery.ToList()[0].user_id;
+                
 
                 //STAMMDATEN:
                 var MasterDataQuery = from sp in dbContext.service_provider
@@ -631,5 +634,44 @@ namespace SPA_Datahandler
         }
 
         #endregion
+
+        public int QueryServiceProviderId()
+        {
+            DateTime LastGuiltyLogIn = DateTime.Now.AddHours(-4800);        //ToDo: LastLogIn noch ändern!!!
+
+            var CheckQuery = from li in dbContext.spa_log_in
+                             where li.last_login > LastGuiltyLogIn
+                             && li.is_logged_in == "Y"
+                             orderby li.last_login descending
+                             select li;
+
+            if (CheckQuery.ToList().Count() == 1)
+            {
+                return CheckQuery.ToList()[0].user_id;
+            }
+            return -1;
+        }
+
+        public bool StartSynchronisation()
+        {
+
+            try
+            {
+                Synchronisation Sync = new Synchronisation();
+                int ServiceProviderId = QueryServiceProviderId();
+                if (ServiceProviderId >= 0)
+                {
+                    Sync.PartSync(ServiceProviderId);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;               
+            }
+
+                
+        }
+
     }
 }

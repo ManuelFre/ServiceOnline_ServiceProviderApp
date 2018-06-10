@@ -59,9 +59,9 @@
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"> Eingeloggt als:</Label>
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Content="{Binding Username}"></Label>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">Zuletzt synchronisiert:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7">DummyTimeStamp</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7" Content="{Binding LastSyncTime}"/>
 
-            <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
+                <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Detailansicht</TextBlock>
             </Button>
             <Button Grid.Row="3"  >

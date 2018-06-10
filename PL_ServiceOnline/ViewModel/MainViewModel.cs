@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
@@ -39,6 +40,8 @@ namespace PL_ServiceOnline.ViewModel
         private ViewModelBase currentDetailView;
         public bool Token { get; set; }
         public string Username { get; set; }
+
+        public DateTime LastSyncTime { get; set; }
 
         public RelayCommand Btn_UpcomingJobs { get; set; }
         public RelayCommand Btn_PastJobs { get;  set; }
@@ -135,8 +138,19 @@ namespace PL_ServiceOnline.ViewModel
 
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
                 //msg.Register<GenericMessage<LoginData>>(this, ChangeLoginData);
+
+                msg.Register<GenericMessage<DateTime>>(this, ChangeLastSyncDate);
+
+
+
             }
 
+        }
+
+        private void ChangeLastSyncDate(GenericMessage<DateTime> obj)
+        {
+            LastSyncTime = obj.Content;
+            RaisePropertyChanged("LastSyncTime");
         }
 
         private void ChangeUserLabel(GenericMessage<string> obj)
