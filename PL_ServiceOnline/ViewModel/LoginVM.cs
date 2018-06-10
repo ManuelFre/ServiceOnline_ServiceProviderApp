@@ -36,6 +36,9 @@ namespace PL_ServiceOnline.ViewModel
                     if(Dp.LogIn(Username, Password))
                     {
                         MessageBox.Show("Herzlich Willkommen " + Username);
+                        msg.Send<GenericMessage<string>>(new GenericMessage<string>(Username), "userToken");
+                        msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
+                        msg.Send<GenericMessage<bool>>(new GenericMessage<bool>(true));
                     }
                     else
                     {

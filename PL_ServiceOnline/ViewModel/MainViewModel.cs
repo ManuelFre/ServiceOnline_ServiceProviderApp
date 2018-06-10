@@ -37,13 +37,17 @@ namespace PL_ServiceOnline.ViewModel
 
         private IMessenger msg = Messenger.Default;
         private ViewModelBase currentDetailView;
-        
+        public bool Token { get; set; }
+        public string Username { get; set; }
+
         public RelayCommand Btn_UpcomingJobs { get; set; }
         public RelayCommand Btn_PastJobs { get;  set; }
         public RelayCommand Btn_Logout { get; set; }
         public RelayCommand Btn_Detail { get; set; }
         public RelayCommand Btn_CompanyData { get; set; }
         public RelayCommand Btn_DeniedJobs { get; set; }
+
+
 
         public ViewModelBase CurrentDetailView
         {
@@ -61,16 +65,25 @@ namespace PL_ServiceOnline.ViewModel
         {
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
+
+
             if (!IsInDesignMode)
             {
+                Token = false;
+                Username = "Nicht eingeloggt.";
+                msg.Register<GenericMessage<bool>>(this, ChangeToken);
+                msg.Register<GenericMessage<string>>(this, "userToken", ChangeUserLabel);
+
                 CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
                 //CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
 
                 Btn_UpcomingJobs = new RelayCommand(() =>
                 {
+                    ShowUpcoming();
                     
-                    CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
-                    msg.Send<GenericMessage<string>>(new GenericMessage<string>("future"));
+                }, () =>
+                {
+                    return Token;
                 });
 
                 Btn_PastJobs = new RelayCommand(() =>
@@ -79,6 +92,9 @@ namespace PL_ServiceOnline.ViewModel
                     CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
                     msg.Send<GenericMessage<string>>(new GenericMessage<string>("past"));
 
+                }, () =>
+                {
+                    return Token;
                 });
 
                 Btn_DeniedJobs = new RelayCommand(() =>
@@ -87,16 +103,15 @@ namespace PL_ServiceOnline.ViewModel
                     CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
                     msg.Send<GenericMessage<string>>(new GenericMessage<string>("denied"));
 
+                }, () =>
+                {
+                    return Token;
                 });
 
-                Btn_Logout = new RelayCommand(() =>
-                {
-                    CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
-                });
 
                 Btn_Detail = new RelayCommand(execute: ChangeDetail, canExecute: () => 
                 {
-                    return (SelectedJob != null);
+                    return (SelectedJob != null) && Token;
                 }
                 );
 
@@ -105,8 +120,18 @@ namespace PL_ServiceOnline.ViewModel
 
                     CurrentDetailView = SimpleIoc.Default.GetInstance<CompanyDataVm>();
 
+                }, () =>
+                {
+                    return Token;
                 });
 
+
+                Btn_Logout = new RelayCommand(() =>
+                {
+                    Token = false;
+                    ChangeUser("Nicht eingeloggt.");
+                    CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
+                });
 
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
                 //msg.Register<GenericMessage<LoginData>>(this, ChangeLoginData);
@@ -114,12 +139,38 @@ namespace PL_ServiceOnline.ViewModel
 
         }
 
+        private void ChangeUserLabel(GenericMessage<string> obj)
+        {
+            ChangeUser(obj.Content);
+        }
+
+        private void ChangeUser(string content)
+        {
+            Username = content;
+            RaisePropertyChanged("Username");
+        }
+
+        private void ChangeToken(GenericMessage<bool> obj)
+        {
+            if (obj.Content)
+            {
+                Token = true;
+                ShowUpcoming();
+            }
+            else
+            {
+                Token = false;
+            }
+        }
+
         private void ChangeDetail()
         {
-            
-            //msg.Send<>
             msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-
+        }
+        private void ShowUpcoming()
+        {
+            CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
+            msg.Send<GenericMessage<string>>(new GenericMessage<string>("future"));
         }
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)

@@ -57,7 +57,7 @@
             </Button>
             
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"> Eingeloggt als:</Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5">Dummy User</Label>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Content="{Binding Username}"></Label>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">Zuletzt synchronisiert:</Label>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7">DummyTimeStamp</Label>
 
