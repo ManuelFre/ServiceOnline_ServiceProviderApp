@@ -17,9 +17,6 @@ namespace SPA_Datahandler
             //Herstellung einer Datenbankverbindung:
             dbContext = new DbServiceProviderAppEntities();
             dbContext.Configuration.AutoDetectChangesEnabled = true;
-
-           
-
             //SyncSettings sync = new SyncSettings();
         }
 
@@ -398,6 +395,9 @@ namespace SPA_Datahandler
             {
                 sli.is_logged_in = "N";
             }
+
+            Synchronisation Sync = new Synchronisation();
+            Sync.ClearAllLocalTables();
             return true;
         }
 
@@ -545,7 +545,7 @@ namespace SPA_Datahandler
 
 
         #region Einzelabfragen
-        public order_detail QueryOrderDetail(int Id)
+        protected order_detail QueryOrderDetail(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -556,7 +556,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        public order_item QueryOrderItem(int Id)
+        protected order_item QueryOrderItem(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -566,7 +566,7 @@ namespace SPA_Datahandler
 
             return query.FirstOrDefault();
         }
-        public order_item_report_appendix QueryOrderItemReportAppendix(int Id)
+        protected order_item_report_appendix QueryOrderItemReportAppendix(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -577,7 +577,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        public order_item_report QueryOrderItemReport(int Id)
+        protected order_item_report QueryOrderItemReport(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -588,7 +588,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        public service QueryService(int Id)
+        protected service QueryService(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -598,7 +598,7 @@ namespace SPA_Datahandler
 
             return query.FirstOrDefault();
         }
-        public service_provider QueryServiceProvider(int Id)
+        protected service_provider QueryServiceProvider(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -608,7 +608,7 @@ namespace SPA_Datahandler
 
             return query.FirstOrDefault();
         }
-        public order_header QueryOrderHeader(long Id)
+        protected order_header QueryOrderHeader(long Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -619,7 +619,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        public sow_user QuerySowUser(int Id)
+        protected sow_user QuerySowUser(int Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -631,6 +631,5 @@ namespace SPA_Datahandler
         }
 
         #endregion
-
     }
 }

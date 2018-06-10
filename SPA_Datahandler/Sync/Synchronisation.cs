@@ -49,15 +49,30 @@ namespace SPA_Datahandler.Sync
             return true;
         }
 
-        public Boolean PartSync(SpaUser User, DateTime lastSync)
+        public Boolean PartSync(int ServiceProviderId)
         {
+            DateTime LastSync = QueryLastSync();
 
+            GetFromDate = LastSync.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTimeNow = System.DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
+            int WrittenData = SendOrderItem() + SendOrderItemReport() + SendOrderItemReportAppendix() + SendServiceProvider();
+
+            GetSowUser(ServiceProviderId);
+            GetOrderHeader(ServiceProviderId);
+            GetOrderDetail(ServiceProviderId);
+            GetServiceProvider(ServiceProviderId);
+            GetService(ServiceProviderId);
+            GetOrderItem(ServiceProviderId);
+            GetOrderItemReport(ServiceProviderId);
+            GetOrderItemReportAppendix(ServiceProviderId);
 
             return true;
         }
 
-        private Boolean ClearAllLocalTables()
+        
+
+        public Boolean ClearAllLocalTables()
         {
             dbContext = new DbServiceProviderAppEntities();
             SimpleDatabaseFunctions<order_item_report_appendix> SDOira = new SimpleDatabaseFunctions<order_item_report_appendix>();
@@ -79,17 +94,13 @@ namespace SPA_Datahandler.Sync
             SDOh.ClearTable() &&
             SDSuda.ClearTable() &&
             SDSu.ClearTable();
-                   
         }
 
 
         #region SendToSync
-
-
-
-        private int SendOrderItem(string getFromDate, string dateTimeNow)
+        private int SendOrderItem()
         {
-            DateTime FromDate = DateTime.Parse(getFromDate);
+            DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item> LocalOrderItems = QueryOrderItems(FromDate);
             OrderItem[] SendOrderItems = new OrderItem[LocalOrderItems.Count()];
             for (int i = 0; i< LocalOrderItems.Count(); i++)
@@ -116,12 +127,12 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItems[i] = tmp;
             }
-            return SyncClient.PutOrderItem(SendOrderItems,dateTimeNow,false);
+            return SyncClient.PutOrderItem(SendOrderItems,DateTimeNow,false);
         }
 
-        private int SendOrderItemReport(string getFromDate, string dateTimeNow)
+        private int SendOrderItemReport()
         {
-            DateTime FromDate = DateTime.Parse(getFromDate);
+            DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item_report> LocalOrderItemReports = QueryOrderItemReports(FromDate);
             OrderItemReport[] SendOrderItemReports = new OrderItemReport[LocalOrderItemReports.Count() ];
 
@@ -135,12 +146,12 @@ namespace SPA_Datahandler.Sync
                 
                 SendOrderItemReports[i] = tmp;
             }
-            return SyncClient.PutOrderItemReport(SendOrderItemReports, dateTimeNow, false);
+            return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, false);
         }
 
-        private int SendOrderItemReportAppendix(string getFromDate, string dateTimeNow)
+        private int SendOrderItemReportAppendix()
         {
-            DateTime FromDate = DateTime.Parse(getFromDate);
+            DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item_report_appendix> LocalOrderItemReportAppendix = QueryOrderItemReportAppendix(FromDate);
             OrderItemReportAp[] SendOrderItemReportAppendix = new OrderItemReportAp[LocalOrderItemReportAppendix.Count() ];
 
@@ -154,12 +165,12 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
-            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, dateTimeNow, false);
+            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
         }
 
-        private int SendServiceProvider(string getFromDate, string dateTimeNow)
+        private int SendServiceProvider()
         {
-            DateTime FromDate = DateTime.Parse(getFromDate);
+            DateTime FromDate = DateTime.Parse(GetFromDate);
             service_provider LocalServiceProvider = QueryServiceProvider(FromDate);
             ServiceProvider[] SendServiceProvider = new ServiceProvider[1];
 
@@ -182,7 +193,7 @@ namespace SPA_Datahandler.Sync
 
             SendServiceProvider[0] = tmp;
           
-            return SyncClient.PutServiceProvider(SendServiceProvider, dateTimeNow, false);
+            return SyncClient.PutServiceProvider(SendServiceProvider, DateTimeNow, false);
         }
 
         #endregion

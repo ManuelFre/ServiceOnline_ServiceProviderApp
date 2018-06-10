@@ -120,9 +120,7 @@ namespace PL_ServiceOnline.ViewModel
                 SumTargetedSales = Data.SumTargetedSales;
                 CntOpenOrdersThisMonth = Data.CntOpenOrdersThisMonth;
                 CntUnconfirmedOrders = Data.CntUnconfirmedOrders;
-            }
-
-                
+            }            
         }
 
         private void UpdateCompanyData()
