@@ -29,37 +29,88 @@
         <Grid Grid.Column="0">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
+                    <RowDefinition Height="4*"/>
+
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Command="{Binding Btn_UpcomingJobs}">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Aufträge</TextBlock>
-            </Button>
-            <Button Grid.Row="1" Command="{Binding Btn_PastJobs}">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
-            </Button>
+                <GroupBox Header="Aufträge">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Command="{Binding Btn_UpcomingJobs}" Background="AliceBlue">
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Kommende Aufträge</TextBlock>
+                        </Button>
+                        <Button Grid.Row="1" Command="{Binding Btn_PastJobs}" Background="AliceBlue">
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
+                        </Button>
 
 
 
-            <Button Grid.Row="2" Command="{Binding Btn_DeniedJobs}">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Abgelehnte Aufträge</TextBlock>
-            </Button>
+                        <Button Grid.Row="2" Command="{Binding Btn_DeniedJobs}" Background="AliceBlue">
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Abgelehnte Aufträge</TextBlock>
+                        </Button>
+                    </Grid>
 
-            <Button Grid.Row="3" Command="{Binding Btn_CompanyData}">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Stammdaten</TextBlock>
-            </Button>
-            
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4"> Eingeloggt als:</Label>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Content="{Binding Username}"></Label>
-            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6">Zuletzt synchronisiert:</Label>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="7" Content="{Binding LastSyncTime}"/>
+                </GroupBox>
+                <GroupBox Header="Ihre Daten" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="2" Command="{Binding Btn_CompanyData}" Background="Cornsilk">
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Stammdaten ändern</TextBlock>
+                        </Button>
+
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">Eingeloggt als:</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Content="{Binding Username}"></Label>
+                    </Grid>
+
+                </GroupBox>
+
+                <GroupBox Header="Synchronisierung" Grid.Row="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <!--<RowDefinition Height="*"/>-->
+                            </Grid.RowDefinitions>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Center">Aktiv:</Label>
+                            <Viewbox Grid.Row="0" Grid.Column="1"  Height="26">
+                                <CheckBox IsChecked="{Binding RadioButton}" IsEnabled="{Binding Token}"  />
+                            </Viewbox>
+                            <!--<Label Grid.Column="0">Aktiv</Label>
+                            <Label Grid.Column="1">Inaktiv</Label>
+                            <Viewbox Grid.Row="1" Grid.Column="0"  Height="24">
+                                <RadioButton GroupName="sync" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>
+                            <Viewbox Grid.Row="1" Grid.Column="1"  Height="24">
+                                <RadioButton GroupName="sync" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Viewbox>-->
+
+                        </Grid>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">Zuletzt synchronisiert:</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Content="{Binding LastSyncTime}" ContentStringFormat="dd.MM.yyyy - HH:mm" />
+                    </Grid>
+
+                </GroupBox>
 
                 <!--<Button Grid.Row="2" Command="{Binding Btn_Detail}" >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Detailansicht</TextBlock>
@@ -67,7 +118,7 @@
             <Button Grid.Row="3"  >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">PDF</TextBlock>
             </Button>-->
-            <Button Grid.Row="8" Command="{Binding Btn_Logout}">
+            <Button Grid.Row="8" Command="{Binding Btn_Logout}" Margin="6">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Logout</TextBlock>
             </Button>
                 

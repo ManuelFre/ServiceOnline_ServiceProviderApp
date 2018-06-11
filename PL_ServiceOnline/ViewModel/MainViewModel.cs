@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -24,7 +25,10 @@ namespace PL_ServiceOnline.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private bool radioButton;
         private OrderSummary selectedJob;
+        private bool token;
+
 
         public OrderSummary SelectedJob
         {
@@ -35,11 +39,28 @@ namespace PL_ServiceOnline.ViewModel
                 RaisePropertyChanged();
             }
         }
+        public bool RadioButton
+        {
+            get { return radioButton; }
+            set { radioButton = value; RaisePropertyChanged(); ChangeRefreshMethod(); }
+        }
+        public bool Token
+        {
+            get { return token; }
+            set { token = value; RaisePropertyChanged(); }
+        }
 
         private IMessenger msg = Messenger.Default;
         private ViewModelBase currentDetailView;
-        public bool Token { get; set; }
+        
+        public bool RefreshToken { get; set; }
+
+
+
+
         public string Username { get; set; }
+        public DispatcherTimer Dt { get; set; }
+        public Dataprovider Dp { get; set; }
 
         public DateTime LastSyncTime { get; set; }
 
@@ -75,7 +96,13 @@ namespace PL_ServiceOnline.ViewModel
                 Token = false;
                 Username = "Nicht eingeloggt.";
                 msg.Register<GenericMessage<bool>>(this, ChangeToken);
+                msg.Register<GenericMessage<bool>>(this, "databaseRefresh", ChangeRefresh);
                 msg.Register<GenericMessage<string>>(this, "userToken", ChangeUserLabel);
+
+                Dp = new Dataprovider();
+                Dt = new DispatcherTimer();
+                Dt.Tick += new EventHandler(PartlySynchronisation);
+                Dt.Interval = new TimeSpan(0, 0, 30);
 
                 CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
                 //CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
@@ -132,6 +159,7 @@ namespace PL_ServiceOnline.ViewModel
                 Btn_Logout = new RelayCommand(() =>
                 {
                     Token = false;
+                    RadioButton = false;
                     ChangeUser("Nicht eingeloggt.");
                     CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
                 });
@@ -145,6 +173,24 @@ namespace PL_ServiceOnline.ViewModel
 
             }
 
+        }
+
+        private void ChangeRefresh(GenericMessage<bool> obj)
+        {
+            RadioButton = true;
+            ChangeRefreshMethod();
+        }
+
+        private void ChangeRefreshMethod()
+        {
+            if (RadioButton)
+            {
+                Dt.Start();
+            }
+            else
+            {
+                Dt.Stop();
+            }
         }
 
         private void ChangeLastSyncDate(GenericMessage<DateTime> obj)
@@ -169,13 +215,18 @@ namespace PL_ServiceOnline.ViewModel
             if (obj.Content)
             {
                 Token = true;
+                
                 ShowUpcoming();
+                
+                //ChangeRadioButton(true);
             }
             else
             {
                 Token = false;
             }
         }
+
+
 
         private void ChangeDetail()
         {
@@ -197,6 +248,19 @@ namespace PL_ServiceOnline.ViewModel
             }
             CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();
 
+        }
+
+        private void PartlySynchronisation(object sender, EventArgs e)
+        {
+            if (Dp.StartSynchronisation())
+            {
+                Application.Current.Dispatcher.Invoke(UpdateSyncDate);
+            }
+        }
+
+        private void UpdateSyncDate()
+        {
+            msg.Send<GenericMessage<DateTime>>(new GenericMessage<DateTime>(DateTime.Now));
         }
     }
 }
