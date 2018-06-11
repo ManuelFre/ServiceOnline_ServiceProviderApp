@@ -186,7 +186,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Get Data from Backend" Command="{Binding BtnSyncWithBackend}"/>
             <Button Grid.Column="2" Command="{Binding BtnDetailView}">Detailansicht</Button>
         </Grid>
     </Grid>
