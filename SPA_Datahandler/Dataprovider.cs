@@ -298,13 +298,14 @@ namespace SPA_Datahandler
                 spa_changes chng = new spa_changes();
                 chng.order_id = OriginalOrderItem.Id;
                 chng.change_date = DateTime.Now;
-
-                dbContext.Set<spa_changes>().Add(chng);
                 
                 //Änderungen speichern
 
                 dbContext.SaveChanges();
-                
+
+                StartSynchronisation();
+               
+
                 return true;
             }
             else
@@ -316,7 +317,6 @@ namespace SPA_Datahandler
 
 
         }
-
         public void AddOrderItemReport(OrderItemReport_ NewReport)
         {
             dbContext = new DbServiceProviderAppEntities();
@@ -353,6 +353,7 @@ namespace SPA_Datahandler
             //schreiben der Änderung in die spa_changes Tabelle
             dbContext.Set<spa_changes>().Add(new spa_changes { order_id = NewReport.OrderItemId, change_date = DateTime.Now });
             UpdateDataBase();
+            StartSynchronisation();
         }
 
         public DateTime QueryLastSync()
@@ -545,6 +546,7 @@ namespace SPA_Datahandler
                 OrignialServiceProvider.zip = ServiceProvider.Zip;
 
                 dbContext.SaveChanges();
+                StartSynchronisation();
 
                 return true;
             }
