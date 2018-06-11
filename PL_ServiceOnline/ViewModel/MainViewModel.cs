@@ -30,6 +30,8 @@ namespace PL_ServiceOnline.ViewModel
         private bool token;
         private DateTime lastSyncTime;
 
+
+
         public OrderSummary SelectedJob
         {
             get { return selectedJob; }
@@ -58,10 +60,12 @@ namespace PL_ServiceOnline.ViewModel
                 RaisePropertyChanged();
             }
         }
+        public bool Checker { get; set; }
+        public bool Unchecker { get; set; }
+
 
         private IMessenger msg = Messenger.Default;
         private ViewModelBase currentDetailView;
-        private DateTime _lastSyncTime;
 
         public bool RefreshToken { get; set; }
 
@@ -104,6 +108,7 @@ namespace PL_ServiceOnline.ViewModel
             if (!IsInDesignMode)
             {
                 Token = false;
+                Checker = true;
                 Username = "Nicht eingeloggt.";
                 msg.Register<GenericMessage<bool>>(this, ChangeToken);
                 msg.Register<GenericMessage<bool>>(this, "databaseRefresh", ChangeRefresh);
@@ -170,9 +175,14 @@ namespace PL_ServiceOnline.ViewModel
                 {
                     Token = false;
                     RadioButton = false;
+                    RaisePropertyChanged("Checker");
+                    RaisePropertyChanged("Unchecker");
                     LastSyncTime = DateTime.MinValue;
                     ChangeUser("Nicht eingeloggt.");
                     CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
+                }, () =>
+                {
+                    return Token;
                 });
 
                 msg.Register<GenericMessage<OrderSummary>>(this, ChangeSelected);
