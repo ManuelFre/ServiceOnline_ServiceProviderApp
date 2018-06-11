@@ -28,7 +28,7 @@ namespace PL_ServiceOnline.ViewModel
         private bool radioButton;
         private OrderSummary selectedJob;
         private bool token;
-
+        private DateTime lastSyncTime;
 
         public OrderSummary SelectedJob
         {
@@ -49,10 +49,20 @@ namespace PL_ServiceOnline.ViewModel
             get { return token; }
             set { token = value; RaisePropertyChanged(); }
         }
+        public DateTime LastSyncTime
+        {
+            get { return lastSyncTime; }
+            set
+            {
+                lastSyncTime = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private IMessenger msg = Messenger.Default;
         private ViewModelBase currentDetailView;
-        
+        private DateTime _lastSyncTime;
+
         public bool RefreshToken { get; set; }
 
 
@@ -62,10 +72,10 @@ namespace PL_ServiceOnline.ViewModel
         public DispatcherTimer Dt { get; set; }
         public Dataprovider Dp { get; set; }
 
-        public DateTime LastSyncTime { get; set; }
+
 
         public RelayCommand Btn_UpcomingJobs { get; set; }
-        public RelayCommand Btn_PastJobs { get;  set; }
+        public RelayCommand Btn_PastJobs { get; set; }
         public RelayCommand Btn_Logout { get; set; }
         public RelayCommand Btn_Detail { get; set; }
         public RelayCommand Btn_CompanyData { get; set; }
@@ -110,7 +120,7 @@ namespace PL_ServiceOnline.ViewModel
                 Btn_UpcomingJobs = new RelayCommand(() =>
                 {
                     ShowUpcoming();
-                    
+
                 }, () =>
                 {
                     return Token;
@@ -118,7 +128,7 @@ namespace PL_ServiceOnline.ViewModel
 
                 Btn_PastJobs = new RelayCommand(() =>
                 {
-                    
+
                     CurrentDetailView = SimpleIoc.Default.GetInstance<JobsVm>();
                     msg.Send<GenericMessage<string>>(new GenericMessage<string>("past"));
 
@@ -139,7 +149,7 @@ namespace PL_ServiceOnline.ViewModel
                 });
 
 
-                Btn_Detail = new RelayCommand(execute: ChangeDetail, canExecute: () => 
+                Btn_Detail = new RelayCommand(execute: ChangeDetail, canExecute: () =>
                 {
                     return (SelectedJob != null) && Token;
                 }
@@ -160,6 +170,7 @@ namespace PL_ServiceOnline.ViewModel
                 {
                     Token = false;
                     RadioButton = false;
+                    LastSyncTime = DateTime.MinValue;
                     ChangeUser("Nicht eingeloggt.");
                     CurrentDetailView = SimpleIoc.Default.GetInstance<LoginVm>();
                 });
@@ -196,7 +207,6 @@ namespace PL_ServiceOnline.ViewModel
         private void ChangeLastSyncDate(GenericMessage<DateTime> obj)
         {
             LastSyncTime = obj.Content;
-            RaisePropertyChanged("LastSyncTime");
         }
 
         private void ChangeUserLabel(GenericMessage<string> obj)
@@ -215,9 +225,9 @@ namespace PL_ServiceOnline.ViewModel
             if (obj.Content)
             {
                 Token = true;
-                
+
                 ShowUpcoming();
-                
+
                 //ChangeRadioButton(true);
             }
             else
@@ -240,10 +250,10 @@ namespace PL_ServiceOnline.ViewModel
 
         private void ChangeSelected(GenericMessage<OrderSummary> obj)
         {
-            if(selectedJob != obj.Content)
+            if (selectedJob != obj.Content)
             {
                 SelectedJob = obj.Content;
-                
+
                 ChangeDetail();
             }
             CurrentDetailView = SimpleIoc.Default.GetInstance<DetailVm>();

@@ -4,11 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:PL_ServiceOnline.ViewModel"
+        xmlns:converters="clr-namespace:PL_ServiceOnline.Converter"
         xmlns:views="clr-namespace:PL_ServiceOnline.Views"
         xmlns:local="clr-namespace:PL_ServiceOnline"
         mc:Ignorable="d"
         Title="ServiceProvider-App" Height="600" Width="1400" DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}" >
-
+    <Window.Resources>
+        <converters:DateTimeToString x:Key="DateTimeToString"/>
+    </Window.Resources>
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type Grid}">
@@ -107,7 +110,7 @@
 
                         </Grid>
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">Zuletzt synchronisiert:</Label>
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Content="{Binding LastSyncTime}" ContentStringFormat="dd.MM.yyyy - HH:mm" />
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Content="{Binding LastSyncTime, Converter={StaticResource DateTimeToString}}"   />
                     </Grid>
 
                 </GroupBox>
