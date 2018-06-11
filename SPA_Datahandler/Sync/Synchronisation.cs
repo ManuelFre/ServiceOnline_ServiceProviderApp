@@ -194,7 +194,15 @@ namespace SPA_Datahandler.Sync
                 tmp.Phone2 = LocalServiceProvider.phone_2;
                 tmp.Taxnumber = LocalServiceProvider.tax_number;
                 tmp.Zip = LocalServiceProvider.zip;
-                tmp.ZoneId = LocalServiceProvider.zone_id;
+                if(LocalServiceProvider.zone_id < 1)
+                {
+                    tmp.ZoneId = 207;                       //Wenn die ZoneId Null ist, wird sie auf 207 (Wien) geändert. 
+                }
+                else
+                {
+                    tmp.ZoneId = LocalServiceProvider.zone_id;
+                }
+                
                 //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      funktioniert im Sync noch nicht
 
                 SendServiceProvider[0] = tmp;

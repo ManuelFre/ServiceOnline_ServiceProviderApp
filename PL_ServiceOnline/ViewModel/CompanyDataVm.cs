@@ -113,9 +113,7 @@ namespace PL_ServiceOnline.ViewModel
         {
             
             if (obj.Content.Equals("update")){
-
                 GetCompanyData();
-
             }
         }
 

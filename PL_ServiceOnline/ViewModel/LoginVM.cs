@@ -36,7 +36,7 @@ namespace PL_ServiceOnline.ViewModel
 
                     if(Dp.LogIn(Username, Password))
                     {
-                        MessageBox.Show("Herzlich Willkommen " + Username);
+                        MessageBox.Show("Herzlich Willkommen " + Username, "Anmeldung erfolgreich", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                         UpdateSyncDate();
                         msg.Send<GenericMessage<string>>(new GenericMessage<string>(Username), "userToken");
                         msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));
@@ -50,7 +50,7 @@ namespace PL_ServiceOnline.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Kein Benutzer mit diesem Passwort bekannt");
+                        MessageBox.Show("Kein Benutzer mit diesem Passwort bekannt oder keine Verbindung mit Internet hergestellt.","Anmeldung fehlgeschlagen",MessageBoxButton.OK,MessageBoxImage.Warning);
                     }
                     
 

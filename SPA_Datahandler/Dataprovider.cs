@@ -374,11 +374,19 @@ namespace SPA_Datahandler
 
         public bool LogIn(string username, string password)
         {
-            dbContext = new DbServiceProviderAppEntities();
+            SpaUser NewUser = new SpaUser();
+            Synchronisation Sync = null;
+            try
+            {
+                dbContext = new DbServiceProviderAppEntities();
 
 
-            Synchronisation Sync = new Synchronisation();
-            SpaUser NewUser = Sync.LogIn(username, password);
+                Sync = new Synchronisation();
+                NewUser = Sync.LogIn(username, password);
+            } catch (Exception e)                           //Bei fehlender Internetverbindung
+            {
+                return false;            
+            }
 
             if (NewUser != null)
             {

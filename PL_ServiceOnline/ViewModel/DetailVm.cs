@@ -378,6 +378,7 @@ namespace PL_ServiceOnline.ViewModel
             {
                 MessageBox.Show("Update erfolgreich!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
                 RaisePropertyChanged(nameof(PreferedDate)); //so that the PreferedDate in the DetailView gets actually updated once it's sent to the DB
+                msg.Send<GenericMessage<string>>(new GenericMessage<string>("update"));     //Damit die Auswertung der Firmendaten mitbekommt, dass es eine Änderung gibt.
             }
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
