@@ -175,6 +175,8 @@ namespace PL_ServiceOnline.ViewModel
                 {
                     Token = false;
                     RadioButton = false;
+                    Checker = true;
+                    Unchecker = false;
                     RaisePropertyChanged("Checker");
                     RaisePropertyChanged("Unchecker");
                     LastSyncTime = DateTime.MinValue;
