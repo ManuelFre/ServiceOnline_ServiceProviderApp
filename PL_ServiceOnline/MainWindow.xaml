@@ -13,17 +13,17 @@
         <converters:DateTimeToString x:Key="DateTimeToString"/>
     </Window.Resources>
     <Grid>
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <Style TargetType="{x:Type Grid}">
-                <!--<Setter Property="Background" Value="Gray" />-->
+                --><!--<Setter Property="Background" Value="Gray" />--><!--
                 <Style.Resources>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type ToggleButton}">
                         <Setter Property="FontSize" Value="14"></Setter>
                         <Setter Property="Background" Value="#F5F5F8" />
                     </Style>
                 </Style.Resources>
             </Style>
-        </Grid.Resources>
+        </Grid.Resources>-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="9*"/>
@@ -45,18 +45,18 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Button Grid.Row="0" Command="{Binding Btn_UpcomingJobs}" Background="AliceBlue">
-                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Kommende Aufträge</TextBlock>
-                        </Button>
-                        <Button Grid.Row="1" Command="{Binding Btn_PastJobs}" Background="AliceBlue">
-                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
-                        </Button>
+                        <RadioButton IsChecked="{Binding Checker}" Grid.Row="0" Style="{StaticResource {x:Type ToggleButton}}" Command="{Binding Btn_UpcomingJobs}" GroupName="Btn" Background="AliceBlue">
+                            <TextBlock FontSize="14" TextWrapping="Wrap" TextAlignment="Center">Kommende Aufträge</TextBlock>
+                        </RadioButton>
+                        <RadioButton Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" Command="{Binding Btn_PastJobs}" GroupName="Btn" Background="AliceBlue">
+                            <TextBlock FontSize="14"  TextWrapping="Wrap" TextAlignment="Center">Vergangene Aufträge</TextBlock>
+                        </RadioButton>
 
 
 
-                        <Button Grid.Row="2" Command="{Binding Btn_DeniedJobs}" Background="AliceBlue">
-                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Abgelehnte Aufträge</TextBlock>
-                        </Button>
+                        <RadioButton Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}" Command="{Binding Btn_DeniedJobs}" GroupName="Btn" Background="AliceBlue">
+                            <TextBlock FontSize="14"  TextWrapping="Wrap" TextAlignment="Center">Abgelehnte Aufträge</TextBlock>
+                        </RadioButton>
                     </Grid>
 
                 </GroupBox>
@@ -67,9 +67,9 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Button Grid.Row="2" Command="{Binding Btn_CompanyData}" Background="Cornsilk">
-                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Stammdaten ändern</TextBlock>
-                        </Button>
+                        <RadioButton Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}" Command="{Binding Btn_CompanyData}" GroupName="Btn" Background="Cornsilk">
+                            <TextBlock FontSize="14" TextWrapping="Wrap" TextAlignment="Center">Stammdaten ändern</TextBlock>
+                        </RadioButton>
 
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">Eingeloggt als:</Label>
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Content="{Binding Username}"></Label>
@@ -121,9 +121,9 @@
             <Button Grid.Row="3"  >
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">PDF</TextBlock>
             </Button>-->
-            <Button Grid.Row="8" Command="{Binding Btn_Logout}" Margin="6">
+                <RadioButton Background="#F5F5F8" FontSize="14" IsChecked="{Binding Unchecker}" Style="{StaticResource {x:Type ToggleButton}}" Grid.Row="8" Command="{Binding Btn_Logout}" GroupName="Btn" Margin="6">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Logout</TextBlock>
-            </Button>
+            </RadioButton>
                 
         </Grid>
             </Border>
