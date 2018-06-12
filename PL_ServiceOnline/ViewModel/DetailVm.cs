@@ -24,7 +24,7 @@ namespace PL_ServiceOnline.ViewModel
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
         public RelayCommand BtnCreateReport { get; set; }
-        public RelayCommand<OrderItemReport> BtnAddPicture { get; set; }
+        public RelayCommand<OrderItemReport_> BtnAddPicture { get; set; }
 
         public Dataprovider Dp { get; set; }
 
@@ -138,7 +138,7 @@ namespace PL_ServiceOnline.ViewModel
         public string[] AllStatuses { get; set; }
 
 
-        public ObservableCollection<OrderItemReport> OrderItemReports { get; set; }
+        public ObservableCollection<OrderItemReport_> OrderItemReports { get; set; }
 
 
 
@@ -172,7 +172,7 @@ namespace PL_ServiceOnline.ViewModel
             BtnCreateReport = new RelayCommand(() => CreateReport());
             BtnAppendDocuments = new RelayCommand(() => AppendDocuments());
 
-            BtnAddPicture = new RelayCommand<OrderItemReport>(
+            BtnAddPicture = new RelayCommand<OrderItemReport_>(
                 (p) =>
                 {
                     OpenFileDialog openFileDialog = new OpenFileDialog
@@ -230,7 +230,7 @@ namespace PL_ServiceOnline.ViewModel
             {
                 try
                 {
-                    OrderItemReport oir = new OrderItemReport()
+                    OrderItemReport_ oir = new OrderItemReport_()
                     {
                         OrderItemId = SelectedDetailed.OrderItemId,
                         ReportDate = new DateTime(),
@@ -278,7 +278,11 @@ namespace PL_ServiceOnline.ViewModel
             if (reportDialog.ShowDialog() == true)
             {
                 SelectedDetailed.OrderItemReports.Add(reportDialog.Answer);
-                //MessageBox.Show(reportDialog.Answer);
+                RaisePropertyChanged(nameof(SelectedDetailed.OrderItemReports));
+                //TODO:Since hard reset after merge fail,... new reports are not shown anymore,.. why?
+          
+
+                //MessageBox.Show(reportDialog.Answer.ToString());
             }
             //TODO: Actually remove the whole stuff b4 release if not needed [Create PDF here (PDFsharp NuGet package schon eingebaut)]
 
@@ -335,9 +339,9 @@ namespace PL_ServiceOnline.ViewModel
             AddittionalCost = 84.44;
             ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
             ServiceUnit = "Arbeitsstunde";
-            OrderItemReports = new ObservableCollection<OrderItemReport>()
+            OrderItemReports = new ObservableCollection<OrderItemReport_>()
             {
-                new OrderItemReport()
+                new OrderItemReport_()
                 {
                     Comment = "Kommentar kksksksksk",
                     Id = 15,
@@ -366,7 +370,7 @@ namespace PL_ServiceOnline.ViewModel
                     }
 
                 },
-                new OrderItemReport()
+                new OrderItemReport_()
                 {
                     Comment = "2. Kommentar kkasksk",
                     Id = 16,
@@ -526,7 +530,7 @@ namespace PL_ServiceOnline.ViewModel
                 AddittionalCost = SelectedDetailed.AddittionalCost;
                 ServiceProviderComment = SelectedDetailed.ServiceProviderComment;
                 ServiceUnit = SelectedDetailed.ServiceUnit;
-                OrderItemReports = new ObservableCollection<OrderItemReport>(SelectedDetailed.OrderItemReports as List<OrderItemReport>);
+                OrderItemReports = new ObservableCollection<OrderItemReport_>(SelectedDetailed.OrderItemReports as List<OrderItemReport_>);
                 Status = GetStatus(IsFinished, IsConfirmed);
                 //StringOrderedDateTime = OrderedDateTime.ToString("dd.MM.yyyy - hh.mm");
                 //StringPreferedDate = PreferedDate.ToString("dd.MM.yyyy - hh.mm");

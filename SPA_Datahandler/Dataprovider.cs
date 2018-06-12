@@ -198,13 +198,13 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Reports zum Order_Item
             var queryReport = from oim in dbContext.order_item_report
                               where oim.order_item_id == OrderItemId
-                              select new OrderItemReport
+                              select new OrderItemReport_
                               {
                                   Id = oim.Id,
                                   Comment = oim.comment,
                                   ReportDate = oim.report_date
                               };
-            List<OrderItemReport> OIM = queryReport.ToList();
+            List<OrderItemReport_> OIM = queryReport.ToList();
 
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
             for (int i = 0; i < OIM.Count; i++)
@@ -288,8 +288,10 @@ namespace SPA_Datahandler
 
             if (OriginalOrderItem != null)
             {
+
                 //TODO: Nur Appendix hinzufügen also OrderItemReport updaten
-                
+                throw new NotImplementedException("no OrderItemReports stored in the database...");
+
                 //OriginalOrderItem.order_item_report = (order_item_report) DetailToUpdate.OrderItemReports;
                 //OriginalOrderItem.order_item_report = DetailToUpdate.OrderItemReports; //explicit cast exists...
 
@@ -313,7 +315,7 @@ namespace SPA_Datahandler
                 return false;
             }
         }
-        public void AddOrderItemReport(OrderItemReport NewReport)
+        public void AddOrderItemReport(OrderItemReport_ NewReport)
         {
             dbContext = new DbServiceProviderAppEntities();
 

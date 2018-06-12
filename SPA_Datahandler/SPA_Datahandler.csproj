@@ -80,7 +80,7 @@
     <Compile Include="country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Datamodel\OrderItemReport.cs" />
+    <Compile Include="Datamodel\OrderItemReport_.cs" />
     <Compile Include="Datamodel\OrderItemReportAppendix.cs" />
     <Compile Include="Datamodel\ServiceProviderData.cs" />
     <Compile Include="Dataprovider.cs" />

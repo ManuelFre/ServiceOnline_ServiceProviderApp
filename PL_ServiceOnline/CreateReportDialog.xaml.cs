@@ -25,11 +25,11 @@ namespace PL_ServiceOnline
             lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
         }
-        public OrderItemReport Answer
+        public OrderItemReport_ Answer
         {
             get
             {
-                return new OrderItemReport()
+                return new OrderItemReport_()
                 {                   
                     //Don't set ID so DB can AutoSet its AutoIncrement...
                     Comment = txtComment.Text,

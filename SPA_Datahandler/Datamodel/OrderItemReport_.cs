@@ -19,7 +19,7 @@ namespace SPA_Datahandler.Datamodel
         public List<OrderItemReportAppendix> Appendix { get; set; }
 
         public string Visibility { get; set; }
-        public OrderItemReport()
+        public OrderItemReport_()
         {
             Visibility = "Collapsed";
         }

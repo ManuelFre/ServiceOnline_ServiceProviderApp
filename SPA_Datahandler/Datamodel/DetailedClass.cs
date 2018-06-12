@@ -56,7 +56,7 @@ namespace SPA_Datahandler.Datamodel
         [DataMember]
         public string ServiceUnit { get; set; }
         [DataMember]
-        public List<OrderItemReport> OrderItemReports { get; set; }
+        public List<OrderItemReport_> OrderItemReports { get; set; }
 
 
         private Dataprovider dp;
@@ -75,7 +75,7 @@ namespace SPA_Datahandler.Datamodel
             dp.UpdateOrderItemData(this);
         }
 
-        public void AddOrderItemReport(OrderItemReport NewReport)
+        public void AddOrderItemReport(OrderItemReport_ NewReport)
         {
             dp.AddOrderItemReport(NewReport);
         }
