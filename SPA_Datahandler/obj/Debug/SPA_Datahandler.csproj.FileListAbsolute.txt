@@ -138,8 +138,8 @@ C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.xml
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojAssemblyReference.cache
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CoreCompileInputs.cache
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csproj.CopyComplete
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.dll
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.pdb
+C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\SPA_Datahandler\obj\Debug\SPA_Datahandler.csprojAssemblyReference.cache
