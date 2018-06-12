@@ -277,7 +277,7 @@ namespace PL_ServiceOnline.ViewModel
             CreateReportDialog reportDialog = new CreateReportDialog(CurrentMaxOrderItemReportId+1);
             if (reportDialog.ShowDialog() == true)
             {
-                SelectedDetailed.OrderItemReports.Add(reportDialog.Answer);
+                OrderItemReports.Add(reportDialog.Answer);
                 RaisePropertyChanged(nameof(SelectedDetailed.OrderItemReports));
                 //TODO:Since hard reset after merge fail,... new reports are not shown anymore,.. why?
           
