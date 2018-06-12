@@ -421,7 +421,7 @@
                             <!--<TextBox Grid.Column="2" Grid.Row="2" Text="{Binding PreferedDate, UpdateSourceTrigger=PropertyChanged}"></TextBox>-->
                             
                             <!--<TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Center" Margin="5" VerticalContentAlignment="Center"/>-->
-                            <ComboBox   Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
+                            <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
                             <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
                         <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
@@ -453,7 +453,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Top" Margin="5" VerticalContentAlignment="Top"/>
+                            <TextBox Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Top" Margin="5" VerticalContentAlignment="Top"/>
                         </Grid>
                     </GroupBox>
 
@@ -468,13 +468,17 @@
 
                                     <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
                                         <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal" Height="50">
-                                                <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                <Label Content="{Binding ReportDate.Date, StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}"/>
-                                                <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                <Label Content="{Binding Comment}"/>
+                                            
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel Orientation="Horizontal" Height="50" Width="565">
+                                                    <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
+                                                    <Label Content="{Binding ReportDate.Date, StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}" VerticalContentAlignment="Center"/>
+                                                    <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
+                                                    <Label Content="{Binding Comment}" VerticalContentAlignment="Center"/>
+                                                
+                                                </StackPanel>
+                                                <Button Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}"/>
                                             </StackPanel>
-
 
 
 
@@ -498,7 +502,7 @@
                                                 </StackPanel>-->
                                             <!--
                                             </StackPanel>-->
-                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
+                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="{Binding Visibility}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -512,7 +516,7 @@
 
 
 
-                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />
+                                                                <Image Source="{Binding Picture}" Height="280" />
 
 
                                                             </StackPanel>
@@ -538,8 +542,8 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,15,0,0">
                         <Button Margin="5"  Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
-                        <Button Margin="5"  Content="Dokumente anhängen"  Height="40"  Width="280" Command="{Binding BtnAppendDocuments}" HorizontalAlignment="Left"/>
-                        <Button Margin="5"  Content="Servicereport erstellen"  Height="40"  Width="280" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
+                        <Button Visibility="Hidden" Margin="5"  Content="Dokumente anhängen"  Height="40"  Width="290" Command="{Binding BtnAppendDocuments}" HorizontalAlignment="Left"/>
+                        <Button Margin="5"  Content="Servicereport erstellen"  Height="40"  Width="300" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
                     </StackPanel>
 
 

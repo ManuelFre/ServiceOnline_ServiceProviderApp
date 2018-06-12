@@ -255,6 +255,8 @@ namespace SPA_Datahandler
                 OriginalOrderItem.createdAt = DateTime.Now;
                
 
+                //TODO: Wo nur werden die Änderungen im Appendix abgespeichert?
+
                 //schreiben der Änderung in die spa_changes Tabelle
                 spa_changes chng = new spa_changes();
                 chng.order_id = OriginalOrderItem.Id;
@@ -277,7 +279,40 @@ namespace SPA_Datahandler
 
 
         }
+        public bool UpdateOrderItemReportAppendix(DetailedClass DetailToUpdate)
+        {
+            dbContext = new DbServiceProviderAppEntities();
+            order_item OriginalOrderItem = (from oi in dbContext.order_item
+                                            where oi.Id == DetailToUpdate.OrderItemId
+                                            select oi).FirstOrDefault(); //changed from first() to firstordefault()
 
+            if (OriginalOrderItem != null)
+            {
+                //TODO: Nur Appendix hinzufügen also OrderItemReport updaten
+                
+                //OriginalOrderItem.order_item_report = (order_item_report) DetailToUpdate.OrderItemReports;
+                //OriginalOrderItem.order_item_report = DetailToUpdate.OrderItemReports; //explicit cast exists...
+
+                
+
+                //schreiben der Änderung in die spa_changes Tabelle
+                spa_changes chng = new spa_changes();
+                chng.order_id = OriginalOrderItem.Id;
+                chng.change_date = DateTime.Now;
+
+                dbContext.Set<spa_changes>().Add(chng);
+
+                //Änderungen speichern
+
+                dbContext.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void AddOrderItemReport(OrderItemReport NewReport)
         {
             dbContext = new DbServiceProviderAppEntities();

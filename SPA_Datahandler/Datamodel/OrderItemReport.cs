@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPA_Datahandler.Datamodel
 {
@@ -21,9 +18,10 @@ namespace SPA_Datahandler.Datamodel
         [DataMember]
         public List<OrderItemReportAppendix> Appendix { get; set; }
 
+        public string Visibility { get; set; }
         public OrderItemReport()
         {
-
+            Visibility = "Collapsed";
         }
     }
 }

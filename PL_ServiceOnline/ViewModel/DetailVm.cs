@@ -24,6 +24,7 @@ namespace PL_ServiceOnline.ViewModel
         public DetailedClass SelectedDetailed { get; set; }
         public RelayCommand BtnApplyChanges { get; set; }
         public RelayCommand BtnCreateReport { get; set; }
+        public RelayCommand<OrderItemReport> BtnAddPicture { get; set; }
 
         public Dataprovider Dp { get; set; }
 
@@ -171,6 +172,45 @@ namespace PL_ServiceOnline.ViewModel
             BtnCreateReport = new RelayCommand(() => CreateReport());
             BtnAppendDocuments = new RelayCommand(() => AppendDocuments());
 
+            BtnAddPicture = new RelayCommand<OrderItemReport>(
+                (p) =>
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog
+                    {
+                        Title = "Select a picture",
+                        Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
+                    };
+                    if ((bool)openFileDialog.ShowDialog())
+                    {
+                        int i = 0;
+                        foreach (var item in SelectedDetailed.OrderItemReports)
+                        {
+                            item.Visibility = "Collapsed";
+                            
+                            if (p == item)
+                            {
+                                //MessageBox.Show($"Id= {p.Id},  OrderItemId= { p.OrderItemId}"); //just to check if the correct parameters actually arrive
+                                //SelectedDetailed.OrderItemReports.Add(new OrderItemReportAppendix()
+                                //item.Appendix.Add(new OrderItemReportAppendix()
+                                SelectedDetailed.OrderItemReports[i].Appendix.Add(new OrderItemReportAppendix()                                
+                                {
+                                    Id = item.OrderItemId,
+                                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)))
+
+                                });
+                                //MessageBox.Show(SelectedDetailed.OrderItemReports[i].Appendix.ToString() + "     " + i);
+                                
+                                item.Visibility = "Visible"; //TODO: Why does this not work?
+                                RaisePropertyChanged(nameof(SelectedDetailed));
+
+                                //Dp.UpdateOrderItemReportAppendix(SelectedDetailed); //TODO: In that methode update all OrderItemReports or just this one...
+                            }
+                            RaisePropertyChanged(nameof(item.Visibility));
+                            i++;
+                        }
+                    }
+
+                });
 
             //CreateDemoData();
 
@@ -192,16 +232,12 @@ namespace PL_ServiceOnline.ViewModel
                 {
                     OrderItemReport oir = new OrderItemReport()
                     {
-                        //Comment = "Kommentar kksksksksk",
-                        //Id = 59,
                         OrderItemId = SelectedDetailed.OrderItemId,
                         ReportDate = new DateTime(),
                         Appendix = new List<OrderItemReportAppendix>()
                             {
                                 new OrderItemReportAppendix()
                                 {
-                                    //Id = 10,
-                                    //OrderItemReportId = 50,
                                     Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)))
                                 }
                             }
@@ -232,7 +268,18 @@ namespace PL_ServiceOnline.ViewModel
 
         private void CreateReport()
         {
-            throw new NotImplementedException();
+            int CurrentMaxOrderItemReportId = 0;
+            foreach (var item in SelectedDetailed.OrderItemReports)
+            {
+                if (item.OrderItemId > CurrentMaxOrderItemReportId)
+                    CurrentMaxOrderItemReportId = item.OrderItemId;
+            }
+            CreateReportDialog reportDialog = new CreateReportDialog(CurrentMaxOrderItemReportId+1);
+            if (reportDialog.ShowDialog() == true)
+            {
+                SelectedDetailed.OrderItemReports.Add(reportDialog.Answer);
+                //MessageBox.Show(reportDialog.Answer);
+            }
             //TODO: Actually remove the whole stuff b4 release if not needed [Create PDF here (PDFsharp NuGet package schon eingebaut)]
 
 
