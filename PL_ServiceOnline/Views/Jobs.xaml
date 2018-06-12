@@ -62,7 +62,7 @@
 
                     <GridViewColumn DisplayMemberBinding="{Binding OrderItemId}">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId" >Order Id</GridViewColumnHeader>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="OrderItemId" >Order</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Customername}" >
@@ -78,7 +78,7 @@
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding IsAllInclusive}" >
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="IsAllInclusive"  >Ales ink.</GridViewColumnHeader>
+                            <GridViewColumnHeader Command="{Binding ClmOrder}"  CommandParameter="IsAllInclusive"  >Alles ink.</GridViewColumnHeader>
                         </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding PreferedDate, StringFormat=dd.MM.yyyy - HH.mm, Mode=OneWay}" >
