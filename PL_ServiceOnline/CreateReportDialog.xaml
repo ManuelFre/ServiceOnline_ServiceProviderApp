@@ -1,0 +1,42 @@
+﻿<Window x:Class="PL_ServiceOnline.CreateReportDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_ServiceOnline"
+        mc:Ignorable="d"
+        Title="Neuen Report anlegen" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+        ContentRendered="Window_ContentRendered"  ResizeMode="CanMinimize">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="280" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="160" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+
+            <Label Grid.Column="1" Content="Kommentar (optional):" Height="26" VerticalAlignment="Bottom" Margin="15,0"/>
+        <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="1"  Margin="5" Width="250">
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" Name="txtComment" TextChanged="txtComment_TextChanged" />
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="15,0">
+            
+            <Label  Content="Datum:" Height="30" />
+            <Label  Name="lblDate"/>
+        </StackPanel>
+
+            <Button Name="btnAddPicture"  Content="_Bild hinzufügen" Grid.Column="0" Grid.Row="3" Click="btnAddPicture_Click" />
+        <Image Source="/Images/KeinBild.jpg" Name="imgImage" Grid.RowSpan="3" Margin="5" MaxWidth="175" Height="200"/>        
+        
+            <WrapPanel Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" Height="30"  Width="90" Content="_Ok" Margin="0,0,10,0"/>
+            <Button IsCancel="True" Height="30"  Width="90" Content="_Cancel" Margin="0,0,15,0"/>
+        </WrapPanel>
+    </Grid>
+</Window>

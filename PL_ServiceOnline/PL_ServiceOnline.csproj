@@ -141,6 +141,9 @@
     <Compile Include="Converter\StringToBoolean.cs" />
     <Compile Include="Converter\ByteToImage.cs" />
     <Compile Include="Converter\StringToColourString.cs" />
+    <Compile Include="CreateReportDialog.xaml.cs">
+      <DependentUpon>CreateReportDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\CompanyDataVm.cs" />
     <Compile Include="ViewModel\DetailVm.cs" />
     <Compile Include="ViewModel\LoginVm.cs" />
@@ -162,6 +165,10 @@
     <Compile Include="Views\UpcomingJobs.xaml.cs">
       <DependentUpon>UpcomingJobs.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateReportDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -247,6 +254,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\KeinBild.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="6a014e87fbd82d970d017744d95768970d.ico" />
