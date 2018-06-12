@@ -217,5 +217,3 @@ C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bi
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\CreateReportDialog.g.cs
-C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\CreateReportDialog.baml
