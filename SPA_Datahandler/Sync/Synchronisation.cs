@@ -150,7 +150,7 @@ namespace SPA_Datahandler.Sync
                 
                 SendOrderItemReports[i] = tmp;
             }
-            return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, false);
+            return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, true);
         }
 
         private int SendOrderItemReportAppendix()
@@ -169,7 +169,7 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
-            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
+            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, true);
         }
 
         private int SendServiceProvider()
