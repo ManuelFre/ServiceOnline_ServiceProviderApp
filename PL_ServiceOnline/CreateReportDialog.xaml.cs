@@ -3,6 +3,7 @@ using PL_ServiceOnline.Converter;
 using SPA_Datahandler.Datamodel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -18,6 +19,13 @@ namespace PL_ServiceOnline
         private bool changesMade = false;
         private int CurrentMaxOrderItemReportId;
         private BitmapImage appendixImage;
+
+        public List<OrderItemReportAppendix> AppendixImageList{ get; set; }
+
+        //private BitmapImage emptyImage;
+
+        //public ObservableCollection<BitmapImage> ImageList { get; set; }
+
         private int OrderItemId;
 
         public CreateReportDialog(int CurrentMaxOrderItemReportId, int orderItemId)
@@ -27,9 +35,21 @@ namespace PL_ServiceOnline
             lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
             this.OrderItemId = orderItemId;
+
+            AppendixImageList = new List<OrderItemReportAppendix>();
+
+            //emptyImage = new BitmapImage(new Uri(@"/Images/KeinBild.jpg", UriKind.Relative));
+
+            //ImageList = new ObservableCollection<BitmapImage>();
+            //ImageList.Add(emptyImage);
+
+            //ImageBox.ItemsSource = ImageList;
+
         }
         public OrderItemReport_ Answer
         {
+            
+
             get
             {
                 return new OrderItemReport_()
@@ -38,14 +58,15 @@ namespace PL_ServiceOnline
                     Comment = txtComment.Text,
                     OrderItemId = OrderItemId,                                      //CurrentMaxOrderItemReportId,
                     ReportDate = DateTime.Now,
-                    Appendix = new List<OrderItemReportAppendix>()
-                    {
-                       new OrderItemReportAppendix()
-                       {
-                           OrderItemReportId = CurrentMaxOrderItemReportId,
-                           Picture = ImageConverter.ImageToByteArray(appendixImage)
-                       }
-                    },
+                    Appendix = AppendixImageList,
+                    //Appendix = new List<OrderItemReportAppendix>()
+                    //{
+                    //   new OrderItemReportAppendix()
+                    //   {
+                    //       OrderItemReportId = CurrentMaxOrderItemReportId,
+                    //       Picture = ImageConverter.ImageToByteArray(appendixImage)
+                    //   }
+                    //},
                     Visibility = "Visible", //(optional)to expand this OrderItemReport after Dialog is closed... (doesnt work yet properly) -> DetailVm /xaml problem
 
                 };
@@ -74,6 +95,10 @@ namespace PL_ServiceOnline
                 try
                 {
                     appendixImage = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute));
+                    AppendixImageList.Add(new OrderItemReportAppendix()
+                    {
+                        Picture = ImageConverter.ImageToByteArray(appendixImage)
+                    });
                     imgImage.Source = appendixImage;
                     pictureAdded = true;
                     btnDialogOk.IsEnabled = true;
