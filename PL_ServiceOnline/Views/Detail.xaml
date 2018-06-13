@@ -477,7 +477,7 @@
                                                     <Label Content="{Binding Comment}" VerticalContentAlignment="Center"/>
                                                 
                                                 </StackPanel>
-                                                <Button Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}"/>
+                                                <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}"/>
                                             </StackPanel>
 
 

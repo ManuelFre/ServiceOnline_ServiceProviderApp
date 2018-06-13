@@ -323,7 +323,7 @@ namespace SPA_Datahandler
 
             //Holen der maximalen Order_item_report_id:
             int NextId = (from oim in dbContext.order_item_report
-                          select oim.Id).Max() + 1;
+                          select oim.Id).Count() +1;
 
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report

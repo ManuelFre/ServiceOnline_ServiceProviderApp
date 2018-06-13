@@ -18,22 +18,25 @@ namespace PL_ServiceOnline
         private bool changesMade = false;
         private int CurrentMaxOrderItemReportId;
         private BitmapImage appendixImage;
-        public CreateReportDialog(int CurrentMaxOrderItemReportId)
+        private int OrderItemId;
+
+        public CreateReportDialog(int CurrentMaxOrderItemReportId, int orderItemId)
         {
             InitializeComponent();
             btnDialogOk.IsEnabled = false;
             lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
+            this.OrderItemId = orderItemId;
         }
         public OrderItemReport_ Answer
         {
             get
             {
                 return new OrderItemReport_()
-                {                   
+                {
                     //Don't set ID so DB can AutoSet its AutoIncrement...
                     Comment = txtComment.Text,
-                    OrderItemId = CurrentMaxOrderItemReportId,
+                    OrderItemId = OrderItemId,                                      //CurrentMaxOrderItemReportId,
                     ReportDate = DateTime.Now,
                     Appendix = new List<OrderItemReportAppendix>()
                     {

@@ -367,3 +367,5 @@ C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\ob
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csproj.CopyComplete
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.exe
 C:\Users\mangr\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.pdb
+C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\CreateReportDialog.g.cs
+C:\Users\manue\Source\Repos\ServiceOnline_ServiceProviderApp\PL_ServiceOnline\obj\Debug\CreateReportDialog.baml

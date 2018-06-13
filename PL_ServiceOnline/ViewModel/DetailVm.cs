@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 
 namespace PL_ServiceOnline.ViewModel
 {
+    //TODO: fix multiple image view in orderitemreports xaml list
+    //TODO: make multiple Image upload in CreateReportDemo possible
     public class DetailVm : ViewModelBase
     {
         private IMessenger msg = Messenger.Default;
@@ -274,43 +276,20 @@ namespace PL_ServiceOnline.ViewModel
                 if (item.OrderItemId > CurrentMaxOrderItemReportId)
                     CurrentMaxOrderItemReportId = item.OrderItemId;
             }
-            CreateReportDialog reportDialog = new CreateReportDialog(CurrentMaxOrderItemReportId+1);
+            CreateReportDialog reportDialog = new CreateReportDialog(CurrentMaxOrderItemReportId+1,OrderItemId);
             if (reportDialog.ShowDialog() == true)
             {
-                OrderItemReports.Add(reportDialog.Answer);
+                OrderItemReport_ CreatedReport = reportDialog.Answer;
+                OrderItemReports.Add(CreatedReport);
+                Dp.AddOrderItemReport(CreatedReport);
+                
+
                 RaisePropertyChanged(nameof(SelectedDetailed.OrderItemReports));
                 //TODO:Since hard reset after merge fail,... new reports are not shown anymore,.. why?
           
 
                 //MessageBox.Show(reportDialog.Answer.ToString());
             }
-            //TODO: Actually remove the whole stuff b4 release if not needed [Create PDF here (PDFsharp NuGet package schon eingebaut)]
-
-
-            // Create a temporary file
-            //string filename = String.Format("{0}_tempfile.pdf", Guid.NewGuid().ToString("D").ToUpper());
-            //var s_document = new PdfDocument();
-            //s_document.Info.Title = "PDFsharp XGraphic Sample";
-            //s_document.Info.Author = "Stefan Lange";
-            //s_document.Info.Subject = "Created with code snippets that show the use of graphical functions";
-            //s_document.Info.Keywords = "PDFsharp, XGraphics";
-
-            //// Create demonstration pages
-            //new LinesAndCurves().DrawPage(s_document.AddPage());
-            //new Shapes().DrawPage(s_document.AddPage());
-            //new Paths().DrawPage(s_document.AddPage());
-            //new Text().DrawPage(s_document.AddPage());
-            //new Images().DrawPage(s_document.AddPage());
-
-            // Save the s_document...
-            //s_document.Save(filename);
-
-
-
-            // ...and start a viewer
-            //Process.Start(filename);
-
-
         }
 
         private void CreateDemoData()
