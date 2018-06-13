@@ -22,7 +22,7 @@
 
         <Label Grid.Column="1" Content="Kommentar (optional):" Height="26" VerticalAlignment="Bottom" Margin="15,0"/>
         <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="1"  Margin="5" Width="250">
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" Name="txtComment" TextChanged="txtComment_TextChanged" />
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" Name="txtComment" TextChanged="TxtComment_TextChanged" />
         </Border>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="15,0">
@@ -32,7 +32,7 @@
             <Label  Name="lblDate"/>
         </StackPanel>
 
-            <Button Name="btnAddPicture"  Content="_Bild hinzufügen" Grid.Column="0" Grid.Row="3" Click="btnAddPicture_Click" />
+            <Button Name="btnAddPicture"  Content="_Bild hinzufügen" Grid.Column="0" Grid.Row="3" Click="BtnAddPicture_Click" />
 
         <Label Content="Zuletzt hinzugefügtes Bild:" Height="26" VerticalAlignment="Bottom" />
         <Image Source="/Images/KeinBild.jpg" Name="imgImage" Grid.Row="1" Margin="5" MaxWidth="175" Height="200" Grid.RowSpan="2"/>
@@ -40,7 +40,7 @@
 
 
         <WrapPanel Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" Height="30"  Width="90" Content="_Ok" Margin="0,0,10,0"/>
+            <Button IsDefault="True" Name="btnDialogOk" Click="BtnDialogOk_Click" Height="30"  Width="90" Content="_Ok" Margin="0,0,10,0"/>
             <Button IsCancel="True" Height="30"  Width="90" Content="_Cancel" Margin="0,0,15,0"/>
         </WrapPanel>
     </Grid>

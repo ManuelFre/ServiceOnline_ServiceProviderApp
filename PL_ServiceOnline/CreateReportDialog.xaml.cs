@@ -11,10 +11,12 @@ using System.Windows.Media.Imaging;
 namespace PL_ServiceOnline
 {
     /// <summary>
-    /// Interaction logic for CreateReportDialog.xaml
+    /// CreateReportDialog is a Custom Dialog for adding multiple Pictures to the OrderItemReport by creating multiple OrderItemReportAppendices
+    /// Use Answer Property to get a full OrderItemReport_
     /// </summary>
     public partial class CreateReportDialog : Window
     {
+        #region Fields
         private bool pictureAdded = false;
         private bool changesMade = false;
         private int CurrentMaxOrderItemReportId;
@@ -22,34 +24,17 @@ namespace PL_ServiceOnline
 
         private BitmapImage appendixImage;
 
+        private int OrderItemId;
+        #endregion
+
+        #region Properties
         public List<OrderItemReportAppendix> AppendixImageList{ get; set; }
 
         //private BitmapImage emptyImage;
 
         //public ObservableCollection<BitmapImage> ImageList { get; set; }
 
-        private int OrderItemId;
 
-        public CreateReportDialog(int CurrentMaxOrderItemReportId, int orderItemId)
-        {
-            InitializeComponent();
-            btnDialogOk.IsEnabled = false;
-
-            lblImgCount.Content = imageCount.ToString();
-            lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy");
-            this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
-            OrderItemId = orderItemId;
-
-            AppendixImageList = new List<OrderItemReportAppendix>();
-
-            //emptyImage = new BitmapImage(new Uri(@"/Images/KeinBild.jpg", UriKind.Relative));
-
-            //ImageList = new ObservableCollection<BitmapImage>();
-            //ImageList.Add(emptyImage);
-
-            //ImageBox.ItemsSource = ImageList;
-
-        }
         public OrderItemReport_ Answer
         {
             get
@@ -66,8 +51,34 @@ namespace PL_ServiceOnline
                 };
             }
         }
+        #endregion
 
-        private void btnDialogOk_Click(object sender, RoutedEventArgs e)
+        #region Constructor
+        public CreateReportDialog(int CurrentMaxOrderItemReportId, int orderItemId)
+        {
+            InitializeComponent();
+            btnDialogOk.IsEnabled = false;
+
+            lblImgCount.Content = imageCount.ToString();
+            //lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy"); too big for now
+            //lblDate.Content = DateTime.Now.ToString("dd. MMMM yyyy"); currently still too long for September...
+            lblDate.Content = DateTime.Now.ToString("dd. MMM. yyyy");
+            this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
+            OrderItemId = orderItemId;
+
+            AppendixImageList = new List<OrderItemReportAppendix>();
+
+            //prepared approach for showing all added images
+            //emptyImage = new BitmapImage(new Uri(@"/Images/KeinBild.jpg", UriKind.Relative));
+            //ImageList = new ObservableCollection<BitmapImage>();
+            //ImageList.Add(emptyImage);
+            //ImageBox.ItemsSource = ImageList;
+
+        }
+        #endregion
+
+        #region Gui Events
+        private void BtnDialogOk_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
         }
@@ -77,7 +88,7 @@ namespace PL_ServiceOnline
             txtComment.Focus();
         }
 
-        private void btnAddPicture_Click(object sender, RoutedEventArgs e)
+        private void BtnAddPicture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -121,7 +132,7 @@ namespace PL_ServiceOnline
             }
         }
 
-        private void txtComment_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtComment_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (txtComment.Text.Equals(String.Empty) && !pictureAdded)
             {
@@ -134,5 +145,6 @@ namespace PL_ServiceOnline
                 btnDialogOk.IsEnabled = true;
             }
         }
+        #endregion
     }
 }

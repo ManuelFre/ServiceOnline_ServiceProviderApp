@@ -7,7 +7,6 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:Themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit"
              xmlns:Converter="clr-namespace:PL_ServiceOnline.Converter" x:Class="PL_ServiceOnline.Views.Detail">
-    <!--mc:Ignorable="d" d:DesignWidth="1000" Width="1000" Height="574">-->
     <UserControl.Resources>
         <Converter:TimeConverter x:Key="TimeConverter"/>
         <Converter:DateConverter x:Key="DateConverter"/>
@@ -119,9 +118,6 @@
                                                 <TemplateBindingExtension.Converter>
                                                     <BooleanToVisibilityConverter/>
                                                 </TemplateBindingExtension.Converter>
-                                                <!--<TemplateBinding.Converter>-->
-                                                <!--<BooleanToVisibilityConverter/>-->
-                                                <!--</TemplateBinding.Converter>-->
                                             </TemplateBinding>
                                         </ToggleButton.Visibility>
                                     </ToggleButton>
@@ -212,7 +208,7 @@
         <Binding Source="{StaticResource Locator}" Mode="OneWay" Path="DetailVm"/>
     </UserControl.DataContext>
 
-                                
+
 
 
 
@@ -239,7 +235,6 @@
                     </Grid.RowDefinitions>
 
                     <GroupBox Header="Kundendaten" Grid.Row="0" Margin="0,15,0,0">
-                        <!--<Label Content="Kundendaten" FontSize="20" Grid.Row="0" VerticalAlignment="Bottom"/>-->
 
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
@@ -276,8 +271,6 @@
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="6"/>
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7"/>
 
-
-
                             <TextBox   IsReadOnly="True"  Grid.Column="1" Text="{Binding CustomerId}" Grid.Row="0"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
                             <TextBox   IsReadOnly="True"  Grid.Column="1" Text="{Binding Firstname}"  Grid.Row="1"    FontSize="14" VerticalAlignment="Center" Height="30" />
                             <TextBox   IsReadOnly="True"  Grid.Column="1" Text="{Binding Lastname}"   Grid.Row="2"    FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
@@ -298,7 +291,6 @@
                         </Grid>
                     </GroupBox>
 
-                    <!--<Label Content="Auftragsdaten (vom Kunden festgelegt)" FontSize="20" Grid.Row="2" VerticalAlignment="Bottom"/>-->
                     <GroupBox Header="Auftragsdaten (vom Kunden festgelegt)" Grid.Row="1" Margin="0,15,0,0">
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
@@ -317,8 +309,6 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-
-
                             <Label Content="Bestellnummer:"         Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label Content="Bestelldatum:"          Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" />
                             <Label Content="Beschreibung:"          Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Height="30" Background="{StaticResource UnevenBackgroundColor}"/>
@@ -328,7 +318,6 @@
                             <Label Content="Kunden Kommentar:"      Grid.Row="6" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Stretch" Background="{StaticResource UnevenBackgroundColor}"/>
                             <Label Content="Alles inclusive:"       Grid.Row="7" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
                             <Label Content="Gesamtbetrag:"          Grid.Row="8" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" Background="{StaticResource UnevenBackgroundColor}"/>
-
 
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0"/>
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1"/>
@@ -340,18 +329,15 @@
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7"/>
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="8"/>
 
-
-
                             <TextBox   IsReadOnly="True"   Grid.Row="0" Grid.Column="1" Text="{Binding OrderItemId}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
                             <TextBox   IsReadOnly="True"   Grid.Row="1" Grid.Column="1" Text="{Binding OrderedDateTime, StringFormat=dd.MM.yyyy - hh.mm, ConverterCulture=de-DE}"              FontSize="14" VerticalAlignment="Stretch" Height="30" VerticalContentAlignment="Center"/>
                             <TextBox   IsReadOnly="True"   Grid.Row="2" Grid.Column="1" Text="{Binding Servicedescription}"                                            FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
                             <TextBox   IsReadOnly="True"   Grid.Row="3" Grid.Column="1" Text="{Binding BookedItems}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  />
                             <TextBox   IsReadOnly="True"   Grid.Row="4" Grid.Column="1" Text="{Binding ServiceUnit}"                                                   FontSize="14" VerticalAlignment="Center" Height="30"  Background="{StaticResource UnevenBackgroundColor}"/>
                             <TextBox   IsReadOnly="True"   Grid.Row="5" Grid.Column="1" Text="{Binding PreferedDate,  StringFormat=dd.MM.yyyy - hh.mm, ConverterCulture=de-DE}"                FontSize="14" VerticalAlignment="Stretch" Height="30" VerticalContentAlignment="Center" />
-                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                                    FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
+                            <TextBlock                     Grid.Row="6" Grid.Column="1" Text="{Binding CustomerNotice}"                                                                    FontSize="14" VerticalAlignment="Center" Height="Auto" MinHeight="30" Padding="6" TextWrapping="WrapWithOverflow" Background="{StaticResource UnevenBackgroundColor}"/>
                             <TextBox   IsReadOnly="True"   Grid.Row="7" Grid.Column="1" Text="{Binding IsAllInclusive, Converter={StaticResource BoolStringToGerman}}" FontSize="14" VerticalAlignment="Center" Height="30"  />
                             <TextBox   IsReadOnly="True"   Grid.Row="8" Grid.Column="1" Text="{Binding Finalprice,StringFormat=C, ConverterCulture=de-DE}"             FontSize="14" VerticalAlignment="Stretch" Height="30" Background="{StaticResource UnevenBackgroundColor}" VerticalContentAlignment="Center"/>
-
 
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
                             <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
@@ -365,16 +351,7 @@
                         </Grid>
                     </GroupBox>
 
-
-                    <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-
-
-
-
-                    <!--<Label Content="Auftragsdaten ändern" FontSize="20" Grid.Row="4" VerticalAlignment="Bottom"/>-->
-
                     <GroupBox Header="Auftragsdaten ändern" Grid.Row="2" Margin="0,15,0,0">
-
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -391,63 +368,23 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-
                             <Label Content="Zusätzliche Kosten:" Grid.Row="0" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="24" VerticalAlignment="Center" />
                             <Label Content="Termin:"             Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="24" VerticalAlignment="Center" />
-                            <!--<Label Content="Uhrzeit:"            Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="24" VerticalAlignment="Center" />-->
-                            <!--<Label Content="Kommentare:"     Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center"  Grid.RowSpan="4"/>-->
                             <Label Content="Auftragstatus:"      Grid.Row="3" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="24" VerticalAlignment="Center"/>
-
-                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0"/>-->
-                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1"/>-->
-                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.RowSpan="4"/>-->
-                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2"/>-->
-
 
                             <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
                             <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center"/>
-                           
-                            
-                            <!--<DatePicker  CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{Binding PreferedDate, Converter={StaticResource DateConverter}, StringFormat=dd.MM.yyyy}" Width="200" Grid.Column="2" Grid.Row="1" Text="{Binding PreferedDate.Date, Mode=OneWay, StringFormat=dd.MM.yyyy}"  FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Height="45" Margin="5" VerticalContentAlignment="Center"/>-->
 
-                            <!--<xctk:DateTimePicker CalendarDisplayMode="Month" Value="{Binding PreferedDate}"  />-->
-
-                            <!--<xctk:TimePicker Grid.Column="2" Grid.Row="2" FontSize="24" Height="45" Margin="5" HorizontalAlignment="Left" TextAlignment="Left" Width="200" Text="{Binding Time}" />-->
-                            
-                            <!--Nach einiger recherche kann oder muss ich sogar den TimePicker auf ein DateTime Object binden... er sollte dann aber nur die Uhrzeit ändern. Warum er das aber nicht macht konnte ich noch nicht herausfinden-->
-                            <!--<xctk:TimePicker Grid.Column="2" Grid.Row="2" FontSize="24" Height="45" Margin="5" HorizontalAlignment="Left" TextAlignment="Left" Width="200" Value="{Binding PreferedDate, Converter={StaticResource TimeConverter}, StringFormat=hh:mm}" StartTime="{Binding PreferedDate, StringFormat=hh:mm}" Text="{Binding PreferedDate, StringFormat=hh:mm}"/>-->
-                            
-                            <!--<TextBox Grid.Column="2" Grid.Row="2" Text="{Binding PreferedDate, UpdateSourceTrigger=PropertyChanged}"></TextBox>-->
-                            
-                            <!--<TextBox    Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Center" Margin="5" VerticalContentAlignment="Center"/>-->
                             <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
-                            <!--<Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="0" Grid.Column="1"/>
-                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="1" Grid.Column="1"/>
-                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Grid.RowSpan="4" Grid.Column="1"/>
-                        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="7" Grid.Column="1"/>-->
-
-
-
                         </Grid>
-
-
-
-
-
                     </GroupBox>
 
-
-
-
-
                     <GroupBox Header="Kommentare" Grid.Row="3" Margin="0,15,0,0">
-
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -457,51 +394,22 @@
                         </Grid>
                     </GroupBox>
 
-
                     <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" >
-
-                        
                         <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10">
-
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-
                                     <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
                                         <StackPanel Orientation="Vertical">
-                                            
                                             <StackPanel Orientation="Horizontal">
                                                 <StackPanel Orientation="Horizontal" Height="50" Width="565">
                                                     <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
-                                                    <Label Content="{Binding ReportDate.Date, StringFormat=dd.MM.yyyy , ConverterCulture=de-DE}" VerticalContentAlignment="Center"/>
+                                                    <TextBox  BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy , ConverterCulture=de-DE}" VerticalContentAlignment="Center"/>
                                                     <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
                                                     <Label Content="{Binding Comment}" VerticalContentAlignment="Center"/>
-                                                
                                                 </StackPanel>
                                                 <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}"/>
                                             </StackPanel>
 
-
-
-                                            <!--<StackPanel Orientation="Horizontal">
-                                                -->
-                                            <!--<StackPanel Orientation="Vertical">
-                                                    <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding Id}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding OrderItemId}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding ReportDate}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding Comment}"/>
-                                                </StackPanel>-->
-                                            <!--
-                                            </StackPanel>-->
                                             <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="{Binding Visibility}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
@@ -514,10 +422,7 @@
                                                         <Border BorderBrush="Black" BorderThickness="0" CornerRadius="5" Margin="10">
                                                             <StackPanel Orientation="Horizontal">
 
-
-
                                                                 <Image Source="{Binding Picture}" Height="280" />
-
 
                                                             </StackPanel>
                                                         </Border>
@@ -535,10 +440,7 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-
-
                     </GroupBox>
-
 
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,15,0,0">
                         <Button Margin="5"  Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
@@ -546,98 +448,8 @@
                         <Button Margin="5"  Content="Servicereport erstellen"  Height="40"  Width="300" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
                     </StackPanel>
 
-
                 </Grid>
             </ScrollViewer>
         </Grid>
     </Border>
 </UserControl>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<Label Content="Fertig?"               Grid.Row="1" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />
-<Label Content="Bestätigt?"            Grid.Row="2" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" FontSize="14" VerticalAlignment="Center" />-->
-<!--<CheckBox   Grid.Column="2" Grid.Row="1" IsChecked="{Binding IsFinished, Converter={StaticResource StringToBoolean}}"        HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />
-<CheckBox   Grid.Column="2" Grid.Row="2" IsChecked="{Binding IsConfirmed, Converter={StaticResource StringToBoolean}}"       HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" />-->
-
-
-
-
-
-
-<!-- <ListBox Grid.Row="15" Grid.ColumnSpan="5" ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch">
-
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-
-                                    <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal">
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding Id}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Bestellnummern ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding OrderItemId}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Report Datum" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding ReportDate}"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Vertical">
-                                                    <Label Content="Kommentar" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                    <Label Content="{Binding Comment}"/>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="Collapsed">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="10">
-                                                            <StackPanel Orientation="Horizontal">
-                                                                -->
-<!--<StackPanel Orientation="Vertical" Margin="5,0">
-                                                            <Label Content="ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" />
-                                                                <Label Content="{Binding Id}"/>
-                                                            </StackPanel>
-                                                            <StackPanel Orientation="Vertical" Margin="5,0">
-                                                            <Label Content="Bestell Item Report ID" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}"/>
-                                                                <Label Content="{Binding OrderItemReportId}"/>
-                                                            </StackPanel>-->
-<!--<Border BorderBrush="Black" BorderThickness="0.5" Margin="20" >-->
-<!--
-                                                                <Image Source="{Binding Picture}" Width="150" Height="200" />
-                                                                -->
-<!--</Border>-->
-<!--
-                                                            </StackPanel>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-
-                                        </StackPanel>
-                                    </Border>
-                                    <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}, Path=IsSelected}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" TargetName="SelectedOnlyListBox" />
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>-->
