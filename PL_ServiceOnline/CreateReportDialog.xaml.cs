@@ -18,6 +18,8 @@ namespace PL_ServiceOnline
         private bool pictureAdded = false;
         private bool changesMade = false;
         private int CurrentMaxOrderItemReportId;
+        private int imageCount = 0;
+
         private BitmapImage appendixImage;
 
         public List<OrderItemReportAppendix> AppendixImageList{ get; set; }
@@ -32,9 +34,11 @@ namespace PL_ServiceOnline
         {
             InitializeComponent();
             btnDialogOk.IsEnabled = false;
+
+            lblImgCount.Content = imageCount.ToString();
             lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
-            this.OrderItemId = orderItemId;
+            OrderItemId = orderItemId;
 
             AppendixImageList = new List<OrderItemReportAppendix>();
 
@@ -48,8 +52,6 @@ namespace PL_ServiceOnline
         }
         public OrderItemReport_ Answer
         {
-            
-
             get
             {
                 return new OrderItemReport_()
@@ -59,14 +61,6 @@ namespace PL_ServiceOnline
                     OrderItemId = OrderItemId,                                      //CurrentMaxOrderItemReportId,
                     ReportDate = DateTime.Now,
                     Appendix = AppendixImageList,
-                    //Appendix = new List<OrderItemReportAppendix>()
-                    //{
-                    //   new OrderItemReportAppendix()
-                    //   {
-                    //       OrderItemReportId = CurrentMaxOrderItemReportId,
-                    //       Picture = ImageConverter.ImageToByteArray(appendixImage)
-                    //   }
-                    //},
                     Visibility = "Visible", //(optional)to expand this OrderItemReport after Dialog is closed... (doesnt work yet properly) -> DetailVm /xaml problem
 
                 };
@@ -102,6 +96,8 @@ namespace PL_ServiceOnline
                     imgImage.Source = appendixImage;
                     pictureAdded = true;
                     btnDialogOk.IsEnabled = true;
+                    imageCount++;
+                    lblImgCount.Content = imageCount.ToString();
                 }
                 catch (Exception ex)
                 {
