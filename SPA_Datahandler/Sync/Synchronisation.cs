@@ -165,7 +165,7 @@ namespace SPA_Datahandler.Sync
                 tmp.CreateDat = LocalOrderItemReportAppendix[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 tmp.Id = LocalOrderItemReportAppendix[i].Id;
                 tmp.OrderItemReportId = LocalOrderItemReportAppendix[i].order_item_report_id;
-                //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      funktioniert im Sync noch nicht
+                //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      //funktioniert im Sync noch nicht
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
