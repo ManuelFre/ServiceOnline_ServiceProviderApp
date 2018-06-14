@@ -1,1 +1,4 @@
-﻿select * from order_item;
+﻿SELECT DATABASEPROPERTYEX('DbServiceProviderApp', 'Updateability');
+GO
+ALTER DATABASE DbServiceProviderApp
+	SET READ_WRITE;

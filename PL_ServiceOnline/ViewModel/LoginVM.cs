@@ -28,6 +28,10 @@ namespace PL_ServiceOnline.ViewModel
                     //Hier steht die Funktion, die die Anmeldedaten dem Synctool übergibt.
                     Dp = new Dataprovider();
 
+                    try
+                    {
+
+                    
                     if(Dp.LogIn(Username, Password))
                     {
                         MessageBox.Show("Herzlich Willkommen " + Username, "Anmeldung erfolgreich", MessageBoxButton.OK, MessageBoxImage.Asterisk);
@@ -43,9 +47,13 @@ namespace PL_ServiceOnline.ViewModel
                     {
                         MessageBox.Show("Kein Benutzer mit diesem Passwort bekannt oder keine Verbindung mit Internet hergestellt.","Anmeldung fehlgeschlagen",MessageBoxButton.OK,MessageBoxImage.Warning);
                     }
-                    
+                    } catch (Exception e)
+                    {
+                        MessageBox.Show("FEHLER: " + e.ToString());
+                    }
 
-                    
+
+
 
                 }
             },

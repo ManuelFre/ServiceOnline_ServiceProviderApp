@@ -380,8 +380,6 @@ namespace SPA_Datahandler
             try
             {
                 dbContext = new DbServiceProviderAppEntities();
-
-
                 Sync = new Synchronisation();
                 NewUser = Sync.LogIn(username, password);
             } catch (Exception e)                           //Bei fehlender Internetverbindung
@@ -389,21 +387,30 @@ namespace SPA_Datahandler
                 return false;            
             }
 
-            if (NewUser != null)
+            try
             {
-                LogOut();
 
-                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = NewUser.ServiceProviderId, last_login = DateTime.Now, is_logged_in = "Y" });
-                dbContext.SaveChanges();
-                Sync.FullSync(NewUser.ServiceProviderId);
 
-                return true;
+                if (NewUser != null)
+                {
+                    LogOut();
+
+                    dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = NewUser.ServiceProviderId, last_login = DateTime.Now, is_logged_in = "Y" });
+                    dbContext.SaveChanges();
+                    Sync.FullSync(NewUser.ServiceProviderId);
+
+                    return true;
+                }
+            } catch (Exception e)
+            {
+                throw e;
             }
             return false;
         }
 
         public bool LogOut()
         {
+            
             var query = from li in dbContext.spa_log_in
             where li.is_logged_in == "Y"
             select li;
