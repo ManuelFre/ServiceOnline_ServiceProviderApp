@@ -1647,7 +1647,7 @@ namespace SPA_Datahandler.SyncServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AppendixField;
+        private byte[] AppendixField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CreateDatField;
@@ -1669,7 +1669,7 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Appendix {
+        public byte[] Appendix {
             get {
                 return this.AppendixField;
             }
