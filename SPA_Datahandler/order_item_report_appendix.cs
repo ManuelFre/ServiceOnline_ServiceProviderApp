@@ -14,8 +14,8 @@ namespace SPA_Datahandler
     
     public partial class order_item_report_appendix
     {
-        public int Id { get; set; }
-        public int order_item_report_id { get; set; }
+        public System.Guid Id { get; set; }
+        public System.Guid order_item_report_id { get; set; }
         public byte[] appendix { get; set; }
         public System.DateTime createdat { get; set; }
         public Nullable<System.DateTime> deletedat { get; set; }

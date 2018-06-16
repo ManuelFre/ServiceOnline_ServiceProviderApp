@@ -248,7 +248,7 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
             for (int i = 0; i < OIM.Count; i++)
             {
-                int OrderITemReportId = OIM[i].Id;
+                Guid OrderITemReportId = OIM[i].Id;
 
                 var queryAppendix = from oima in dbContext.order_item_report_appendix
                                     where oima.order_item_report_id == OrderITemReportId
@@ -322,8 +322,7 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
 
             //Holen der maximalen Order_item_report_id:
-            int NextId = (from oim in dbContext.order_item_report
-                          select oim.Id).Count() +2;
+            Guid NextId = Guid.NewGuid();
 
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report
@@ -338,10 +337,14 @@ namespace SPA_Datahandler
             dbContext.SaveChanges();
 
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
+
+            
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
             {
+                Guid AppendixId = Guid.NewGuid();
                 order_item_report_appendix DbOima = new order_item_report_appendix
                 {
+                    Id = AppendixId,
                     createdat = DateTime.Now,
                     order_item_report_id = DbNewReport.Id,
                     appendix = oima.Picture
@@ -586,7 +589,7 @@ namespace SPA_Datahandler
 
             return query.FirstOrDefault();
         }
-        protected order_item_report_appendix QueryOrderItemReportAppendix(int Id)
+        protected order_item_report_appendix QueryOrderItemReportAppendix(Guid Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -597,7 +600,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        protected order_item_report QueryOrderItemReport(int Id)
+        protected order_item_report QueryOrderItemReport(Guid Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 

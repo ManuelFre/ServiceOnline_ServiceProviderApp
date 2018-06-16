@@ -444,7 +444,7 @@
       <xs:complexType name="OrderItemReport">
         <xs:sequence>
           <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OrderItemId" type="xs:int" />
           <xs:element minOccurs="0" name="ReportComment" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -460,8 +460,8 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Appendix" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="CreateDat" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
-          <xs:element minOccurs="0" name="OrderItemReportId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderItemReportId" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="OrderItemReportAp" nillable="true" type="tns:OrderItemReportAp" />

@@ -8,7 +8,7 @@ namespace SPA_Datahandler.Datamodel
     public class OrderItemReport_
     {
         [DataMember]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [DataMember]
         public string Comment { get; set; }
         [DataMember]

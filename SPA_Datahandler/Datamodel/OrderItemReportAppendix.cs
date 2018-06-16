@@ -11,10 +11,10 @@ namespace SPA_Datahandler.Datamodel
     public class OrderItemReportAppendix
     {
         [DataMember]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [DataMember]
-        public int OrderItemReportId { get; set; }
+        public Guid OrderItemReportId { get; set; }
         [DataMember]
         public byte[] Picture { get; set; }
 
