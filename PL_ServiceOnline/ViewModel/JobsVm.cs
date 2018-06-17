@@ -60,8 +60,6 @@ namespace PL_ServiceOnline.ViewModel
                 { "Status", false }
             };
 
-
-            BtnSyncWithBackend = new RelayCommand(() => StartSync());
             //MyClassInitialize();
 
             OS = new OrderSummary();
@@ -184,13 +182,6 @@ namespace PL_ServiceOnline.ViewModel
 
         }
 
-        public void StartSync()
-        {
-            //SyncFromBackend SFB = new SyncFromBackend();
-            //MessageBox.Show(SFB.StartSync().ToString());
-            MessageBox.Show("Aus Sicherheitsgründen deaktiviert von Freischlager");
-
-        }
 
         //public void InsertNewCountry()
         //{

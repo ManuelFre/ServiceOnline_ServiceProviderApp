@@ -59,6 +59,7 @@ namespace SPA_Datahandler.Sync
 
             int WrittenData = SendOrderItem() + SendOrderItemReport() + SendOrderItemReportAppendix() + SendServiceProvider();
 
+
             GetSowUser(ServiceProviderId);
             GetOrderHeader(ServiceProviderId);
             GetOrderDetail(ServiceProviderId);
@@ -131,7 +132,8 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItems[i] = tmp;
             }
-            return SyncClient.PutOrderItem(SendOrderItems,DateTimeNow,false);
+            int cntChangedItems = SyncClient.PutOrderItem(SendOrderItems, DateTimeNow, false);
+            return cntChangedItems;
         }
 
         private int SendOrderItemReport()
@@ -169,7 +171,8 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
-            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
+            int cntSentAppendix = SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
+            return cntSentAppendix;
         }
 
         private int SendServiceProvider()
