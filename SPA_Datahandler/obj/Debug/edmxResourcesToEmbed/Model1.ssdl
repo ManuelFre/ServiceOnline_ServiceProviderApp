@@ -151,14 +151,6 @@
     <Property Name="createdAt" Type="datetime" Nullable="false" />
     <Property Name="deletedAt" Type="datetime" />
   </EntityType>
-  <EntityType Name="spa_changes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="order_id" Type="int" Nullable="false" />
-    <Property Name="change_date" Type="datetime" Nullable="false" />
-  </EntityType>
   <EntityType Name="spa_log_in">
     <Key>
       <PropertyRef Name="Id" />
@@ -281,7 +273,6 @@
     <EntitySet Name="service_provider" EntityType="Self.service_provider" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sow_user" EntityType="Self.sow_user" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sow_user_delivery_address" EntityType="Self.sow_user_delivery_address" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="spa_changes" EntityType="Self.spa_changes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="spa_log_in" EntityType="Self.spa_log_in" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="spa_synctimes" EntityType="Self.spa_synctimes" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">

@@ -294,10 +294,6 @@ namespace SPA_Datahandler
                 OriginalOrderItem.createdAt = DateTime.Now;
                
 
-                //schreiben der Änderung in die spa_changes Tabelle
-                spa_changes chng = new spa_changes();
-                chng.order_id = OriginalOrderItem.Id;
-                chng.change_date = DateTime.Now;
                 
                 //Änderungen speichern
 
@@ -352,9 +348,7 @@ namespace SPA_Datahandler
 
                 dbContext.Set<order_item_report_appendix>().Add(DbOima);
             }
-
-            //schreiben der Änderung in die spa_changes Tabelle
-            dbContext.Set<spa_changes>().Add(new spa_changes { order_id = NewReport.OrderItemId, change_date = DateTime.Now });
+           
             UpdateDataBase();
             StartSynchronisation();
         }

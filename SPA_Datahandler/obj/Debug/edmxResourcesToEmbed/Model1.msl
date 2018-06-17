@@ -161,15 +161,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="spa_changes">
-      <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_changes">
-        <MappingFragment StoreEntitySet="spa_changes">
-          <ScalarProperty Name="change_date" ColumnName="change_date" />
-          <ScalarProperty Name="order_id" ColumnName="order_id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="spa_log_in">
       <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_log_in">
         <MappingFragment StoreEntitySet="spa_log_in">

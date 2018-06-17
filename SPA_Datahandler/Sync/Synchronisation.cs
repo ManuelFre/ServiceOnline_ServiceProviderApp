@@ -26,7 +26,7 @@ namespace SPA_Datahandler.Sync
         public SpaUser LogIn(string username, string password)
         {
             //SyncClient.Logon("franz", "Start123");   
-            SpaUser NewUser =  SyncClient.Logon(username, password);            
+            SpaUser NewUser = SyncClient.Logon(username, password);
             return NewUser;
         }
 
@@ -73,7 +73,7 @@ namespace SPA_Datahandler.Sync
             return true;
         }
 
-        
+
 
         public Boolean ClearAllLocalTables()
         {
@@ -89,8 +89,8 @@ namespace SPA_Datahandler.Sync
             SimpleDatabaseFunctions<sow_user> SDSu = new SimpleDatabaseFunctions<sow_user>();
             SimpleDatabaseFunctions<spa_synctimes> SDSync = new SimpleDatabaseFunctions<spa_synctimes>();
 
-            return SDOira.ClearTable() &&
-             SDOir.ClearTable() &&
+            //SDOira.ClearTable() &&
+            return SDOir.ClearTable() &&
             SDOi.ClearTable() &&
             SDS.ClearTable() &&
             SDSp.ClearTable() &&
@@ -108,7 +108,7 @@ namespace SPA_Datahandler.Sync
             DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item> LocalOrderItems = QueryOrderItems(FromDate);
             OrderItem[] SendOrderItems = new OrderItem[LocalOrderItems.Count()];
-            for (int i = 0; i< LocalOrderItems.Count(); i++)
+            for (int i = 0; i < LocalOrderItems.Count(); i++)
             {
                 OrderItem tmp = new OrderItem();
                 tmp.AddCost = (LocalOrderItems[i].addittional_cost == null) ? 0 : LocalOrderItems[i].addittional_cost.Value;
@@ -119,7 +119,7 @@ namespace SPA_Datahandler.Sync
                 tmp.FinalPriceWithTax = LocalOrderItems[i].final_price_with_tax;
                 tmp.Id = LocalOrderItems[i].Id;
                 tmp.IsAllIncl = LocalOrderItems[i].is_all_inclusive;
-                tmp.IsConfirmed= LocalOrderItems[i].is_confirmed;
+                tmp.IsConfirmed = LocalOrderItems[i].is_confirmed;
                 tmp.IsFinished = LocalOrderItems[i].is_finished;
                 tmp.OptionPrice = LocalOrderItems[i].option_price;
                 tmp.OrderId = LocalOrderItems[i].order_id;
@@ -140,16 +140,16 @@ namespace SPA_Datahandler.Sync
         {
             DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item_report> LocalOrderItemReports = QueryOrderItemReports(FromDate);
-            OrderItemReport[] SendOrderItemReports = new OrderItemReport[LocalOrderItemReports.Count() ];
+            OrderItemReport[] SendOrderItemReports = new OrderItemReport[LocalOrderItemReports.Count()];
 
             for (int i = 0; i < SendOrderItemReports.Count(); i++)
             {
                 OrderItemReport tmp = new OrderItemReport();
-                tmp.CreateDat =  LocalOrderItemReports[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                tmp.CreateDat = LocalOrderItemReports[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 tmp.Id = LocalOrderItemReports[i].Id.ToString();
                 tmp.OrderItemId = LocalOrderItemReports[i].order_item_id;
                 tmp.ReportComment = LocalOrderItemReports[i].comment;
-                
+
                 SendOrderItemReports[i] = tmp;
             }
             return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, false);
@@ -159,7 +159,7 @@ namespace SPA_Datahandler.Sync
         {
             DateTime FromDate = DateTime.Parse(GetFromDate);
             List<order_item_report_appendix> LocalOrderItemReportAppendix = QueryOrderItemReportAppendix(FromDate);
-            OrderItemReportAp[] SendOrderItemReportAppendix = new OrderItemReportAp[LocalOrderItemReportAppendix.Count() ];
+            OrderItemReportAp[] SendOrderItemReportAppendix = new OrderItemReportAp[LocalOrderItemReportAppendix.Count()];
 
             for (int i = 0; i < LocalOrderItemReportAppendix.Count(); i++)
             {
@@ -186,7 +186,7 @@ namespace SPA_Datahandler.Sync
             if (LocalServiceProvider != null)
             {
                 ServiceProvider[] SendServiceProvider = new ServiceProvider[1];
-                
+
                 ServiceProvider tmp = new ServiceProvider();
                 tmp.Timestamp = LocalServiceProvider.createdAt.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 tmp.Id = LocalServiceProvider.Id;
@@ -199,7 +199,7 @@ namespace SPA_Datahandler.Sync
                 tmp.Phone2 = LocalServiceProvider.phone_2;
                 tmp.Taxnumber = LocalServiceProvider.tax_number;
                 tmp.Zip = LocalServiceProvider.zip;
-                if(LocalServiceProvider.zone_id < 1)
+                if (LocalServiceProvider.zone_id < 1)
                 {
                     tmp.ZoneId = 207;                       //Wenn die ZoneId Null ist, wird sie auf 207 (Wien) geändert. 
                 }
@@ -207,7 +207,7 @@ namespace SPA_Datahandler.Sync
                 {
                     tmp.ZoneId = LocalServiceProvider.zone_id;
                 }
-                
+
                 //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      funktioniert im Sync noch nicht
 
                 SendServiceProvider[0] = tmp;
@@ -215,7 +215,7 @@ namespace SPA_Datahandler.Sync
                 return SyncClient.PutServiceProvider(SendServiceProvider, DateTimeNow, false);
             }
             return 0;
-            
+
         }
 
         #endregion
@@ -294,7 +294,7 @@ namespace SPA_Datahandler.Sync
                 {
                     tmp = new order_detail();
                     NewValue = true;
-                }                                
+                }
                 tmp.address_1 = od.Address1;
                 tmp.address_2 = od.Address2;
                 tmp.city = od.City;
@@ -420,7 +420,7 @@ namespace SPA_Datahandler.Sync
                 tmp.price = OI.Price;
                 tmp.quantity = OI.Quantity;
                 tmp.service_id = OI.ServiceId;
-                tmp.service_provider_comment = OI.Comment;           
+                tmp.service_provider_comment = OI.Comment;
                 tmp.tax = OI.Tax;
 
                 if (NewValue)
@@ -460,7 +460,7 @@ namespace SPA_Datahandler.Sync
         }
         private List<order_item_report_appendix> GetOrderItemReportAppendix(int ServiceProviderId)
         {
-            List<order_item_report_appendix> ReturnList = new List<order_item_report_appendix>(); 
+            List<order_item_report_appendix> ReturnList = new List<order_item_report_appendix>();
             foreach (OrderItemReportAp OIRA in SyncClient.GetOrderItemReportAp(GetFromDate, DateTimeNow, ServiceProviderId))
             {
                 order_item_report_appendix tmp = QueryOrderItemReportAppendix(new Guid(OIRA.Id));

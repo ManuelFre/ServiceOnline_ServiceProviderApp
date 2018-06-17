@@ -4,27 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c7deaf3ca8db421b8054608e1149c368" Name="Diagram1" ZoomLevel="79">
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_detail" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_header" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item" Width="2.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.service" Width="1.5" PointX="10.5" PointY="18.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.service_provider" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.sow_user" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.sow_user_delivery_address" Width="2.75" PointX="5.25" PointY="12.75" IsExpanded="true" />
+      <Diagram DiagramId="c7deaf3ca8db421b8054608e1149c368" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_detail" Width="1.5" PointX="2.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_header" Width="1.5" PointX="0.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item" Width="2.5" PointX="10.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.service" Width="1.5" PointX="8" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.service_provider" Width="1.5" PointX="5.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.sow_user" Width="1.5" PointX="0.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.sow_user_delivery_address" Width="2.75" PointX="2.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="DbServiceProviderAppModel.order_detail_header_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DbServiceProviderAppModel.order_header_customer_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DbServiceProviderAppModel.order_item_header_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DbServiceProviderAppModel.order_item_service_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DbServiceProviderAppModel.service_service_provider_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DbServiceProviderAppModel.address_sow_user_fk" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item_report" Width="1.75" PointX="16.5" PointY="20.125" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item_report_appendix" Width="2.375" PointX="19" PointY="20.375" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item_report" Width="1.75" PointX="14" PointY="12.75" />
+        <EntityTypeShape EntityType="DbServiceProviderAppModel.order_item_report_appendix" Width="2.375" PointX="16.5" PointY="13" />
         <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_ToTable" />
-        <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" />
-        <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_changes" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_log_in" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_synctimes" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

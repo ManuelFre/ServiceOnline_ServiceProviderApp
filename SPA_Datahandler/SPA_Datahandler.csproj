@@ -127,9 +127,6 @@
     <Compile Include="sow_user_delivery_address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="spa_changes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="spa_log_in.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

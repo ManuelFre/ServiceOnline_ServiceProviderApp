@@ -156,14 +156,6 @@
           <Property Name="createdAt" Type="datetime" Nullable="false" />
           <Property Name="deletedAt" Type="datetime" />
         </EntityType>
-        <EntityType Name="spa_changes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="order_id" Type="int" Nullable="false" />
-          <Property Name="change_date" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityType Name="spa_log_in">
           <Key>
             <PropertyRef Name="Id" />
@@ -286,7 +278,6 @@
           <EntitySet Name="service_provider" EntityType="Self.service_provider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sow_user" EntityType="Self.sow_user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sow_user_delivery_address" EntityType="Self.sow_user_delivery_address" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="spa_changes" EntityType="Self.spa_changes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="spa_log_in" EntityType="Self.spa_log_in" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="spa_synctimes" EntityType="Self.spa_synctimes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">
@@ -580,13 +571,12 @@
             <End Role="order_item" EntitySet="order_item" />
             <End Role="order_item_report" EntitySet="order_item_report" />
           </AssociationSet>
+          <EntitySet Name="spa_log_in" EntityType="DbServiceProviderAppModel.spa_log_in" />
+          <EntitySet Name="spa_synctimes" EntityType="DbServiceProviderAppModel.spa_synctimes" />
           <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable">
             <End Role="order_item_report" EntitySet="order_item_report" />
             <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
           </AssociationSet>
-          <EntitySet Name="spa_changes" EntityType="DbServiceProviderAppModel.spa_changes" />
-          <EntitySet Name="spa_log_in" EntityType="DbServiceProviderAppModel.spa_log_in" />
-          <EntitySet Name="spa_synctimes" EntityType="DbServiceProviderAppModel.spa_synctimes" />
         </EntityContainer>
         <EntityType Name="order_item_report">
           <Key>
@@ -596,9 +586,9 @@
           <Property Name="order_item_id" Type="Int32" Nullable="false" />
           <Property Name="comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
-          <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deletedat" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
         </EntityType>
         <EntityType Name="order_item_report_appendix">
           <Key>
@@ -607,9 +597,9 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="order_item_report_id" Type="Guid" Nullable="false" />
           <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deletedat" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
         </EntityType>
         <Association Name="FK_order_item_report_ToTable">
           <End Type="DbServiceProviderAppModel.order_item" Role="order_item" Multiplicity="1" />
@@ -623,26 +613,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_item_report_appendix_ToTable">
-          <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="1" />
-          <End Type="DbServiceProviderAppModel.order_item_report_appendix" Role="order_item_report_appendix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="order_item_report">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="order_item_report_appendix">
-              <PropertyRef Name="order_item_report_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="spa_changes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="order_id" Type="Int32" Nullable="false" />
-          <Property Name="change_date" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="spa_log_in">
           <Key>
             <PropertyRef Name="Id" />
@@ -659,6 +629,18 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="synctime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <Association Name="FK_order_item_report_appendix_ToTable">
+          <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="1" />
+          <End Type="DbServiceProviderAppModel.order_item_report_appendix" Role="order_item_report_appendix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_item_report">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order_item_report_appendix">
+              <PropertyRef Name="order_item_report_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -821,15 +803,6 @@
                 <ScalarProperty Name="createdat" ColumnName="createdat" />
                 <ScalarProperty Name="appendix" ColumnName="appendix" />
                 <ScalarProperty Name="order_item_report_id" ColumnName="order_item_report_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="spa_changes">
-            <EntityTypeMapping TypeName="DbServiceProviderAppModel.spa_changes">
-              <MappingFragment StoreEntitySet="spa_changes">
-                <ScalarProperty Name="change_date" ColumnName="change_date" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
