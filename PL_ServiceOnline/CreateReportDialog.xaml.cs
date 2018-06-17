@@ -31,10 +31,6 @@ namespace PL_ServiceOnline
         public List<OrderItemReportAppendix> AppendixImageList{ get; set; }
 
         public ObservableCollection<BitmapImage> ImageList { get; set; }
-        //private BitmapImage emptyImage;
-
-        //public ObservableCollection<BitmapImage> ImageList { get; set; }
-
 
         public OrderItemReport_ Answer
         {
@@ -47,7 +43,7 @@ namespace PL_ServiceOnline
                     OrderItemId = OrderItemId,                                      //CurrentMaxOrderItemReportId,
                     ReportDate = DateTime.Now,
                     Appendix = AppendixImageList,
-                    Visibility = "Visible", //(optional)to expand this OrderItemReport after Dialog is closed... (doesnt work yet properly) -> DetailVm /xaml problem
+                    Visibility = "Visible", //(optional)to expand this OrderItemReport after Dialog is closed... 
 
                 };
             }
@@ -61,8 +57,6 @@ namespace PL_ServiceOnline
             btnDialogOk.IsEnabled = false;
 
             lblImgCount.Content = imageCount.ToString();
-            //lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy"); too big for now
-            //lblDate.Content = DateTime.Now.ToString("dd. MMMM yyyy"); currently still too long for September...
             lblDate.Content = DateTime.Now.ToString("dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
             OrderItemId = orderItemId;
@@ -70,11 +64,7 @@ namespace PL_ServiceOnline
             AppendixImageList = new List<OrderItemReportAppendix>();
             ImageList = new ObservableCollection<BitmapImage>();
             ItmCtrl.ItemsSource = ImageList;
-            //prepared approach for showing all added images
-            //emptyImage = new BitmapImage(new Uri(@"/Images/KeinBild.jpg", UriKind.Relative));
-            //ImageList = new ObservableCollection<BitmapImage>();
-            //ImageList.Add(emptyImage);
-            //ImageBox.ItemsSource = ImageList;
+
 
         }
         #endregion
