@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 
 namespace PL_ServiceOnline.ViewModel
 {
-    //TODO: fix multiple image view in orderitemreports xaml list
     //TODO: maybe add horizontal scrollbar into the reportitmes itemcontrol,... (already tried but issues with stackpannel approach)
     public class DetailVm : ViewModelBase
     {
