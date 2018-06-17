@@ -32,7 +32,7 @@
             <Button Name="btnAddPicture"  Content="_Bild hinzufügen" Grid.Column="0" Grid.Row="4" Click="BtnAddPicture_Click" />
 
         <Label Content="Zuletzt hinzugefügtes Bild:" Height="26" VerticalAlignment="Bottom" />
-        <Image Source="/Images/KeinBild.jpg" Name="imgImage" Grid.Row="1" Margin="5" MaxWidth="175" Height="200" Grid.RowSpan="3"/>
+        <Image Source="/Images/KeinBild.jpg" Name="imgImage" Grid.Row="1" Margin="5" Grid.RowSpan="3"/>
         <StackPanel Grid.Column="1" Grid.Row="2" Margin="15">
             <Label Content="Bereits hinzugefügte Bilder:"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
@@ -48,7 +48,7 @@
                             <Border BorderBrush="Black" BorderThickness="0" CornerRadius="5" Margin="10">
                                 <StackPanel Orientation="Horizontal">
 
-                                    <Image Source="{Binding}" Height="32" />
+                                    <Image Source="{Binding}" Height="70" />
 
                                 </StackPanel>
                             </Border>
