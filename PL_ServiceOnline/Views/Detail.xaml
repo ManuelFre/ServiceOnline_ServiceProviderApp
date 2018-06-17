@@ -374,7 +374,7 @@
 
                             <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
-                            <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center"/>
+                            <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center" />
 
                             <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
@@ -395,7 +395,12 @@
                     </GroupBox>
 
                     <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" >
-                        <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10">
+                        <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBox.Template>
+                                <ControlTemplate>
+                                    <ItemsPresenter></ItemsPresenter>
+                                </ControlTemplate>
+                            </ListBox.Template>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
