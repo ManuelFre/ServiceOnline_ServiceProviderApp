@@ -252,6 +252,7 @@ namespace SPA_Datahandler
 
                 var queryAppendix = from oima in dbContext.order_item_report_appendix
                                     where oima.order_item_report_id == OrderITemReportId
+                                    orderby oima.createdat descending
                                     select new OrderItemReportAppendix
                                     {
                                         Id = oima.Id,
