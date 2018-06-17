@@ -167,7 +167,9 @@ namespace SPA_Datahandler.Sync
                 tmp.CreateDat = LocalOrderItemReportAppendix[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 tmp.Id = LocalOrderItemReportAppendix[i].Id.ToString();
                 tmp.OrderItemReportId = LocalOrderItemReportAppendix[i].order_item_report_id.ToString();
-                tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      
+                tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;
+
+                String tst = System.Text.Encoding.UTF8.GetString(tmp.Appendix, 0, tmp.Appendix.Length);
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
@@ -469,7 +471,7 @@ namespace SPA_Datahandler.Sync
                     NewValue = true;
                 }
                 tmp.Id = new Guid(OIRA.Id);
-                //tmp.appendix = OIRA.Appendix;
+                tmp.appendix = OIRA.Appendix;
                 tmp.order_item_report_id = new Guid(OIRA.OrderItemReportId);
                 tmp.createdat = System.DateTime.Parse(OIRA.CreateDat);
                 //tmp.deletedat =??
