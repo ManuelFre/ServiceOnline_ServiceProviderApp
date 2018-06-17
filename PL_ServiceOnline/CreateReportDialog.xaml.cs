@@ -30,6 +30,7 @@ namespace PL_ServiceOnline
         #region Properties
         public List<OrderItemReportAppendix> AppendixImageList{ get; set; }
 
+        public ObservableCollection<BitmapImage> ImageList { get; set; }
         //private BitmapImage emptyImage;
 
         //public ObservableCollection<BitmapImage> ImageList { get; set; }
@@ -62,12 +63,13 @@ namespace PL_ServiceOnline
             lblImgCount.Content = imageCount.ToString();
             //lblDate.Content = DateTime.Now.ToString("dddd, dd. MMMM yyyy"); too big for now
             //lblDate.Content = DateTime.Now.ToString("dd. MMMM yyyy"); currently still too long for September...
-            lblDate.Content = DateTime.Now.ToString("dd. MMM. yyyy");
+            lblDate.Content = DateTime.Now.ToString("dd. MMMM yyyy");
             this.CurrentMaxOrderItemReportId = CurrentMaxOrderItemReportId;
             OrderItemId = orderItemId;
 
             AppendixImageList = new List<OrderItemReportAppendix>();
-
+            ImageList = new ObservableCollection<BitmapImage>();
+            ItmCtrl.ItemsSource = ImageList;
             //prepared approach for showing all added images
             //emptyImage = new BitmapImage(new Uri(@"/Images/KeinBild.jpg", UriKind.Relative));
             //ImageList = new ObservableCollection<BitmapImage>();
@@ -105,10 +107,12 @@ namespace PL_ServiceOnline
                         Picture = ImageConverter.ImageToByteArray(appendixImage)
                     });
                     imgImage.Source = appendixImage;
+                    ImageList.Add(appendixImage);
                     pictureAdded = true;
                     btnDialogOk.IsEnabled = true;
                     imageCount++;
                     lblImgCount.Content = imageCount.ToString();
+                    
                 }
                 catch (Exception ex)
                 {
