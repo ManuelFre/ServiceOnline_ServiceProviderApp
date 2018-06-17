@@ -67,9 +67,9 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="order_item_id" Type="int" Nullable="false" />
-    <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="comment" Type="varchar(max)" Nullable="false" />
     <Property Name="createdat" Type="datetime" Nullable="false" />
     <Property Name="deletedat" Type="datetime" />
   </EntityType>
@@ -77,8 +77,8 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="order_item_report_id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="order_item_report_id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="appendix" Type="image" Nullable="false" />
     <Property Name="createdat" Type="datetime" Nullable="false" />
     <Property Name="deletedat" Type="datetime" />

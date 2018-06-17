@@ -153,7 +153,7 @@ namespace PL_ServiceOnline.ViewModel
                             {
                                 SelectedDetailed.OrderItemReports[i].Appendix.Add(new OrderItemReportAppendix()
                                 {
-                                    Id = item.OrderItemId,
+                                    OrderItemReportId = item.Id ,
                                     Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Absolute)))
 
                                 });
@@ -358,82 +358,82 @@ namespace PL_ServiceOnline.ViewModel
         }
 
 
-        private void CreateDemoData()
-        {
-            Hour = 14;
-            Minute = 12;
-            CustomerId = 123;
-            Firstname = "TestVorname";
-            Lastname = "TestNachname";
-            Address = "Testadresse 4";
-            Zip = "Zip1234";
-            City = "TestStadt";
-            Phone = "12345";
-            Email = "test@test.test";
-            OrderItemId = 55;
-            OrderId = 100000000;
-            PreferedDate = new DateTime(2018, 12, 31, Hour, Minute, 0);
-            Servicedescription = "Beschreibung des Services, sehr guter service. Sehr toll!!!!!";
-            BookedItems = 444;
-            IsAllInclusive = "Y";
-            Finalprice = 76.43;
-            OrderedDateTime = new DateTime(2018, 12, 31, Hour, Minute, 0);
-            CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?\n\nnoch mehr text";
-            IsFinished = "N";
-            IsConfirmed = "Y";
-            AddittionalCost = 84.44;
-            ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
-            ServiceUnit = "Arbeitsstunde";
-            OrderItemReports = new ObservableCollection<OrderItemReport_>()
-            {
-                new OrderItemReport_()
-                {
-                    Comment = "Kommentar kksksksksk",
-                    Id = 15,
-                    OrderItemId = 94,
-                    ReportDate = new DateTime(2018, 1, 1,Hour,Minute,0),
-                    Appendix= new List<OrderItemReportAppendix>()
-                    {
-                        new OrderItemReportAppendix()
-                        {
-                            Id =939,
-                            OrderItemReportId = 99,
-                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
-                        },
-                        new OrderItemReportAppendix()
-                        {
-                            Id =112,
-                            OrderItemReportId = 12,
-                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
-                        },
-                        new OrderItemReportAppendix()
-                        {
-                            Id =934,
-                            OrderItemReportId = 59,
-                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
-                        }
-                    }
+        //private void CreateDemoData()
+        //{
+        //    Hour = 14;
+        //    Minute = 12;
+        //    CustomerId = 123;
+        //    Firstname = "TestVorname";
+        //    Lastname = "TestNachname";
+        //    Address = "Testadresse 4";
+        //    Zip = "Zip1234";
+        //    City = "TestStadt";
+        //    Phone = "12345";
+        //    Email = "test@test.test";
+        //    OrderItemId = 55;
+        //    OrderId = 100000000;
+        //    PreferedDate = new DateTime(2018, 12, 31, Hour, Minute, 0);
+        //    Servicedescription = "Beschreibung des Services, sehr guter service. Sehr toll!!!!!";
+        //    BookedItems = 444;
+        //    IsAllInclusive = "Y";
+        //    Finalprice = 76.43;
+        //    OrderedDateTime = new DateTime(2018, 12, 31, Hour, Minute, 0);
+        //    CustomerNotice = "Sehr gute lange notitz\r\n funktioniert multiline?\n\nnoch mehr text";
+        //    IsFinished = "N";
+        //    IsConfirmed = "Y";
+        //    AddittionalCost = 84.44;
+        //    ServiceProviderComment = "ein kommentar des service providers\ngeht hier multiline? \n interessante frage";
+        //    ServiceUnit = "Arbeitsstunde";
+        //    OrderItemReports = new ObservableCollection<OrderItemReport_>()
+        //    {
+        //        new OrderItemReport_()
+        //        {
+        //            Comment = "Kommentar kksksksksk",
+        //            Id = 15,
+        //            OrderItemId = 94,
+        //            ReportDate = new DateTime(2018, 1, 1,Hour,Minute,0),
+        //            Appendix= new List<OrderItemReportAppendix>()
+        //            {
+        //                new OrderItemReportAppendix()
+        //                {
+        //                    Id =939,
+        //                    OrderItemReportId = 99,
+        //                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
+        //                },
+        //                new OrderItemReportAppendix()
+        //                {
+        //                    Id =112,
+        //                    OrderItemReportId = 12,
+        //                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
+        //                },
+        //                new OrderItemReportAppendix()
+        //                {
+        //                    Id =934,
+        //                    OrderItemReportId = 59,
+        //                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture.jpg",UriKind.Relative)))
+        //                }
+        //            }
 
-                },
-                new OrderItemReport_()
-                {
-                    Comment = "2. Kommentar kkasksk",
-                    Id = 16,
-                    OrderItemId = 345,
-                    ReportDate = new DateTime(2018, 2, 1,Hour,Minute,0),
-                    Appendix= new List<OrderItemReportAppendix>()
-                    {
-                        new OrderItemReportAppendix()
-                        {
-                            Id =111,
-                            OrderItemReportId = 22,
-                            Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
-                        }
-                    }
+        //        },
+        //        new OrderItemReport_()
+        //        {
+        //            Comment = "2. Kommentar kkasksk",
+        //            Id = 16,
+        //            OrderItemId = 345,
+        //            ReportDate = new DateTime(2018, 2, 1,Hour,Minute,0),
+        //            Appendix= new List<OrderItemReportAppendix>()
+        //            {
+        //                new OrderItemReportAppendix()
+        //                {
+        //                    Id =111,
+        //                    OrderItemReportId = 22,
+        //                    Picture = ImageConverter.ImageToByteArray(new BitmapImage(new Uri(@"..\..\Images\TestPicture2.jpg",UriKind.Relative)))
+        //                }
+        //            }
 
-                }
-            };
+        //        }
+        //    };
 
-        }
+        //}
     }
 }

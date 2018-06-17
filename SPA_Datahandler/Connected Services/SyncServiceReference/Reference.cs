@@ -1557,7 +1557,7 @@ namespace SPA_Datahandler.SyncServiceReference {
         private string CreateDatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int OrderItemIdField;
@@ -1589,12 +1589,12 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public string Id {
             get {
                 return this.IdField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
                 }
@@ -1647,16 +1647,16 @@ namespace SPA_Datahandler.SyncServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AppendixField;
+        private byte[] AppendixField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CreateDatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OrderItemReportIdField;
+        private string OrderItemReportIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1669,7 +1669,7 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Appendix {
+        public byte[] Appendix {
             get {
                 return this.AppendixField;
             }
@@ -1695,12 +1695,12 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public string Id {
             get {
                 return this.IdField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
                 }
@@ -1708,12 +1708,12 @@ namespace SPA_Datahandler.SyncServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OrderItemReportId {
+        public string OrderItemReportId {
             get {
                 return this.OrderItemReportIdField;
             }
             set {
-                if ((this.OrderItemReportIdField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.OrderItemReportIdField, value) != true)) {
                     this.OrderItemReportIdField = value;
                     this.RaisePropertyChanged("OrderItemReportId");
                 }

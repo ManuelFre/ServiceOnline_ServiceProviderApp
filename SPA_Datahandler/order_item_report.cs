@@ -20,7 +20,7 @@ namespace SPA_Datahandler
             this.order_item_report_appendix = new HashSet<order_item_report_appendix>();
         }
     
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public int order_item_id { get; set; }
         public string comment { get; set; }
         public System.DateTime createdat { get; set; }

@@ -72,9 +72,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="order_item_id" Type="int" Nullable="false" />
-          <Property Name="comment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="comment" Type="varchar(max)" Nullable="false" />
           <Property Name="createdat" Type="datetime" Nullable="false" />
           <Property Name="deletedat" Type="datetime" />
         </EntityType>
@@ -82,8 +82,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="order_item_report_id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="order_item_report_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="appendix" Type="image" Nullable="false" />
           <Property Name="createdat" Type="datetime" Nullable="false" />
           <Property Name="deletedat" Type="datetime" />
@@ -592,9 +592,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="order_item_id" Type="Int32" Nullable="false" />
-          <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
           <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
@@ -604,8 +604,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="order_item_report_id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="order_item_report_id" Type="Guid" Nullable="false" />
           <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />

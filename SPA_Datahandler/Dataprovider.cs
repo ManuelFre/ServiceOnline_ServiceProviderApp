@@ -248,7 +248,7 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Report_Appendix zu allen Order_Item_Reports
             for (int i = 0; i < OIM.Count; i++)
             {
-                int OrderITemReportId = OIM[i].Id;
+                Guid OrderITemReportId = OIM[i].Id;
 
                 var queryAppendix = from oima in dbContext.order_item_report_appendix
                                     where oima.order_item_report_id == OrderITemReportId
@@ -322,8 +322,7 @@ namespace SPA_Datahandler
             dbContext = new DbServiceProviderAppEntities();
 
             //Holen der maximalen Order_item_report_id:
-            int NextId = (from oim in dbContext.order_item_report
-                          select oim.Id).Count() +1;
+            Guid NextId = Guid.NewGuid();
 
             //Umwandeln des OrderItemReport in das DB-Objekt
             order_item_report DbNewReport = new order_item_report
@@ -338,10 +337,14 @@ namespace SPA_Datahandler
             dbContext.SaveChanges();
 
             //Umwandeln der OrderItemReportAppendix in die DB-Objekte
+
+            
             foreach (OrderItemReportAppendix oima in NewReport.Appendix)
             {
+                Guid AppendixId = Guid.NewGuid();
                 order_item_report_appendix DbOima = new order_item_report_appendix
                 {
+                    Id = AppendixId,
                     createdat = DateTime.Now,
                     order_item_report_id = DbNewReport.Id,
                     appendix = oima.Picture
@@ -380,8 +383,6 @@ namespace SPA_Datahandler
             try
             {
                 dbContext = new DbServiceProviderAppEntities();
-
-
                 Sync = new Synchronisation();
                 NewUser = Sync.LogIn(username, password);
             } catch (Exception e)                           //Bei fehlender Internetverbindung
@@ -389,21 +390,30 @@ namespace SPA_Datahandler
                 return false;            
             }
 
-            if (NewUser != null)
+            try
             {
-                LogOut();
 
-                dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = NewUser.ServiceProviderId, last_login = DateTime.Now, is_logged_in = "Y" });
-                dbContext.SaveChanges();
-                Sync.FullSync(NewUser.ServiceProviderId);
 
-                return true;
+                if (NewUser != null)
+                {
+                    LogOut();
+
+                    dbContext.Set<spa_log_in>().Add(new spa_log_in { user_id = NewUser.ServiceProviderId, last_login = DateTime.Now, is_logged_in = "Y" });
+                    dbContext.SaveChanges();
+                    Sync.FullSync(NewUser.ServiceProviderId);
+
+                    return true;
+                }
+            } catch (Exception e)
+            {
+                throw e;
             }
             return false;
         }
 
         public bool LogOut()
         {
+            
             var query = from li in dbContext.spa_log_in
             where li.is_logged_in == "Y"
             select li;
@@ -579,7 +589,7 @@ namespace SPA_Datahandler
 
             return query.FirstOrDefault();
         }
-        protected order_item_report_appendix QueryOrderItemReportAppendix(int Id)
+        protected order_item_report_appendix QueryOrderItemReportAppendix(Guid Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 
@@ -590,7 +600,7 @@ namespace SPA_Datahandler
             return query.FirstOrDefault();
         }
 
-        protected order_item_report QueryOrderItemReport(int Id)
+        protected order_item_report QueryOrderItemReport(Guid Id)
         {
             dbContext = new DbServiceProviderAppEntities();
 

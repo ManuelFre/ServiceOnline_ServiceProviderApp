@@ -59,6 +59,7 @@ namespace SPA_Datahandler.Sync
 
             int WrittenData = SendOrderItem() + SendOrderItemReport() + SendOrderItemReportAppendix() + SendServiceProvider();
 
+
             GetSowUser(ServiceProviderId);
             GetOrderHeader(ServiceProviderId);
             GetOrderDetail(ServiceProviderId);
@@ -131,7 +132,8 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItems[i] = tmp;
             }
-            return SyncClient.PutOrderItem(SendOrderItems,DateTimeNow,false);
+            int cntChangedItems = SyncClient.PutOrderItem(SendOrderItems, DateTimeNow, false);
+            return cntChangedItems;
         }
 
         private int SendOrderItemReport()
@@ -144,13 +146,13 @@ namespace SPA_Datahandler.Sync
             {
                 OrderItemReport tmp = new OrderItemReport();
                 tmp.CreateDat =  LocalOrderItemReports[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                tmp.Id = LocalOrderItemReports[i].Id;
+                tmp.Id = LocalOrderItemReports[i].Id.ToString();
                 tmp.OrderItemId = LocalOrderItemReports[i].order_item_id;
                 tmp.ReportComment = LocalOrderItemReports[i].comment;
                 
                 SendOrderItemReports[i] = tmp;
             }
-            return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, true);
+            return SyncClient.PutOrderItemReport(SendOrderItemReports, DateTimeNow, false);
         }
 
         private int SendOrderItemReportAppendix()
@@ -163,13 +165,14 @@ namespace SPA_Datahandler.Sync
             {
                 OrderItemReportAp tmp = new OrderItemReportAp();
                 tmp.CreateDat = LocalOrderItemReportAppendix[i].createdat.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                tmp.Id = LocalOrderItemReportAppendix[i].Id;
-                tmp.OrderItemReportId = LocalOrderItemReportAppendix[i].order_item_report_id;
-                //tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      //funktioniert im Sync noch nicht
+                tmp.Id = LocalOrderItemReportAppendix[i].Id.ToString();
+                tmp.OrderItemReportId = LocalOrderItemReportAppendix[i].order_item_report_id.ToString();
+                tmp.Appendix = LocalOrderItemReportAppendix[i].appendix;      
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
-            return SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, true);
+            int cntSentAppendix = SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
+            return cntSentAppendix;
         }
 
         private int SendServiceProvider()
@@ -433,14 +436,14 @@ namespace SPA_Datahandler.Sync
             List<order_item_report> ReturnList = new List<order_item_report>();
             foreach (OrderItemReport OIR in SyncClient.GetOrderItemReport(GetFromDate, DateTimeNow, ServiceProviderId))
             {
-                order_item_report tmp = QueryOrderItemReport(OIR.Id);
+                order_item_report tmp = QueryOrderItemReport(new Guid(OIR.Id));
                 Boolean NewValue = false;
                 if (tmp == null)
                 {
                     tmp = new order_item_report();
                     NewValue = true;
                 }
-                tmp.Id = OIR.Id;
+                tmp.Id = new Guid(OIR.Id);
                 tmp.comment = OIR.ReportComment;
                 tmp.createdat = System.DateTime.Parse(OIR.CreateDat);
                 tmp.order_item_id = OIR.OrderItemId;
@@ -458,16 +461,16 @@ namespace SPA_Datahandler.Sync
             List<order_item_report_appendix> ReturnList = new List<order_item_report_appendix>(); 
             foreach (OrderItemReportAp OIRA in SyncClient.GetOrderItemReportAp(GetFromDate, DateTimeNow, ServiceProviderId))
             {
-                order_item_report_appendix tmp = QueryOrderItemReportAppendix(OIRA.Id);
+                order_item_report_appendix tmp = QueryOrderItemReportAppendix(new Guid(OIRA.Id));
                 Boolean NewValue = false;
                 if (tmp == null)
                 {
                     tmp = new order_item_report_appendix();
                     NewValue = true;
                 }
-                tmp.Id = OIRA.Id;
+                tmp.Id = new Guid(OIRA.Id);
                 //tmp.appendix = OIRA.Appendix;
-                tmp.order_item_report_id = OIRA.OrderItemReportId;
+                tmp.order_item_report_id = new Guid(OIRA.OrderItemReportId);
                 tmp.createdat = System.DateTime.Parse(OIRA.CreateDat);
                 //tmp.deletedat =??
 
