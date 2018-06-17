@@ -90,7 +90,7 @@ namespace SPA_Datahandler.Sync
             SimpleDatabaseFunctions<spa_synctimes> SDSync = new SimpleDatabaseFunctions<spa_synctimes>();
 
             return SDOira.ClearTable() &&
-            SDOir.ClearTable() &&
+             SDOir.ClearTable() &&
             SDOi.ClearTable() &&
             SDS.ClearTable() &&
             SDSp.ClearTable() &&
@@ -173,8 +173,8 @@ namespace SPA_Datahandler.Sync
 
                 SendOrderItemReportAppendix[i] = tmp;
             }
-            int cntSentAppendix = SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
-            return cntSentAppendix;
+            //int cntSentAppendix = SyncClient.PutOrderItemReportAp(SendOrderItemReportAppendix, DateTimeNow, false);
+            return 0;
         }
 
         private int SendServiceProvider()
