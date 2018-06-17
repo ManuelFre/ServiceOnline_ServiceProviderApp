@@ -11,12 +11,12 @@
     
     <Grid Margin="15">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="175" />
+            <ColumnDefinition Width="235" />
             <ColumnDefinition Width="280" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
-            <RowDefinition Height="35" />
+            <RowDefinition Height="95" />
             <RowDefinition Height="120" />
             <RowDefinition Height="70" />
             <RowDefinition Height="40" />
@@ -24,7 +24,7 @@
 
 
         <Label Grid.Column="1" Content="Kommentar (optional):" Height="26" VerticalAlignment="Bottom" Margin="15,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="15,0" Name="txtComment" TextChanged="TxtComment_TextChanged" Height="30" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+        <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="1" Margin="15,0" Name="txtComment" TextChanged="TxtComment_TextChanged" Height="90" VerticalContentAlignment="Top" Padding="5,0,0,0" />
         
 
         

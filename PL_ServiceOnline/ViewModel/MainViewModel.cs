@@ -101,6 +101,11 @@ namespace PL_ServiceOnline.ViewModel
         /// </summary>
         public MainViewModel()
         {
+            CreateReportDialog reportDialog = new CreateReportDialog(1 + 1, 1);
+            if (reportDialog.ShowDialog() == true) { }
+
+
+
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
 
