@@ -398,7 +398,7 @@
                         <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                             <ListBox.Template>
                                 <ControlTemplate>
-                                    <ItemsPresenter></ItemsPresenter><!--Necessary to override hidden ListBoxTemplate... since ListBox has an inbuilt Scrollviewer... now outter scrollviewer can easily scroll over this listbox!!!-->
+                                    <ItemsPresenter></ItemsPresenter><!--Necessary to override default ListBoxTemplate... since ListBox has an inbuilt Scrollviewer... now outter scrollviewer can easily scroll over this listbox!!!-->
                                 </ControlTemplate>
                             </ListBox.Template>
                             <ListBox.ItemTemplate>
@@ -407,11 +407,13 @@
                                     <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                             <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                                <StackPanel Orientation="Horizontal" Height="50" Width="565" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                                    <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
-                                                    <TextBox  BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy , ConverterCulture=de-DE}" VerticalContentAlignment="Center"/>
-                                                    <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
-                                                    <Label Content="{Binding Comment}" VerticalContentAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" MinHeight="50" Width="565" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                    <Label VerticalAlignment="Top" Height="25"  Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
+                                                    <TextBox  VerticalAlignment="Top" VerticalContentAlignment="Center" Height="25" BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy HH:mm, ConverterCulture=de-DE}" />
+                                                    <Label VerticalAlignment="Top" Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
+                                                    
+                                                        <Label VerticalAlignment="Top" Content="{Binding Comment}" VerticalContentAlignment="Center"/>
+                                                    
                                                 </StackPanel>
                                                 <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                                             </StackPanel>
