@@ -374,7 +374,7 @@
 
                             <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
-                            <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center" />
+                            <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center"/>
 
                             <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
@@ -394,28 +394,29 @@
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" >
-                        <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                        <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                             <ListBox.Template>
                                 <ControlTemplate>
-                                    <ItemsPresenter></ItemsPresenter>
+                                    <ItemsPresenter></ItemsPresenter><!--Necessary to override hidden ListBoxTemplate... since ListBox has an inbuilt Scrollviewer... now outter scrollviewer can easily scroll over this listbox!!!-->
                                 </ControlTemplate>
                             </ListBox.Template>
                             <ListBox.ItemTemplate>
+                                
                                 <DataTemplate>
-                                    <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0">
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal">
-                                                <StackPanel Orientation="Horizontal" Height="50" Width="565">
+                                    <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                            <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                <StackPanel Orientation="Horizontal" Height="50" Width="565" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                                     <Label Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
                                                     <TextBox  BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy , ConverterCulture=de-DE}" VerticalContentAlignment="Center"/>
                                                     <Label Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
                                                     <Label Content="{Binding Comment}" VerticalContentAlignment="Center"/>
                                                 </StackPanel>
-                                                <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}"/>
+                                                <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                                             </StackPanel>
 
-                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="{Binding Visibility}">
+                                            <ItemsControl x:Name="SelectedOnlyListBox" ItemsSource="{Binding Appendix}" Margin="2" Visibility="{Binding Visibility}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -424,10 +425,10 @@
 
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Border BorderBrush="Black" BorderThickness="0" CornerRadius="5" Margin="10">
-                                                            <StackPanel Orientation="Horizontal">
+                                                        <Border BorderBrush="Black" BorderThickness="0" CornerRadius="5" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                                            <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
-                                                                <Image Source="{Binding Picture}" Height="280" />
+                                                                <Image Source="{Binding Picture}" Height="280" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
 
                                                             </StackPanel>
                                                         </Border>
