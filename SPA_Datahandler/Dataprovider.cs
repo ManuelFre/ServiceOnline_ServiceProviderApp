@@ -237,6 +237,7 @@ namespace SPA_Datahandler
             // Holen der Order_Item_Reports zum Order_Item
             var queryReport = from oim in dbContext.order_item_report
                               where oim.order_item_id == OrderItemId
+                              orderby oim.createdat
                               select new OrderItemReport_
                               {
                                   Id = oim.Id,
@@ -601,6 +602,7 @@ namespace SPA_Datahandler
 
             var query = from oir in dbContext.order_item_report
                         where oir.Id == Id
+                        orderby oir.createdat ascending
                         select oir;
 
             return query.FirstOrDefault();

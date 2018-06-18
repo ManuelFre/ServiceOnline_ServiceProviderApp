@@ -112,6 +112,7 @@ namespace PL_ServiceOnline.ViewModel
 
         public DetailVm()
         {
+
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
 
@@ -123,10 +124,6 @@ namespace PL_ServiceOnline.ViewModel
             OS = new DetailedClass();
 
             Dp = new Dataprovider();
-
-
-            BtnSyncWithBackend = new RelayCommand(() => StartSync());
-
 
 
             BtnApplyChanges = new RelayCommand(() => ApplyChanges());
@@ -349,11 +346,6 @@ namespace PL_ServiceOnline.ViewModel
                 Status = GetStatus(IsFinished, IsConfirmed);
             }
 
-        }
-        public void StartSync()
-        {
-            SyncFromBackend SFB = new SyncFromBackend();
-            MessageBox.Show(SFB.StartSync().ToString());
         }
 
 

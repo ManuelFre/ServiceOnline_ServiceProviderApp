@@ -474,7 +474,6 @@ namespace SPA_Datahandler.Sync
                 tmp.appendix = OIRA.Appendix;
                 tmp.order_item_report_id = new Guid(OIRA.OrderItemReportId);
                 tmp.createdat = System.DateTime.Parse(OIRA.CreateDat);
-                //tmp.deletedat =??
 
                 if (NewValue)
                 {

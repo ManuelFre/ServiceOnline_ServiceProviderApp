@@ -70,8 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackendDatabaseHandler\BackendDatabaseConnection.cs" />
-    <Compile Include="BackendDatabaseHandler\BackendDatabaseHandling.cs" />
     <Compile Include="Connected Services\SyncServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,9 +131,7 @@
     <Compile Include="spa_synctimes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SyncFromBackend.cs" />
     <Compile Include="Sync\Synchronisation.cs" />
-    <Compile Include="Sync\SyncSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

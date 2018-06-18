@@ -14,12 +14,6 @@ namespace SPA_Datahandler
     
     public partial class order_item_report
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public order_item_report()
-        {
-            this.order_item_report_appendix = new HashSet<order_item_report_appendix>();
-        }
-    
         public System.Guid Id { get; set; }
         public int order_item_id { get; set; }
         public string comment { get; set; }
@@ -27,7 +21,5 @@ namespace SPA_Datahandler
         public Nullable<System.DateTime> deletedat { get; set; }
     
         public virtual order_item order_item { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order_item_report_appendix> order_item_report_appendix { get; set; }
     }
 }

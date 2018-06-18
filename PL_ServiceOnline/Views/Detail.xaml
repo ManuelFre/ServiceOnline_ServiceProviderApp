@@ -66,7 +66,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <xctk:ButtonSpinner x:Name="PART_Spinner" AllowSpin="{TemplateBinding AllowSpin}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}" Background="{TemplateBinding Background}" HorizontalContentAlignment="Stretch" IsTabStop="False" ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}" VerticalContentAlignment="Stretch">
+                                    <xctk:ButtonSpinner  x:Name="PART_Spinner" AllowSpin="{TemplateBinding AllowSpin}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}" Background="{TemplateBinding Background}" HorizontalContentAlignment="Stretch" IsTabStop="False" ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}" VerticalContentAlignment="Stretch">
                                         <xctk:WatermarkTextBox x:Name="PART_TextBox" AcceptsReturn="False" BorderThickness="0" Background="Transparent" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsUndoEnabled="True" MinWidth="20" Padding="{TemplateBinding Padding}" TextAlignment="{TemplateBinding TextAlignment}" TextWrapping="NoWrap" Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" TabIndex="{TemplateBinding TabIndex}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" WatermarkTemplate="{TemplateBinding WatermarkTemplate}" Watermark="{TemplateBinding Watermark}"/>
                                     </xctk:ButtonSpinner>
                                     <ToggleButton x:Name="_calendarToggleButton" Background="White" Grid.Column="1" Focusable="False" IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}}">
@@ -374,14 +374,16 @@
 
                             <TextBox Grid.Column="2" Grid.Row="0" Text="{Binding AddittionalCost,StringFormat=C, ConverterCulture=de-DE}" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
-                            <xctk:DateTimePicker Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center"/>
-
+                            <xctk:DateTimePicker  Value="{Binding PreferedDate}" Format="Custom" FormatString="dddd, dd. MMMM yyyy HH:mm" CultureInfo="de-DE" Style="{DynamicResource DateTimePickerStyle}" Grid.Column="2" Grid.Row="1" FontSize="24" HorizontalAlignment="Stretch" Margin="5" Height="45" VerticalContentAlignment="Center"/>
+                           
                             <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center"/>
 
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Kommentare" Grid.Row="3" Margin="0,15,0,0">
+                    
+
+                    <GroupBox Header="Anmerkungen von Dienstleister" Grid.Row="3" Margin="0,15,0,0">
                         <Grid Margin="10">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -390,11 +392,29 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBox Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="120" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Top" Margin="5" VerticalContentAlignment="Top"/>
+                            <TextBox Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="40" Text="{Binding ServiceProviderComment}"  FontSize="14" VerticalAlignment="Top" Margin="5" VerticalContentAlignment="Top"/>
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox Header="Angehängte Dokumente" Grid.Row="4" Margin="0,15,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                    <StackPanel Grid.Row="4" HorizontalAlignment="Right" Margin="20"  >
+                        <Border Height="50"  MinWidth="250" CornerRadius="6" BorderBrush="Black" BorderThickness="4" >
+                            <Button Content="Auftragsdaten ändern"  BorderThickness="0" Foreground="White" BorderBrush="Black" Background="Black" FontSize="15" FontWeight="Bold" Command="{Binding BtnApplyChanges}" />
+                        </Border>
+                    </StackPanel>
+
+
+    <GroupBox Grid.Row="5" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Angehängte Dokumente" VerticalAlignment="Center"/>
+                                <StackPanel Margin="50,0,0,0">
+                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"  Width="30" CornerRadius="6" BorderBrush="CornflowerBlue" BorderThickness="4" >
+                                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="+" FontSize="15" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="30"  Width="30" Background="CornflowerBlue" Command="{Binding BtnCreateReport}"/>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox.Header>
+
                         <ListBox ItemsSource="{Binding OrderItemReports}" HorizontalContentAlignment="Stretch" MinHeight="60" Margin="10" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                             <ListBox.Template>
                                 <ControlTemplate>
@@ -407,13 +427,11 @@
                                     <Border BorderBrush="Black" BorderThickness="3" CornerRadius="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <StackPanel Orientation="Vertical" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                             <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                                <StackPanel Orientation="Horizontal" MinHeight="50" Width="565" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                                    <Label VerticalAlignment="Top" Height="25"  Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
-                                                    <TextBox  VerticalAlignment="Top" VerticalContentAlignment="Center" Height="25" BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy HH:mm, ConverterCulture=de-DE}" />
+                                                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                                     <Label VerticalAlignment="Top" Content="Kommentar:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
-                                                    
-                                                        <Label VerticalAlignment="Top" Content="{Binding Comment}" VerticalContentAlignment="Center"/>
-                                                    
+                                                    <TextBlock Margin="2,5,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Width="400" Text="{Binding Comment}"/>
+                                                    <Label Margin="100,0,0,0"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Content="Report Datum:" FontWeight="Bold" Foreground="{StaticResource BoldTextColor}" VerticalContentAlignment="Center"/>
+                                                    <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="25" BorderThickness="0"  IsReadOnly="True" IsHitTestVisible="False" IsReadOnlyCaretVisible="False" Background="Transparent" Text="{Binding ReportDate, StringFormat=dd. MMMM yyyy HH:mm, ConverterCulture=de-DE}" />
                                                 </StackPanel>
                                                 <Button Visibility="Hidden" Content="Anhang hinzufügen..." HorizontalAlignment="Right"  Width="150" Height="40" Margin="5" Command="{Binding DetailVm.BtnAddPicture, Source={StaticResource Locator}}" CommandParameter="{Binding Mode=OneWay}" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                                             </StackPanel>
@@ -450,11 +468,11 @@
                         </ListBox>
                     </GroupBox>
 
-                    <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,15,0,0">
-                        <Button Margin="5"  Content="Auftragsdaten ändern"  Height="40"  Width="280" Command="{Binding BtnApplyChanges}" HorizontalAlignment="Left"/>
+                    <!--<StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,15,0,0">
+
                         <Button Visibility="Hidden" Margin="5"  Content="Dokumente anhängen"  Height="40"  Width="290" Command="{Binding BtnAppendDocuments}" HorizontalAlignment="Left"/>
-                        <Button Margin="5"  Content="Servicereport erstellen"  Height="40"  Width="300" Command="{Binding BtnCreateReport}" HorizontalAlignment="Left"/>
-                    </StackPanel>
+                        
+                    </StackPanel>-->
 
                 </Grid>
             </ScrollViewer>

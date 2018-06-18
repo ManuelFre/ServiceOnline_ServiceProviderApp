@@ -23,7 +23,6 @@
         <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_ToTable" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_log_in" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbServiceProviderAppModel.spa_synctimes" Width="1.5" PointX="0.75" PointY="3.75" />
-        <AssociationConnector Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

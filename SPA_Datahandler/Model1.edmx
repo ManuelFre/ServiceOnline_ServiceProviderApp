@@ -184,18 +184,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_order_item_report_appendix_ToTable">
-          <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="1" />
-          <End Role="order_item_report_appendix" Type="Self.order_item_report_appendix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="order_item_report">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="order_item_report_appendix">
-              <PropertyRef Name="order_item_report_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_item_report_ToTable">
           <End Role="order_item" Type="Self.order_item" Multiplicity="1" />
           <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="*" />
@@ -283,10 +271,6 @@
           <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">
             <End Role="sow_user" EntitySet="sow_user" />
             <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-          </AssociationSet>
-          <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="Self.FK_order_item_report_appendix_ToTable">
-            <End Role="order_item_report" EntitySet="order_item_report" />
-            <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
           </AssociationSet>
           <AssociationSet Name="FK_order_item_report_ToTable" Association="Self.FK_order_item_report_ToTable">
             <End Role="order_item" EntitySet="order_item" />
@@ -573,10 +557,6 @@
           </AssociationSet>
           <EntitySet Name="spa_log_in" EntityType="DbServiceProviderAppModel.spa_log_in" />
           <EntitySet Name="spa_synctimes" EntityType="DbServiceProviderAppModel.spa_synctimes" />
-          <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable">
-            <End Role="order_item_report" EntitySet="order_item_report" />
-            <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="order_item_report">
           <Key>
@@ -588,7 +568,6 @@
           <NavigationProperty Name="order_item" Relationship="DbServiceProviderAppModel.FK_order_item_report_ToTable" FromRole="order_item_report" ToRole="order_item" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deletedat" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="order_item_report_appendix" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report" ToRole="order_item_report_appendix" />
         </EntityType>
         <EntityType Name="order_item_report_appendix">
           <Key>
@@ -599,7 +578,6 @@
           <Property Name="appendix" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="createdat" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="deletedat" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="order_item_report" Relationship="DbServiceProviderAppModel.FK_order_item_report_appendix_ToTable" FromRole="order_item_report_appendix" ToRole="order_item_report" />
         </EntityType>
         <Association Name="FK_order_item_report_ToTable">
           <End Type="DbServiceProviderAppModel.order_item" Role="order_item" Multiplicity="1" />
@@ -629,18 +607,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="synctime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <Association Name="FK_order_item_report_appendix_ToTable">
-          <End Type="DbServiceProviderAppModel.order_item_report" Role="order_item_report" Multiplicity="1" />
-          <End Type="DbServiceProviderAppModel.order_item_report_appendix" Role="order_item_report_appendix" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="order_item_report">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="order_item_report_appendix">
-              <PropertyRef Name="order_item_report_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

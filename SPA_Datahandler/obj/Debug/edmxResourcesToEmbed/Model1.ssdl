@@ -179,18 +179,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_order_item_report_appendix_ToTable">
-    <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="1" />
-    <End Role="order_item_report_appendix" Type="Self.order_item_report_appendix" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="order_item_report">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="order_item_report_appendix">
-        <PropertyRef Name="order_item_report_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_order_item_report_ToTable">
     <End Role="order_item" Type="Self.order_item" Multiplicity="1" />
     <End Role="order_item_report" Type="Self.order_item_report" Multiplicity="*" />
@@ -278,10 +266,6 @@
     <AssociationSet Name="address_sow_user_fk" Association="Self.address_sow_user_fk">
       <End Role="sow_user" EntitySet="sow_user" />
       <End Role="sow_user_delivery_address" EntitySet="sow_user_delivery_address" />
-    </AssociationSet>
-    <AssociationSet Name="FK_order_item_report_appendix_ToTable" Association="Self.FK_order_item_report_appendix_ToTable">
-      <End Role="order_item_report" EntitySet="order_item_report" />
-      <End Role="order_item_report_appendix" EntitySet="order_item_report_appendix" />
     </AssociationSet>
     <AssociationSet Name="FK_order_item_report_ToTable" Association="Self.FK_order_item_report_ToTable">
       <End Role="order_item" EntitySet="order_item" />
