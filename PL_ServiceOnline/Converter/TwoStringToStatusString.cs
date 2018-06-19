@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace PL_ServiceOnline.Converter
 {
-    class TwoStringToStatusString : IMultiValueConverter
+    public class TwoStringToStatusString : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
