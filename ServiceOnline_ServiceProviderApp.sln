@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPA_Datahandler", "SPA_Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_ServiceOnline", "PL_ServiceOnline\PL_ServiceOnline.csproj", "{B873C178-AD3B-411B-B8E1-2424D6972242}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C93396EF-CA13-445E-B8FF-52AC21EB6ED9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel.Test", "ViewModel.Test\ViewModel.Test.csproj", "{97AA5265-0DED-4D5C-BF8C-5944176175A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -26,9 +30,18 @@ Global
 		{B873C178-AD3B-411B-B8E1-2424D6972242}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B873C178-AD3B-411B-B8E1-2424D6972242}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B873C178-AD3B-411B-B8E1-2424D6972242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.All|Any CPU.Build.0 = Release|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97AA5265-0DED-4D5C-BF8C-5944176175A5} = {C93396EF-CA13-445E-B8FF-52AC21EB6ED9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4188EA96-E078-44D2-8083-6CCDF0BD58C4}

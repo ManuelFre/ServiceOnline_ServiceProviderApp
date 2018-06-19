@@ -264,7 +264,7 @@ namespace PL_ServiceOnline.ViewModel
             else
                 MessageBox.Show("Update fehlgeschlagen", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-        private string GetStatus(string isFinished, string isConfirmed)
+        public string GetStatus(string isFinished, string isConfirmed)
         {
             if (isConfirmed != null)
             {
@@ -273,7 +273,7 @@ namespace PL_ServiceOnline.ViewModel
                     return AllStatuses[3];
                 }
 
-                if (IsFinished != null)
+                if (isFinished != null) //OJE Hier durchs unittest möglicherweise einen type erkannt--> geändert von IsFinished zu isFinished
                 {
                     if (isFinished.Equals("Y") || isFinished.Equals("Ja"))
                     {
@@ -287,7 +287,7 @@ namespace PL_ServiceOnline.ViewModel
             }
             return AllStatuses[2]; //Nicht bestätigt"
         }
-        private string GetFinishedStatus(string status)
+        public string GetFinishedStatus(string status)
         {
             //wenn status in checkbox == Abgeschlossen [0]
             if (status != null)
@@ -298,7 +298,7 @@ namespace PL_ServiceOnline.ViewModel
             return "N";
         }
 
-        private string GetConfirmStatus(string status)
+        public string GetConfirmStatus(string status)
         {
             //wenn status in checkbox == Abgeschlossen [0] oder Angenommen [1]  dann 'Y'
             if (status != null)
