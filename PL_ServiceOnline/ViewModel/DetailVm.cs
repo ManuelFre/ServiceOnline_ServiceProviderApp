@@ -58,7 +58,15 @@ namespace PL_ServiceOnline.ViewModel
         public DateTime PreferedDate
         {
             get { return preferedDate; }
-            set { preferedDate = value; }//Inn der Uhrzeit ist ein Falsches Datum und in dem Datum eine falsche Uhrzeit abgespeichert LOL NEIN DB FEHLER FML
+            set { preferedDate = value; RaisePropertyChanged(); }
+        }
+
+
+        private string preferedDateTime;
+        public string PreferedDateTime
+        {
+            get { return preferedDateTime; }
+            set { preferedDateTime = value; RaisePropertyChanged(); }
         }
 
         public string Servicedescription { get; set; }
@@ -106,6 +114,15 @@ namespace PL_ServiceOnline.ViewModel
         public ObservableCollection<OrderItemReport_> OrderItemReports { get; set; }
 
         private DetailedClass OS { get; set; }
+
+        private List<String> dropdownTimes;
+
+        public List<String> DropdownTimes
+        {
+            get { return dropdownTimes; }
+            set { dropdownTimes = value; RaisePropertyChanged(); }
+        }
+
 
         #endregion
 
@@ -164,8 +181,23 @@ namespace PL_ServiceOnline.ViewModel
                     }
 
                 });
-
+            CreateDateTime("4:45");
             //CreateDemoData();
+        }
+
+
+        private void CreateDateTime(string Nullvalue)
+        {
+            List<String> tmp = new List<string>();
+            tmp.Add(Nullvalue);
+            for (int i = 5; i < 22; i++)
+            {
+                tmp.Add(i + ":00");
+                tmp.Add(i + ":15");
+                tmp.Add(i + ":30");
+                tmp.Add(i + ":45");
+            }
+            DropdownTimes = tmp;
         }
 
         private void AppendDocuments()
@@ -243,13 +275,14 @@ namespace PL_ServiceOnline.ViewModel
             SelectedDetailed.IsConfirmed = GetConfirmStatus(Status);
             SelectedDetailed.IsFinished = GetFinishedStatus(Status);
 
-            SelectedDetailed.PreferedDate = PreferedDate;
+            //SelectedDetailed.PreferedDate = PreferedDate;
+            SelectedDetailed.PreferedDate = SelectedDetailed.PreferedDate + TimeSpan.ParseExact(preferedDateTime, "g", CultureInfo.CurrentCulture);
             SelectedDetailed.ServiceProviderComment = ServiceProviderComment;
 
 
-            if (IsConfirmed != null && IsConfirmed != "x" && PreferedDate < DateTime.Now)
+            if (IsConfirmed != null && IsConfirmed != "x" && SelectedDetailed.PreferedDate < DateTime.Now)
                 msg.Send(new GenericMessage<string>("past"));
-            else if (IsConfirmed != null && IsConfirmed != "x" && PreferedDate > DateTime.Now)
+            else if (IsConfirmed != null && IsConfirmed != "x" && SelectedDetailed.PreferedDate > DateTime.Now)
                 msg.Send(new GenericMessage<string>("future"));
             else
                 msg.Send(new GenericMessage<string>("denied"));
@@ -331,6 +364,8 @@ namespace PL_ServiceOnline.ViewModel
                 OrderItemId = SelectedDetailed.OrderItemId;
                 OrderId = SelectedDetailed.OrderId;
                 PreferedDate = SelectedDetailed.PreferedDate;
+                PreferedDateTime = PreferedDate.ToString("H:mm");
+                CreateDateTime(PreferedDateTime);                          
                 Servicedescription = SelectedDetailed.Servicedescription;
                 BookedItems = SelectedDetailed.BookedItems;
                 IsAllInclusive = SelectedDetailed.IsAllInclusive;
