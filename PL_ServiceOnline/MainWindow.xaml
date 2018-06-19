@@ -32,14 +32,17 @@
         <Grid Grid.Column="0">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="6*"/>
-                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1.8*"/>
+                    <RowDefinition Height="6*"/>
+                <RowDefinition Height="4*"/>
 
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-                <GroupBox Header="Aufträge">
-                    <Grid>
+                    
+                <Image Source="/Images/ServicesOnlineTransparent.png" />
+                <GroupBox Header="Aufträge" Grid.Row="1">
+                    <Grid  >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -60,7 +63,7 @@
                     </Grid>
 
                 </GroupBox>
-                <GroupBox Header="Ihre Daten" Grid.Row="1">
+                <GroupBox Header="Ihre Daten" Grid.Row="2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -77,7 +80,7 @@
 
                 </GroupBox>
 
-                <GroupBox Header="Synchronisierung" Grid.Row="2">
+                <GroupBox Header="Synchronisierung" Grid.Row="3">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>

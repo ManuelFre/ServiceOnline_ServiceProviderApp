@@ -397,8 +397,8 @@
                     </GroupBox>
 
                     <StackPanel Grid.Row="4" HorizontalAlignment="Right" Margin="20"  >
-                        <Border Height="50"  MinWidth="250" CornerRadius="6" BorderBrush="Black" BorderThickness="4" >
-                            <Button Content="Auftragsdaten ändern"  BorderThickness="0" Foreground="White" BorderBrush="Black" Background="Black" FontSize="15" FontWeight="Bold" Command="{Binding BtnApplyChanges}" />
+                        <Border Height="50"  MinWidth="250" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
+                            <Button Content="Auftragsdaten ändern"  BorderThickness="0" Foreground="White" BorderBrush="#51b9ff" Background="#51b9ff" FontSize="15" FontWeight="Bold" Command="{Binding BtnApplyChanges}" />
                         </Border>
                     </StackPanel>
 
@@ -408,8 +408,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Angehängte Dokumente" VerticalAlignment="Center"/>
                                 <StackPanel Margin="50,0,0,0">
-                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"  Width="30" CornerRadius="6" BorderBrush="CornflowerBlue" BorderThickness="4" >
-                                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="+" FontSize="15" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="30"  Width="30" Background="CornflowerBlue" Command="{Binding BtnCreateReport}"/>
+                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"  Width="30" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
+                                        <Button HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Content="+"  FontSize="15" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="30"  Width="30" Background="#51b9ff" Command="{Binding BtnCreateReport}"/>
                                     </Border>
                                 </StackPanel>
                             </StackPanel>
