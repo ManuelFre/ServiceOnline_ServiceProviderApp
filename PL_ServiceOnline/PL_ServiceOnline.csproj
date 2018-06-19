@@ -249,5 +249,8 @@
   <ItemGroup>
     <Resource Include="6a014e87fbd82d970d017744d95768970d.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ServicesOnlineTransparent.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
