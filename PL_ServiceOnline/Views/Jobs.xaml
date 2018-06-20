@@ -186,7 +186,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Background="#F5F5F8" Grid.Column="2" Command="{Binding BtnDetailView}">Detailansicht</Button>
+            <Button Margin ="5" Foreground="White" BorderBrush="#51b9ff" Background="#51b9ff" Grid.Column="2" Command="{Binding BtnDetailView}">Detailansicht</Button>
         </Grid>
     </Grid>
 </UserControl>
