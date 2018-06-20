@@ -70,7 +70,7 @@ namespace PL_ServiceOnline.ViewModel
 
             BtnDetailView = new RelayCommand(execute: () => {
                 msg.Send<GenericMessage<OrderSummary>>(new GenericMessage<OrderSummary>(SelectedJob));
-
+                SelectedJob = null;
 
             }, canExecute: () =>
             {
