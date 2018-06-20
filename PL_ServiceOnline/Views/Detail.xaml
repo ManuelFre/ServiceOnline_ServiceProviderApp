@@ -193,7 +193,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Calendar}">
-                        <Viewbox Width="300" Height="300">
+                        <Viewbox Width="400" Height="400">
                             <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
                                 <CalendarItem x:Name="PART_CalendarItem" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Style="{TemplateBinding CalendarItemStyle}"/>
                             </StackPanel>
@@ -424,8 +424,8 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Angehängte Dokumente" VerticalAlignment="Center"/>
                                 <StackPanel Margin="50,0,0,0">
-                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="30"  Width="30" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
-                                        <Button HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Content="+"  FontSize="15" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="30"  Width="30" Background="#51b9ff" Command="{Binding BtnCreateReport}"/>
+                                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"  Width="40" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
+                                        <Button HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Content="+"  FontSize="23" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="40"  Width="40" Background="#51b9ff" Command="{Binding BtnCreateReport}"/>
                                     </Border>
                                 </StackPanel>
                             </StackPanel>

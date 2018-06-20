@@ -104,6 +104,11 @@
 
             </Grid>
         </GroupBox>
-        <Button Grid.Column="1" Grid.Row="1" Margin="5" Content="Änderungen übernehmen" Command="{Binding BtnChangeClicked}" Grid.RowSpan="2"/>
+        <DockPanel Grid.Row="1" Margin="5"  >
+            <Border CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4">
+                <Button Content="Änderungen übernehmen"  BorderThickness="0" Foreground="White" BorderBrush="#51b9ff" Background="#51b9ff" FontSize="15" FontWeight="Bold" Command="{Binding BtnChangeClicked}" />
+            </Border>
+        </DockPanel>
+        <!--<Button Grid.Column="1" Grid.Row="1" Margin="5" Content="Änderungen übernehmen" Command="{Binding BtnChangeClicked}" Grid.RowSpan="2"/>-->
     </Grid>
 </UserControl>
