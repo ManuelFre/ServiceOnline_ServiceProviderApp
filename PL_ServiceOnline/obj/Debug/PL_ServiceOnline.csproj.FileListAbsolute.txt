@@ -225,8 +225,6 @@ C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bi
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\GalaSoft.MvvmLight.Platform.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\Oracle.ManagedDataAccess.dll
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\PdfSharp.Charting.dll
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\PdfSharp.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\SPA_Datahandler.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\Xceed.Wpf.AvalonDock.dll
@@ -247,10 +245,6 @@ C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bi
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\PdfSharp.xml
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\PdfSharp.Charting.xml
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\de\PdfSharp.resources.dll
-C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\de\PdfSharp.Charting.resources.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
@@ -432,3 +426,5 @@ C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\ob
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.csproj.CopyComplete
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.exe
 C:\Users\NexX\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\obj\Debug\PL_ServiceOnline.pdb
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\obj\Debug\CreateReportDialog.g.cs
+C:\Users\Nuel\Source\Repos\ServiceOnline_ServiceProviderApp2\PL_ServiceOnline\obj\Debug\CreateReportDialog.baml
