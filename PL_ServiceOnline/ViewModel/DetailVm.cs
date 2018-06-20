@@ -109,7 +109,14 @@ namespace PL_ServiceOnline.ViewModel
             set { status = value; RaisePropertyChanged(); }
         }
 
-        public string[] AllStatuses { get; set; }
+        private string[] allStatuses;
+
+        public string[] AllStatuses
+        {
+            get { return allStatuses; }
+            set { allStatuses = value; RaisePropertyChanged(); }
+        }
+
 
         public ObservableCollection<OrderItemReport_> OrderItemReports { get; set; }
 
@@ -318,6 +325,7 @@ namespace PL_ServiceOnline.ViewModel
                     }
                 }
             }
+
             return AllStatuses[2]; //Nicht bestätigt"
         }
         public string GetFinishedStatus(string status)
