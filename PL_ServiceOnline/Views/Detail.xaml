@@ -392,7 +392,7 @@
                                 <ComboBox Grid.Column="1" FontSize="25" HorizontalAlignment="Stretch" Margin="5" ItemsSource="{Binding DropdownTimes}" SelectedValue="{Binding PreferedDateTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding PreferedDateTime}" />
                             </Grid>
 
-                            <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center" />
+                            <ComboBox Grid.Column="2" Grid.Row="3" ItemsSource="{Binding AllStatuses}" SelectedValue="{Binding Status, NotifyOnSourceUpdated=True}" FontWeight="Bold" FontSize="24" Height="45" Margin="5" VerticalContentAlignment="Center" />
 
                         </Grid>
                     </GroupBox>
