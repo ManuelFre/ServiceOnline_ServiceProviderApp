@@ -412,22 +412,22 @@
                         </Grid>
                     </GroupBox>
 
-                    <StackPanel Grid.Row="4" HorizontalAlignment="Right" Margin="20"  >
+                    <DockPanel Grid.Row="4" HorizontalAlignment="Right" Margin="20"  >
                         <Border Height="50"  MinWidth="250" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
                             <Button Content="Auftragsdaten ändern"  BorderThickness="0" Foreground="White" BorderBrush="#51b9ff" Background="#51b9ff" FontSize="15" FontWeight="Bold" Command="{Binding BtnApplyChanges}" />
                         </Border>
-                    </StackPanel>
+                    </DockPanel>
 
 
     <GroupBox Grid.Row="5" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                         <GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Angehängte Dokumente" VerticalAlignment="Center"/>
-                                <StackPanel Margin="50,0,0,0">
+                                <DockPanel Margin="50,0,0,0">
                                     <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"  Width="40" CornerRadius="6" BorderBrush="#51b9ff" BorderThickness="4" >
                                         <Button HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Content="+"  FontSize="23" FontWeight="Bold" BorderThickness="0" BorderBrush="Transparent" Height="40"  Width="40" Background="#51b9ff" Command="{Binding BtnCreateReport}"/>
                                     </Border>
-                                </StackPanel>
+                                </DockPanel>
                             </StackPanel>
                         </GroupBox.Header>
 
