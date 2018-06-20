@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace PL_ServiceOnline.Converter
 {
-    class ByteToImage : IValueConverter
+    public class ByteToImage : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

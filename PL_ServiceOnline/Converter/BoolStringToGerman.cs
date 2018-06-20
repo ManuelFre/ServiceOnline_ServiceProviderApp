@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace PL_ServiceOnline.Converter
 {
-    class BoolStringToGerman : IValueConverter
+    public class BoolStringToGerman : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

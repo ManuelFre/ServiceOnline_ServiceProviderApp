@@ -8,9 +8,9 @@ using System.Windows.Media.Imaging;
 
 namespace PL_ServiceOnline.Converter
 {
-    internal static class ImageConverter
+    public static class ImageConverter
     {
-        internal static byte[] ImageToByteArray(BitmapImage image)
+        public static byte[] ImageToByteArray(BitmapImage image)
         {
             using (var ms = new MemoryStream()) //Image resourcen sind sehr groß und damit der Stream sofort wieder disposed wird diesen in ein using statement
             {
@@ -22,7 +22,7 @@ namespace PL_ServiceOnline.Converter
             }
 
         }        
-        internal static BitmapImage ByteArrayToImage(byte[] array)
+        public static BitmapImage ByteArrayToImage(byte[] array)
         {
             using (var ms = new MemoryStream(array))
             {

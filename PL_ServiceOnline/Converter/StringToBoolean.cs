@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace PL_ServiceOnline.Converter
 {
-    class StringToBoolean : IValueConverter
+    public class StringToBoolean : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace PL_ServiceOnline.Converter
 {
-    class AllIncStringToStringColor : IValueConverter
+    public class AllIncStringToStringColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
